@@ -11,11 +11,39 @@ Generate high-converting Meta ad copy optimized for The Coach Consultant's targe
 
 When this skill is invoked:
 
-1. **Ask the user for campaign details:**
-   - Campaign objective (e.g., "Webinar registration", "Free resource download", "Book a call")
-   - Target audience (e.g., "Solo coaches £50K-£150K revenue struggling with client acquisition")
-   - Main offer/hook (e.g., "Free masterclass on AI for coaches")
-   - Optional: Tone modifier, urgency element, social proof
+1. **MANDATORY: Ask the user for campaign details FIRST (DO NOT SKIP THIS STEP):**
+
+   Use the AskUserQuestion tool to gather:
+
+   **Question 1: Campaign Objective**
+   - Header: "Campaign Goal"
+   - Options:
+     - "Book a Call" (Lead generation for 1-1 consultations)
+     - "Webinar/Masterclass Registration" (Event sign-ups)
+     - "Free Resource Download" (Lead magnet - guide, template, toolkit)
+     - "Course/Product Launch" (Paid offering promotion)
+
+   **Question 2: Target Audience Pain Point**
+   - Header: "Main Pain"
+   - Options:
+     - "Manual Overwhelm" (60-70% time on admin, not transformation work)
+     - "Invisibility" (Brilliant results, zero visibility outside client base)
+     - "AI Paralysis" (Knows AI is solution, overwhelmed by tool options)
+     - "Revenue Plateau" (£50K-£150K stuck, should be £200K+ based on results)
+
+   **Question 3: Main Offer/Value Proposition**
+   - Header: "Core Offer"
+   - Text input field for user to describe the main offer (e.g., "Free 45-min strategy call to build AI-powered content system")
+
+   **Question 4 (Optional): Additional Elements**
+   - Header: "Include"
+   - Multi-select options:
+     - "Social Proof" (300+ coaches using frameworks)
+     - "Urgency" (Limited spots, event date, bonus deadline)
+     - "Specific Metrics" (10x output, 90% less time, £50K→£200K transformations)
+     - "Authority Signals" (Industry recognition, case studies)
+
+   **CRITICAL**: Do NOT generate any ad copy until ALL questions are answered. If user provides vague answers, ask follow-up clarification questions.
 
 2. **Fetch top performing ads from Meta API:**
    ```bash
@@ -51,22 +79,52 @@ This skill generates Meta ad copy variations that:
 
 ## Usage
 
-### Basic Usage
+### How It Works
+
+**Step 1:** User invokes skill
 ```
-Generate meta ad copy for [campaign objective]
-Target: [audience segment]
-Offer: [main offer/hook]
+Generate meta ad copy
+```
+or
+```
+/meta-ad-copy
 ```
 
-### Advanced Usage
+**Step 2:** Claude asks 4 questions via AskUserQuestion tool:
+1. Campaign objective (Book a Call, Webinar, Resource, Course)
+2. Target pain point (Manual Overwhelm, Invisibility, AI Paralysis, Revenue Plateau)
+3. Main offer description (user provides specific offer details)
+4. Optional elements (Social Proof, Urgency, Metrics, Authority)
+
+**Step 3:** Claude fetches real Meta API performance data
+
+**Step 4:** Claude generates 3-5 ad variations optimized for selected pain point + objective
+
+**Step 5:** Output saved to `outputs/META-AD-COPY-[campaign-name].md`
+
+### Example User Flow
+
+**User:** "Generate meta ad copy"
+
+**Claude:** *[Displays AskUserQuestion with 4 questions]*
+
+**User selects:**
+- Campaign Goal: Book a Call
+- Main Pain: Manual Overwhelm
+- Core Offer: "Free 45-min clarity call to systematize client operations with AI"
+- Include: Social Proof, Specific Metrics
+
+**Claude:** *[Fetches API data, analyzes patterns, generates 3-5 variations matching Manual Overwhelm pain point + Book a Call objective]*
+
+### Quick Invocation (If User Provides All Details Upfront)
+
+If user says:
 ```
-Create 3 meta ad variations for:
-- Campaign: New course launch
-- Audience: Solo coaches struggling with client acquisition
-- Offer: Free masterclass on predictable client flow
-- Tone: Professional but supportive
-- Include: Social proof, urgency
+Generate meta ad copy for a free strategy call targeting coaches
+stuck in manual overwhelm. Include social proof and metrics.
 ```
+
+Claude should still use AskUserQuestion but pre-fill obvious answers and only ask for missing details.
 
 ## Required Inputs
 
