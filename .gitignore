@@ -1,0 +1,45 @@
+# Private project management files
+Jay-Notes/
+Dual Synergy AI Project Plan.docx
+skills/jay-skills/
+*.backup
+
+# Internal documentation (stored in Jay-Notes)
+CLIENT-DISCOVERY-QUESTIONS.md
+*-QUESTIONS.md
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Node modules (if we add any automation scripts)
+node_modules/
+npm-debug.log*
+
+# Python (if we add any Python scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log

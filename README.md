@@ -1,4 +1,4 @@
-# The Coach Consultant - AI Automation System
+s# The Coach Consultant - AI Automation System
 
 ## Overview
 
@@ -9,23 +9,17 @@ AI automation system built exclusively within the Claude ecosystem to scale The 
 ## What This System Does
 
 ### Content Generation
-Automated, brand-aligned content creation for all marketing channels:
-- **Meta Ads**: Performance-optimized ad copy based on historical data
-- **Instagram**: Engaging captions with analytics-driven insights
-- **Email**: High-converting subject lines and sequences
-- **LinkedIn**: Professional posts that drive engagement
-- **YouTube**: Structured scripts for channel growth
-
-### Multi-Agent Workflow
-AI agents work together to ensure quality:
-1. **Research Agent**: Analyzes competitors, trends, and audience
-2. **Fact-Check Agent**: Verifies all claims and statistics
-3. **Tone Agent**: Maintains brand voice consistency
-4. **Conversion Agent**: Optimizes for engagement and results
+Automated, brand-aligned content creation for marketing channels:
+- **Meta Ads**: Performance-optimized ad copy
+- **Instagram**: Captions, carousels, and stories
+- **Email Campaigns**: Nurture sequences and broadcasts
+- **LinkedIn**: Professional posts and articles
+- **YouTube**: Video scripts and descriptions
+- **Podcasts**: Show scripts and episode outlines
 
 ### Prompt Vault
-Categorized, ready-to-use prompts for:
-- Marketing campaigns
+Categorized, ready-to-use prompts with sample outputs:
+- Marketing campaigns (Meta ads, social media, email)
 - Operational workflows
 - Content creation
 - Performance reporting
@@ -37,25 +31,16 @@ The Coach Consultant/
 ├── CLAUDE.md                 # Brand context and AI instructions
 ├── README.md                 # This file
 ├── skills/                   # Content generation skills
-│   ├── meta-ad-copy/
-│   ├── instagram-caption/
-│   ├── email-subject-line/
-│   ├── linkedin-post/
-│   └── youtube-script/
-├── agents/                   # Multi-agent orchestration
-│   ├── research-agent/
-│   ├── fact-check-agent/
-│   ├── tone-agent/
-│   └── conversion-agent/
-├── prompts/                  # Prompt vault
-│   ├── marketing/
+│   └── meta-ad-copy/         # Meta ad copy generator
+├── agents/                   # Multi-agent orchestration (future)
+├── prompts/                  # Prompt vault & examples
+│   ├── marketing/            # Marketing prompts + sample outputs
 │   ├── operations/
 │   ├── content/
 │   └── reporting/
-└── docs/                     # Documentation and guides
-    ├── setup-guide.md
-    ├── usage-examples.md
-    └── troubleshooting.md
+└── docs/                     # Documentation and brand context
+    ├── deep-dive/            # Deep brand voice samples & frameworks
+    └── Ben-Claude-Projects-Instructions.txt
 ```
 
 ## Getting Started
@@ -63,28 +48,33 @@ The Coach Consultant/
 ### Prerequisites
 - Claude Code installed
 - GitHub access to this repository
-- Brand assets and reference materials
+- Meta Business Manager API access (for ad performance data)
 
 ### Initial Setup
 
 1. **Clone this repository**
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/TCC58/the-coach-consultant.git
    cd "The Coach Consultant"
    ```
 
 2. **Review brand context**
    - Read [CLAUDE.md](CLAUDE.md) for brand voice, tone, and guidelines
-   - Understand target audience and content categories
+   - Review [docs/Ben-Claude-Projects-Instructions.txt](docs/Ben-Claude-Projects-Instructions.txt) for channel-specific rules
+   - Explore [docs/deep-dive/](docs/deep-dive/) for deep brand voice samples
 
 3. **Load skills into Claude Code**
    - Skills are located in `/skills/` directory
    - Each skill has documentation and usage examples
 
-4. **Test the system**
-   - Try generating sample content for each channel
+4. **Configure environment**
+   - Add Meta API credentials to `.env` file (if needed)
+   - Ensure all required access tokens are configured
+
+5. **Test the system**
+   - Try generating sample content using available skills
    - Review output for brand alignment
-   - Adjust prompts as needed
+   - Check `/prompts/marketing/` directory for example prompts and outputs
 
 ### Usage
 
@@ -96,33 +86,29 @@ Use the Meta Ad Copy skill with:
 - Key benefits to highlight
 ```
 
-**Create Instagram Caption:**
-```
-Use the Instagram Caption skill with:
-- Image/video description
-- Target audience
-- Desired CTA
-```
+Generated content samples with prompts are saved in the `/prompts/` directory (organized by category).
 
-**Generate Email Subject Lines:**
-```
-Use the Email Subject Line skill with:
-- Email content summary
-- Target open rate goal
-- A/B test variations needed
-```
+**Access Other Content Skills:**
+- Instagram captions and carousels
+- Email campaign sequences
+- LinkedIn professional posts
+- YouTube video scripts
+- Podcast episode scripts
 
-See [docs/usage-examples.md](docs/usage-examples.md) for detailed examples.
+Each skill includes documentation, usage examples, and sample outputs.
 
-## Team Access
+## Team
 
-**Primary Contacts:**
-- Rob Sturman - COO
-- Ben Mahmoud - Sales Director & Paid Ads
-
-**For Support:**
+**The Coach Consultant:**
+- Rob Sturman - Chief Operating Officer (Primary Contact)
+- Ben Mahmoud - Sales Director & Paid Ads (Primary Contact)
 - Beth Rendell - Client Success Director
 - Alex Whitehead - Web Development & Graphics
+- Charlie Munns - Success Coach
+- Drew McNeill - Success Coach
+
+**Automation Partners:**
+- Dual Synergy AI - AI automation system development and support
 
 ## Important Links
 
