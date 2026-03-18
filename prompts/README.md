@@ -1,52 +1,61 @@
-# Prompt Vault
+# Prompts Library
 
-Categorized, business-specific prompts for The Coach Consultant team.
+Business-specific prompts for The Coach Consultant team.
 
-## Categories
+---
 
-### [Marketing](marketing/)
-- Ad campaign planning
-- Audience targeting
-- Creative brief development
-- Campaign performance analysis
-- A/B testing frameworks
+## Available Prompts
 
-### [Operations](operations/)
-- Client onboarding workflows
-- Team task management
-- Process documentation
-- Performance tracking
-- Quality assurance
+### [Meta Ads](meta-ads/)
+✅ **5 prompts available** - For the `/meta-ad-copy` skill
 
-### [Content](content/)
-- Content calendar planning
-- Multi-channel content creation
-- Content repurposing
-- SEO optimization
-- Brand storytelling
+1. **Basic Generation** - Standard 4-question workflow
+2. **Manual Overwhelm Campaign** - Target coaches drowning in admin
+3. **Invisibility Campaign** - Target brilliant but invisible coaches
+4. **Webinar Registration** - Event promo copy
+5. **API Data Analysis First** - Analyze patterns before generating
 
-### [Reporting](reporting/)
-- Performance dashboards
-- Client reports
-- Internal analytics
-- ROI calculations
-- Trend analysis
+📖 See [meta-ads/README.md](meta-ads/README.md) for full details
+
+---
+
+## Coming Soon
+
+- Instagram caption prompts
+- YouTube script prompts
+- Email campaign prompts
+- Client onboarding prompts
+- Performance report prompts
+
+---
 
 ## How to Use
 
-1. Browse category folders for relevant prompts
-2. Copy the prompt template
-3. Fill in your specific details
-4. Run through Claude Code for optimal results
-5. Review and adjust output as needed
+1. **Browse prompts folder** for your use case
+2. **Copy the prompt** from the .md file
+3. **Paste prompt to Claude Code**
+4. **Answer the 4 questions** (use "Pre-filled Context" as guide)
+5. **Review output** in `skills/meta-ad-copy/outputs/`
+
+---
 
 ## Prompt Structure
 
 Each prompt includes:
-- **Purpose**: What this prompt accomplishes
-- **Input Required**: What information you need to provide
+- **What This Does**: Skill feature being used
+- **Prompt**: Copy-paste ready text
+- **Pre-filled Context**: Suggested answers to skill questions
 - **Expected Output**: What you'll get back
-- **Best Practices**: Tips for optimal results
-- **Examples**: Real usage scenarios
+- **When to Use**: Use case scenarios
 
-Prompts are reviewed and updated regularly based on performance and team feedback.
+---
+
+## Active Skills
+
+| Skill | Prompts | Location |
+|-------|---------|----------|
+| `/meta-ad-copy` | 5 | [meta-ads/](meta-ads/) |
+
+---
+
+Version: v1.0 (March 2026)
