@@ -47,7 +47,7 @@ When this skill is invoked:
 
 2. **Fetch top performing ads from Meta API:**
    ```bash
-   cd skills/meta-ad-copy && bash setup.sh --top 10 --format json
+   cd 1-meta-ads/meta-ad-copy && bash setup.sh --top 10 --format json
    ```
 
    Note: `setup.sh` automatically handles dependencies (creates venv on first run)
@@ -413,7 +413,7 @@ When invoked, this skill automatically:
 
 **Step 1: Fetch real-time ad performance**
 ```bash
-cd skills/meta-ad-copy && bash setup.sh --top 10 --format json
+cd 1-meta-ads/meta-ad-copy && bash setup.sh --top 10 --format json
 ```
 Returns top 10 performing Coach Consultant ads with:
 - Full ad copy (title, body)

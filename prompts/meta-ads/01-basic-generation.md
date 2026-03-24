@@ -7,7 +7,7 @@
 ## Prompt
 
 ```
-Read the skill instructions in skills/meta-ad-copy/skill.md and follow them to generate meta ad copy for my campaign.
+Read the skill instructions in 1-meta-ads/meta-ad-copy/skill.md and follow them to generate meta ad copy for my campaign.
 ```
 
 ---
@@ -26,7 +26,7 @@ Read the skill instructions in skills/meta-ad-copy/skill.md and follow them to g
 
 4. Generates 3-5 variations with different hook types
 
-5. Saves to `skills/meta-ad-copy/outputs/META-AD-COPY-[campaign].md`
+5. Saves to `1-meta-ads/meta-ad-copy/outputs/META-AD-COPY-[campaign].md`
 
 ---
 

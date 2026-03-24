@@ -54,7 +54,7 @@ claude code
 
 This will:
 - ✅ Auto-load `CLAUDE.md` (brand context and instructions)
-- ✅ Make all skills available from `/skills/` directory
+- ✅ Make all skills available from `/See SKILLS-README.md or channel folders (1-meta-ads, 2-instagram, etc.) for ` directory
 - ✅ Load brand voice documentation from `/docs/`
 
 ### Step 5: Test the System
@@ -167,7 +167,7 @@ Upload these files to the workspace:
 
 ### Step 4: Load Skills
 
-For each skill in `/skills/` (e.g., `meta-ad-copy`):
+For each skill in `/See SKILLS-README.md or channel folders (1-meta-ads, 2-instagram, etc.) for ` (e.g., `meta-ad-copy`):
 
 1. Open the skill folder
 2. Copy the skill content
@@ -192,7 +192,7 @@ Team members can now:
 The Coach Consultant/
 ├── CLAUDE.md                 # Brand context (AUTO-LOADED ✅)
 ├── README.md                 # Project overview
-├── skills/                   # Content generation skills
+├── See SKILLS-README.md or channel folders (1-meta-ads, 2-instagram, etc.) for                    # Content generation skills
 │   └── meta-ad-copy/         # Meta ad copy generator (Week 1)
 ├── prompts/                  # Example prompts + outputs
 │   └── marketing/            # Meta ad examples
@@ -311,7 +311,7 @@ pwd
 # Should show: /path/to/The Coach Consultant
 ```
 
-Skills only work when Claude has access to the `/skills/` folder.
+Skills only work when Claude has access to the `/See SKILLS-README.md or channel folders (1-meta-ads, 2-instagram, etc.) for ` folder.
 
 **VS Code:** Make sure you opened the folder, not just a file.
 

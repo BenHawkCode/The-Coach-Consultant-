@@ -7,7 +7,7 @@
 ## Prompt
 
 ```
-Read skills/meta-ad-copy/skill.md and follow the instructions. Before generating variations, first analyze the Meta API data you fetch and show me a detailed breakdown of winning patterns (hooks, CTAs, metrics, character counts, what to avoid). Then generate copy based on those patterns.
+Read 1-meta-ads/meta-ad-copy/skill.md and follow the instructions. Before generating variations, first analyze the Meta API data you fetch and show me a detailed breakdown of winning patterns (hooks, CTAs, metrics, character counts, what to avoid). Then generate copy based on those patterns.
 ```
 
 ---

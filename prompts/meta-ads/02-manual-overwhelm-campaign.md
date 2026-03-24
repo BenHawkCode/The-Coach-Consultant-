@@ -7,7 +7,7 @@
 ## Prompt
 
 ```
-Read skills/meta-ad-copy/skill.md and follow the instructions to generate meta ad copy for coaches spending 60-70% of their time on admin instead of coaching. Campaign goal: book a free strategy call.
+Read 1-meta-ads/meta-ad-copy/skill.md and follow the instructions to generate meta ad copy for coaches spending 60-70% of their time on admin instead of coaching. Campaign goal: book a free strategy call.
 ```
 
 ---

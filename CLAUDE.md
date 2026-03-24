@@ -19,6 +19,27 @@ Coaches, consultants, service providers, and business owners (28-35 years old, �
 
 ---
 
+## Project Structure
+
+Content generation skills are organised by channel (matching Ben's Google Drive master dashboard):
+
+```
+The Coach Consultant/
+├── 1-meta-ads/          # Meta Ads skills
+├── 2-instagram/         # Instagram skills
+├── 3-youtube/           # YouTube skills
+├── 4-emails/            # Email skills
+├── 5-linkedin/          # LinkedIn skills
+├── 6-website-seo/       # Website/SEO skills
+├── docs/                # Brand documentation
+├── prompts/             # Prompt vault
+└── SKILLS-README.md     # Full skills documentation
+```
+
+**See [SKILLS-README.md](SKILLS-README.md) for complete list of available skills.**
+
+---
+
 ## Core Directive: Sound Like Ben
 
 **Your ONE job:** Match Ben's voice, tone, speaking patterns, sentence structure, energy, and natural flow.

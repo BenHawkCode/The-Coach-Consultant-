@@ -37,7 +37,7 @@ Each prompt uses the skill's **actual features** (4-question flow, API data, 3-5
 - Ben's voice rules applied (British English, no AI buzzwords)
 
 ✅ **Output File:**
-- Saves to `skills/meta-ad-copy/outputs/META-AD-COPY-[campaign].md`
+- Saves to `1-meta-ads/meta-ad-copy/outputs/META-AD-COPY-[campaign].md`
 - Includes A/B test recommendations
 - Performance predictions
 
@@ -55,7 +55,7 @@ Each prompt uses the skill's **actual features** (4-question flow, API data, 3-5
 
 ### Step 2: Copy the Prompt
 
-Open the .md file, copy the full prompt text (including "Read skills/meta-ad-copy/skill.md...").
+Open the .md file, copy the full prompt text (including "Read 1-meta-ads/meta-ad-copy/skill.md...").
 
 ### Step 3: Paste to Claude Code
 
@@ -67,7 +67,7 @@ Skill will ask 4 questions. Use the "Pre-filled Context" section in each prompt 
 
 ### Step 5: Review Output
 
-Output saved to `skills/meta-ad-copy/outputs/META-AD-COPY-[campaign].md`
+Output saved to `1-meta-ads/meta-ad-copy/outputs/META-AD-COPY-[campaign].md`
 
 ---
 
@@ -100,9 +100,9 @@ Output saved to `skills/meta-ad-copy/outputs/META-AD-COPY-[campaign].md`
 
 ## Skill Location
 
-`/Users/learnai/Desktop/The Coach Consultant/skills/meta-ad-copy/`
+`/Users/learnai/Desktop/The Coach Consultant/1-meta-ads/meta-ad-copy/`
 
-Full skill documentation: [../../skills/meta-ad-copy/skill.md](../../skills/meta-ad-copy/skill.md)
+Full skill documentation: [../../1-meta-ads/meta-ad-copy/skill.md](../../1-meta-ads/meta-ad-copy/skill.md)
 
 ---
 

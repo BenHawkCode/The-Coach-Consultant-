@@ -7,7 +7,7 @@
 ## Prompt
 
 ```
-Read skills/meta-ad-copy/skill.md and follow the instructions to generate meta ad copy for a free masterclass on [topic]. Campaign goal: event registration.
+Read 1-meta-ads/meta-ad-copy/skill.md and follow the instructions to generate meta ad copy for a free masterclass on [topic]. Campaign goal: event registration.
 ```
 
 ---

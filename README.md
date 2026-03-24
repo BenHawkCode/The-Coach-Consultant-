@@ -1,4 +1,4 @@
-s# The Coach Consultant - AI Automation System
+# The Coach Consultant - AI Automation System
 
 ## Overview
 
@@ -28,20 +28,24 @@ Categorized, ready-to-use prompts with sample outputs:
 
 ```
 The Coach Consultant/
-├── CLAUDE.md                 # Brand context and AI instructions
-├── README.md                 # This file
-├── skills/                   # Content generation skills
-│   └── meta-ad-copy/         # Meta ad copy generator
+├── 1-meta-ads/               # Meta Ads content generation skills
+├── 2-instagram/              # Instagram content generation skills
+├── 3-youtube/                # YouTube content generation skills
+├── 4-emails/                 # Email content generation skills
+├── 5-linkedin/               # LinkedIn content generation skills
+├── 6-website-seo/            # Website/SEO content generation skills
 ├── agents/                   # Multi-agent orchestration (future)
 ├── prompts/                  # Prompt vault & examples
-│   ├── marketing/            # Marketing prompts + sample outputs
-│   ├── operations/
-│   ├── content/
-│   └── reporting/
-└── docs/                     # Documentation and brand context
-    ├── deep-dive/            # Deep brand voice samples & frameworks
-    └── Ben-Claude-Projects-Instructions.txt
+├── docs/                     # Documentation and brand context
+├── jay-skills/               # Developer utilities (internal use)
+├── CLAUDE.md                 # Brand context and AI instructions
+├── README.md                 # This file (project overview)
+└── SKILLS-README.md          # Complete skills catalog by channel
 ```
+
+**Key Files:**
+- **[CLAUDE.md](CLAUDE.md)** - Brand voice rules and AI instructions for content generation
+- **[SKILLS-README.md](SKILLS-README.md)** - Complete catalog of all available skills organised by channel (1-6)
 
 ## Getting Started
 
@@ -64,7 +68,8 @@ The Coach Consultant/
    - Explore [docs/deep-dive/](docs/deep-dive/) for deep brand voice samples
 
 3. **Load skills into Claude Code**
-   - Skills are located in `/skills/` directory
+   - Skills are organised by channel (1-meta-ads, 2-instagram, etc.)
+   - See [SKILLS-README.md](SKILLS-README.md) for full documentation
    - Each skill has documentation and usage examples
 
 4. **Configure environment**
@@ -86,7 +91,9 @@ Use the Meta Ad Copy skill with:
 - Key benefits to highlight
 ```
 
-Generated content samples with prompts are saved in the `/prompts/` directory (organized by category).
+Generated content samples with prompts are saved in the `/prompts/` directory (organised by category).
+
+See [SKILLS-README.md](SKILLS-README.md) for a complete list of available skills organised by channel.
 
 **Access Other Content Skills:**
 - Instagram captions and carousels

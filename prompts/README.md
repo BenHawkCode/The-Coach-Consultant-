@@ -35,7 +35,7 @@ Business-specific prompts for The Coach Consultant team.
 2. **Copy the prompt** from the .md file
 3. **Paste prompt to Claude Code**
 4. **Answer the 4 questions** (use "Pre-filled Context" as guide)
-5. **Review output** in `skills/meta-ad-copy/outputs/`
+5. **Review output** in `1-meta-ads/meta-ad-copy/outputs/`
 
 ---
 

@@ -7,7 +7,7 @@
 ## Prompt
 
 ```
-Read skills/meta-ad-copy/skill.md and follow the instructions to generate meta ad copy for coaches with amazing client results but completely invisible online. They rely 100% on referrals. Campaign goal: book a visibility call.
+Read 1-meta-ads/meta-ad-copy/skill.md and follow the instructions to generate meta ad copy for coaches with amazing client results but completely invisible online. They rely 100% on referrals. Campaign goal: book a visibility call.
 ```
 
 ---
