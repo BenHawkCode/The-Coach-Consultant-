@@ -10,12 +10,12 @@ AI automation system built exclusively within the Claude ecosystem to scale The 
 
 ### Content Generation
 Automated, brand-aligned content creation for marketing channels:
-- **Meta Ads**: Performance-optimized ad copy
-- **Instagram**: Captions, carousels, and stories
-- **Email Campaigns**: Nurture sequences and broadcasts
-- **LinkedIn**: Professional posts and articles
-- **YouTube**: Video scripts and descriptions
-- **Podcasts**: Show scripts and episode outlines
+- **Meta Ads**: Performance-optimized ad copy (2 skills live)
+- **Instagram**: Captions, carousels, and stories (1 skill live, 41 posts analyzed)
+- **Email Campaigns**: Nurture sequences and broadcasts ✨ **NEW: 1 skill live, 471 emails analyzed**
+- **LinkedIn**: Professional posts and articles (coming soon)
+- **YouTube**: Video scripts and descriptions (coming soon)
+- **Podcasts**: Show scripts and episode outlines (coming soon)
 
 ### Prompt Vault
 Categorized, ready-to-use prompts with sample outputs:
@@ -96,13 +96,32 @@ Generated content samples with prompts are saved in the `/prompts/` directory (o
 See [SKILLS-README.md](SKILLS-README.md) for a complete list of available skills organised by channel.
 
 **Access Other Content Skills:**
-- Instagram captions and carousels
-- Email campaign sequences
-- LinkedIn professional posts
-- YouTube video scripts
-- Podcast episode scripts
+- **Instagram:** Captions and carousels (✅ live, data-driven)
+- **Email Campaigns:** Nurture sequences ✨ **NEW: 9.6/10 voice accuracy, 353 proven subject lines**
+- **LinkedIn:** Professional posts (🚧 coming soon)
+- **YouTube:** Video scripts (🚧 coming soon)
+- **Podcast:** Episode scripts (🚧 coming soon)
 
 Each skill includes documentation, usage examples, and sample outputs.
+
+### Latest: Email Campaign Skill (2026-03-24)
+
+**What's new:**
+- 471 emails analyzed from GHL (23 months of data)
+- 353 unique subject lines documented
+- Proven patterns: #theGAPyoumiss (16x), BadBizAdvice (23x)
+- Systematic voice verification (9.6/10 accuracy)
+- Zero AI phrases enforced
+- Auto-triggers for all email generation
+
+**Campaigns ready:**
+- A) Free Consult Call Claim Nurture
+- B) No Show Nurture
+- C) Not Yet Ready (long-term)
+- D) Booking Requested Reply
+- E) Appointment Reminders
+
+See [4-emails/README.md](4-emails/README.md) for full documentation.
 
 ## Team
 
