@@ -48,8 +48,3 @@ logs/
 
 # Incomplete skills (work in progress)
 # Keep folder structure but ignore contents
-1-meta-ads/meta-ad-competitor/*
-!1-meta-ads/meta-ad-competitor/.gitkeep
-
-2-instagram/instagram-caption/*
-!2-instagram/instagram-caption/.gitkeep
