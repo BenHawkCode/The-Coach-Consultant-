@@ -1,0 +1,12 @@
+{
+  "name": "instagram-carousel-renderer",
+  "version": "1.0.0",
+  "description": "Renders TCC Instagram carousel HTML slides to individual PNG files",
+  "private": true,
+  "scripts": {
+    "render": "node render-slides.js"
+  },
+  "dependencies": {
+    "puppeteer": "^24.0.0"
+  }
+}

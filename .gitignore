@@ -53,3 +53,4 @@ logs/
 
 2-instagram/instagram-caption/*
 !2-instagram/instagram-caption/.gitkeep
+.mcp.json

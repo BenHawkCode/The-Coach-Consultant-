@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram Carousel — [TOPIC]</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --teal: #5B9A9A;
+    --teal-dark: #3d7a7a;
+    --teal-light: #7abfbf;
+    --orange: #FF6B35;
+    --yellow: #FFD166;
+    --black: #0a0a0a;
+    --dark-grey: #141414;
+    --mid-grey: #2A2A2A;
+    --light-grey: #E0E0E0;
+    --white: #ffffff;
+    --muted: #aaaaaa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+  }
+
+  /* ── Slide label (not part of the screenshot) ── */
+  .slide-label {
+    color: #999;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: -20px;
+  }
+
+  /* ── Base slide (1080 x 1080 square) ── */
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* ── Page dots (bottom of every slide) ── */
+  .page-dots {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+  }
+
+  .page-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+
+  .page-dots .dot.active {
+    background: var(--teal);
+    width: 28px;
+    border-radius: 5px;
+  }
+
+  /* Light slide dot overrides */
+  .slide-light .page-dots .dot {
+    background: rgba(0,0,0,0.15);
+  }
+  .slide-light .page-dots .dot.active {
+    background: var(--teal);
+  }
+
+  /* Teal slide dot overrides */
+  .slide-teal .page-dots .dot {
+    background: rgba(255,255,255,0.3);
+  }
+  .slide-teal .page-dots .dot.active {
+    background: var(--white);
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* SLIDE TYPE: HOOK (dark background)     */
+  /* ═══════════════════════════════════════ */
+  .slide-hook {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a2a2a 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px;
+    color: white;
+  }
+
+  .slide-hook::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 55%, rgba(91,154,154,0.1) 0%, transparent 65%);
+  }
+
+  .slide-hook .logo-top {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    width: 160px;
+    z-index: 2;
+  }
+
+  .slide-hook .top-line {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--teal-light);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-hook h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 30px;
+  }
+
+  .slide-hook h1 .teal { color: var(--teal-light); }
+
+  .slide-hook .sub {
+    font-size: 24px;
+    font-weight: 400;
+    opacity: 0.6;
+    max-width: 700px;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 50px;
+  }
+
+  .slide-hook .swipe {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--teal-light);
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .slide-hook .swipe .arrow { font-size: 24px; }
+
+  /* ═══════════════════════════════════════ */
+  /* SLIDE TYPE: DARK (value slide)         */
+  /* ═══════════════════════════════════════ */
+  .slide-dark {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a2a2a 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 90px;
+    color: white;
+  }
+
+  .slide-dark .label {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--teal-light);
+    margin-bottom: 30px;
+  }
+
+  .slide-dark h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 50px;
+  }
+
+  .slide-dark h2 .teal { color: var(--teal-light); }
+
+  .slide-dark .point-list {
+    list-style: none;
+    display: grid;
+    gap: 24px;
+  }
+
+  .slide-dark .point-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    font-size: 24px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  .slide-dark .point-list li .icon {
+    font-size: 28px;
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .slide-dark .point-list li .icon.x { color: #dc2626; }
+  .slide-dark .point-list li .icon.tick { color: var(--teal-light); }
+
+  /* ═══════════════════════════════════════ */
+  /* SLIDE TYPE: LIGHT (value slide)        */
+  /* ═══════════════════════════════════════ */
+  .slide-light {
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 90px;
+    color: var(--black);
+  }
+
+  .slide-light .label {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--teal);
+    margin-bottom: 30px;
+  }
+
+  .slide-light h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 50px;
+  }
+
+  .slide-light h2 .teal { color: var(--teal); }
+
+  .slide-light .point-list {
+    list-style: none;
+    display: grid;
+    gap: 24px;
+  }
+
+  .slide-light .point-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    font-size: 24px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  .slide-light .point-list li .icon {
+    font-size: 28px;
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .slide-light .point-list li .icon.x { color: #dc2626; }
+  .slide-light .point-list li .icon.tick { color: var(--teal); }
+
+  /* ═══════════════════════════════════════ */
+  /* SLIDE TYPE: TEAL (accent slide)        */
+  /* ═══════════════════════════════════════ */
+  .slide-teal {
+    background: linear-gradient(135deg, #5B9A9A 0%, #3d7a7a 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px;
+    color: white;
+  }
+
+  .slide-teal .label {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 30px;
+  }
+
+  .slide-teal h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 40px;
+  }
+
+  .slide-teal .big-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 110px;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .slide-teal .big-label {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    opacity: 0.9;
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* SLIDE TYPE: CARDS (grid layout)        */
+  /* ═══════════════════════════════════════ */
+  .slide-cards {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a2a2a 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    color: white;
+  }
+
+  .slide-cards .label {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--teal-light);
+    margin-bottom: 24px;
+  }
+
+  .slide-cards h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 44px;
+  }
+
+  .slide-cards h2 .teal { color: var(--teal-light); }
+
+  .slide-cards .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .slide-cards .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .slide-cards .card .card-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--teal);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .slide-cards .card .card-info h4 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .slide-cards .card .card-info p {
+    font-size: 13px;
+    opacity: 0.5;
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* SLIDE TYPE: NUMBERED (step-by-step)    */
+  /* ═══════════════════════════════════════ */
+  .slide-dark .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .slide-dark .step:last-child { margin-bottom: 0; }
+
+  .slide-dark .step .step-num {
+    width: 52px;
+    height: 52px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .slide-dark .step .step-text {
+    padding-top: 8px;
+  }
+
+  .slide-dark .step .step-text h4 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .slide-dark .step .step-text p {
+    font-size: 18px;
+    opacity: 0.6;
+    line-height: 1.4;
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* SLIDE TYPE: CTA (final slide)          */
+  /* ═══════════════════════════════════════ */
+  .slide-cta {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a2a2a 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px;
+    color: white;
+    position: relative;
+  }
+
+  .slide-cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(91,154,154,0.12) 0%, transparent 65%);
+  }
+
+  .slide-cta .label {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--teal-light);
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-cta h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-cta h2 .teal { color: var(--teal-light); }
+
+  .slide-cta .cta-box {
+    background: var(--teal);
+    border-radius: 20px;
+    padding: 36px 60px;
+    margin-bottom: 36px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-cta .cta-box .cta-word {
+    font-size: 52px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+  }
+
+  .slide-cta .cta-box .cta-instruction {
+    font-size: 18px;
+    opacity: 0.8;
+    margin-top: 6px;
+  }
+
+  .slide-cta .cta-link {
+    font-size: 20px;
+    opacity: 0.5;
+    line-height: 1.6;
+    max-width: 600px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide-cta .logo-bottom {
+    position: absolute;
+    bottom: 90px;
+    width: 160px;
+    z-index: 2;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     INSTAGRAM CAROUSEL TEMPLATE — The Coach Consultant
+
+     HOW TO USE:
+     1. Duplicate slides as needed (5, 7, or 10 total)
+     2. Replace placeholder text with carousel content
+     3. Update page-dots on each slide to match total slide count
+     4. Replace [LOGO-WHITE-BASE64] with contents of logo-white-base64.txt
+     5. Replace [LOGO-BLACK-BASE64] with contents of logo-black-base64.txt
+     6. Open in browser and screenshot each 1080x1080 slide
+
+     SLIDE TYPES AVAILABLE:
+     - slide-hook    → Opening hook slide (dark bg, centred text)
+     - slide-dark    → Dark value slide (left-aligned, lists/steps)
+     - slide-light   → Light value slide (white bg, left-aligned)
+     - slide-teal    → Accent slide (teal bg, centred, big numbers)
+     - slide-cards   → Grid layout with card elements (dark bg)
+     - slide-cta     → Final CTA slide (dark bg, centred)
+     ═══════════════════════════════════════════════════════════════ -->
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SLIDE 1 — HOOK                        -->
+<!-- ═══════════════════════════════════════ -->
+<div class="slide-label">Slide 1 — Hook</div>
+<div class="slide slide-hook">
+  <img class="logo-top" src="data:image/png;base64,[LOGO-WHITE-BASE64]" alt="The Coach Consultant">
+  <div class="top-line">For Coaches, Consultants &amp; Service Providers</div>
+  <h1>[HOOK HEADLINE — <span class="teal">highlight key phrase</span>]</h1>
+  <p class="sub">[Supporting line that adds context or intrigue]</p>
+  <div class="swipe">Swipe <span class="arrow">&#10132;</span></div>
+  <div class="page-dots">
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SLIDE 2 — PROBLEM / PAIN (light)      -->
+<!-- ═══════════════════════════════════════ -->
+<div class="slide-label">Slide 2 — Problem</div>
+<div class="slide slide-light">
+  <div class="label">Sound Familiar?</div>
+  <h2>[Problem headline that <span class="teal">resonates</span>]</h2>
+  <ul class="point-list">
+    <li><span class="icon x">&#10007;</span> [Pain point 1]</li>
+    <li><span class="icon x">&#10007;</span> [Pain point 2]</li>
+    <li><span class="icon x">&#10007;</span> [Pain point 3]</li>
+    <li><span class="icon x">&#10007;</span> [Pain point 4]</li>
+  </ul>
+  <div class="page-dots">
+    <div class="dot"></div>
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SLIDE 3 — SOLUTION / VALUE (dark)     -->
+<!-- ═══════════════════════════════════════ -->
+<div class="slide-label">Slide 3 — Solution</div>
+<div class="slide slide-dark">
+  <div class="label">What Actually Works</div>
+  <h2>[Solution headline with <span class="teal">key benefit</span>]</h2>
+  <ul class="point-list">
+    <li><span class="icon tick">&#10003;</span> [Benefit / solution point 1]</li>
+    <li><span class="icon tick">&#10003;</span> [Benefit / solution point 2]</li>
+    <li><span class="icon tick">&#10003;</span> [Benefit / solution point 3]</li>
+    <li><span class="icon tick">&#10003;</span> [Benefit / solution point 4]</li>
+  </ul>
+  <div class="page-dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot active"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SLIDE 4 — KEY STAT / PROOF (teal)     -->
+<!-- ═══════════════════════════════════════ -->
+<div class="slide-label">Slide 4 — Proof</div>
+<div class="slide slide-teal">
+  <div class="label">The Numbers</div>
+  <div class="big-number">[STAT]</div>
+  <div class="big-label">[What the stat means]</div>
+  <h2>[Reinforcing statement]</h2>
+  <div class="page-dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot active"></div>
+    <div class="dot"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SLIDE 5 — CTA                         -->
+<!-- ═══════════════════════════════════════ -->
+<div class="slide-label">Slide 5 — CTA</div>
+<div class="slide slide-cta">
+  <div class="label">Want This?</div>
+  <h2>[CTA headline — what to do <span class="teal">next</span>]</h2>
+  <div class="cta-box">
+    <div class="cta-word">[KEYWORD]</div>
+    <div class="cta-instruction">Comment this word below</div>
+  </div>
+  <p class="cta-link">[What happens when they take action]</p>
+  <img class="logo-bottom" src="data:image/png;base64,[LOGO-WHITE-BASE64]" alt="The Coach Consultant">
+</div>
+
+</body>
+</html>

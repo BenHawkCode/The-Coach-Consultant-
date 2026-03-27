@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>The Quiet Truth About Success</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  .slide-label {
+    color: #aaa;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  /* Image slides */
+  .slide-image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+
+  .slide-text {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    text-align: left;
+    padding: 0 100px 100px 100px;
+    line-height: 1.35;
+    width: 100%;
+  }
+
+  .slide-text.image-text {
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 4px rgba(0,0,0,0.6);
+  }
+
+  .slide-text.bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  /* Colour slide — centre vertically */
+  .slide.colour-slide {
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .slide.colour-slide .slide-text {
+    padding: 80px 100px;
+  }
+
+  /* Colour backgrounds */
+  .bg-charcoal { background: #111111; }
+  .bg-orange { background: #FF6B35; }
+  .bg-sage { background: #7A9E9E; }
+
+  .light { font-weight: 400; }
+
+  /* Watermark logo */
+  .watermark {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 80px;
+    height: auto;
+    opacity: 0.6;
+    mix-blend-mode: screen;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — IMAGE: Hook -->
+<p class="slide-label">Slide 1 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/DSC00189.JPG" alt="Ben snowshoeing">
+  <div class="slide-text image-text bottom-left" style="font-size: 64px; font-weight: 900; line-height: 1.15;">
+    The Quiet Truth<br>About Success
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+</div>
+
+<!-- SLIDE 2 — IMAGE -->
+<p class="slide-label">Slide 2 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/CBD97D26-F35E-4F57-98AE-C737275068B5.JPG" alt="Ben relaxed">
+  <div class="slide-text image-text bottom-left" style="font-size: 56px;">
+    Nobody clapped.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+</div>
+
+<!-- SLIDE 3 — CHARCOAL -->
+<p class="slide-label">Slide 3 of 10</p>
+<div class="slide colour-slide bg-charcoal">
+  <div class="slide-text" style="font-size: 60px;">
+    The biggest wins <span class="light">of my life happened in silence.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+</div>
+
+<!-- SLIDE 4 — IMAGE -->
+<p class="slide-label">Slide 4 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/A8A70F56-E72D-4016-9122-45C47F07D406.JPG" alt="Ben cycling">
+  <div class="slide-text image-text bottom-left" style="font-size: 48px;">
+    No one saw the 5am starts.<br><span class="light">No one saw the doubt.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+</div>
+
+<!-- SLIDE 5 — IMAGE -->
+<p class="slide-label">Slide 5 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/IMAGE.jpg" alt="Ben desert mountain">
+  <div class="slide-text image-text bottom-left" style="font-size: 48px;">
+    I see this all the time.<br><br><span class="light">People chasing loud success when the real stuff is quiet.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+</div>
+
+<!-- SLIDE 6 — ORANGE -->
+<p class="slide-label">Slide 6 of 10</p>
+<div class="slide colour-slide bg-orange">
+  <div class="slide-text" style="font-size: 64px;">
+    Profit over applause.<br><span class="light">Every single time.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+</div>
+
+<!-- SLIDE 7 — IMAGE -->
+<p class="slide-label">Slide 7 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/DSC00143.JPG" alt="Ben snow running">
+  <div class="slide-text image-text bottom-left" style="font-size: 48px;">
+    Freedom is not a number.<br><br><span class="light">It is waking up and choosing your own day.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+</div>
+
+<!-- SLIDE 8 — IMAGE -->
+<p class="slide-label">Slide 8 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/IMG_0202.JPG" alt="Ben">
+  <div class="slide-text image-text bottom-left" style="font-size: 52px;">
+    The best business decision I ever made <span class="light">was saying no more than yes.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+</div>
+
+<!-- SLIDE 9 — SAGE -->
+<p class="slide-label">Slide 9 of 10</p>
+<div class="slide colour-slide bg-sage">
+  <div class="slide-text" style="font-size: 60px;">
+    Success is not loud.<br><br><span class="light">It is consistent.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+</div>
+
+<!-- SLIDE 10 — IMAGE: CTA -->
+<p class="slide-label">Slide 10 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/DJI_20260131122740_0086_D.JPG" alt="Ben">
+  <div class="slide-text image-text bottom-left" style="font-size: 44px;">
+    If this resonated, save it.<br><span class="light">You will need the reminder.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+</div>
+
+</body>
+</html>

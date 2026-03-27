@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>What I'd Tell My 25 Year Old Self</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  .slide-label {
+    color: #aaa;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  /* Page dots */
+  .dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #666;
+  }
+  .dots .dot.active {
+    background: #fff;
+  }
+  .dots.dark .dot {
+    background: #ccc;
+  }
+  .dots.dark .dot.active {
+    background: #333;
+  }
+
+  /* Image slides */
+  .slide-image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+
+  .slide-text {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-align: left;
+    padding: 80px 80px;
+    line-height: 1.5;
+    width: 100%;
+  }
+
+  .slide-text.image-text {
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 4px rgba(0,0,0,0.6);
+  }
+
+  .slide-text.bottom-third {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    padding: 0 80px 50px;
+  }
+
+  /* Colour slide — centre text vertically */
+  .slide.colour-slide {
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  /* Colour slide backgrounds */
+  .bg-black { background: #0a0a0a; }
+  .bg-white { background: #ffffff; }
+  .bg-orange { background: #FF6B35; }
+  .bg-teal { background: #5B9A9A; }
+  .bg-cream { background: #F5F0EB; }
+
+  .text-dark { color: #1a1a1a; }
+
+  /* Watermark logo */
+  .watermark {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 80px;
+    height: auto;
+    opacity: 0.6;
+    mix-blend-mode: screen;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — IMAGE: Hook -->
+<p class="slide-label">Slide 1 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/061f2469-c0e4-4ef4-b5dc-4fe7533b0442.JPG" alt="Ben on stage">
+  <div class="slide-text image-text bottom-third" style="font-size: 72px; font-weight: 900; line-height: 1.2;">
+    What I'd Tell My 25 Year Old Self
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 2 — BLACK -->
+<p class="slide-label">Slide 2 of 10</p>
+<div class="slide colour-slide bg-black">
+  <div class="slide-text" style="font-size: 48px;">
+    You are not behind.<br><br>
+    You are exactly where you need to be to learn what comes next.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 3 — IMAGE -->
+<p class="slide-label">Slide 3 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/5C358030-56A2-4348-8094-3805D07C17DA.JPG" alt="Ben hiking">
+  <div class="slide-text image-text bottom-third" style="font-size: 44px;">
+    Stop trying to impress people who do not even think about you when you leave the room.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 4 — ORANGE -->
+<p class="slide-label">Slide 4 of 10</p>
+<div class="slide colour-slide bg-orange">
+  <div class="slide-text" style="font-size: 48px;">
+    The job you are clinging to will never give you what you actually want.<br><br>
+    Build your own thing. Now.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 5 — IMAGE -->
+<p class="slide-label">Slide 5 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/DSC00192.JPG" alt="Ben mountain biking">
+  <div class="slide-text image-text bottom-third" style="font-size: 44px;">
+    Your circle is gonna get smaller. That is not a loss. That is growth.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 6 — IMAGE -->
+<p class="slide-label">Slide 6 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/8D4C90A5-F06A-4A50-86F7-A2BDA05200C4.JPG" alt="Ben alpine">
+  <div class="slide-text image-text bottom-third" style="font-size: 44px;">
+    Nobody is coming to save you. That is the best news you will ever hear.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 7 — TEAL -->
+<p class="slide-label">Slide 7 of 10</p>
+<div class="slide colour-slide bg-teal">
+  <div class="slide-text" style="font-size: 48px;">
+    You will lose money. You will lose time. You will lose sleep.<br><br>
+    You will gain something no one can take from you.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 8 — IMAGE -->
+<p class="slide-label">Slide 8 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/IMG_0173.JPG" alt="Ben">
+  <div class="slide-text image-text bottom-third" style="font-size: 44px;">
+    Stop planning for years and start executing for weeks. That is where everything changes.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 9 — CREAM -->
+<p class="slide-label">Slide 9 of 10</p>
+<div class="slide colour-slide bg-cream">
+  <div class="slide-text text-dark" style="font-size: 48px;">
+    The thing is, you already know what to do.<br><br>
+    You are just scared to do it.
+  </div>
+  <div class="dots dark" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 10 — IMAGE: CTA -->
+<p class="slide-label">Slide 10 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/DSC00145.JPG" alt="Ben snow running">
+  <div class="slide-text image-text bottom-third" style="font-size: 44px;">
+    If even one of these hit home, send this to someone who needs to hear it today.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/WATERMARK/Asset%201%40216x.png" alt="logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span>
+  </div>
+</div>
+
+</body>
+</html>
