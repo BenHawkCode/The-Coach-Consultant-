@@ -19,7 +19,7 @@ Facebook and Instagram paid advertising content.
 
 Organic Instagram content (captions, stories, reels).
 
-- **[Instagram Caption](2-instagram/instagram-caption/)** - Generate Instagram captions matching Ben's exact voice with Meta API performance analysis and engagement prediction
+- **[Instagram Caption](2-instagram/instagram-caption/)** ✅ **DATA LOADED** - Generate Instagram captions matching Ben's exact voice. 41 posts analyzed, top hooks identified (808 engagement!), proven patterns documented. Carousel posts perform best (161 avg). Use 800+ character captions for max engagement.
 
 ---
 
@@ -35,7 +35,7 @@ Long-form video scripts and supporting content.
 
 Email campaigns, newsletters, and automation sequences.
 
-- Coming soon...
+- **[Email Campaign Generation](4-emails/email-campaign-skill/)** ✅ **DATA LOADED** - Generate email campaigns with 9.6/10 voice accuracy. 471 emails analyzed (353 unique subjects). Proven patterns: #theGAPyoumiss (16 sends), BadBizAdvice (23 sends). Systematic voice verification enforced. Auto-triggers for all email generation tasks.
 
 ---
 
@@ -90,7 +90,7 @@ All skills automatically reference:
 | 1. Meta Ads | 2 | ✅ Live |
 | 2. Instagram | 1 | ✅ Live |
 | 3. YouTube | 0 | 🚧 Planning |
-| 4. Emails | 0 | 🚧 Planning |
+| 4. Emails | 1 | ✅ Live |
 | 5. LinkedIn | 0 | 🚧 Planning |
 | 6. Website/SEO | 0 | 🚧 Planning |
 

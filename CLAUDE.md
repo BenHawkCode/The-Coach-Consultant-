@@ -104,11 +104,15 @@ For detailed channel rules (Instagram Captions, YouTube Scripts, Email Campaigns
 Quick summary per channel:
 
 ### Instagram Captions
-- Single short sentences, one per line
-- No full stops, no emojis, no hashtags, no headers
-- Max 15-20 lines
-- Output in code blocks
+- **Performance data loaded** - 41 posts analyzed from @benhawksworth_ via Apify Instagram scraper
+- **Data sources:** `2-instagram/data/` (JSON exports, processed analytics)
+- **Optimal length:** 800+ characters (NOT 15-20 lines - longer performs better!)
+- **Top hooks:** "Comment [WORD]" (808 engagement), "You are NOT..." (198), Direct questions
+- **Best type:** Carousel posts (161 avg engagement vs 74 for videos)
+- One sentence per line, no emojis, no hashtags, no headers
 - See `docs/Ben-Claude-Projects-Instructions.txt` lines 1-75
+- **Performance insights:** `2-instagram/INSTAGRAM_DATA_OPTIONS.md`
+- **Scrapers available:** `apify_scraper.py`, `apify_simple.py`, `instagram_scraper.py`, `process_data.py`
 
 ### YouTube Scripts
 - 12-15 min scripts (12,000-15,000 chars)
@@ -118,12 +122,21 @@ Quick summary per channel:
 - See `docs/Ben-Claude-Projects-Instructions.txt` lines 77-287
 
 ### Email Campaigns
+- **SKILL AVAILABLE:** `email-campaign-ben-hawksworth` - Auto-triggers for email generation
+- **Skill location:** `4-emails/email-campaign-skill/` (complete skill with agent.md, prompt.md, examples)
+- **Performance data:** 471 emails analyzed + 65 campaigns with real metrics (184K delivered, 43.76% avg open rate)
+- **Data sources:** `4-emails/ghl-data/` (GoHighLevel exports, campaign analytics)
+- **WINNING FORMULAS** (data-backed):
+  - **BadBizAdvice series:** 59.49% avg open, £9,116 from ONE email 🏆
+  - **#theGAPyoumiss series:** 56.16% avg open, £11,217 total revenue
+  - **Personal transformation:** 46% open, 1%+ CTR (best engagement)
 - Start: `Hi {{first_name}},`
 - One sentence per line, 20-30 lines minimum
-- Subject: `CampaignName | Headline`
+- Subject: Use proven formulas from `4-emails/ghl-data/PERFORMANCE_INSIGHTS.md`
 - Soft reply CTA (CHAT, CONNECT, START)
 - Sign off: `Ben` + `www.thecoachconsultant.uk`
 - See `docs/Ben-Claude-Projects-Instructions.txt` lines 291-461
+- **Full analysis:** `4-emails/ghl-data/COMPLETE_EMAIL_STATISTICS.md` + `PERFORMANCE_INSIGHTS.md`
 
 ### Podcast Scripts
 - 4,200-4,500 words
@@ -136,12 +149,15 @@ Quick summary per channel:
 - See `docs/Ben-Claude-Projects-Instructions.txt` lines 797-825
 
 ### Meta Ad Copy
+- **SKILL AVAILABLE:** `meta-ad-copy` - Generates ad copy with user discovery questions
+- **Competitor Analysis:** Apify Facebook scraper available (`1-meta-ads/meta-ad-competitor/apify_facebook_scraper.py`)
 - Lead with pain point or opportunity
 - Include specific metrics when available
 - Strong CTA (Book a Call, Download Guide, etc.)
 - Test different hooks: question, statement, statistic
 - Keep primary text under 125 characters for optimal performance
 - Headlines: 5-7 words, benefit-focused
+- See `1-meta-ads/meta-ad-copy/skill.md` for full prompt library
 
 ### LinkedIn Posts
 - Professional but personal
@@ -156,9 +172,9 @@ Quick summary per channel:
 ## Content Categories
 
 ### Marketing
-- Meta ads optimization
-- Instagram content strategy
-- Email marketing and automation
+- Meta ads optimization (with competitor analysis via Apify scraper)
+- Instagram content strategy (performance data-driven)
+- Email marketing and automation (471 emails analyzed, winning formulas identified)
 - LinkedIn lead generation
 - YouTube content systems
 
@@ -272,10 +288,27 @@ Before finalising ANY output, verify:
 
 ---
 
+## Data Infrastructure
+
+**Performance Data Available:**
+- **Instagram:** 41 posts from @benhawksworth_ (scraped via Apify, stored in `2-instagram/data/`)
+- **Email:** 471 emails + 65 campaigns from GoHighLevel (stored in `4-emails/ghl-data/`)
+- **Meta Ads:** Competitor analysis scraper ready (`1-meta-ads/meta-ad-competitor/apify_facebook_scraper.py`)
+
+**Data Processing Scripts:**
+- `2-instagram/apify_scraper.py` - Main Instagram scraper
+- `2-instagram/apify_simple.py` - Simplified scraper
+- `2-instagram/instagram_scraper.py` - Alternative scraper
+- `2-instagram/process_data.py` - Data processing pipeline
+- `1-meta-ads/meta-ad-competitor/apify_facebook_scraper.py` - Facebook ads scraper
+
+---
+
 ## Important Notes
 
 - This file defines brand context for ALL AI-generated content
 - Update when brand guidelines, tone, or strategy changes
 - All skills and agents reference this file + deep-dive docs
 - Channel rules live in `docs/Ben-Claude-Projects-Instructions.txt` to save tokens
+- Performance data drives content optimization across all channels
 

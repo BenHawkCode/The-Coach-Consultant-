@@ -1,11 +1,25 @@
 ---
 name: meta-ad-copy
-description: Generate performance-optimized Meta ad copy for The Coach Consultant based on brand voice, target audience, and campaign objectives. Creates multiple variations with headlines, primary text, and CTAs optimized for coaches and consultants.
+description: Generate performance-optimized Meta ad copy using data from 29 competitors (561 ads). Proven patterns - 60% Statement, 16% Metric/Result, 14% Question hooks. Creates variations optimized for coaches/consultants in Ben's voice with data-backed conversion strategies.
 ---
 
 # Meta Ad Copy Generator
 
 Generate high-converting Meta ad copy optimized for The Coach Consultant's target audience of coaches and consultants.
+
+## ✅ POWERED BY COMPETITOR INTELLIGENCE
+**29 Top Performers Analyzed | 561 Active Ads | March 2026**
+
+This skill uses proven patterns from:
+- Alex Hormozi, Dan Martell, Russell Brunson (Tier 1)
+- Billy Gene, Molly Pittman, Cat Howell (Tier 2)
+- Gary Vee, Ali Abdaal, Iman Gadzhi (Tier 3)
+- Stefan Georgi, Justin Goff (Tier 4)
+- UK-specific: James Sinclair, Rob Moore (Tier 5)
+
+**Reference files:**
+- `/1-meta-ads/meta-ad-competitor/outputs/CONSOLIDATED-ANALYSIS-29-COMPETITORS.md`
+- `/1-meta-ads/meta-ad-competitor/outputs/TOP-50-HOOKS-SWIPE-FILE.md`
 
 ## Instructions for Claude
 
@@ -14,6 +28,19 @@ When this skill is invoked:
 1. **MANDATORY: Ask the user for campaign details FIRST (DO NOT SKIP THIS STEP):**
 
    Use the AskUserQuestion tool to gather:
+
+   **Question 0: Competitor Style (Optional)**
+   - Header: "Match Competitor Style?"
+   - Options:
+     - "General Best Practices" (Use patterns from all 29 competitors)
+     - "Alex Hormozi" (65% Metric/Result hooks, 65% Hard CTA, aggressive)
+     - "Dan Martell" (55% Statement, 40% Question, 70% No CTA, conversational)
+     - "Russell Brunson" (40% Statement, 30% Metric, balanced)
+     - "Gary Vaynerchuk" (Statement + Story, 80% No CTA, pure value)
+     - "Billy Gene" (How-To/Framework, educational, entertaining)
+     - [Show all 29 if user asks]
+
+   **If competitor selected:** Read their specific patterns from `/1-meta-ads/meta-ad-competitor/outputs/ad-library-analysis/[name]-ad-library-2026-03-24.md`
 
    **Question 1: Campaign Objective**
    - Header: "Campaign Goal"
@@ -52,16 +79,51 @@ When this skill is invoked:
 
    Note: `setup.sh` automatically handles dependencies (creates venv on first run)
 
-3. **Analyze winning patterns:**
+3. **Analyze winning patterns (DATA-BACKED):**
+   - Use competitor intelligence from `/1-meta-ads/meta-ad-competitor/outputs/`
+   - Apply proven hook distribution: 60% Statement, 16% Metric/Result, 14% Question
+   - Reference CTA patterns: 67% No CTA (content-first), 14% Hard CTA (conversion)
    - Extract hooks, CTAs, pain points from API data
    - Identify forbidden phrases used (to avoid)
    - Note high-CTR patterns
 
-4. **Generate 3-5 ad copy variations:**
-   - Use proven patterns from API data
-   - Apply Ben's voice rules (British English, no AI phrases, Yorkshire tone)
-   - Different hook types (question, statement, statistic)
-   - Character limits: Primary text <125 chars, Headlines 5-7 words
+4. **Generate 3-5 ad copy variations using proven formulas:**
+
+   **Formula 1: Statement Hook (59.4% success rate)**
+   ```
+   [Direct Value Proposition] + [Simple Process] + [Clear Outcome]
+   ```
+   Example: "Right so here's what I see constantly working for coaches hitting £10K months..."
+
+   **Formula 2: Metric/Result Hook (16.2%, high conversion)**
+   ```
+   [Specific Number] + [Target Audience] + [Achieving Result]
+   ```
+   Example: "147 coaches used this system to add £5K-£15K/month in 90 days"
+
+   **Formula 3: Question Hook (13.7%, high engagement)**
+   ```
+   [Relatable Situation] + [Question that triggers self-reflection]
+   ```
+   Example: "Why do some coaches hit £10K months while others stay stuck at £2K?"
+
+   **Formula 4: Bold Statement Hook (3.4%, pattern interrupt)**
+   ```
+   [Controversial/Unexpected Statement] + [Why it matters]
+   ```
+   Example: "Most 'business coaches' have never built a real business. Here's the difference..."
+
+   **Formula 5: Pain Point Hook (2.5%, problem-aware)**
+   ```
+   [Most people struggle with X] → [Here's the real problem] → [Solution]
+   ```
+   Example: "You're not failing because of effort. You're failing because of systems."
+
+   **Apply These Rules:**
+   - Ben's voice rules (British English, no AI phrases, Yorkshire tone)
+   - Different hook types per variation (test multiple)
+   - Character limits: Primary text <125 chars for optimal performance, Headlines 5-7 words
+   - Match CTA to stage: Awareness = No CTA, Conversion = Hard CTA
 
 5. **Output formatted markdown file:**
    - Save to `outputs/META-AD-COPY-[campaign-name].md`
