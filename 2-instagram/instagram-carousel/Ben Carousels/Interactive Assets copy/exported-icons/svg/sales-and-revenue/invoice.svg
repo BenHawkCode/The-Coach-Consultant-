@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
+<rect x="10" y="6" width="24" height="32" rx="3" stroke="#FF6B35" stroke-width="1.5" fill="rgba(255,107,53,0.06)"></rect>
+<line x1="15" y1="13" x2="29" y2="13" stroke="#FF6B35" stroke-width="1" opacity="0.3"></line>
+<line x1="15" y1="19" x2="29" y2="19" stroke="#FF6B35" stroke-width="1" opacity="0.3"></line>
+<line x1="15" y1="25" x2="29" y2="25" stroke="#FF6B35" stroke-width="1" opacity="0.3"></line>
+<line x1="15" y1="31" x2="22" y2="31" stroke="#FF6B35" stroke-width="1" opacity="0.3"></line>
+<text x="34" y="14" font-family="Space Grotesk" font-weight="900" font-size="10" fill="#FF6B35">£</text>
+</svg>

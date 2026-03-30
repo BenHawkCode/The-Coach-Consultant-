@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>I Don't Accept Excuses Anymore</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  .slide-label {
+    color: #aaa;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  /* Image slides */
+  .slide-image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+
+  .slide-text {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    text-align: left;
+    padding: 0 100px 100px 100px;
+    line-height: 1.35;
+    width: 100%;
+  }
+
+  .slide-text.image-text {
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 4px rgba(0,0,0,0.6);
+  }
+
+  .slide-text.bottom-left {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  /* Colour slide — centre vertically */
+  .slide.colour-slide {
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .slide.colour-slide .slide-text {
+    padding: 80px 100px;
+  }
+
+  /* Asset slides — asset top, text bottom */
+  .slide.asset-slide {
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .asset-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 60px 80px 20px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .asset-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .slide.asset-slide .slide-text {
+    padding: 30px 80px 70px 80px;
+    flex-shrink: 0;
+  }
+
+  /* Colour backgrounds */
+  .bg-charcoal { background: #111111; }
+  .bg-orange { background: #FF6B35; }
+  .bg-sage { background: #7A9E9E; }
+
+  .light { font-weight: 400; }
+
+  /* Watermark logo */
+  .watermark {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 100px;
+    height: auto;
+    opacity: 0.8;
+    mix-blend-mode: screen;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — IMAGE: Hook -->
+<p class="slide-label">Slide 1 of 11</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/a8952537-eb4a-4e98-98e9-974fe82a7550.JPG" alt="Ben">
+  <div class="slide-text image-text bottom-left" style="font-size: 78px; font-weight: 900; line-height: 1.1;">
+    I Don't Accept<br>Excuses Anymore
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="logo">
+</div>
+
+<!-- SLIDE 2 — CHARCOAL + OLD WAY VS AI WAY -->
+<p class="slide-label">Slide 2 of 11</p>
+<div class="slide asset-slide bg-charcoal">
+  <div class="asset-container">
+    <img src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/TCC%20Carousels/Interactive%20Assets/exported-icons/png/ai-systems-and-architecture/old-way-vs-ai-way.png" alt="Old Way vs AI Way" style="border-radius: 16px;">
+  </div>
+  <div class="slide-text" style="font-size: 44px;">
+    AI changed everything for me.<br><br><span class="light">Because it removed every single excuse I had.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="logo">
+</div>
+
+<!-- SLIDE 3 — IMAGE: Sales -->
+<p class="slide-label">Slide 3 of 11</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/Image-1.jpg" alt="Ben">
+  <div class="slide-text image-text bottom-left" style="font-size: 48px;">
+    "I don't know how to sell."<br><br><span class="light">AI writes your sales pages. Your proposals. Your follow-up emails. Your entire pipeline.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="logo">
+</div>
+
+<!-- SLIDE 4 — DARK + PRODUCTIVITY GAP -->
+<p class="slide-label">Slide 4 of 11</p>
+<div class="slide asset-slide" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a2a2a 100%);">
+  <div class="asset-container" style="padding: 40px 60px 10px 60px;">
+    <img src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/TCC%20Carousels/Interactive%20Assets/exported-icons/png/flow-charts-and-processes/productivity-gap.png" alt="Productivity Gap" style="border-radius: 16px;">
+  </div>
+  <div class="slide-text" style="font-size: 58px; text-align: center; padding: 40px 80px 80px 80px;">
+    "I don't have time."<br><br><span class="light" style="font-size: 44px;">You have the time.<br>You're just wasting it.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="logo">
+</div>
+
+<!-- SLIDE 5 — IMAGE: Operations -->
+<p class="slide-label">Slide 5 of 11</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/Image-43.jpg" alt="Ben">
+  <div class="slide-text image-text bottom-left" style="font-size: 48px;">
+    "My business is chaos."<br><br><span class="light">AI builds your SOPs. Organises your systems. Automates your onboarding. Creates your entire operations manual.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="logo">
+</div>
+
+<!-- SLIDE 6 — CHARCOAL + AI AGENT SYSTEM -->
+<p class="slide-label">Slide 6 of 11</p>
+<div class="slide asset-slide bg-charcoal">
+  <div class="asset-container">
+    <img src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/TCC%20Carousels/Interactive%20Assets/exported-icons/png/ai-systems-and-architecture/ai-agent-system.png" alt="AI Agent System" style="border-radius: 16px;">
+  </div>
+  <div class="slide-text" style="font-size: 44px;">
+    "I can't afford a team."<br><br><span class="light">AI is your marketing team. Your admin. Your strategist. Your researcher. Your analyst.<br><br>All for less than your morning coffee.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="logo">
+</div>
+
+<!-- SLIDE 7 — IMAGE: Finance -->
+<p class="slide-label">Slide 7 of 11</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/DSC00143.JPG" alt="Ben">
+  <div class="slide-text image-text bottom-left" style="font-size: 48px;">
+    "I'm rubbish with numbers."<br><br><span class="light">AI tracks your cash flow. Forecasts your revenue. Builds your budgets. Does your reporting.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="logo">
+</div>
+
+<!-- SLIDE 8 — IMAGE: Strategy -->
+<p class="slide-label">Slide 8 of 11</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/Image-9.jpg" alt="Ben">
+  <div class="slide-text image-text bottom-left" style="font-size: 48px;">
+    "I don't know what to do next."<br><br><span class="light">AI analyses your business. Finds the gaps. Maps out your next 90 days. Gives you the plan.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="logo">
+</div>
+
+<!-- SLIDE 9 — DARK + COST OF INACTION -->
+<p class="slide-label">Slide 9 of 11</p>
+<div class="slide asset-slide" style="background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);">
+  <div class="asset-container" style="padding: 40px 60px 10px 60px;">
+    <img src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/TCC%20Carousels/Interactive%20Assets/exported-icons/png/flow-charts-and-processes/cost-of-inaction.png" alt="Cost of Not Using AI" style="border-radius: 16px;">
+  </div>
+  <div class="slide-text" style="font-size: 54px; text-align: center; padding: 40px 80px 80px 80px;">
+    The real excuse is you're scared.<br><br><span class="light" style="font-size: 40px;">And that's fine. But stop dressing it up as something else.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="logo">
+</div>
+
+<!-- SLIDE 10 — IMAGE: CTA -->
+<p class="slide-label">Slide 10 of 11</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/REEL%203%20-%20CLIMBING%20KILIMANJARO%20VIDEO(1).jpg" alt="Ben">
+  <div class="slide-text image-text bottom-left" style="font-size: 48px;">
+    Every excuse has been eliminated.<br><br><span class="light">The only question left is whether you're gonna act on it.<br><br>Save this. Send it to someone who needs it.</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="logo">
+</div>
+
+<!-- SLIDE 11 — LEO POINTING: Bullshit -->
+<p class="slide-label">Slide 11 of 11</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/outputs/leonardo-dicaprio-pointing.jpg" alt="Leo pointing" style="object-position: center center;">
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; z-index: 2;">
+    <span style="font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 120px; color: #ffffff; text-shadow: 0 4px 20px rgba(0,0,0,0.9), 0 0 8px rgba(0,0,0,0.7); text-transform: none; letter-spacing: -2px;">"Bullshit"</span>
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="logo">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
+<circle cx="22" cy="22" r="14" stroke="#44ff88" stroke-width="1.5" fill="none"></circle>
+<text x="22" y="26" text-anchor="middle" font-family="Space Grotesk" font-weight="900" font-size="14" fill="#44ff88">£</text>
+<path d="M22 8 A14 14 0 0 1 36 22" stroke="#FFD166" stroke-width="3" fill="none" stroke-linecap="round"></path>
+</svg>

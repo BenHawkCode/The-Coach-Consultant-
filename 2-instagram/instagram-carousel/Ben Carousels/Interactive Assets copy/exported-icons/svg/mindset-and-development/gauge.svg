@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
+<path d="M12 22 C12 22, 12 10, 22 10 C32 10, 32 22, 32 22" stroke="#FFD166" stroke-width="1.5" fill="none"></path>
+<line x1="22" y1="22" x2="28" y2="16" stroke="#FFD166" stroke-width="2" stroke-linecap="round"></line>
+<circle cx="22" cy="22" r="2" fill="#FFD166"></circle>
+<line x1="8" y1="22" x2="36" y2="22" stroke="#FFD166" stroke-width="1" opacity="0.3"></line>
+<text x="10" y="30" font-family="Inter" font-size="7" fill="#44ff88" font-weight="700">Low</text>
+<text x="30" y="30" font-family="Inter" font-size="7" fill="#ff4444" font-weight="700">High</text>
+</svg>

@@ -147,6 +147,10 @@ Quick summary per channel:
 ### Carousel Posts
 - 10 slides (Slide 1 = hook, Slides 2-9 = value, Slide 10 = CTA)
 - See `docs/Ben-Claude-Projects-Instructions.txt` lines 797-825
+- **Visual Asset Library:** 384 transparent PNGs at `2-instagram/instagram-carousel/TCC Carousels/Interactive Assets/exported-icons/png/`
+  - Use icons, system diagrams, comparison tables, and infographics as slide elements
+  - Key folders: `ai-systems-and-architecture/`, `flow-charts-and-processes/`, `personal-branding-systems/`, `lead-gen-and-sales-systems/`, `claude-ai-product-visuals/`
+  - Re-export with `node export-icons.js` if the HTML source is updated
 
 ### Meta Ad Copy
 - **SKILL AVAILABLE:** `meta-ad-copy` - Generates ad copy with user discovery questions
