@@ -5,6 +5,7 @@
 **Company:** The Coach Consultant
 **Founder:** Ben Hawksworth
 **Website:** https://thecoachconsultant.uk/
+**GitHub:** https://github.com/BenHawkCode/The-Coach-Consultant-
 
 **Business Model:**
 - Info-course products
