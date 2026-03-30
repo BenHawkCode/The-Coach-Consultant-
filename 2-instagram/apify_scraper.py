@@ -7,11 +7,15 @@ Scrapes Ben Hawksworth's Instagram profile using Apify's Instagram Profile Scrap
 from apify_client import ApifyClient
 import json
 import csv
+import os
 from datetime import datetime
 from pathlib import Path
+from dotenv import load_dotenv
 
-# Apify API token
-APIFY_API_TOKEN = "REMOVED_USE_ENV"
+# Load .env from project root
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
+
+APIFY_API_TOKEN = os.getenv("APIFY_API_TOKEN")
 
 def scrape_instagram_with_apify(username, max_posts=100):
     """

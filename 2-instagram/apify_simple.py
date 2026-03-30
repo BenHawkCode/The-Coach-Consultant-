@@ -6,11 +6,15 @@ Using direct URL approach
 
 from apify_client import ApifyClient
 import json
+import os
 from pathlib import Path
 from datetime import datetime
+from dotenv import load_dotenv
 
-# Apify API token
-APIFY_API_TOKEN = "REMOVED_USE_ENV"
+# Load .env from project root
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
+
+APIFY_API_TOKEN = os.getenv("APIFY_API_TOKEN")
 
 def scrape_instagram_posts():
     """Scrape Instagram posts using Apify"""
