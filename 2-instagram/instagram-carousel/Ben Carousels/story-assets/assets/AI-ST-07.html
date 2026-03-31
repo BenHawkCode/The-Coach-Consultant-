@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .story-asset {
+    width: 1080px;
+    height: 1920px;
+    background: linear-gradient(135deg, #0f2a2a 0%, #0a0a0a 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 44px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+  }
+
+  /* Subtle background decoration */
+  .story-asset::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: rgba(91,154,154,0.06);
+    pointer-events: none;
+  }
+  .story-asset::after {
+    content: '';
+    position: absolute;
+    bottom: -300px; left: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: rgba(91,154,154,0.04);
+    pointer-events: none;
+  }
+
+  .content-wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: rgba(91,154,154,0.2);
+    color: #7abfbf;
+  }
+
+  .icon-img {
+    width: 780px;
+    max-height: 700px;
+    object-fit: contain;
+    border-radius: 24px;
+    filter: none;
+  }
+
+  .title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-size: 62px;
+    line-height: 1.1;
+    text-align: center;
+    color: #ffffff;
+    
+  }
+
+  .subtitle {
+    font-size: 28px;
+    color: #8abfbf;
+    text-align: center;
+    line-height: 1.4;
+    max-width: 940px;
+    
+  }
+
+  .divider {
+    width: 80px;
+    height: 4px;
+    border-radius: 2px;
+    background: #7abfbf;
+  }
+
+  /* Metric cards row */
+  .metrics-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+  }
+  .metric-card {
+    background: rgba(91,154,154,0.12);
+    border: 1px solid rgba(91,154,154,0.3);
+    border-radius: 20px;
+    padding: 32px 20px;
+    text-align: center;
+    flex: 1;
+    max-width: 310px;
+  }
+  .metric-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    background: linear-gradient(135deg, #7abfbf, #FFD166);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+  }
+  .metric-label {
+    font-size: 18px;
+    color: #8abfbf;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  /* Hero metric */
+  .hero-metric {
+    text-align: center;
+  }
+  .hero-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-size: 160px;
+    line-height: 1;
+    background: linear-gradient(135deg, #7abfbf, #FFD166);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-label {
+    font-size: 32px;
+    color: #8abfbf;
+    font-weight: 600;
+    margin-top: 12px;
+  }
+
+  /* Comparison layout */
+  .comparison {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .comp-header {
+    display: flex;
+    width: 100%;
+  }
+  .comp-header-cell {
+    flex: 1;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    padding: 22px;
+    border-radius: 16px;
+  }
+  .comp-header-left {
+    background: rgba(255,68,68,0.12);
+    color: #ff4444;
+    margin-right: 10px;
+  }
+  .comp-header-right {
+    background: rgba(68,255,136,0.12);
+    color: #44ff88;
+    margin-left: 10px;
+  }
+  .comp-row {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+  }
+  .comp-cell {
+    flex: 1;
+    background: rgba(91,154,154,0.12);
+    border: 1px solid rgba(91,154,154,0.3);
+    border-radius: 16px;
+    padding: 26px 28px;
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .comp-cell-left { color: #8abfbf; }
+  .comp-cell-right { color: #7abfbf; }
+  .comp-icon { font-size: 22px; flex-shrink: 0; }
+
+  /* Glass table */
+  .glass-table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .table-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(91,154,154,0.12);
+    border: 1px solid rgba(91,154,154,0.3);
+    border-radius: 16px;
+    padding: 26px 32px;
+  }
+  .table-tool {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #ffffff;
+  }
+  .table-purpose {
+    font-size: 24px;
+    color: #7abfbf;
+    font-weight: 600;
+  }
+
+  /* Vertical flow */
+  .vertical-flow {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .flow-line {
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    bottom: 40px;
+    width: 3px;
+    background: rgba(91,154,154,0.3);
+  }
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 22px 0;
+    position: relative;
+    z-index: 1;
+  }
+  .step-circle {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: rgba(91,154,154,0.3);
+    border: 3px solid rgba(91,154,154,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: #7abfbf;
+    flex-shrink: 0;
+  }
+  .step-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  /* Grid */
+  .grid-layout {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .grid-item {
+    background: rgba(91,154,154,0.12);
+    border: 1px solid rgba(91,154,154,0.3);
+    border-radius: 20px;
+    padding: 40px 28px;
+    text-align: center;
+  }
+  .grid-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #7abfbf;
+    margin-bottom: 10px;
+  }
+  .grid-label {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  /* Funnel */
+  .funnel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .funnel-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    padding: 30px 20px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  /* Timeline */
+  .timeline {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: rgba(91,154,154,0.12);
+    border: 1px solid rgba(91,154,154,0.3);
+    border-radius: 16px;
+    padding: 22px 28px;
+  }
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #7abfbf;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .timeline-text {
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  /* Branding watermark */
+  .watermark {
+    position: absolute;
+    bottom: 40px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.06);
+  }
+</style>
+</head>
+<body>
+<div class="story-asset">
+  <div class="content-wrap">
+    
+    <div class="tag">AI SYSTEMS</div>
+    <div class="title">Prompt Engineering</div>
+    <div class="subtitle">The input determines the output</div>
+    <div class="divider"></div>
+    <img class="icon-img" src="file:///Users/benhawksworth/Documents/Claude Code Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben Carousels/Interactive Assets copy/exported-icons/png/ai-systems-and-architecture/prompt-structure.png" alt="Prompt Engineering">
+    <div class="comparison">
+      <div class="comp-header">
+        <div class="comp-header-cell comp-header-left">Bad Prompt</div>
+        <div class="comp-header-cell comp-header-right">Engineered Prompt</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell comp-cell-left"><span class="comp-icon">✗</span> Write me a post</div>
+        <div class="comp-cell comp-cell-right"><span class="comp-icon">✓</span> Act as brand strategist...</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell comp-cell-left"><span class="comp-icon">✗</span> Generic output</div>
+        <div class="comp-cell comp-cell-right"><span class="comp-icon">✓</span> Voice-matched copy</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell comp-cell-left"><span class="comp-icon">✗</span> Needs 5 edits</div>
+        <div class="comp-cell comp-cell-right"><span class="comp-icon">✓</span> Ready to publish</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell comp-cell-left"><span class="comp-icon">✗</span> Sounds like AI</div>
+        <div class="comp-cell comp-cell-right"><span class="comp-icon">✓</span> Sounds like YOU</div>
+      </div>
+    </div>
+  
+  </div>
+  <div class="watermark">THE COACH CONSULTANT</div>
+</div>
+</body>
+</html>

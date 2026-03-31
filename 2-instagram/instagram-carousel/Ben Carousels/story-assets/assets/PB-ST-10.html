@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .story-asset {
+    width: 1080px;
+    height: 1920px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 44px;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    color: #1A1A1A;
+  }
+
+  /* Subtle background decoration */
+  .story-asset::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: rgba(91,154,154,0.04);
+    pointer-events: none;
+  }
+  .story-asset::after {
+    content: '';
+    position: absolute;
+    bottom: -300px; left: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: rgba(91,154,154,0.03);
+    pointer-events: none;
+  }
+
+  .content-wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    background: rgba(91,154,154,0.12);
+    color: #5B9A9A;
+  }
+
+  .icon-img {
+    width: 780px;
+    max-height: 700px;
+    object-fit: contain;
+    border-radius: 24px;
+    filter: none;
+  }
+
+  .title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-size: 62px;
+    line-height: 1.1;
+    text-align: center;
+    color: #1A1A1A;
+    
+  }
+
+  .subtitle {
+    font-size: 28px;
+    color: #777777;
+    text-align: center;
+    line-height: 1.4;
+    max-width: 940px;
+    
+  }
+
+  .divider {
+    width: 80px;
+    height: 4px;
+    border-radius: 2px;
+    background: #5B9A9A;
+  }
+
+  /* Metric cards row */
+  .metrics-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+  }
+  .metric-card {
+    background: #F5F5F5;
+    border: 1px solid #E0E0E0;
+    border-radius: 20px;
+    padding: 32px 20px;
+    text-align: center;
+    flex: 1;
+    max-width: 310px;
+  }
+  .metric-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-size: 44px;
+    background: linear-gradient(135deg, #5B9A9A, #FF6B35);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+  }
+  .metric-label {
+    font-size: 18px;
+    color: #777777;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  /* Hero metric */
+  .hero-metric {
+    text-align: center;
+  }
+  .hero-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-size: 160px;
+    line-height: 1;
+    background: linear-gradient(135deg, #5B9A9A, #FF6B35);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-label {
+    font-size: 32px;
+    color: #777777;
+    font-weight: 600;
+    margin-top: 12px;
+  }
+
+  /* Comparison layout */
+  .comparison {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .comp-header {
+    display: flex;
+    width: 100%;
+  }
+  .comp-header-cell {
+    flex: 1;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    padding: 22px;
+    border-radius: 16px;
+  }
+  .comp-header-left {
+    background: rgba(221,51,51,0.08);
+    color: #dd3333;
+    margin-right: 10px;
+  }
+  .comp-header-right {
+    background: rgba(34,170,85,0.08);
+    color: #22aa55;
+    margin-left: 10px;
+  }
+  .comp-row {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+  }
+  .comp-cell {
+    flex: 1;
+    background: #F5F5F5;
+    border: 1px solid #E0E0E0;
+    border-radius: 16px;
+    padding: 26px 28px;
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .comp-cell-left { color: #777777; }
+  .comp-cell-right { color: #5B9A9A; }
+  .comp-icon { font-size: 22px; flex-shrink: 0; }
+
+  /* Glass table */
+  .glass-table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .table-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F5F5F5;
+    border: 1px solid #E0E0E0;
+    border-radius: 16px;
+    padding: 26px 32px;
+  }
+  .table-tool {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #1A1A1A;
+  }
+  .table-purpose {
+    font-size: 24px;
+    color: #5B9A9A;
+    font-weight: 600;
+  }
+
+  /* Vertical flow */
+  .vertical-flow {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .flow-line {
+    position: absolute;
+    left: 40px;
+    top: 40px;
+    bottom: 40px;
+    width: 3px;
+    background: #E0E0E0;
+  }
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 22px 0;
+    position: relative;
+    z-index: 1;
+  }
+  .step-circle {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #5B9A9A;
+    border: 3px solid #5B9A9A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+  .step-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+
+  /* Grid */
+  .grid-layout {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .grid-item {
+    background: #F5F5F5;
+    border: 1px solid #E0E0E0;
+    border-radius: 20px;
+    padding: 40px 28px;
+    text-align: center;
+  }
+  .grid-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: #5B9A9A;
+    margin-bottom: 10px;
+  }
+  .grid-label {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1A1A1A;
+  }
+
+  /* Funnel */
+  .funnel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .funnel-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    padding: 30px 20px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  /* Timeline */
+  .timeline {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    background: #F5F5F5;
+    border: 1px solid #E0E0E0;
+    border-radius: 16px;
+    padding: 22px 28px;
+  }
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #5B9A9A;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .timeline-text {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1A1A1A;
+  }
+
+  /* Branding watermark */
+  .watermark {
+    position: absolute;
+    bottom: 40px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.08);
+  }
+</style>
+</head>
+<body>
+<div class="story-asset">
+  <div class="content-wrap">
+    
+    <div class="tag">PERSONAL BRAND</div>
+    <div class="title">Social Proof Stack</div>
+    <div class="divider"></div>
+    <div class="hero-metric">
+      <div class="hero-value">147</div>
+      <div class="hero-label">Client Transformations</div>
+    </div>
+    <img class="icon-img" src="file:///Users/benhawksworth/Documents/Claude Code Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben Carousels/Interactive Assets copy/exported-icons/png/personal-branding-systems/social-proof-stack.png" alt="Social Proof Stack">
+    <div class="metrics-row">
+    <div class="metric-card">
+      <div class="metric-value">89</div>
+      <div class="metric-label">5-Star Reviews</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">24</div>
+      <div class="metric-label">Case Studies</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">147</div>
+      <div class="metric-label">Testimonials</div>
+    </div>
+  </div>
+  
+  </div>
+  <div class="watermark">THE COACH CONSULTANT</div>
+</div>
+</body>
+</html>

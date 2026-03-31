@@ -1,0 +1,808 @@
+[
+  {
+    "id": "AI-ST-01",
+    "category": "ai-systems-and-architecture",
+    "layout": "full-diagram",
+    "bg": "dark",
+    "icon": "ai-agent-system.png",
+    "title": "AI Agent System",
+    "subtitle": "Your 24/7 automated workforce",
+    "metrics": [{"label": "Agents Active", "value": "12"}, {"label": "Tasks/Day", "value": "340+"}, {"label": "Cost Saved", "value": "£8.2K/mo"}]
+  },
+  {
+    "id": "AI-ST-02",
+    "category": "ai-systems-and-architecture",
+    "layout": "comparison",
+    "bg": "white",
+    "icon": "old-way-vs-ai-way.png",
+    "title": "Old Way vs AI Way",
+    "subtitle": "The shift that changes everything",
+    "leftLabel": "Old Way",
+    "rightLabel": "AI Way",
+    "rows": [
+      {"left": "5 posts/week", "right": "37 posts/week"},
+      {"left": "8 hrs content", "right": "45 mins"},
+      {"left": "1 funnel", "right": "12 funnels"},
+      {"left": "Manual follow-up", "right": "Auto nurture"}
+    ]
+  },
+  {
+    "id": "AI-ST-03",
+    "category": "ai-systems-and-architecture",
+    "layout": "full-diagram",
+    "bg": "teal-black",
+    "icon": "dashboard.png",
+    "title": "AI Command Centre",
+    "subtitle": "Everything runs from one dashboard",
+    "metrics": [{"label": "Revenue Tracked", "value": "£142K"}, {"label": "Lead Score", "value": "94/100"}, {"label": "Pipeline", "value": "£38K"}]
+  },
+  {
+    "id": "AI-ST-04",
+    "category": "ai-systems-and-architecture",
+    "layout": "glass-table",
+    "bg": "teal",
+    "icon": "ai-tech-stack.png",
+    "title": "The AI Tech Stack",
+    "subtitle": "Tools that run your business",
+    "rows": [
+      {"tool": "Claude", "purpose": "Content & Strategy"},
+      {"tool": "Zapier", "purpose": "Automation"},
+      {"tool": "GoHighLevel", "purpose": "CRM & Funnels"},
+      {"tool": "ElevenLabs", "purpose": "Voice Clone"},
+      {"tool": "Canva", "purpose": "Design at Scale"}
+    ]
+  },
+  {
+    "id": "AI-ST-05",
+    "category": "ai-systems-and-architecture",
+    "layout": "vertical-flow",
+    "bg": "dark",
+    "icon": "automation-flow.png",
+    "title": "Automation Pipeline",
+    "subtitle": "Set it up once. It runs forever.",
+    "steps": ["Trigger Event", "AI Processes Input", "Content Generated", "Auto Scheduled", "Analytics Tracked"]
+  },
+  {
+    "id": "AI-ST-06",
+    "category": "ai-systems-and-architecture",
+    "layout": "full-diagram",
+    "bg": "white",
+    "icon": "multi-agent.png",
+    "title": "Multi-Agent Network",
+    "subtitle": "Each agent has a role. They work together.",
+    "metrics": [{"label": "Researcher", "value": "Agent 1"}, {"label": "Writer", "value": "Agent 2"}, {"label": "Publisher", "value": "Agent 3"}]
+  },
+  {
+    "id": "AI-ST-07",
+    "category": "ai-systems-and-architecture",
+    "layout": "comparison",
+    "bg": "teal-black",
+    "icon": "prompt-structure.png",
+    "title": "Prompt Engineering",
+    "subtitle": "The input determines the output",
+    "leftLabel": "Bad Prompt",
+    "rightLabel": "Engineered Prompt",
+    "rows": [
+      {"left": "Write me a post", "right": "Act as brand strategist..."},
+      {"left": "Generic output", "right": "Voice-matched copy"},
+      {"left": "Needs 5 edits", "right": "Ready to publish"},
+      {"left": "Sounds like AI", "right": "Sounds like YOU"}
+    ]
+  },
+  {
+    "id": "AI-ST-08",
+    "category": "ai-systems-and-architecture",
+    "layout": "metric-hero",
+    "bg": "teal",
+    "icon": "roi-calculator.png",
+    "title": "AI ROI Calculator",
+    "heroValue": "11.4x",
+    "heroLabel": "Return on AI Investment",
+    "metrics": [{"label": "Monthly Cost", "value": "£197"}, {"label": "Monthly Return", "value": "£2,248"}, {"label": "Time Saved", "value": "47 hrs"}]
+  },
+  {
+    "id": "AI-ST-09",
+    "category": "ai-systems-and-architecture",
+    "layout": "vertical-flow",
+    "bg": "dark",
+    "icon": "content-engine.png",
+    "title": "Content Engine",
+    "subtitle": "1 call becomes 30+ pieces of content",
+    "steps": ["Record 1 Call", "AI Transcribes", "Extract Key Points", "Generate Posts", "Schedule Across Platforms"]
+  },
+  {
+    "id": "AI-ST-10",
+    "category": "ai-systems-and-architecture",
+    "layout": "metric-hero",
+    "bg": "white",
+    "icon": "time-saved.png",
+    "title": "Time Saved With AI",
+    "heroValue": "47hrs",
+    "heroLabel": "Saved Per Month",
+    "metrics": [{"label": "Content", "value": "22 hrs"}, {"label": "Admin", "value": "15 hrs"}, {"label": "Follow-Up", "value": "10 hrs"}]
+  },
+  {
+    "id": "AI-ST-11",
+    "category": "ai-systems-and-architecture",
+    "layout": "full-diagram",
+    "bg": "teal-black",
+    "icon": "data-flywheel.png",
+    "title": "Data Flywheel",
+    "subtitle": "Every interaction makes the system smarter",
+    "metrics": [{"label": "Data In", "value": "2.4K/day"}, {"label": "Insights", "value": "Real-time"}, {"label": "Accuracy", "value": "96.8%"}]
+  },
+  {
+    "id": "AI-ST-12",
+    "category": "ai-systems-and-architecture",
+    "layout": "vertical-flow",
+    "bg": "teal",
+    "icon": "ai-scaling-staircase.png",
+    "title": "AI Scaling Staircase",
+    "subtitle": "Each level unlocks more revenue",
+    "steps": ["Level 1: £5K/mo Manual", "Level 2: £15K/mo Semi-Auto", "Level 3: £30K/mo AI Systems", "Level 4: £50K/mo Full Automation", "Level 5: £100K+ Scaled"]
+  },
+
+  {
+    "id": "FC-ST-01",
+    "category": "flow-charts-and-processes",
+    "layout": "full-diagram",
+    "bg": "dark",
+    "icon": "ai-adoption-curve.png",
+    "title": "AI Adoption Curve",
+    "subtitle": "Where are you on this curve?",
+    "metrics": [{"label": "Innovators", "value": "2.5%"}, {"label": "Early Adopters", "value": "13.5%"}, {"label": "YOU ARE HERE", "value": "\u2190"}]
+  },
+  {
+    "id": "FC-ST-02",
+    "category": "flow-charts-and-processes",
+    "layout": "comparison",
+    "bg": "white",
+    "icon": "productivity-gap.png",
+    "title": "The Productivity Gap",
+    "subtitle": "AI users vs everyone else",
+    "leftLabel": "Without AI",
+    "rightLabel": "With AI",
+    "rows": [
+      {"left": "1x Output", "right": "10x Output"},
+      {"left": "60hr weeks", "right": "25hr weeks"},
+      {"left": "Plateau at £8K", "right": "Scale to £50K+"},
+      {"left": "Burnout", "right": "Freedom"}
+    ]
+  },
+  {
+    "id": "FC-ST-03",
+    "category": "flow-charts-and-processes",
+    "layout": "metric-hero",
+    "bg": "teal-black",
+    "icon": "output-volume.png",
+    "title": "Output Volume",
+    "heroValue": "37",
+    "heroLabel": "Pieces of Content Per Week",
+    "metrics": [{"label": "Manual Average", "value": "5"}, {"label": "With AI", "value": "37"}, {"label": "Increase", "value": "640%"}]
+  },
+  {
+    "id": "FC-ST-04",
+    "category": "flow-charts-and-processes",
+    "layout": "metric-hero",
+    "bg": "teal",
+    "icon": "cost-of-inaction.png",
+    "title": "Cost of Inaction",
+    "heroValue": "-£120K",
+    "heroLabel": "Lost Revenue Per Year",
+    "metrics": [{"label": "Missed Leads", "value": "480"}, {"label": "Lost Clients", "value": "36"}, {"label": "Wasted Hours", "value": "564"}]
+  },
+  {
+    "id": "FC-ST-05",
+    "category": "flow-charts-and-processes",
+    "layout": "glass-table",
+    "bg": "dark",
+    "icon": "comparison-table.png",
+    "title": "AI vs Manual",
+    "subtitle": "Side by side comparison",
+    "rows": [
+      {"tool": "Content Creation", "purpose": "45 min vs 8 hrs"},
+      {"tool": "Lead Follow-Up", "purpose": "Instant vs 24hrs"},
+      {"tool": "Email Campaigns", "purpose": "15 min vs 3 hrs"},
+      {"tool": "Analytics", "purpose": "Real-time vs Weekly"},
+      {"tool": "Client Onboarding", "purpose": "Auto vs Manual"}
+    ]
+  },
+  {
+    "id": "FC-ST-06",
+    "category": "flow-charts-and-processes",
+    "layout": "vertical-flow",
+    "bg": "white",
+    "icon": "phase-roadmap.png",
+    "title": "90-Day AI Roadmap",
+    "subtitle": "From zero to fully automated",
+    "steps": ["Days 1-7: Audit & Setup", "Days 8-21: Core Systems", "Days 22-45: Automation", "Days 46-75: Optimise", "Days 76-90: Scale"]
+  },
+  {
+    "id": "FC-ST-07",
+    "category": "flow-charts-and-processes",
+    "layout": "full-diagram",
+    "bg": "teal-black",
+    "icon": "decision-tree.png",
+    "title": "Decision Tree",
+    "subtitle": "Should you automate this task?",
+    "metrics": [{"label": "Repeatable?", "value": "Yes \u2192"}, {"label": "Time Drain?", "value": "Yes \u2192"}, {"label": "Automate It", "value": "\u2713"}]
+  },
+  {
+    "id": "FC-ST-08",
+    "category": "flow-charts-and-processes",
+    "layout": "comparison",
+    "bg": "teal",
+    "icon": "time-per-task.png",
+    "title": "Time Per Task",
+    "subtitle": "Before and after AI",
+    "leftLabel": "Before",
+    "rightLabel": "After",
+    "rows": [
+      {"left": "Blog Post: 4hrs", "right": "Blog Post: 25min"},
+      {"left": "Email Seq: 3hrs", "right": "Email Seq: 15min"},
+      {"left": "Social Posts: 2hrs", "right": "Social Posts: 10min"},
+      {"left": "Analytics: 1hr", "right": "Analytics: Auto"}
+    ]
+  },
+  {
+    "id": "FC-ST-09",
+    "category": "flow-charts-and-processes",
+    "layout": "vertical-flow",
+    "bg": "dark",
+    "icon": "vertical-5-step.png",
+    "title": "5-Step AI Implementation",
+    "subtitle": "The exact process",
+    "steps": ["Audit Current Workflow", "Identify Bottlenecks", "Select AI Tools", "Build & Test Systems", "Launch & Optimise"]
+  },
+  {
+    "id": "FC-ST-10",
+    "category": "flow-charts-and-processes",
+    "layout": "metric-hero",
+    "bg": "white",
+    "icon": "speed-stats.png",
+    "title": "Speed Stats",
+    "heroValue": "10x",
+    "heroLabel": "Faster Than Manual",
+    "metrics": [{"label": "Content Speed", "value": "12x"}, {"label": "Response Time", "value": "8x"}, {"label": "Campaign Launch", "value": "10x"}]
+  },
+
+  {
+    "id": "LS-ST-01",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "funnel",
+    "bg": "dark",
+    "icon": "sales-funnel.png",
+    "title": "Sales Funnel",
+    "subtitle": "From stranger to paying client",
+    "steps": ["Awareness: 10,000 views", "Interest: 1,200 clicks", "Leads: 340 opt-ins", "Calls: 48 booked", "Clients: 12 closed"]
+  },
+  {
+    "id": "LS-ST-02",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "full-diagram",
+    "bg": "white",
+    "icon": "pipeline-dashboard.png",
+    "title": "Pipeline Dashboard",
+    "subtitle": "Know your numbers at a glance",
+    "metrics": [{"label": "Pipeline Value", "value": "£84K"}, {"label": "Close Rate", "value": "34%"}, {"label": "Avg Deal", "value": "£2.8K"}]
+  },
+  {
+    "id": "LS-ST-03",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "vertical-flow",
+    "bg": "teal-black",
+    "icon": "dm-strategy.png",
+    "title": "DM Strategy Flow",
+    "subtitle": "Turn conversations into clients",
+    "steps": ["Hook With Value Post", "Engage in Comments", "Open DM With Question", "Qualify The Lead", "Book The Call"]
+  },
+  {
+    "id": "LS-ST-04",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "metric-hero",
+    "bg": "teal",
+    "icon": "close-rate-calc.png",
+    "title": "Close Rate Calculator",
+    "heroValue": "34%",
+    "heroLabel": "Average Close Rate",
+    "metrics": [{"label": "Calls Booked", "value": "48"}, {"label": "Showed Up", "value": "41"}, {"label": "Closed", "value": "14"}]
+  },
+  {
+    "id": "LS-ST-05",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "metric-hero",
+    "bg": "dark",
+    "icon": "revenue-calculator.png",
+    "title": "Revenue Calculator",
+    "heroValue": "£142K",
+    "heroLabel": "Annual Revenue Projection",
+    "metrics": [{"label": "Clients/Mo", "value": "8"}, {"label": "Avg Value", "value": "£1,480"}, {"label": "Retention", "value": "6.2 mo"}]
+  },
+  {
+    "id": "LS-ST-06",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "glass-table",
+    "bg": "white",
+    "icon": "price-anchoring.png",
+    "title": "Offer Stack",
+    "subtitle": "Price anchoring that converts",
+    "rows": [
+      {"tool": "DIY Course", "purpose": "£297"},
+      {"tool": "Group Programme", "purpose": "£997"},
+      {"tool": "1:1 Coaching", "purpose": "£2,497"},
+      {"tool": "VIP Intensive", "purpose": "£4,997"},
+      {"tool": "Done-For-You", "purpose": "£9,997"}
+    ]
+  },
+  {
+    "id": "LS-ST-07",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "vertical-flow",
+    "bg": "teal-black",
+    "icon": "lead-magnet-flow.png",
+    "title": "Lead Magnet Flow",
+    "subtitle": "Content to client in 7 days",
+    "steps": ["Free Resource Downloaded", "Welcome Email Sequence", "Value Video Delivered", "Soft CTA: Book a Call", "Discovery Call Booked"]
+  },
+  {
+    "id": "LS-ST-08",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "timeline",
+    "bg": "teal",
+    "icon": "follow-up-cadence.png",
+    "title": "Follow-Up Cadence",
+    "subtitle": "The 7-day sequence that closes",
+    "steps": ["Day 1: Welcome + Value", "Day 2: Case Study", "Day 3: Quick Win", "Day 4: Social Proof", "Day 5: Objection Buster", "Day 6: Scarcity", "Day 7: Final CTA"]
+  },
+  {
+    "id": "LS-ST-09",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "comparison",
+    "bg": "dark",
+    "icon": "objection-framework.png",
+    "title": "Objection Framework",
+    "subtitle": "Turn no into yes",
+    "leftLabel": "Objection",
+    "rightLabel": "Response",
+    "rows": [
+      {"left": "Too expensive", "right": "Cost of NOT doing it"},
+      {"left": "No time", "right": "AI saves 47 hrs/mo"},
+      {"left": "Tried before", "right": "Not with AI systems"},
+      {"left": "Need to think", "right": "What specifically?"}
+    ]
+  },
+  {
+    "id": "LS-ST-10",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "grid",
+    "bg": "white",
+    "icon": "conversion-metrics.png",
+    "title": "Conversion Metrics",
+    "subtitle": "The numbers that matter",
+    "gridItems": [
+      {"label": "Opt-in Rate", "value": "28%"},
+      {"label": "Show Rate", "value": "85%"},
+      {"label": "Close Rate", "value": "34%"},
+      {"label": "LTV", "value": "£9.2K"}
+    ]
+  },
+  {
+    "id": "LS-ST-11",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "vertical-flow",
+    "bg": "teal-black",
+    "icon": "client-ascension.png",
+    "title": "Client Ascension Model",
+    "subtitle": "One client. Multiple revenue streams.",
+    "steps": ["Free: Lead Magnet", "£297: DIY Course", "£997: Group Programme", "£2,497: 1:1 Coaching", "£9,997: Done-For-You"]
+  },
+  {
+    "id": "LS-ST-12",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "timeline",
+    "bg": "teal",
+    "icon": "nurture-sequence.png",
+    "title": "Nurture Sequence",
+    "subtitle": "Automated relationship building",
+    "steps": ["Email 1: Welcome Story", "Email 2: Quick Win", "Email 3: Case Study", "Email 4: Framework", "Email 5: Soft Pitch", "Email 6: Deadline"]
+  },
+  {
+    "id": "LS-ST-13",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "metric-hero",
+    "bg": "dark",
+    "icon": "show-rate-system.png",
+    "title": "Show Rate System",
+    "heroValue": "92%",
+    "heroLabel": "Show Rate on Calls",
+    "metrics": [{"label": "Reminder Texts", "value": "3"}, {"label": "Pre-Call Video", "value": "1"}, {"label": "No-Shows", "value": "< 8%"}]
+  },
+
+  {
+    "id": "CL-ST-01",
+    "category": "claude-ai-product-visuals",
+    "layout": "full-diagram",
+    "bg": "dark",
+    "icon": "chat-interface.png",
+    "title": "Claude AI",
+    "subtitle": "The AI that actually understands your business",
+    "metrics": [{"label": "Context Window", "value": "200K"}, {"label": "Accuracy", "value": "98.4%"}, {"label": "Speed", "value": "Instant"}]
+  },
+  {
+    "id": "CL-ST-02",
+    "category": "claude-ai-product-visuals",
+    "layout": "full-diagram",
+    "bg": "white",
+    "icon": "claude-code.png",
+    "title": "Claude Code",
+    "subtitle": "Build anything from your terminal",
+    "metrics": [{"label": "Languages", "value": "50+"}, {"label": "Deploy Speed", "value": "10x"}, {"label": "Bug Fix", "value": "Auto"}]
+  },
+  {
+    "id": "CL-ST-03",
+    "category": "claude-ai-product-visuals",
+    "layout": "full-diagram",
+    "bg": "teal-black",
+    "icon": "mcp-connections.png",
+    "title": "MCP Connections",
+    "subtitle": "Claude plugged into everything",
+    "metrics": [{"label": "Integrations", "value": "100+"}, {"label": "Auto-Sync", "value": "Real-time"}, {"label": "Setup", "value": "5 min"}]
+  },
+  {
+    "id": "CL-ST-04",
+    "category": "claude-ai-product-visuals",
+    "layout": "full-diagram",
+    "bg": "teal",
+    "icon": "extended-thinking.png",
+    "title": "Extended Thinking",
+    "subtitle": "Claude reasons through complex problems",
+    "metrics": [{"label": "Depth", "value": "Multi-step"}, {"label": "Reasoning", "value": "Chain-of-thought"}, {"label": "Quality", "value": "Expert-level"}]
+  },
+  {
+    "id": "CL-ST-05",
+    "category": "claude-ai-product-visuals",
+    "layout": "full-diagram",
+    "bg": "dark",
+    "icon": "projects-panel.png",
+    "title": "Claude Projects",
+    "subtitle": "Your business knowledge loaded permanently",
+    "metrics": [{"label": "Docs Loaded", "value": "50+"}, {"label": "Brand Voice", "value": "Locked In"}, {"label": "Always On", "value": "24/7"}]
+  },
+  {
+    "id": "CL-ST-06",
+    "category": "claude-ai-product-visuals",
+    "layout": "grid",
+    "bg": "white",
+    "icon": "feature-grid.png",
+    "title": "Claude Features",
+    "subtitle": "Everything in one AI",
+    "gridItems": [
+      {"label": "Projects", "value": "Knowledge Base"},
+      {"label": "Artifacts", "value": "Visual Outputs"},
+      {"label": "Code", "value": "Build & Deploy"},
+      {"label": "MCP", "value": "App Integrations"},
+      {"label": "Thinking", "value": "Deep Reasoning"},
+      {"label": "Memory", "value": "Learns Over Time"}
+    ]
+  },
+  {
+    "id": "CL-ST-07",
+    "category": "claude-ai-product-visuals",
+    "layout": "comparison",
+    "bg": "teal-black",
+    "icon": "claude-vs-others.png",
+    "title": "Claude vs Others",
+    "subtitle": "Why coaches choose Claude",
+    "leftLabel": "Others",
+    "rightLabel": "Claude",
+    "rows": [
+      {"left": "Generic outputs", "right": "Brand-matched voice"},
+      {"left": "Forget context", "right": "Projects + Memory"},
+      {"left": "Text only", "right": "Code + Docs + Apps"},
+      {"left": "Basic chat", "right": "Deep reasoning"}
+    ]
+  },
+  {
+    "id": "CL-ST-08",
+    "category": "claude-ai-product-visuals",
+    "layout": "vertical-flow",
+    "bg": "teal",
+    "icon": "claude-workflow.png",
+    "title": "Claude Workflow",
+    "subtitle": "From brief to published in minutes",
+    "steps": ["Load Brand Project", "Give Brief", "Claude Creates Draft", "Refine in Seconds", "Publish Everywhere"]
+  },
+  {
+    "id": "CL-ST-09",
+    "category": "claude-ai-product-visuals",
+    "layout": "metric-hero",
+    "bg": "dark",
+    "icon": "context-window.png",
+    "title": "Context Window",
+    "heroValue": "200K",
+    "heroLabel": "Tokens of Context",
+    "metrics": [{"label": "That's", "value": "~500 pages"}, {"label": "Your Entire", "value": "Business"}, {"label": "Loaded In", "value": "One Chat"}]
+  },
+  {
+    "id": "CL-ST-10",
+    "category": "claude-ai-product-visuals",
+    "layout": "full-diagram",
+    "bg": "white",
+    "icon": "artifacts.png",
+    "title": "Claude Artifacts",
+    "subtitle": "Visual outputs you can use immediately",
+    "metrics": [{"label": "Documents", "value": "\u2713"}, {"label": "Code Apps", "value": "\u2713"}, {"label": "Dashboards", "value": "\u2713"}]
+  },
+
+  {
+    "id": "PB-ST-01",
+    "category": "personal-branding-systems",
+    "layout": "full-diagram",
+    "bg": "dark",
+    "icon": "brand-blueprint.png",
+    "title": "Brand Blueprint",
+    "subtitle": "The foundation of a 6-figure personal brand",
+    "metrics": [{"label": "Mission", "value": "Clear"}, {"label": "Voice", "value": "Defined"}, {"label": "Offer", "value": "Positioned"}]
+  },
+  {
+    "id": "PB-ST-02",
+    "category": "personal-branding-systems",
+    "layout": "vertical-flow",
+    "bg": "white",
+    "icon": "authority-ladder.png",
+    "title": "Authority Ladder",
+    "subtitle": "Climb from unknown to industry leader",
+    "steps": ["Invisible: No Presence", "Visible: Posting Regularly", "Known: People DM You", "Trusted: Referrals Come In", "Authority: You Set The Price"]
+  },
+  {
+    "id": "PB-ST-03",
+    "category": "personal-branding-systems",
+    "layout": "grid",
+    "bg": "teal-black",
+    "icon": "content-pillars.png",
+    "title": "Content Pillars",
+    "subtitle": "The 4 types of content you need",
+    "gridItems": [
+      {"label": "Educate", "value": "Build Trust"},
+      {"label": "Inspire", "value": "Build Connection"},
+      {"label": "Entertain", "value": "Build Reach"},
+      {"label": "Sell", "value": "Build Revenue"}
+    ]
+  },
+  {
+    "id": "PB-ST-04",
+    "category": "personal-branding-systems",
+    "layout": "full-diagram",
+    "bg": "teal",
+    "icon": "hook-formula.png",
+    "title": "Hook Formula",
+    "subtitle": "Stop the scroll every single time",
+    "metrics": [{"label": "Pattern Interrupt", "value": "Step 1"}, {"label": "Curiosity Gap", "value": "Step 2"}, {"label": "Promise", "value": "Step 3"}]
+  },
+  {
+    "id": "PB-ST-05",
+    "category": "personal-branding-systems",
+    "layout": "full-diagram",
+    "bg": "dark",
+    "icon": "trust-equation.png",
+    "title": "Trust Equation",
+    "subtitle": "Trust = Credibility + Reliability + Intimacy",
+    "metrics": [{"label": "Credibility", "value": "Proof"}, {"label": "Reliability", "value": "Consistency"}, {"label": "Intimacy", "value": "Vulnerability"}]
+  },
+  {
+    "id": "PB-ST-06",
+    "category": "personal-branding-systems",
+    "layout": "full-diagram",
+    "bg": "white",
+    "icon": "audience-flywheel.png",
+    "title": "Audience Flywheel",
+    "subtitle": "The cycle that grows your following",
+    "metrics": [{"label": "Create", "value": "Content"}, {"label": "Attract", "value": "Audience"}, {"label": "Convert", "value": "Clients"}]
+  },
+  {
+    "id": "PB-ST-07",
+    "category": "personal-branding-systems",
+    "layout": "glass-table",
+    "bg": "teal-black",
+    "icon": "content-calendar.png",
+    "title": "Content Calendar",
+    "subtitle": "Your weekly posting schedule",
+    "rows": [
+      {"tool": "Monday", "purpose": "Educate: Framework Post"},
+      {"tool": "Tuesday", "purpose": "Inspire: Client Win"},
+      {"tool": "Wednesday", "purpose": "Sell: Offer CTA"},
+      {"tool": "Thursday", "purpose": "Entertain: Behind Scenes"},
+      {"tool": "Friday", "purpose": "Engage: Ask a Question"}
+    ]
+  },
+  {
+    "id": "PB-ST-08",
+    "category": "personal-branding-systems",
+    "layout": "vertical-flow",
+    "bg": "teal",
+    "icon": "monetisation-layers.png",
+    "title": "Monetisation Layers",
+    "subtitle": "Multiple revenue streams from one brand",
+    "steps": ["Layer 1: Free Content", "Layer 2: Digital Products", "Layer 3: Group Programme", "Layer 4: 1:1 Coaching", "Layer 5: Licensing & IP"]
+  },
+  {
+    "id": "PB-ST-09",
+    "category": "personal-branding-systems",
+    "layout": "full-diagram",
+    "bg": "dark",
+    "icon": "repurposing-map.png",
+    "title": "Repurposing Map",
+    "subtitle": "1 piece becomes 15+",
+    "metrics": [{"label": "Input", "value": "1 Video"}, {"label": "Outputs", "value": "15+"}, {"label": "Time", "value": "20 min"}]
+  },
+  {
+    "id": "PB-ST-10",
+    "category": "personal-branding-systems",
+    "layout": "metric-hero",
+    "bg": "white",
+    "icon": "social-proof-stack.png",
+    "title": "Social Proof Stack",
+    "heroValue": "147",
+    "heroLabel": "Client Transformations",
+    "metrics": [{"label": "5-Star Reviews", "value": "89"}, {"label": "Case Studies", "value": "24"}, {"label": "Testimonials", "value": "147"}]
+  },
+
+  {
+    "id": "OB-AI-01",
+    "category": "ai-systems-and-architecture",
+    "layout": "metric-hero",
+    "bg": "orange-black",
+    "icon": "ai-sales-machine.png",
+    "title": "AI Sales Machine",
+    "heroValue": "£47K",
+    "heroLabel": "Revenue Generated on Autopilot",
+    "metrics": [{"label": "Leads Processed", "value": "1,200"}, {"label": "Calls Booked", "value": "86"}, {"label": "Close Rate", "value": "38%"}]
+  },
+  {
+    "id": "OB-AI-02",
+    "category": "ai-systems-and-architecture",
+    "layout": "comparison",
+    "bg": "orange-black",
+    "icon": "voice-clone-pipeline.png",
+    "title": "Voice Clone Pipeline",
+    "subtitle": "Your voice. Everywhere. Without you.",
+    "leftLabel": "You Recording",
+    "rightLabel": "AI Clone",
+    "rows": [
+      {"left": "1 podcast/week", "right": "Daily episodes"},
+      {"left": "3 hrs recording", "right": "0 hrs recording"},
+      {"left": "1 platform", "right": "Every platform"},
+      {"left": "Your time", "right": "Runs 24/7"}
+    ]
+  },
+  {
+    "id": "OB-AI-03",
+    "category": "ai-systems-and-architecture",
+    "layout": "vertical-flow",
+    "bg": "orange-black",
+    "icon": "webhook-flow.png",
+    "title": "Webhook Automation",
+    "subtitle": "Every event triggers the next action",
+    "steps": ["New Lead Captured", "Webhook Fires", "AI Qualifies Lead", "Auto Books Call", "Follow-Up Sequence Starts"]
+  },
+  {
+    "id": "OB-AI-04",
+    "category": "ai-systems-and-architecture",
+    "layout": "glass-table",
+    "bg": "orange-black",
+    "icon": "multi-channel.png",
+    "title": "Multi-Channel AI",
+    "subtitle": "One system. Every platform covered.",
+    "rows": [
+      {"tool": "Instagram", "purpose": "Reels + Carousels"},
+      {"tool": "YouTube", "purpose": "Scripts + Shorts"},
+      {"tool": "Email", "purpose": "Sequences + Broadcasts"},
+      {"tool": "LinkedIn", "purpose": "Authority Posts"},
+      {"tool": "Podcast", "purpose": "Voice Clone Episodes"}
+    ]
+  },
+
+  {
+    "id": "OB-PB-01",
+    "category": "personal-branding-systems",
+    "layout": "vertical-flow",
+    "bg": "orange-black",
+    "icon": "brand-story-arc.png",
+    "title": "Brand Story Arc",
+    "subtitle": "The story that makes people buy from YOU",
+    "steps": ["The Struggle: Where You Started", "The Shift: What Changed Everything", "The System: What You Built", "The Proof: Results You Got", "The Offer: How They Get It Too"]
+  },
+  {
+    "id": "OB-PB-02",
+    "category": "personal-branding-systems",
+    "layout": "metric-hero",
+    "bg": "orange-black",
+    "icon": "growth-chart.png",
+    "title": "Brand Growth",
+    "heroValue": "842%",
+    "heroLabel": "Follower to Client Growth",
+    "metrics": [{"label": "Followers", "value": "12.4K"}, {"label": "Clients Won", "value": "94"}, {"label": "Revenue", "value": "£186K"}]
+  },
+  {
+    "id": "OB-PB-03",
+    "category": "personal-branding-systems",
+    "layout": "grid",
+    "bg": "orange-black",
+    "icon": "platform-strategy.png",
+    "title": "Platform Strategy",
+    "subtitle": "Be everywhere without burning out",
+    "gridItems": [
+      {"label": "Instagram", "value": "Daily Reels"},
+      {"label": "YouTube", "value": "Weekly Long-Form"},
+      {"label": "LinkedIn", "value": "3x Authority Posts"},
+      {"label": "Email", "value": "2x Nurture Sends"},
+      {"label": "Podcast", "value": "Weekly Episodes"},
+      {"label": "Ads", "value": "Evergreen Funnels"}
+    ]
+  },
+  {
+    "id": "OB-PB-04",
+    "category": "personal-branding-systems",
+    "layout": "comparison",
+    "bg": "orange-black",
+    "icon": "brand-vs-business.png",
+    "title": "Brand vs No Brand",
+    "subtitle": "The difference a personal brand makes",
+    "leftLabel": "No Brand",
+    "rightLabel": "Built Brand",
+    "rows": [
+      {"left": "Chase clients", "right": "Clients come to you"},
+      {"left": "Compete on price", "right": "Compete on value"},
+      {"left": "Unknown in market", "right": "Go-to authority"},
+      {"left": "Trading time", "right": "Leveraged income"}
+    ]
+  },
+
+  {
+    "id": "OB-LS-01",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "funnel",
+    "bg": "orange-black",
+    "icon": "webinar-funnel.png",
+    "title": "Webinar Funnel",
+    "subtitle": "The funnel that sells while you sleep",
+    "steps": ["Ad Traffic: 5,000 clicks", "Registration: 1,400 sign-ups", "Attendance: 620 watched", "Offer Made: 620 saw pitch", "Sales: 42 bought"]
+  },
+  {
+    "id": "OB-LS-02",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "metric-hero",
+    "bg": "orange-black",
+    "icon": "client-ltv.png",
+    "title": "Client Lifetime Value",
+    "heroValue": "£9.2K",
+    "heroLabel": "Average Client LTV",
+    "metrics": [{"label": "Avg Months", "value": "6.2"}, {"label": "Upsell Rate", "value": "34%"}, {"label": "Referrals", "value": "1.8 per client"}]
+  },
+  {
+    "id": "OB-LS-03",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "vertical-flow",
+    "bg": "orange-black",
+    "icon": "discovery-call-system.png",
+    "title": "Discovery Call System",
+    "subtitle": "The call framework that closes at 40%+",
+    "steps": ["Build Rapport (2 min)", "Uncover Pain (8 min)", "Present Solution (10 min)", "Handle Objections (5 min)", "Close or Next Steps (5 min)"]
+  },
+  {
+    "id": "OB-LS-04",
+    "category": "lead-gen-and-sales-systems",
+    "layout": "glass-table",
+    "bg": "orange-black",
+    "icon": "referral-engine.png",
+    "title": "Referral Engine",
+    "subtitle": "Turn clients into your sales team",
+    "rows": [
+      {"tool": "Trigger", "purpose": "Client Gets Result"},
+      {"tool": "Ask", "purpose": "Who Else Needs This?"},
+      {"tool": "Incentivise", "purpose": "10% Off Next Month"},
+      {"tool": "Follow Up", "purpose": "Auto Email to Referral"},
+      {"tool": "Close", "purpose": "Warm Lead = Easy Sale"}
+    ]
+  }
+]

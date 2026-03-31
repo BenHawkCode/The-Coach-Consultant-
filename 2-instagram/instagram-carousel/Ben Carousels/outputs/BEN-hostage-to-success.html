@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>I Was Making Good Money But I Couldn't Enjoy Any of It</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide-label {
+    color: #aaa;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+
+  .dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  .dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #666;
+  }
+  .dots .dot.active {
+    background: #fff;
+  }
+
+  .slide-image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+
+  .slide-text {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    padding: 60px;
+    line-height: 1.3;
+  }
+
+  .slide-text.image-text {
+    text-shadow: 0 2px 12px rgba(0,0,0,0.8), 0 0 4px rgba(0,0,0,0.6);
+  }
+
+  .slide-text.bottom {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    padding: 0 60px;
+  }
+
+  .bg-black { background: #0a0a0a; }
+  .bg-white { background: #ffffff; }
+  .bg-orange { background: #FF6B35; }
+  .bg-teal { background: #5B9A9A; }
+
+  .text-black { color: #0a0a0a; }
+
+  .watermark {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 80px;
+    height: auto;
+    opacity: 0.6;
+    mix-blend-mode: screen;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — IMAGE: Hook -->
+<p class="slide-label">Slide 1 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/Image-8%20(1).jpg" alt="Ben looking out">
+  <div class="slide-text image-text bottom" style="font-size: 52px;">
+    I was making good money but I couldn't enjoy any of it. I looked successful but I felt like a hostage.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="TCC logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 2 — BLACK -->
+<p class="slide-label">Slide 2 of 10</p>
+<div class="slide bg-black">
+  <div class="slide-text" style="font-size: 46px;">
+    Every weekend I was on my phone. Every holiday I was checking DMs.<br><br>That's when I realised the business had to change. Or I was going to break.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="TCC logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 3 — IMAGE -->
+<p class="slide-label">Slide 3 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/DSC02449.jpg" alt="Ben candid">
+  <div class="slide-text image-text" style="font-size: 44px;">
+    And I see so many business owners stuck in the exact same place.<br><br>Making decent money but terrified to spend any of it on the business. Holding onto every penny because they think profit margin is the only metric that matters.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="TCC logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 4 — ORANGE -->
+<p class="slide-label">Slide 4 of 10</p>
+<div class="slide bg-orange">
+  <div class="slide-text" style="font-size: 48px;">
+    Money is great. Obviously.<br><br>But what about life quality? What about freedom?<br><br>What's the point of a 40% margin if you haven't had a proper day off in six months?
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="TCC logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 5 — IMAGE -->
+<p class="slide-label">Slide 5 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/Image-25%20(1).jpg" alt="Ben lifestyle">
+  <div class="slide-text image-text" style="font-size: 44px;">
+    AI can do things on a level I've never seen before in my life. A single founder can genuinely produce more output than ever before.<br><br>Content, systems, automations, research. One person with the right tools can move mountains.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="TCC logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 6 — TEAL -->
+<p class="slide-label">Slide 6 of 10</p>
+<div class="slide bg-teal">
+  <div class="slide-text" style="font-size: 48px;">
+    But there will still come a point where you need people. Real people.<br><br>To support you. To take things off your plate. To handle the stuff that AI can't do and that you shouldn't be doing anymore.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="TCC logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 7 — IMAGE -->
+<p class="slide-label">Slide 7 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/Image-28%20(1).jpg" alt="Ben with team">
+  <div class="slide-text image-text" style="font-size: 44px;">
+    It might start with an appointment setter. Then a sales closer. Then a personal assistant.<br><br>Someone who handles the admin, the scheduling, the stuff that eats your time without growing your revenue.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="TCC logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 8 — BLACK -->
+<p class="slide-label">Slide 8 of 10</p>
+<div class="slide bg-black">
+  <div class="slide-text" style="font-size: 48px;">
+    Stop trying to be a hero and do it all yourself.<br><br>That's not strength. That's a bottleneck.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="TCC logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 9 — IMAGE -->
+<p class="slide-label">Slide 9 of 10</p>
+<div class="slide">
+  <img class="slide-image" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/the-coach-consultant/2-instagram/instagram-carousel/Ben%20Carousels/Ben%20Images/Image-12%20(1).jpg" alt="Ben relaxed">
+  <div class="slide-text image-text" style="font-size: 44px;">
+    The moment you're in a position where you can start investing in people and building a team around you, I'd highly recommend you do it.<br><br>That's the shift from surviving to actually owning your business.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="TCC logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- SLIDE 10 — ORANGE CTA -->
+<p class="slide-label">Slide 10 of 10</p>
+<div class="slide bg-orange">
+  <div class="slide-text" style="font-size: 46px;">
+    The version of your business that gives you freedom doesn't look like you doing more.<br><br>It looks like you building something that doesn't need you in every seat.<br><br>Reinvest. Hire. Build the team. That's how you go from hostage to owner.
+  </div>
+  <img class="watermark" src="file:///Users/benhawksworth/Documents/Claude%20Code%20Projects/Presentation%20Creator/5.%20Logo/LOGO/PNG/logo-black.png" alt="TCC logo">
+  <div class="dots" style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); z-index:5;">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot active"></span>
+  </div>
+</div>
+
+</body>
+</html>

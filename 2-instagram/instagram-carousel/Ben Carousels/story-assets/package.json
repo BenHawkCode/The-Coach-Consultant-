@@ -1,0 +1,13 @@
+{
+  "name": "story-assets",
+  "version": "1.0.0",
+  "description": "Portrait story interactive assets for Instagram Reels (1080x1920)",
+  "scripts": {
+    "generate": "node generate-story-assets.js",
+    "render": "node render-story-assets.js",
+    "build": "node generate-story-assets.js && node render-story-assets.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}
