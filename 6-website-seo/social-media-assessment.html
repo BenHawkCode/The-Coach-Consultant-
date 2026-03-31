@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30-Day Social Media Assessment — The Coach Consultant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --teal: #6B9B9B;
+            --teal-dark: #5a8585;
+            --teal-light: #7ab0b0;
+            --teal-glow: rgba(107,155,155,0.3);
+            --black: #000000;
+            --white: #FFFFFF;
+            --dark-grey: #1A1A1A;
+            --mid-grey: #2A2A2A;
+            --light-grey: #E0E0E0;
+            --muted: #999999;
+            --bg-cream: #FAFAF8;
+            --red-pain: #E85D5D;
+            --red-subtle: rgba(232,93,93,0.08);
+            --amber: #F0A030;
+            --green: #4CAF50;
+            --green-light: rgba(76,175,80,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-grey);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(107,155,155,0.3); }
+            50% { box-shadow: 0 4px 40px rgba(107,155,155,0.6); }
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes progressFill {
+            from { width: 0; }
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--light-grey);
+            animation: slideDown 0.6s ease;
+        }
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo { font-weight: 700; font-size: 18px; color: var(--dark-grey); text-decoration: none; }
+        .nav-logo span { color: var(--teal); }
+
+        /* ── HERO ── */
+        .hero {
+            padding: 130px 24px 60px;
+            background: linear-gradient(180deg, #fff 0%, var(--bg-cream) 100%);
+            text-align: center;
+        }
+        .hero-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--teal);
+            color: white;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.6s ease;
+        }
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.6s ease 0.1s both;
+        }
+        .hero h1 span { color: var(--teal); }
+        .hero p {
+            font-size: 18px;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 32px;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 32px;
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+        .hero-stat { text-align: center; }
+        .hero-stat-number { font-size: 28px; font-weight: 800; color: var(--teal); }
+        .hero-stat-label { font-size: 12px; color: var(--muted); font-weight: 500; }
+
+        /* ── ASSESSMENT FORM ── */
+        .assessment {
+            padding: 60px 24px 80px;
+            background: var(--white);
+        }
+        .assessment-inner {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            margin-bottom: 40px;
+        }
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .progress-label { font-size: 14px; font-weight: 600; color: var(--dark-grey); }
+        .progress-count { font-size: 14px; color: var(--muted); }
+        .progress-bar {
+            height: 8px;
+            background: var(--light-grey);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--teal), var(--teal-light));
+            border-radius: 50px;
+            transition: width 0.5s ease;
+        }
+
+        /* Question cards */
+        .question-card {
+            background: var(--white);
+            border: 1px solid var(--light-grey);
+            border-radius: 16px;
+            padding: 36px 32px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            display: none;
+        }
+        .question-card.active {
+            display: block;
+            animation: fadeInUp 0.4s ease;
+        }
+        .question-card:hover {
+            border-color: var(--teal);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .question-category {
+            display: inline-block;
+            background: rgba(107,155,155,0.1);
+            color: var(--teal);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .question-number {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+        .question-text {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 24px;
+            color: var(--dark-grey);
+        }
+
+        /* Rating options */
+        .rating-options {
+            display: grid;
+            gap: 10px;
+        }
+        .rating-option {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 18px;
+            border: 2px solid var(--light-grey);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.25s;
+            background: var(--white);
+        }
+        .rating-option:hover {
+            border-color: var(--teal);
+            background: rgba(107,155,155,0.04);
+            transform: translateX(4px);
+        }
+        .rating-option.selected {
+            border-color: var(--teal);
+            background: rgba(107,155,155,0.08);
+        }
+        .rating-score {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .score-1 { background: rgba(232,93,93,0.15); color: var(--red-pain); }
+        .score-2 { background: rgba(232,93,93,0.1); color: var(--red-pain); }
+        .score-3 { background: rgba(240,160,48,0.15); color: var(--amber); }
+        .score-4 { background: rgba(107,155,155,0.15); color: var(--teal); }
+        .score-5 { background: rgba(76,175,80,0.15); color: var(--green); }
+        .rating-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--dark-grey);
+        }
+
+        /* Navigation buttons */
+        .question-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+        }
+        .btn {
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        .btn-next {
+            background: var(--teal);
+            color: white;
+        }
+        .btn-next:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 4px 20px var(--teal-glow); }
+        .btn-next:disabled { background: var(--light-grey); color: var(--muted); cursor: not-allowed; transform: none; box-shadow: none; }
+        .btn-back {
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid var(--light-grey);
+        }
+        .btn-back:hover { color: var(--dark-grey); border-color: var(--dark-grey); }
+        .btn-submit {
+            background: var(--teal);
+            color: white;
+            width: 100%;
+            padding: 18px;
+            font-size: 17px;
+            animation: glowPulse 3s infinite;
+        }
+        .btn-submit:hover { background: var(--teal-dark); transform: translateY(-2px); }
+
+        /* ── RESULTS ── */
+        .results {
+            display: none;
+            padding: 60px 24px 80px;
+        }
+        .results.visible { display: block; }
+        .results-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Overall score */
+        .score-hero {
+            text-align: center;
+            padding: 48px 32px;
+            background: linear-gradient(135deg, var(--dark-grey) 0%, var(--mid-grey) 100%);
+            border-radius: 20px;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.6s ease;
+        }
+        .score-hero-label {
+            font-size: 14px;
+            color: var(--muted);
+            font-weight: 500;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .score-hero-number {
+            font-size: 80px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 4px;
+            animation: countUp 0.8s ease 0.2s both;
+        }
+        .score-hero-total {
+            font-size: 24px;
+            color: var(--muted);
+            font-weight: 400;
+        }
+        .score-hero-grade {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 12px;
+        }
+        .score-hero-desc {
+            font-size: 15px;
+            color: rgba(255,255,255,0.7);
+            max-width: 500px;
+            margin: 12px auto 0;
+        }
+
+        .grade-critical { color: var(--red-pain); }
+        .grade-needs-work { color: var(--amber); }
+        .grade-good { color: var(--teal-light); }
+        .grade-excellent { color: var(--green); }
+
+        /* Category scores */
+        .category-scores {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .category-card {
+            background: var(--white);
+            border: 1px solid var(--light-grey);
+            border-radius: 16px;
+            padding: 24px;
+            animation: fadeInUp 0.5s ease both;
+        }
+        .category-card:nth-child(1) { animation-delay: 0.1s; }
+        .category-card:nth-child(2) { animation-delay: 0.15s; }
+        .category-card:nth-child(3) { animation-delay: 0.2s; }
+        .category-card:nth-child(4) { animation-delay: 0.25s; }
+        .category-card:nth-child(5) { animation-delay: 0.3s; }
+        .category-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+        .category-score-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .category-score-num {
+            font-size: 28px;
+            font-weight: 800;
+        }
+        .category-score-max {
+            font-size: 14px;
+            color: var(--muted);
+        }
+        .category-bar {
+            height: 6px;
+            background: var(--light-grey);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+        .category-bar-fill {
+            height: 100%;
+            border-radius: 50px;
+            transition: width 1s ease;
+        }
+
+        /* Recommendations */
+        .recommendations {
+            margin-bottom: 32px;
+        }
+        .recommendations h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.5s ease 0.3s both;
+        }
+        .rec-card {
+            background: var(--white);
+            border: 1px solid var(--light-grey);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            animation: fadeInUp 0.4s ease both;
+        }
+        .rec-priority {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .priority-high { background: rgba(232,93,93,0.12); color: var(--red-pain); }
+        .priority-medium { background: rgba(240,160,48,0.12); color: var(--amber); }
+        .priority-low { background: rgba(76,175,80,0.12); color: var(--green); }
+        .rec-content h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .rec-content p {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+        .rec-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 50px;
+            margin-top: 8px;
+        }
+        .tag-quick { background: rgba(76,175,80,0.1); color: var(--green); }
+        .tag-medium { background: rgba(240,160,48,0.1); color: var(--amber); }
+
+        /* CTA Section */
+        .results-cta {
+            background: linear-gradient(135deg, var(--dark-grey) 0%, var(--mid-grey) 100%);
+            border-radius: 20px;
+            padding: 48px 32px;
+            text-align: center;
+            animation: fadeInUp 0.5s ease 0.5s both;
+        }
+        .results-cta h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 12px;
+        }
+        .results-cta p {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            max-width: 500px;
+            margin: 0 auto 24px;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--teal);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s;
+            animation: glowPulse 3s infinite;
+        }
+        .cta-btn:hover { background: var(--teal-dark); transform: translateY(-2px); }
+
+        /* Footer */
+        footer {
+            padding: 32px 24px;
+            text-align: center;
+            border-top: 1px solid var(--light-grey);
+        }
+        footer p { font-size: 13px; color: var(--muted); }
+        footer a { color: var(--teal); text-decoration: none; }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero p { font-size: 16px; }
+            .hero-stats { flex-direction: column; gap: 16px; }
+            .question-card { padding: 24px 20px; }
+            .question-text { font-size: 17px; }
+            .category-scores { grid-template-columns: 1fr; }
+            .score-hero-number { font-size: 60px; }
+            .results-cta { padding: 32px 20px; }
+            .results-cta h2 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="https://thecoachconsultant.uk" class="nav-logo">THE COACH <span>CONSULTANT</span></a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">Free Assessment Tool</div>
+        <h1>How Much Money Is Your <span>Social Media</span> Leaving on the Table?</h1>
+        <p>Answer 15 quick questions about your Instagram presence and get an instant, personalised report with your score and exact quick wins to implement today.</p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-number">2 min</div>
+                <div class="hero-stat-label">To Complete</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">15</div>
+                <div class="hero-stat-label">Questions</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">Instant</div>
+                <div class="hero-stat-label">Results Report</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ASSESSMENT -->
+<section class="assessment" id="assessment">
+    <div class="assessment-inner">
+        <div class="progress-container">
+            <div class="progress-header">
+                <span class="progress-label">Your Assessment</span>
+                <span class="progress-count"><span id="currentQ">1</span> of 15</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 6.67%"></div>
+            </div>
+        </div>
+
+        <div id="questionsContainer"></div>
+    </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results" id="results">
+    <div class="results-inner">
+        <div class="score-hero" id="scoreHero"></div>
+        <div class="category-scores" id="categoryScores"></div>
+        <div class="recommendations" id="recommendations">
+            <h2>Your Quick Wins (Do These First)</h2>
+            <div id="recCards"></div>
+        </div>
+        <div class="results-cta">
+            <h2>Want Help Implementing These?</h2>
+            <p>Book a free discovery call and I will walk you through exactly how to fix your profile and start generating leads within 30 days.</p>
+            <a href="https://thecoachconsultant.uk" class="cta-btn">Book Your Free Call</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; The Coach Consultant FitPro Ltd. All rights reserved.<br>
+    <a href="https://thecoachconsultant.uk">thecoachconsultant.uk</a></p>
+</footer>
+
+<script>
+const questions = [
+    {
+        category: "Profile",
+        text: "Does your profile photo clearly show who you are and what you do?",
+        options: [
+            { score: 1, label: "No photo or a logo/graphic instead of my face" },
+            { score: 2, label: "Photo of me but it is blurry, outdated, or hard to see" },
+            { score: 3, label: "Decent photo but does not reflect my professional brand" },
+            { score: 4, label: "Clear professional photo that represents what I do" },
+            { score: 5, label: "High quality, on-brand photo that instantly builds trust" }
+        ]
+    },
+    {
+        category: "Profile",
+        text: "Does your bio clearly state who you help, what result you deliver, and include a call to action?",
+        options: [
+            { score: 1, label: "My bio is empty, vague, or just a job title" },
+            { score: 2, label: "It mentions what I do but not who I help or the result" },
+            { score: 3, label: "It is decent but missing a clear CTA or specific result" },
+            { score: 4, label: "States who I help and the result, with a CTA" },
+            { score: 5, label: "Crystal clear, specific, with a compelling CTA that drives clicks" }
+        ]
+    },
+    {
+        category: "Profile",
+        text: "Does your link in bio go to a page that captures leads (opt-in form, booking page, or lead magnet)?",
+        options: [
+            { score: 1, label: "No link at all or it goes to a dead page" },
+            { score: 2, label: "Links to my general website homepage" },
+            { score: 3, label: "Links to a Linktree or similar with multiple options" },
+            { score: 4, label: "Links directly to a lead magnet or booking page" },
+            { score: 5, label: "Links to a high-converting opt-in with automated follow-up" }
+        ]
+    },
+    {
+        category: "Content",
+        text: "How consistently are you posting content?",
+        options: [
+            { score: 1, label: "Rarely or never, less than once a week" },
+            { score: 2, label: "Sporadically, 1-2 times per week with big gaps" },
+            { score: 3, label: "3-4 times per week, fairly consistent" },
+            { score: 4, label: "5-6 times per week, mostly consistent" },
+            { score: 5, label: "Daily or 6+ times per week with a clear schedule" }
+        ]
+    },
+    {
+        category: "Content",
+        text: "What percentage of your content addresses your ideal client's specific pain points?",
+        options: [
+            { score: 1, label: "Almost none, I mostly post about myself or random topics" },
+            { score: 2, label: "Maybe 10-20%, most of my content is general value" },
+            { score: 3, label: "About 30-40%, I occasionally address pain points" },
+            { score: 4, label: "Around 50%, I have a good balance of pain and value" },
+            { score: 5, label: "50%+ is directly speaking to my ideal client's problems" }
+        ]
+    },
+    {
+        category: "Content",
+        text: "Do your posts include a clear call to action (DM me, link in bio, book a call)?",
+        options: [
+            { score: 1, label: "Never or almost never" },
+            { score: 2, label: "Occasionally but it feels awkward or forced" },
+            { score: 3, label: "On about half my posts" },
+            { score: 4, label: "On most posts with a natural CTA" },
+            { score: 5, label: "Every post has a clear, natural CTA tied to a specific action" }
+        ]
+    },
+    {
+        category: "Engagement",
+        text: "How many DM conversations are you starting per day from your content?",
+        options: [
+            { score: 1, label: "None, my DMs are basically dead" },
+            { score: 2, label: "1-2 per week at most" },
+            { score: 3, label: "A few per week, maybe 1 per day" },
+            { score: 4, label: "3-5 per day from content and stories" },
+            { score: 5, label: "5-15+ per day, my inbox is consistently active" }
+        ]
+    },
+    {
+        category: "Engagement",
+        text: "How often do you proactively send outbound DMs to potential clients?",
+        options: [
+            { score: 1, label: "Never, I wait for people to come to me" },
+            { score: 2, label: "Occasionally when I remember or feel motivated" },
+            { score: 3, label: "A few times per week but inconsistently" },
+            { score: 4, label: "Daily, I send 5-10 outbound DMs" },
+            { score: 5, label: "Daily without fail, 10+ outbound DMs with follow-up sequences" }
+        ]
+    },
+    {
+        category: "Engagement",
+        text: "Are you using Instagram Stories with interactive features (polls, questions, quizzes) to generate conversations?",
+        options: [
+            { score: 1, label: "I rarely or never post stories" },
+            { score: 2, label: "I post stories but without interactive features" },
+            { score: 3, label: "I occasionally use polls or questions" },
+            { score: 4, label: "I use interactive features 3-4 times per week" },
+            { score: 5, label: "Daily stories with deliberate interaction triggers that fill my DMs" }
+        ]
+    },
+    {
+        category: "Lead Generation",
+        text: "Do you have a lead magnet (free guide, checklist, template) that captures email addresses?",
+        options: [
+            { score: 1, label: "No, I do not have any lead magnet" },
+            { score: 2, label: "I have one but it is outdated or I never promote it" },
+            { score: 3, label: "I have one and promote it occasionally" },
+            { score: 4, label: "I have an active lead magnet I promote weekly" },
+            { score: 5, label: "I have an evergreen LM in my bio plus weekly organic LMs for DM conversations" }
+        ]
+    },
+    {
+        category: "Lead Generation",
+        text: "Are you following up with people who download your lead magnet or engage with your content?",
+        options: [
+            { score: 1, label: "No follow-up at all" },
+            { score: 2, label: "Sometimes, when I remember" },
+            { score: 3, label: "I have an automated email but no personal follow-up" },
+            { score: 4, label: "Automated email plus I DM most downloaders within a few days" },
+            { score: 5, label: "Automated email sequence plus personal DM within 24 hours, every time" }
+        ]
+    },
+    {
+        category: "Lead Generation",
+        text: "How many discovery calls or sales calls are you booking per week from social media?",
+        options: [
+            { score: 1, label: "Zero, none at all" },
+            { score: 2, label: "Maybe 1 per month if I am lucky" },
+            { score: 3, label: "1-2 per week" },
+            { score: 4, label: "3-5 per week consistently" },
+            { score: 5, label: "5+ per week with a full pipeline" }
+        ]
+    },
+    {
+        category: "Sales Readiness",
+        text: "Do you have a clear, structured sales call process or do you wing it?",
+        options: [
+            { score: 1, label: "I completely wing it every time" },
+            { score: 2, label: "I have a rough idea but no script or structure" },
+            { score: 3, label: "I have a basic structure but no objection handling" },
+            { score: 4, label: "I have a clear framework with discovery questions and closing technique" },
+            { score: 5, label: "Proven framework, objection handling scripts, and consistent 30%+ close rate" }
+        ]
+    },
+    {
+        category: "Sales Readiness",
+        text: "Do you have a referral system that generates new clients from existing ones?",
+        options: [
+            { score: 1, label: "No, I have never asked for referrals" },
+            { score: 2, label: "I ask occasionally but there is no system" },
+            { score: 3, label: "I ask sometimes after a good session" },
+            { score: 4, label: "I have a standard referral request I send within 24 hours" },
+            { score: 5, label: "Automated 24-hour request, 7-day window, weekly check-in, and monthly campaign" }
+        ]
+    },
+    {
+        category: "Sales Readiness",
+        text: "Are you actively re-engaging past clients who have not booked in 60+ days?",
+        options: [
+            { score: 1, label: "No, once they stop booking I move on" },
+            { score: 2, label: "I think about it but never do it" },
+            { score: 3, label: "I reach out to a few occasionally" },
+            { score: 4, label: "I run a reactivation campaign every few months" },
+            { score: 5, label: "Monthly reactivation with scripts, follow-ups, and incentives — it is a system" }
+        ]
+    }
+];
+
+const categories = ["Profile", "Content", "Engagement", "Lead Generation", "Sales Readiness"];
+const answers = {};
+let currentQuestion = 0;
+
+function renderQuestions() {
+    const container = document.getElementById('questionsContainer');
+    let html = '';
+
+    questions.forEach((q, i) => {
+        html += `
+        <div class="question-card ${i === 0 ? 'active' : ''}" id="q${i}">
+            <span class="question-category">${q.category}</span>
+            <div class="question-number">Question ${i + 1} of ${questions.length}</div>
+            <div class="question-text">${q.text}</div>
+            <div class="rating-options">
+                ${q.options.map(opt => `
+                    <div class="rating-option" onclick="selectAnswer(${i}, ${opt.score}, this)">
+                        <div class="rating-score score-${opt.score}">${opt.score}</div>
+                        <div class="rating-label">${opt.label}</div>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="question-nav">
+                <button class="btn btn-back" onclick="prevQuestion()" ${i === 0 ? 'style="visibility:hidden"' : ''}>Back</button>
+                ${i < questions.length - 1 ?
+                    `<button class="btn btn-next" id="nextBtn${i}" onclick="nextQuestion()" disabled>Next</button>` :
+                    `<button class="btn btn-submit" id="nextBtn${i}" onclick="showResults()" disabled>Get My Results</button>`
+                }
+            </div>
+        </div>`;
+    });
+
+    container.innerHTML = html;
+}
+
+function selectAnswer(qIndex, score, el) {
+    answers[qIndex] = score;
+    const card = document.getElementById(`q${qIndex}`);
+    card.querySelectorAll('.rating-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    const nextBtn = document.getElementById(`nextBtn${qIndex}`);
+    if (nextBtn) nextBtn.disabled = false;
+}
+
+function nextQuestion() {
+    if (currentQuestion >= questions.length - 1) return;
+    document.getElementById(`q${currentQuestion}`).classList.remove('active');
+    currentQuestion++;
+    document.getElementById(`q${currentQuestion}`).classList.add('active');
+    updateProgress();
+}
+
+function prevQuestion() {
+    if (currentQuestion <= 0) return;
+    document.getElementById(`q${currentQuestion}`).classList.remove('active');
+    currentQuestion--;
+    document.getElementById(`q${currentQuestion}`).classList.add('active');
+    updateProgress();
+}
+
+function updateProgress() {
+    document.getElementById('currentQ').textContent = currentQuestion + 1;
+    document.getElementById('progressFill').style.width = ((currentQuestion + 1) / questions.length * 100) + '%';
+}
+
+function showResults() {
+    document.getElementById('assessment').style.display = 'none';
+    document.getElementById('hero').style.display = 'none';
+    document.getElementById('results').classList.add('visible');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    const totalScore = Object.values(answers).reduce((a, b) => a + b, 0);
+    const maxScore = questions.length * 5;
+    const percentage = Math.round((totalScore / maxScore) * 100);
+
+    let grade, gradeClass, gradeDesc;
+    if (percentage < 30) {
+        grade = "Needs Urgent Attention";
+        gradeClass = "grade-critical";
+        gradeDesc = "Your social media is significantly underperforming. The good news? There are massive quick wins available that could transform your results within days.";
+    } else if (percentage < 50) {
+        grade = "Needs Work";
+        gradeClass = "grade-needs-work";
+        gradeDesc = "You have some foundations but there are clear gaps costing you leads and revenue every week. Focus on the quick wins below.";
+    } else if (percentage < 75) {
+        grade = "Good Foundation";
+        gradeClass = "grade-good";
+        gradeDesc = "You are doing a lot right but there is still significant room to optimise. Fixing the gaps below could double your results.";
+    } else {
+        grade = "Excellent";
+        gradeClass = "grade-excellent";
+        gradeDesc = "Your social media game is strong. Fine-tune the areas below to go from good to exceptional.";
+    }
+
+    document.getElementById('scoreHero').innerHTML = `
+        <div class="score-hero-label">Your Social Media Score</div>
+        <div class="score-hero-number ${gradeClass}">${totalScore}</div>
+        <div class="score-hero-total">out of ${maxScore}</div>
+        <div class="score-hero-grade ${gradeClass}">${grade}</div>
+        <div class="score-hero-desc">${gradeDesc}</div>
+    `;
+
+    // Category scores
+    const catScores = {};
+    const catMax = {};
+    questions.forEach((q, i) => {
+        if (!catScores[q.category]) { catScores[q.category] = 0; catMax[q.category] = 0; }
+        catScores[q.category] += answers[i] || 0;
+        catMax[q.category] += 5;
+    });
+
+    let catHTML = '';
+    categories.forEach(cat => {
+        const score = catScores[cat] || 0;
+        const max = catMax[cat] || 1;
+        const pct = Math.round((score / max) * 100);
+        let color = pct < 40 ? 'var(--red-pain)' : pct < 60 ? 'var(--amber)' : pct < 80 ? 'var(--teal)' : 'var(--green)';
+
+        catHTML += `
+        <div class="category-card">
+            <div class="category-name">${cat}</div>
+            <div class="category-score-row">
+                <div class="category-score-num" style="color:${color}">${score}</div>
+                <div class="category-score-max">/ ${max}</div>
+            </div>
+            <div class="category-bar">
+                <div class="category-bar-fill" style="width:${pct}%; background:${color};"></div>
+            </div>
+        </div>`;
+    });
+    document.getElementById('categoryScores').innerHTML = catHTML;
+
+    // Recommendations
+    const recs = [];
+    const recMap = [
+        { q: 0, threshold: 3, priority: "high", title: "Upgrade Your Profile Photo", desc: "Your profile photo is the first thing people see. Get a clear, professional headshot that instantly communicates trust and authority.", tag: "Quick Win", tagClass: "tag-quick" },
+        { q: 1, threshold: 3, priority: "high", title: "Rewrite Your Bio", desc: "Your bio should clearly state: who you help, what result you deliver, and a CTA. Use this formula: I help [WHO] achieve [WHAT] through [METHOD].", tag: "Quick Win", tagClass: "tag-quick" },
+        { q: 2, threshold: 3, priority: "high", title: "Fix Your Link in Bio", desc: "Your link should go directly to a lead capture page (opt-in form or booking page), not your homepage. Every visitor who leaves without opting in is a lost lead.", tag: "Quick Win", tagClass: "tag-quick" },
+        { q: 3, threshold: 3, priority: "medium", title: "Increase Posting Consistency", desc: "Aim for 5-6 posts per week using the 50/50 split: 50% pain-point content, 50% expertise content. Use AI tools to cut creation time by 70%.", tag: "This Week", tagClass: "tag-medium" },
+        { q: 4, threshold: 3, priority: "high", title: "Address Your Client's Pain Points", desc: "At least 50% of your content should speak directly to your ideal client's frustrations. This is what makes them DM you. Pull pain language from sales calls.", tag: "Quick Win", tagClass: "tag-quick" },
+        { q: 5, threshold: 3, priority: "medium", title: "Add CTAs to Every Post", desc: "Every post needs a clear call to action: DM me [KEYWORD], link in bio, or book a call. Without a CTA, even great content does not convert.", tag: "Quick Win", tagClass: "tag-quick" },
+        { q: 6, threshold: 3, priority: "high", title: "Start More DM Conversations", desc: "Your DMs should be generating 5-15 conversations per day from stories and content. Use interactive story features (polls, questions) as conversation triggers.", tag: "This Week", tagClass: "tag-medium" },
+        { q: 7, threshold: 3, priority: "high", title: "Implement Daily Outbound DMs", desc: "Send 10 new outbound DMs per day plus 5 follow-ups. This is the #1 revenue activity. Use proven scripts and follow up on Day 3, 7, and 14.", tag: "This Week", tagClass: "tag-medium" },
+        { q: 8, threshold: 3, priority: "medium", title: "Use Story Interaction Triggers", desc: "Post 5-10 stories per day with polls, question boxes, and quizzes. DM everyone who interacts within 2 hours. This fills your inbox on autopilot.", tag: "This Week", tagClass: "tag-medium" },
+        { q: 9, threshold: 3, priority: "high", title: "Create a Lead Magnet", desc: "Build a free PDF guide, checklist, or template that solves one specific problem for your ideal client. Put it in your link in bio and promote it weekly.", tag: "This Week", tagClass: "tag-medium" },
+        { q: 10, threshold: 3, priority: "high", title: "Follow Up With Every Lead", desc: "Every lead magnet downloader and content engager should get a personal DM within 24-48 hours. The follow-up is where the sale starts, not the content.", tag: "This Week", tagClass: "tag-medium" },
+        { q: 11, threshold: 3, priority: "high", title: "Book More Discovery Calls", desc: "If you are not booking 3-5 calls per week, your DM-to-call conversion needs work. Use the call booking transition script after every engaged conversation.", tag: "This Week", tagClass: "tag-medium" },
+        { q: 12, threshold: 3, priority: "medium", title: "Build a Sales Call Framework", desc: "Stop winging your calls. Use a 7-step framework: Opening, Discovery (5 questions), Bridge, Pitch, Close, Objection Handling, Follow-Up.", tag: "This Week", tagClass: "tag-medium" },
+        { q: 13, threshold: 3, priority: "medium", title: "Launch a Referral System", desc: "Send a referral request within 24 hours of every great session. Give a 7-day deadline with a mutual incentive. Run a monthly campaign to all active clients.", tag: "This Week", tagClass: "tag-medium" },
+        { q: 14, threshold: 3, priority: "medium", title: "Reactivate Past Clients", desc: "Message every past client who has not booked in 60+ days. A warm personalised DM with a small incentive can generate thousands in rebookings within 7 days.", tag: "Quick Win", tagClass: "tag-quick" }
+    ];
+
+    recMap.forEach((r, i) => {
+        if ((answers[r.q] || 0) <= r.threshold) {
+            recs.push(r);
+        }
+    });
+
+    recs.sort((a, b) => (a.priority === 'high' ? 0 : 1) - (b.priority === 'high' ? 0 : 1));
+
+    let recHTML = '';
+    recs.slice(0, 6).forEach((r, i) => {
+        recHTML += `
+        <div class="rec-card" style="animation-delay: ${0.1 + i * 0.08}s">
+            <div class="rec-priority ${r.priority === 'high' ? 'priority-high' : 'priority-medium'}">${i + 1}</div>
+            <div class="rec-content">
+                <h3>${r.title}</h3>
+                <p>${r.desc}</p>
+                <span class="rec-tag ${r.tagClass}">${r.tag}</span>
+            </div>
+        </div>`;
+    });
+
+    if (recs.length === 0) {
+        recHTML = '<div class="rec-card"><div class="rec-content"><h3>You are crushing it!</h3><p>Your social media is performing well across all areas. Focus on consistency and scaling what is already working.</p></div></div>';
+    }
+
+    document.getElementById('recCards').innerHTML = recHTML;
+}
+
+renderQuestions();
+</script>
+
+</body>
+</html>
