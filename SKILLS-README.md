@@ -12,6 +12,7 @@ Facebook and Instagram paid advertising content.
 
 - **[Meta Ad Copy](1-meta-ads/meta-ad-copy/)** - Generate performance-optimised Meta ad copy based on historical campaign data with real-time API analysis
 - **[Meta Ad Competitor](1-meta-ads/meta-ad-competitor/)** - ⏳ **Awaiting API Approval** - Analyse competitor Meta ads (Alex Hormozi, Dan Martell, etc.), extract winning hooks, generate hybrid variations in Ben's voice
+- **[Meta Page Spy](1-meta-ads/meta-page-spy/)** ✅ **READY** - Spy on any Facebook page: organic posts + paid ads combined intelligence report. Posting frequency, content types, engagement metrics, hook/CTA patterns, posting schedule, offer positioning.
 
 ---
 
@@ -19,6 +20,7 @@ Facebook and Instagram paid advertising content.
 
 Organic Instagram content (captions, stories, reels).
 
+- **[Instagram Page Spy](2-instagram/instagram-page-spy/)** ✅ **READY** - Spy on any Instagram profile: content breakdown, engagement rates, top posts, hook/CTA patterns, posting schedule, caption analysis, hashtag strategy.
 - **[Instagram Caption](2-instagram/instagram-caption/)** ✅ **DATA LOADED** - Generate Instagram captions matching Ben's exact voice. 41 posts analyzed, top hooks identified (808 engagement!), proven patterns documented. Carousel posts perform best (161 avg). Use 800+ character captions for max engagement.
 
 ---

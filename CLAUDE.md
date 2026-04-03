@@ -104,6 +104,14 @@ For detailed channel rules (Instagram Captions, YouTube Scripts, Email Campaigns
 
 Quick summary per channel:
 
+### Instagram Page Spy
+- **SKILL AVAILABLE:** `instagram-page-spy` - Spy on any Instagram profile
+- **Scraper:** `2-instagram/instagram-page-spy/ig_spy.py` (Apify instagram-scraper)
+- Combined intelligence report: content types, engagement metrics, hook/CTA patterns, posting schedule, caption analysis, hashtags
+- Single profile deep-dive per run
+- Outputs to `2-instagram/instagram-page-spy/outputs/`
+- See `2-instagram/instagram-page-spy/skill.md` for full workflow
+
 ### Instagram Captions
 - **Performance data loaded** - 41 posts analyzed from @benhawksworth_ via Apify Instagram scraper
 - **Data sources:** `2-instagram/data/` (JSON exports, processed analytics)
@@ -163,6 +171,14 @@ Quick summary per channel:
 - Keep primary text under 125 characters for optimal performance
 - Headlines: 5-7 words, benefit-focused
 - See `1-meta-ads/meta-ad-copy/skill.md` for full prompt library
+
+### Meta Page Spy
+- **SKILL AVAILABLE:** `meta-page-spy` - Spy on any Facebook page (organic + paid)
+- **Scraper:** `1-meta-ads/meta-page-spy/page_spy.py` (Apify facebook-posts-scraper + Ad Library scraper)
+- Combined intelligence report: posting frequency, content types, engagement, hooks, CTAs, schedule, offer positioning
+- Single page deep-dive per run
+- Outputs to `1-meta-ads/meta-page-spy/outputs/`
+- See `1-meta-ads/meta-page-spy/skill.md` for full workflow
 
 ### LinkedIn Posts
 - Professional but personal
