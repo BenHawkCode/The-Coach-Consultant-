@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1.0">
+<title>TCC Reel Covers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+  }
+
+  .reel-cover {
+    width: 1080px;
+    height: 1920px;
+    position: relative;
+    overflow: hidden;
+    background: #0a0a0a;
+  }
+
+  /* --- Background image --- */
+  .reel-cover .bg-image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+
+  /* --- Gradient overlays --- */
+  .reel-cover .overlay-bottom {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+    z-index: 1;
+  }
+
+  .reel-cover .overlay-top {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 100%);
+    z-index: 1;
+  }
+
+  /* --- Logo --- */
+  .reel-cover .logo {
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    width: 200px;
+    z-index: 10;
+    opacity: 0.9;
+  }
+
+  /* --- Text content area --- */
+  .reel-cover .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 80px 70px 120px;
+    z-index: 5;
+  }
+
+  /* --- Tag pill --- */
+  .reel-cover .tag {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #7abfbf;
+    background: rgba(91, 154, 154, 0.2);
+    padding: 12px 28px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+  }
+
+  /* --- Title --- */
+  .reel-cover .title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 1.1;
+    color: #ffffff;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.8), 0 0 6px rgba(0,0,0,0.5);
+    margin-bottom: 24px;
+  }
+
+  /* --- Subtitle --- */
+  .reel-cover .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.75);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  }
+
+  /* --- Teal accent divider --- */
+  .reel-cover .divider {
+    width: 80px;
+    height: 4px;
+    background: #5B9A9A;
+    margin: 24px 0;
+    border-radius: 2px;
+  }
+
+  /* --- Play button hint --- */
+  .reel-cover .play-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    opacity: 0;
+  }
+
+  .reel-cover .play-hint::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 30px solid rgba(255,255,255,0.4);
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+    margin-left: 8px;
+  }
+
+  /* --- Layout: minimal (image dominant, small text) --- */
+  .reel-cover.layout-minimal .content {
+    padding: 60px 70px 100px;
+  }
+  .reel-cover.layout-minimal .title {
+    font-size: 56px;
+  }
+  .reel-cover.layout-minimal .overlay-bottom {
+    height: 40%;
+  }
+</style>
+</head>
+<body>
+
+<!--
+  REEL COVER TEMPLATE
+  Dimensions: 1080 x 1920 (9:16 Instagram Reel Cover)
+
+  Instructions:
+  1. Replace image src paths with file:// absolute paths to Ben images
+  2. Replace [LOGO-WHITE-BASE64] with contents of logo-white-base64.txt
+  3. Customise title, subtitle, and tag for each reel
+  4. Render with: node render-reel-covers.js reel-cover-template.html
+-->
+
+<!-- COVER 1: Discipline (Gym - Exercise Bike) -->
+<div class="reel-cover">
+  <img class="bg-image" src="DSC02347.jpg" alt="Ben Hawksworth">
+  <div class="overlay-top"></div>
+  <div class="overlay-bottom"></div>
+  <img class="logo" src="[LOGO-PATH]" alt="TCC">
+  <div class="content">
+    <div class="tag">Mindset</div>
+    <h1 class="title">Discipline Is The<br>Shortcut</h1>
+    <div class="divider"></div>
+    <p class="subtitle">Why most business owners stay stuck</p>
+  </div>
+</div>
+
+<!-- COVER 2: Systems (Gym - Neon) -->
+<div class="reel-cover">
+  <img class="bg-image" src="DSC02306.jpg" alt="Ben Hawksworth">
+  <div class="overlay-top"></div>
+  <div class="overlay-bottom"></div>
+  <img class="logo" src="[LOGO-PATH]" alt="TCC">
+  <div class="content">
+    <div class="tag">Systems</div>
+    <h1 class="title">Stop Trading<br>Time For Money</h1>
+    <div class="divider"></div>
+    <p class="subtitle">Build systems that scale without you</p>
+  </div>
+</div>
+
+<!-- COVER 3: Strength (Deadlift) -->
+<div class="reel-cover">
+  <img class="bg-image" src="DSC02314.jpg" alt="Ben Hawksworth">
+  <div class="overlay-top"></div>
+  <div class="overlay-bottom"></div>
+  <img class="logo" src="[LOGO-PATH]" alt="TCC">
+  <div class="content">
+    <div class="tag">Growth</div>
+    <h1 class="title">You Are One<br>Decision Away</h1>
+    <div class="divider"></div>
+    <p class="subtitle">The move that changes everything</p>
+  </div>
+</div>
+
+<!-- COVER 4: Business (Desk + Laptop) -->
+<div class="reel-cover">
+  <img class="bg-image" src="IMG_0202.JPG" alt="Ben Hawksworth">
+  <div class="overlay-top"></div>
+  <div class="overlay-bottom"></div>
+  <img class="logo" src="[LOGO-PATH]" alt="TCC">
+  <div class="content">
+    <div class="tag">Strategy</div>
+    <h1 class="title">Your Offer Is<br>Broken</h1>
+    <div class="divider"></div>
+    <p class="subtitle">How to fix it in 48 hours</p>
+  </div>
+</div>
+
+<!-- COVER 5: Authority (Speaking) -->
+<div class="reel-cover">
+  <img class="bg-image" src="Image-1.jpg" alt="Ben Hawksworth">
+  <div class="overlay-top"></div>
+  <div class="overlay-bottom"></div>
+  <img class="logo" src="[LOGO-PATH]" alt="TCC">
+  <div class="content">
+    <div class="tag">Sales</div>
+    <h1 class="title">Close More<br>Without Being Pushy</h1>
+    <div class="divider"></div>
+    <p class="subtitle">The conversation framework that converts</p>
+  </div>
+</div>
+
+<!-- COVER 6: Leadership (Speaking Event) -->
+<div class="reel-cover">
+  <img class="bg-image" src="Image-2.jpg" alt="Ben Hawksworth">
+  <div class="overlay-top"></div>
+  <div class="overlay-bottom"></div>
+  <img class="logo" src="[LOGO-PATH]" alt="TCC">
+  <div class="content">
+    <div class="tag">Leadership</div>
+    <h1 class="title">Nobody Told<br>You This</h1>
+    <div class="divider"></div>
+    <p class="subtitle">The truth about scaling past 100K</p>
+  </div>
+</div>
+
+</body>
+</html>
