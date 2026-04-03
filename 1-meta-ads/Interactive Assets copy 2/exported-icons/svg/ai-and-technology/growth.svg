@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
-<polyline points="8,34 16,26 22,30 28,18 36,10" stroke="#5B9A9A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></polyline>
-<path d="M8,34 L16,26 L22,30 L28,18 L36,10 L36,34 Z" fill="rgba(91,154,154,0.08)"></path>
-<circle cx="36" cy="10" r="2.5" fill="#FF6B35"></circle>
-</svg>

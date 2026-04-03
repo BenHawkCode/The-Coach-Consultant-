@@ -120,8 +120,8 @@ Quick summary per channel:
 - **Best type:** Carousel posts (161 avg engagement vs 74 for videos)
 - One sentence per line, no emojis, no hashtags, no headers
 - See `docs/Ben-Claude-Projects-Instructions.txt` lines 1-75
-- **Performance insights:** `2-instagram/INSTAGRAM_DATA_OPTIONS.md`
-- **Scrapers available:** `apify_scraper.py`, `apify_simple.py`, `instagram_scraper.py`, `process_data.py`
+- **Performance insights:** `2-instagram/data/INSTAGRAM_DATA_OPTIONS.md`
+- **Scrapers available:** `2-instagram/scrapers/apify_scraper.py`, `apify_simple.py`, `instagram_scraper.py`, `process_data.py`
 
 ### YouTube Scripts
 - 12-15 min scripts (12,000-15,000 chars)
@@ -317,10 +317,10 @@ Before finalising ANY output, verify:
 - **Meta Ads:** Competitor analysis scraper ready (`1-meta-ads/meta-ad-competitor/apify_facebook_scraper.py`)
 
 **Data Processing Scripts:**
-- `2-instagram/apify_scraper.py` - Main Instagram scraper
-- `2-instagram/apify_simple.py` - Simplified scraper
-- `2-instagram/instagram_scraper.py` - Alternative scraper
-- `2-instagram/process_data.py` - Data processing pipeline
+- `2-instagram/scrapers/apify_scraper.py` - Main Instagram scraper
+- `2-instagram/scrapers/apify_simple.py` - Simplified scraper
+- `2-instagram/scrapers/instagram_scraper.py` - Alternative scraper
+- `2-instagram/scrapers/process_data.py` - Data processing pipeline
 - `1-meta-ads/meta-ad-competitor/apify_facebook_scraper.py` - Facebook ads scraper
 
 ---

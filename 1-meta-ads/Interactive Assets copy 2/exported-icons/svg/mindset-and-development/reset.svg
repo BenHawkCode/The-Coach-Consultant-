@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44" fill="none">
-<path d="M22 6 L22 12 M22 32 L22 38 M6 22 L12 22 M32 22 L38 22" stroke="#FFD166" stroke-width="1.5" stroke-linecap="round"></path>
-<circle cx="22" cy="22" r="10" stroke="#FFD166" stroke-width="1.5" fill="rgba(255,209,102,0.06)"></circle>
-<path d="M22 12 A10 10 0 0 1 32 22" stroke="#FF6B35" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
-</svg>
