@@ -38,7 +38,7 @@
 **Why It Works:**
 - ✅ Contrarian positioning (Ben's signature style)
 - ✅ Pattern interrupt ("BadBizAdvice" flags irony)
-- ✅ Specific pain points coaches face
+- ✅ Specific pain points business owners face
 - ✅ Curiosity gap (what's the RIGHT advice?)
 
 **Formula:**

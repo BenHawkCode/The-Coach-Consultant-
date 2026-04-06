@@ -484,7 +484,7 @@ def create_audience_update_prompt():
     doc.add_paragraph("")
 
     add_heading(doc, "When to Use This", level=2)
-    add_bullet(doc, "You have narrowed your niche (e.g. from 'coaches' to 'fitness coaches')")
+    add_bullet(doc, "You have narrowed your niche (e.g. from 'business owners' to 'fitness business owners')")
     add_bullet(doc, "Your ideal client profile has changed (different revenue level, different stage)")
     add_bullet(doc, "You have updated your audience's key pain points based on new research")
     add_bullet(doc, "You are pivoting to serve a different market segment")
@@ -499,7 +499,7 @@ Every project should speak to and create content for my updated ideal client.
 
 MY UPDATED TARGET AUDIENCE:
 
-Who I help: [e.g. "Female fitness coaches in the UK"]
+Who I help: [e.g. "Female fitness business owners in the UK"]
 Their stage: [e.g. "Making £50K-£150K, 1-3 years in business"]
 Their biggest pain points:
 - [Pain point 1 - e.g. "Stuck trading time for money with 1-1 clients"]
@@ -514,7 +514,7 @@ What they want:
 Language they use: [e.g. "They say 'I am always busy but not making more money', 'I know I should be doing more online', 'I do not know where to start with scaling'"]
 
 OLD AUDIENCE REFERENCES TO REPLACE:
-- Old niche: [e.g. "coaches and consultants"]
+- Old niche: [e.g. "business owners and service providers"]
 - Old descriptors: [e.g. "business owners", "entrepreneurs"]
 - Old pain points to remove: [e.g. "struggling to get started"]
 

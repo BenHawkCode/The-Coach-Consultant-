@@ -49,7 +49,7 @@ For each ad (competitor + yours), extract:
    - Pain Point ("Struggling with X?")
    - Metric/Result ("I added £50K in 90 days")
    - Question ("Want to know how?")
-   - Bold Statement ("Most coaches are doing this wrong")
+   - Bold Statement ("Most business owners are doing this wrong")
    - Story ("When I first started...")
 
 2. **Opening Line**: First 125 characters (before "see more" cutoff)
@@ -244,7 +244,7 @@ Format: `outputs/alex-hormozi-2026-03-19-analysis.md`
 ### UK Market Focus
 Always prioritize ads shown in UK/GB market since:
 - Ben is UK-based
-- Primary audience is UK coaches/consultants
+- Primary audience is UK business owners and service providers
 - Currency should be GBP (£) not USD ($)
 
 ## Example Interactions

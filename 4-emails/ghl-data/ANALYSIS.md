@@ -166,7 +166,7 @@ Need more granular segments for targeting.
 
 ### 4. Content Themes
 Based on Ben's business:
-- AI automation for coaches
+- AI automation for business owners
 - Client onboarding systems
 - CRM optimization
 - Email marketing automation

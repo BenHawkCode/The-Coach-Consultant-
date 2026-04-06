@@ -171,7 +171,7 @@ python scripts/generate_caption.py --topic "your topic"
 ### Future Enhancements
 - [ ] Claude API integration for full automation
 - [ ] Real-time Meta API data refresh
-- [ ] Competitor analysis (scrape other coaches)
+- [ ] Competitor analysis (scrape other business owners)
 - [ ] Hashtag optimization
 - [ ] A/B testing automation
 - [ ] Performance tracking dashboard

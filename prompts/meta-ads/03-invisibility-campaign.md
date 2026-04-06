@@ -1,13 +1,13 @@
 # 03. Invisibility Campaign
 
-**What This Does:** Generate ad copy for brilliant coaches with zero online presence
+**What This Does:** Generate ad copy for brilliant business owners with zero online presence
 
 ---
 
 ## Prompt
 
 ```
-Read 1-meta-ads/meta-ad-copy/skill.md and follow the instructions to generate meta ad copy for coaches with amazing client results but completely invisible online. They rely 100% on referrals. Campaign goal: book a visibility call.
+Read 1-meta-ads/meta-ad-copy/skill.md and follow the instructions to generate meta ad copy for business owners with amazing client results but completely invisible online. They rely 100% on referrals. Campaign goal: book a visibility call.
 ```
 
 ---
@@ -35,7 +35,7 @@ When skill asks questions, answer:
 3-5 variations targeting invisibility pain:
 - "Brilliant results. Zero visibility. Sound familiar?"
 - "100% referrals = feast or famine client flow"
-- "1,200+ coaches went from invisible to visible. Free call → your system."
+- "1,200+ business owners went from invisible to visible. Free call → your system."
 
 ---
 

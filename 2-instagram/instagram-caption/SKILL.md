@@ -118,7 +118,7 @@ Generate Instagram caption with performance analysis about "pricing strategy"
 
 ```bash
 # Create 3 variations for testing
-Generate 3 Instagram caption variants about "Meta ads for coaches"
+Generate 3 Instagram caption variants about "Meta ads for business owners"
 ```
 
 ### Performance Report Only
@@ -159,7 +159,7 @@ Show Instagram performance analysis for last 50 posts
 - No full stops, no headers
 - Max 15-20 lines
 - British English (organisation, behaviour)
-- Target: coaches, consultants, service providers
+- Target: business owners and service providers
 - CTA: www.thecoachconsultant.uk
 
 ## Performance Metrics Tracked

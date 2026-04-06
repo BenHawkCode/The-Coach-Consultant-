@@ -122,7 +122,7 @@ Generate 5 new ad variations using:
 **Priority 3: Your Objective** (ALWAYS)
 - Match campaign objective (Lead Gen vs Awareness)
 - Adapt to your specific offer
-- Keep target audience (coaches/consultants) in mind
+- Keep target audience (business owners and service providers) in mind
 
 Each variation includes:
 - Primary text (under 125 chars for optimal performance)
@@ -260,9 +260,9 @@ Based on 561 ads analyzed, here are the highest-performing patterns:
 3. Generates 5 ads in "Alex Hormozi style" but for Ben's coaching scorecard offer
 4. Example output:
 ```
-👉 Join 300+ coaches, consultants and service providers collectively adding £2.5M+ in revenue using this exact system.
+👉 Join 300+ business owners, consultants and service providers collectively adding £2.5M+ in revenue using this exact system.
 
-🎯 Our mission: Help 10,000 UK coaches escape manual overwhelm
+🎯 Our mission: Help 10,000 UK business owners escape manual overwhelm
 ⚡ Simple setup: Download scorecard, implement 3 changes, see results in 7 days
 💰 Proven method: Top performers use this to identify their biggest revenue leak
 

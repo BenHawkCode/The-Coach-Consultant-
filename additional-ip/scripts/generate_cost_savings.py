@@ -181,7 +181,7 @@ def main():
     )
     doc.add_paragraph("")
     add_para(doc, "Category Total: \u00a311,400/month (\u00a3136,800/year)", bold=True)
-    add_para(doc, "A content marketing team of 5 specialists. Most coaches hire at least 2 of these roles before they hit \u00a3200K. You're getting all 5.")
+    add_para(doc, "A content marketing team of 5 specialists. Most business owners hire at least 2 of these roles before they hit \u00a3200K. You're getting all 5.")
     doc.add_paragraph("")
 
     # Category 2
@@ -198,7 +198,7 @@ def main():
     )
     doc.add_paragraph("")
     add_para(doc, "Category Total: \u00a39,700/month (\u00a3116,400/year)", bold=True)
-    add_para(doc, "Most coaches outsource just ONE of these and spend \u00a31,500-\u00a32,500/month on it. This gives you all 5 platforms covered.")
+    add_para(doc, "Most business owners outsource just ONE of these and spend \u00a31,500-\u00a32,500/month on it. This gives you all 5 platforms covered.")
     doc.add_paragraph("")
 
     # Category 3
@@ -250,7 +250,7 @@ def main():
     )
     doc.add_paragraph("")
     add_para(doc, "Category Total: \u00a313,500/month (\u00a3162,000/year)", bold=True)
-    add_para(doc, "Operations is where most coaches haemorrhage time. An operations manager alone costs \u00a336,000+/year. A part-time CFO runs \u00a33,200+. You're getting the entire ops department plus strategic finance and automation.")
+    add_para(doc, "Operations is where most business owners haemorrhage time. An operations manager alone costs \u00a336,000+/year. A part-time CFO runs \u00a33,200+. You're getting the entire ops department plus strategic finance and automation.")
     doc.add_paragraph("")
 
     # Category 6
@@ -326,7 +326,7 @@ def main():
     # ── REAL COMPARISON ──
     doc.add_paragraph("")
     add_heading(doc, "The Real Comparison")
-    add_para(doc, "Most coaches at \u00a350K-\u00a3150K revenue hire 1-3 of these roles and spend:")
+    add_para(doc, "Most business owners at \u00a350K-\u00a3150K revenue hire 1-3 of these roles and spend:")
     doc.add_paragraph("")
     add_table(doc,
         ['Typical Hire', 'Monthly Cost'],

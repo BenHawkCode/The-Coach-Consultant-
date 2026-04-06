@@ -405,9 +405,9 @@ def create_start_here():
     add_para(doc, "Each project's instructions contain placeholders in square brackets. Before pasting the instructions into Claude, replace these with your own details:")
     doc.add_paragraph("")
     add_bullet(doc, "[YOUR BRAND NAME] \u2014 Your business or personal brand name")
-    add_bullet(doc, "[YOUR NICHE] \u2014 e.g. 'fitness coaches', 'business consultants', 'wellness practitioners'")
+    add_bullet(doc, "[YOUR NICHE] \u2014 e.g. 'fitness business owners', 'business consultants', 'wellness practitioners'")
     add_bullet(doc, "[YOUR TONE] \u2014 e.g. 'warm and conversational', 'direct and professional', 'energetic and motivating'")
-    add_bullet(doc, "[YOUR AUDIENCE] \u2014 e.g. 'coaches scaling to six figures', 'consultants who want more clients'")
+    add_bullet(doc, "[YOUR AUDIENCE] \u2014 e.g. 'business owners scaling to six figures', 'consultants who want more clients'")
     add_bullet(doc, "[YOUR CTA] \u2014 Your main call to action, e.g. 'Book a free call at yoursite.com'")
     add_bullet(doc, "[YOUR WEBSITE] \u2014 Your website URL")
     add_bullet(doc, "[YOUR OFFER] \u2014 Your main product or service name")
@@ -2374,7 +2374,7 @@ KNOWLEDGE_PROMPTS = {
         {"title": "Prepare: Existing Legal Documents",
          "prompt": "Upload any existing legal documents: terms of service, privacy policy, contracts, disclaimers, or service agreements. Even outdated versions are useful. If you've received legal advice or templates from a solicitor, include those too."},
         {"title": "Prepare: Industry Compliance Requirements",
-         "prompt": "Research and document any compliance requirements specific to your industry. For coaches and consultants this typically includes: data protection (GDPR if UK or EU), financial claims disclaimers, testimonial disclosure rules, and professional indemnity requirements."},
+         "prompt": "Research and document any compliance requirements specific to your industry. For business owners and service providers this typically includes: data protection (GDPR if UK or EU), financial claims disclaimers, testimonial disclosure rules, and professional indemnity requirements."},
         {"title": "Prepare: Contract Templates",
          "prompt": "Upload any contracts or service agreements you currently use with clients. Include: engagement letters, scope-of-work documents, NDAs, or partnership agreements. Note which ones were created with legal help and which you drafted yourself."},
         {"title": "Generate: Policy Framework",

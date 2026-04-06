@@ -86,7 +86,7 @@
 - "£50K→£200K transformations" (exact numbers)
 - "60-70% time on operations" (precise percentages)
 - "10x output in 90% less time" (quantified value)
-- "300+ coaches using frameworks" (social proof with numbers)
+- "300+ business owners using frameworks" (social proof with numbers)
 
 ---
 
@@ -166,7 +166,7 @@ Before publishing ANY content:
 - [ ] British English spelling throughout?
 - [ ] Zero AI phrases slipped through?
 - [ ] First and last sections have same energy/depth?
-- [ ] Target = "coaches, consultants and service providers" (NOT just "coaches")?
+- [ ] Target = "business owners and service providers" (NEVER say just "coaches")?
 - [ ] Specific numbers/metrics included?
 - [ ] Real example or client story referenced?
 - [ ] Challenge conventional belief somewhere?

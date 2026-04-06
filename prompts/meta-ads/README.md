@@ -11,8 +11,8 @@ Each prompt uses the skill's **actual features** (4-question flow, API data, 3-5
 | # | Prompt | What It Does | When to Use |
 |---|--------|--------------|-------------|
 | 01 | Basic Generation | Standard workflow - 4 questions, get variations | First time, standard campaigns |
-| 02 | Manual Overwhelm Campaign | Target coaches drowning in admin | Pain: Time waste, 60% admin work |
-| 03 | Invisibility Campaign | Target brilliant but invisible coaches | Pain: Zero visibility, 100% referrals |
+| 02 | Manual Overwhelm Campaign | Target business owners drowning in admin | Pain: Time waste, 60% admin work |
+| 03 | Invisibility Campaign | Target brilliant but invisible business owners | Pain: Zero visibility, 100% referrals |
 | 04 | Webinar Registration | Generate event promo copy | Campaign goal: Event sign-ups |
 | 05 | API Data Analysis First | Analyze patterns before generating | Data-driven decisions, strategy planning |
 
@@ -48,8 +48,8 @@ Each prompt uses the skill's **actual features** (4-question flow, API data, 3-5
 ### Step 1: Pick Your Scenario
 
 - **New campaign, not sure where to start?** → [01-basic-generation.md](01-basic-generation.md)
-- **Target admin-overwhelmed coaches?** → [02-manual-overwhelm-campaign.md](02-manual-overwhelm-campaign.md)
-- **Target invisible coaches (no online presence)?** → [03-invisibility-campaign.md](03-invisibility-campaign.md)
+- **Target admin-overwhelmed business owners?** → [02-manual-overwhelm-campaign.md](02-manual-overwhelm-campaign.md)
+- **Target invisible business owners (no online presence)?** → [03-invisibility-campaign.md](03-invisibility-campaign.md)
 - **Promoting a webinar/masterclass?** → [04-webinar-registration.md](04-webinar-registration.md)
 - **Want to see what's working in your account first?** → [05-api-data-analysis-first.md](05-api-data-analysis-first.md)
 

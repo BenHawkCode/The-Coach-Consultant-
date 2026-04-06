@@ -214,7 +214,7 @@ All three pain tiers interconnected. Can't solve visibility without solving manu
 - "AI tools for consultants"
 - "how to automate coaching business"
 - "best AI for content creation"
-- "coaches using AI successfully"
+- "business owners using AI successfully"
 - "how to scale beyond 1-1 delivery"
 
 ---

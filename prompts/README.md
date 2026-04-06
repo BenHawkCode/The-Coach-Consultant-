@@ -10,8 +10,8 @@ Business-specific prompts for The Coach Consultant team.
 ✅ **5 prompts available** - For the `/meta-ad-copy` skill
 
 1. **Basic Generation** - Standard 4-question workflow
-2. **Manual Overwhelm Campaign** - Target coaches drowning in admin
-3. **Invisibility Campaign** - Target brilliant but invisible coaches
+2. **Manual Overwhelm Campaign** - Target business owners drowning in admin
+3. **Invisibility Campaign** - Target brilliant but invisible business owners
 4. **Webinar Registration** - Event promo copy
 5. **API Data Analysis First** - Analyze patterns before generating
 

@@ -221,7 +221,7 @@ python scripts/fetch_posts.py          # Update data
 python scripts/analyze_performance.py  # Find patterns
 
 # When creating content
-python scripts/generate_caption.py --topic "Meta ads for coaches"
+python scripts/generate_caption.py --topic "Meta ads for business owners"
 
 # A/B testing
 python scripts/generate_caption.py --topic "client retention" --variants 3

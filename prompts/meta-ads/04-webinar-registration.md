@@ -34,7 +34,7 @@ Example: "Free masterclass: Build predictable client flow system (March 15, 7pm 
 ## Expected Output
 
 3-5 variations with event-specific CTAs:
-- "Free masterclass: Predictable client flow. March 15. 300+ coaches attended last time."
+- "Free masterclass: Predictable client flow. March 15. 300+ business owners attended last time."
 - "Sound familiar? Feast-or-famine revenue. Free masterclass → the system 1,200+ use."
 - "Register now: The 3-step client acquisition system. Limited spots."
 

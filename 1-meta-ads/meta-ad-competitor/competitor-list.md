@@ -33,7 +33,7 @@ These people eat, sleep and breathe paid media. Their own ads are their portfoli
 |---|------|----------------|
 | 11 | Billy Gene Shaw | Known for creative that stops the scroll. Entertaining hooks with direct response underneath. |
 | 12 | Molly Pittman | Ex-DigitalMarketer. Teaches Meta ads and runs excellent creative herself. |
-| 13 | Cat Howell | Agency owner focused on Meta ads for coaches. Very close to our market. |
+| 13 | Cat Howell | Agency owner focused on Meta ads for business owners and service providers. Very close to our market. |
 | 14 | Nick Shackelford | DTC and performance creative specialist. Studies in visual hooks and UGC-style ads. |
 | 15 | Khalid Hamadeh | Structured Media. Runs massive ad spend with methodical creative testing. |
 | 16 | Andrew Hubbard | Webinar and course ads specialist. Clean, proven formats. |

@@ -28,7 +28,7 @@ Transform manual-process-trapped experts into AI-amplified authorities achieving
 - Complete business ecosystem integration
 
 **Proof Points:**
-- 300+ coaches using frameworks
+- 300+ business owners using frameworks
 - £50K→£200K transformations
 - Kitchen table → authority positioning (90 days)
 - Measured, evidence-based results
@@ -210,7 +210,7 @@ ic dashboards (15 mins)
 ### Confidence Markers
 
 **Evidence-Based:**
-- 300+ coaches using frameworks successfully
+- 300+ business owners using frameworks successfully
 - Documented transformations (£50K→£200K)
 - Measured results (10x output, 90% time reduction)
 

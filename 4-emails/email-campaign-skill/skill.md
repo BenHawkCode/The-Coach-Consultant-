@@ -53,7 +53,7 @@ Time pressure does NOT excuse skipping quality checks.
 | Line breaks | One sentence per line | No long paragraphs |
 | Length | 20-30 lines minimum | Count before sending |
 | British English | See UK spelling guide below | organisation, whilst, systematise |
-| Audience | coaches, consultants and service providers | All three, always |
+| Audience | business owners and service providers | Both, always |
 | CTA | Soft (CHAT, CONNECT, START) | Reply READY |
 | Sign off | Ben<br>www.thecoachconsultant.uk | No "Best," or "Cheers," |
 | Subject | CampaignName \| Headline | Free Consult \| What happens next |
@@ -348,7 +348,7 @@ You have **471 emails analyzed** with **353 unique subjects**.
 **Hook (first 3 lines):**
 - Must answer: "Why should I keep reading?"
 - Use pattern recognition or curiosity gap
-- Example: "Most coaches who book these calls come in with vague goals"
+- Example: "Most business owners who book these calls come in with vague goals"
 
 **Body structure:**
 - Short sentences
@@ -480,7 +480,7 @@ Run this checklist for EVERY email:
 - [ ] Subject line from proven patterns (not invented)
 - [ ] Structure: Hi {{first_name}}, one sentence per line, 20-30+ lines
 - [ ] British English (organisation not organization)
-- [ ] Target audience: coaches, consultants and service providers
+- [ ] Target audience: business owners and service providers
 - [ ] CTA present and specific
 - [ ] Sign off: Ben + www.thecoachconsultant.uk
 - [ ] Voice score 8+/10

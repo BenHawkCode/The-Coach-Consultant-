@@ -1,13 +1,13 @@
 # 02. Manual Overwhelm Campaign
 
-**What This Does:** Generate ad copy targeting coaches drowning in admin work
+**What This Does:** Generate ad copy targeting business owners drowning in admin work
 
 ---
 
 ## Prompt
 
 ```
-Read 1-meta-ads/meta-ad-copy/skill.md and follow the instructions to generate meta ad copy for coaches spending 60-70% of their time on admin instead of coaching. Campaign goal: book a free strategy call.
+Read 1-meta-ads/meta-ad-copy/skill.md and follow the instructions to generate meta ad copy for business owners spending 60-70% of their time on admin instead of coaching. Campaign goal: book a free strategy call.
 ```
 
 ---
@@ -34,13 +34,13 @@ When skill asks questions, answer:
 
 3-5 variations targeting time-waste pain:
 - "60% admin work, 40% coaching. Sound familiar?"
-- "Most coaches waste £30K/year on manual tasks AI does in seconds"
-- "300+ coaches cut admin by 90%. Free call → your system."
+- "Most business owners waste £30K/year on manual tasks AI does in seconds"
+- "300+ business owners cut admin by 90%. Free call → your system."
 
 ---
 
 ## When to Use
 
-- Target audience: Solo coaches, no VA/team
+- Target audience: Solo business owners, no VA/team
 - Pain point: Buried in spreadsheets, Calendly links, invoice chasing
 - Transformation: 90% less admin time

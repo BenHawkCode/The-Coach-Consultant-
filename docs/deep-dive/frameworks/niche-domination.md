@@ -9,7 +9,7 @@
 
 ### Why This Niche Has Massive Growth Potential
 
-**Revenue Range:** £50K-£150K coaches ready to invest in proper systems
+**Revenue Range:** £50K-£150K business owners ready to invest in proper systems
 
 **Market Size:** Thousands of brilliant experts trapped in manual processes across the UK
 
@@ -28,21 +28,21 @@
 ### 1. The Authenticity-AI Bridge
 Everyone's either pure AI (sounds robotic) or pure human (doesn't scale). You solve the integration - proving AI amplifies authenticity instead of destroying it.
 
-### 2. Dual Expertise Coaches
+### 2. Dual Expertise Business Owners
 Most focus on either business strategy OR personal development. Your Alex Morgan avatar needs both. This hybrid expertise is rare and valuable.
 
 ### 3. Implementation Reality
-Coaches get tools but no systematic integration. You provide complete operating systems (not random point solutions).
+Business owners get tools but no systematic integration. You provide complete operating systems (not random point solutions).
 
 **Core Positioning:**
-"This isn't about generalist coaching anymore - this is about being the authority for coaches who want to scale intelligently using AI without losing their soul."
+"This isn't about generalist coaching anymore - this is about being the authority for business owners who want to scale intelligently using AI without losing their soul."
 
 ---
 
 ## Step 1: Choose Your Specific and Profitable Niche
 
 ### Target Profile
-- **Who:** Coaches, consultants, service providers
+- **Who:** Business owners and service providers
 - **Revenue:** £50K-£150K annually
 - **Location:** UK (Birmingham, Manchester, Leeds focus)
 - **Situation:** Brilliant but invisible, manual work overwhelmed
@@ -84,7 +84,7 @@ Coaches get tools but no systematic integration. You provide complete operating 
 **Credibility Markers:**
 - 2018 meal prep collapse (£60K/month crash teaching systems-before-scale)
 - Multi-7 figure journey from chaos to order
-- 300+ coaches using frameworks successfully
+- 300+ business owners using frameworks successfully
 - £50K→£200K transformation case studies
 
 ---
@@ -165,7 +165,7 @@ Personal brand that doesn't feel salesy.
 
 ### Proven Results
 - £50K→£200K transformations
-- 300+ coaches using frameworks
+- 300+ business owners using frameworks
 - 10x output in 90% less time (measured)
 - Kitchen table → authority positioning (90 days)
 
@@ -216,7 +216,7 @@ Personal brand that doesn't feel salesy.
 
 ### Community Building
 - "AI-Forward Transformation Experts Who Actually Get Results"
-- 300+ coaches using frameworks
+- 300+ business owners using frameworks
 - From kitchen table warriors to systematic empire builders
 - Reject hustle culture, embrace intelligent automation
 

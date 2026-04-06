@@ -207,12 +207,12 @@ Agent said:
 **Baseline:**
 > "Quick one before our call
 >
-> I want to share something I see all the time with coaches consultants and service providers"
+> I want to share something I see all the time with business owners and service providers"
 
 **With skill:**
 > "Quick one before we speak
 >
-> There's a pattern I see all the time with coaches, consultants and service providers"
+> There's a pattern I see all the time with business owners and service providers"
 
 **Analysis:** Both similar, but skill version has proper commas, "speak" vs "call"
 

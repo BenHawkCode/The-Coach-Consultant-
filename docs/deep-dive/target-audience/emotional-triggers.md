@@ -1,29 +1,29 @@
 # Emotional Marketing Triggers - 10 Core Triggers
 
 **Source:** IP Folder - "24. Emotional Triggering.docx"
-**Target Audience:** 28-35 kitchen table coaches/consultants
+**Target Audience:** 28-35 kitchen table business owners and service providers
 **Last Updated:** March 11, 2026
 
 ---
 
 ## Overview
 
-Emotional marketing strategy for SmartScaling Systems targeting brilliant coaches/consultants who are "everyone's secret weapon but nobody's priority" - working from kitchen tables whilst competitors build empires.
+Emotional marketing strategy for SmartScaling Systems targeting brilliant business owners and service providers who are "everyone's secret weapon but nobody's priority" - working from kitchen tables whilst competitors build empires.
 
 ---
 
 ## 1. Fear of Missing Out (FOMO)
 
 ### The Reality
-Right now, less-skilled competitors are implementing AI systems whilst brilliant coaches debate authenticity.
+Right now, less-skilled competitors are implementing AI systems whilst brilliant business owners debate authenticity.
 
 ### Urgency Angles
 - "Every week you stay manual, competitors gain 50+ pieces of systematic authority content"
-- "Coaches implementing AI in 2025 will dominate those who wait until 2026"
+- "Business owners implementing AI in 2025 will dominate those who wait until 2026"
 - "The AI-authority gap is widening daily - here's who's already ahead..."
 
 ### Scarcity Positioning
-- "Only 50 coaches per quarter can access our full integration support"
+- "Only 50 business owners per quarter can access our full integration support"
 - "This systematic approach works best with our current client load of 12"
 - "Previous cohort filled in 48 hours - here's what they're building now..."
 
@@ -37,12 +37,12 @@ Right now, less-skilled competitors are implementing AI systems whilst brilliant
 ### Success Showcase
 - "£50K to £200K revenue transformations using AI systems whilst working fewer hours"
 - "From kitchen table to industry authority in 90 days"
-- "300+ coaches now using our frameworks to build systematic empires"
+- "300+ business owners now using our frameworks to build systematic empires"
 
 ### Belonging Language
-- "Join the coaches who've cracked the AI authenticity code"
+- "Join the business owners who've cracked the AI authenticity code"
 - "You belong with experts who amplify impact, not just collect clients"
-- "This is for coaches who think bigger than manual processes"
+- "This is for business owners who think bigger than manual processes"
 
 ---
 
@@ -54,7 +54,7 @@ Right now, less-skilled competitors are implementing AI systems whilst brilliant
 - "Teaching transformation whilst your own business stays manually trapped"
 
 ### Social Cost Framing
-- "Brilliant coaches staying invisible whilst average ones build empires"
+- "Brilliant business owners staying invisible whilst average ones build empires"
 - "Your expertise expires if it stays locked in your head"
 - "Competitors are building what you could've built months ago"
 
@@ -84,7 +84,7 @@ Right now, less-skilled competitors are implementing AI systems whilst brilliant
 ### Limited Window Messaging
 - "This AI advantage window won't stay open forever"
 - "Early adopters building moats competitors can't cross"
-- "12 months from now, manual coaches will be uncompetitive"
+- "12 months from now, manual business owners will be uncompetitive"
 
 ---
 
@@ -112,7 +112,7 @@ Right now, less-skilled competitors are implementing AI systems whilst brilliant
 ### Behind-the-Scenes Access
 - "What really happens when kitchen table coach hits £200K systematically"
 - "The AI integration sequence nobody talks about"
-- "How 300+ coaches systematised in 90 days (real framework)"
+- "How 300+ business owners systematised in 90 days (real framework)"
 
 ---
 
@@ -148,7 +148,7 @@ Right now, less-skilled competitors are implementing AI systems whilst brilliant
 
 ### Authority Signals
 - "Built over 400 proprietary AI prompts"
-- "300+ coaches using frameworks successfully"
+- "300+ business owners using frameworks successfully"
 - "£50K→£200K transformation case studies"
 
 ### Evidence-Based Confidence
@@ -190,12 +190,12 @@ Right now, less-skilled competitors are implementing AI systems whilst brilliant
 2. **Pride:** "Transform to recognised authority"
 3. **FOMO:** "Competitors building whilst you debate"
 4. **Hope:** "£200K systematic empire possible"
-5. **Trust:** "300+ coaches already transformed"
+5. **Trust:** "300+ business owners already transformed"
 
 ### "AI Implementation" Campaign
 1. **Curiosity:** "The AI integration nobody talks about"
 2. **Frustration:** "Tool fragmentation chaos ends now"
-3. **Social Proof:** "How 300+ coaches systematised successfully"
+3. **Social Proof:** "How 300+ business owners systematised successfully"
 4. **FOMO:** "AI advantage window closing"
 5. **Trust:** "400+ proven AI prompts ready"
 

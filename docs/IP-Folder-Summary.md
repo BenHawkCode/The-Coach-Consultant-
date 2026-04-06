@@ -12,10 +12,10 @@
 **Summary:** Ben's voice is direct/no-nonsense + enthusiastically supportive + practically wise + refreshingly honest, speaking conversationally casual with signature phrases like "Right?", "Look", "Here's the thing" while avoiding corporate jargon and maintaining warm directness.
 
 ### 4. Brand Positioning.docx ⭐
-**Summary:** The Coach Consultant owns the "intelligent middle ground" between manual and full automation, positioning as AI-amplified business ecosystems (not random tools) that help coaches/consultants achieve 10x output in 90% less time through 50/50 philosophy (human expertise + AI systems).
+**Summary:** The Coach Consultant owns the "intelligent middle ground" between manual and full automation, positioning as AI-amplified business ecosystems (not random tools) that help business owners and service providers achieve 10x output in 90% less time through 50/50 philosophy (human expertise + AI systems).
 
 ### 1. Offer Waterfall ✅
-**Summary:** Three-tier offer structure targeting coaches/consultants hitting scalability walls: primary segmentation (coaches = relationship-focused transformation vs consultants = expertise-driven problem solving), entry offers for awareness stage, core offers for consideration stage, premium for decision stage with SmartScaling Systems as flagship.
+**Summary:** Three-tier offer structure targeting business owners and service providers hitting scalability walls: primary segmentation (business owners = relationship-focused transformation vs consultants = expertise-driven problem solving), entry offers for awareness stage, core offers for consideration stage, premium for decision stage with SmartScaling Systems as flagship.
 
 ### 2. Ben's Dream Client (Google Doc) ✅
 **Summary:** Alex Morgan archetype (28-35, £50K-150K): "Everyone's go-to but nobody's priority" - brilliant hybrid coach/consultant switching between boardrooms and breakthrough conversations, AI-curious but implementation-overwhelmed, invisible brand despite exceptional results, trapped in operational hamster wheel whilst building everyone else's businesses
@@ -30,7 +30,7 @@
 **Summary:** Ben's 15 defining moments for authentic content creation: business scaling experiences (£20K→£100K→£250K revenue jumps), client transformation breakthroughs (invisible expert → authority positioning), personal growth mistakes (hiring wrong people, burning out, over-delivering), philosophical shifts (manual ≠ authentic, AI amplifies expertise), relationship lessons (family/partnership during business growth).
 
 ### 9. Core Messaging.docx ✅
-**Summary:** Mission: Liberate brilliant coaches/consultants/service providers from operational work through AI-Powered SmartScaling Systems that amplify (not replace) human expertise, with core values including "Amplification Over Replacement" and "Integration Over Isolation" against belief that manual = authentic
+**Summary:** Mission: Liberate brilliant business owners and service providers from operational work through AI-Powered SmartScaling Systems that amplify (not replace) human expertise, with core values including "Amplification Over Replacement" and "Integration Over Isolation" against belief that manual = authentic
 
 ### 11. Offer Positioning.docx ✅
 **Summary:** UVP centers on AI-Powered SmartScaling Systems (not just tools) delivering 10x output + 90% time reduction through complete integrated systems vs point solutions, solving industry problems of tool fragmentation, generic automation, technical complexity, and no ROI measurement
@@ -51,13 +51,13 @@
 **Summary:** 200 viral content ideas with 3-second attention grabs using Ben's voice ("Right, so at 9 PM last night...", "Look, I need to show you something mental...", "Everyone's doing X wrong, here's why..."), structured as pattern interrupts (unexpected scenarios), relatability bombs (shared frustrations), controversial takes (challenging industry norms), behind-the-scenes moments (vulnerability/authenticity), and quick-win reveals (immediate value).
 
 ### 21. Targeting Dream Customer.docx ✅
-**Summary:** Target: 28-35 yo UK coaches/consultants (£50K-150K income), Birmingham/Manchester/Leeds based, kitchen table warriors who are brilliant experts but invisible in market, drowning in manual work while AI-forward competitors scale exponentially
+**Summary:** Target: 28-35 yo UK business owners and service providers (£50K-150K income), Birmingham/Manchester/Leeds based, kitchen table warriors who are brilliant experts but invisible in market, drowning in manual work while AI-forward competitors scale exponentially
 
 ### 22. Pain Point Articulation.docx ✅
 **Summary:** Three-tier pain structure with emotional vs physical breakdown: Primary (manual work overwhelm 60-70% time), Secondary (expertise invisibility), Hyper-niche (AI implementation paralysis), emotional triggers (professional shame "I'm transformation expert who can't transform own business", imposter syndrome, future anxiety), physical pain (6:45AM-11PM work days, kitchen table workspace, missing family time), domino effect resolution (solve manual overwhelm → time freed → visibility increases → authority positioning → premium clients → exponential growth).
 
 ### 24. Emotional Triggering.docx ✅
-**Summary:** 10 emotional marketing triggers targeting 28-35 kitchen table coaches: FOMO (competitors implementing AI daily), Social Proof (£50K→£200K transformations, 300+ coaches using frameworks), Shame/Embarrassment (working 9PM whilst family watches Netflix, teaching transformation whilst manually trapped), Pride/Achievement (from hidden expert to recognised authority), Urgency Angles ("Every week you stay manual, competitors gain 50+ pieces of systematic content"), Scarcity Positioning (only 50 coaches per quarter), Belonging Language ("Join coaches who've cracked AI authenticity code").
+**Summary:** 10 emotional marketing triggers targeting 28-35 kitchen table business owners: FOMO (competitors implementing AI daily), Social Proof (£50K→£200K transformations, 300+ business owners using frameworks), Shame/Embarrassment (working 9PM whilst family watches Netflix, teaching transformation whilst manually trapped), Pride/Achievement (from hidden expert to recognised authority), Urgency Angles ("Every week you stay manual, competitors gain 50+ pieces of systematic content"), Scarcity Positioning (only 50 business owners per quarter), Belonging Language ("Join business owners who've cracked AI authenticity code").
 
 ---
 
@@ -103,7 +103,7 @@
 - Core offer: AI business ecosystems (not random tools)
 - Value prop: 10x output in 90% less time
 - Philosophy: 50/50 (human expertise + AI systems)
-- Target: Coaches, consultants, service providers
+- Target: Business owners and service providers
 - Differentiator: AI amplifies (doesn't replace) human expertise
 
 ---

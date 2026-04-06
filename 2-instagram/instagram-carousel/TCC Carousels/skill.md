@@ -172,7 +172,7 @@ Using the template structure from `carousel-template.html`:
 
 ### Do:
 - Write like Ben speaks — direct, punchy, no fluff
-- Use "coaches, consultants and service providers"
+- Use "business owners and service providers"
 - British English (£, organisation, behaviour)
 - Short sentences, one idea per line
 - Include specific numbers and metrics where relevant
@@ -189,7 +189,7 @@ Using the template structure from `carousel-template.html`:
 ## Example Carousel Structures
 
 ### Educational (7 slides)
-1. Hook: "Most coaches waste 70% of their week on admin"
+1. Hook: "Most business owners waste 70% of their week on admin"
 2. Problem: "Sound familiar?" + pain point list
 3-6. Tips/steps (one per slide, numbered)
 7. CTA: "Comment SYSTEM and I'll send you the full breakdown"

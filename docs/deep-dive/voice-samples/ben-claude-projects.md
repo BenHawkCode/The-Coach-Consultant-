@@ -58,7 +58,7 @@
 ## 3. TARGET AUDIENCE (for CLAUDE.md)
 
 **Primary Audience:**
-- **NOT just "coaches"** - ALWAYS say: "coaches, consultants and service providers"
+- **NEVER say "coaches"** - ALWAYS say: "business owners and service providers"
 - Also reference "business owners" as general term
 - People building service-based businesses
 
@@ -165,7 +165,7 @@ Before finalizing any content:
 - [ ] Verify British English spelling throughout
 - [ ] Confirm no AI phrases slipped through
 - [ ] Check that first and last sections have same energy/depth
-- [ ] Ensure target audience is "coaches, consultants and service providers" (not just "coaches")
+- [ ] Ensure target audience is "business owners and service providers" (NEVER say just "coaches")
 
 ---
 
@@ -195,7 +195,7 @@ Before finalizing any content:
 
 ### Section: Target Audience
 **Update from generic "coaches" to:**
-- "Coaches, consultants and service providers"
+- "Business owners and service providers"
 - "Business owners" as general term
 - Remove fitness-specific references
 

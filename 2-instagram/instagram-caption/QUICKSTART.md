@@ -151,7 +151,7 @@ But you will be if you keep doing it manually
 ```
 I see this constantly
 
-Coaches spending 3 hours per client
+Business owners spending 3 hours per client
 Setting up systems
 Sending welcome emails
 Scheduling calls

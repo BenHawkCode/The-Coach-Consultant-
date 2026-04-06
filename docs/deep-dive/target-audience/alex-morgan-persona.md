@@ -172,7 +172,7 @@ This single phrase captures Alex's entire existence:
 **Proof:**
 - £50K→£200K transformation case studies
 - Kitchen table warrior → authority positioning examples
-- 300+ coaches using frameworks
+- 300+ business owners using frameworks
 - Specific metrics (10x output, 90% less time)
 
 **Anti-Positioning:**

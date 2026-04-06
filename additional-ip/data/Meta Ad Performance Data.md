@@ -23,7 +23,7 @@ No time.
 
 AI isn't here to replace you — it's here to remove you from everything that shouldn't need you.
 
-We help coaches & consultants use AI properly, clarify their personal brand, and scale without burning out.
+We help business owners & service providers use AI properly, clarify their personal brand, and scale without burning out.
 
 Book a diagnostic call.
 If we can help, we'll tell you.
@@ -48,7 +48,7 @@ That's what happens when AI removes the bottleneck — without replacing you.
 
 Your personal brand is the real USP.
 
-We help coaches & consultants build it while AI handles the rest.
+We help business owners & service providers build it while AI handles the rest.
 
 Book a call.
 Let's diagnose what's possible.
@@ -71,7 +71,7 @@ Remove yourself as the bottleneck.
 Automate manual tasks.
 10x your output in 90% less time.
 
-We help coaches & consultants build their personal brand while AI handles the rest.
+We help business owners & service providers build their personal brand while AI handles the rest.
 
 Book a call. See how.
 
@@ -87,7 +87,7 @@ Book a call. See how.
 **Headline:** Get ahead before it's too late
 
 **Ad Copy:**
-Attention Coaches, Consultants & Service Providers
+Attention Business Owners, Consultants & Service Providers
 
 If you are struggling with leads, don't feel like you're harnessing AI as much as you should or can't quite break your plateau to continue scaling...
 
@@ -123,7 +123,7 @@ Your opinions.
 Your beliefs.
 Your process.
 
-We help coaches & consultants use AI to remove the bottleneck — not add to it.
+We help business owners & service providers use AI to remove the bottleneck — not add to it.
 
 Book a call.
 Let's diagnose what's holding you back.

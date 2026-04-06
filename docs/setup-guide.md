@@ -63,7 +63,7 @@ Try generating Meta ad copy:
 
 ```
 Generate Meta ad copy for:
-- Target audience: Solo coaches scaling to £100K
+- Target audience: Solo business owners scaling to £100K
 - Campaign: Free masterclass sign-ups
 - Benefits: AI automation, time freedom, proven results
 ```
@@ -131,7 +131,7 @@ cd "The Coach Consultant"
 
 ```
 Generate Meta ad copy for:
-- Target audience: Solo coaches scaling to £100K
+- Target audience: Solo business owners scaling to £100K
 - Campaign: Free masterclass sign-ups
 - Benefits: AI automation, time freedom, proven results
 ```
@@ -264,8 +264,8 @@ Claude will ask you for:
 ```
 Generate 3 variations of Meta ad copy for:
 
-Campaign: Free Masterclass - Solo Coaches
-Audience: Coaches at £50-75K revenue, want to scale to £100K
+Campaign: Free Masterclass - Solo Business Owners
+Audience: Business owners at £50-75K revenue, want to scale to £100K
 Objective: Webinar registrations
 Hook style: Pain + hidden solution
 Tone: Bold, direct, Yorkshire influence
@@ -283,7 +283,7 @@ Include: Ben's authority signals (track record, real results)
 ```
 Headline: Scale Your Coaching Without Burning Out
 Primary Text: AI handles the work. You stay the brand. That's how you scale.
-Description: Solo coaches hitting £50K+ are stuck doing everything manually...
+Description: Solo business owners hitting £50K+ are stuck doing everything manually...
 CTA: Download the Free Masterclass Guide
 ```
 

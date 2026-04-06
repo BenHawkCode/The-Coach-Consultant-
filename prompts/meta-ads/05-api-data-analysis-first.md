@@ -36,11 +36,11 @@ Read 1-meta-ads/meta-ad-copy/skill.md and follow the instructions. Before genera
 
 **Top Hooks:**
 - "Sound familiar?" (question) → 4.2% CTR avg
-- "Most coaches waste £X..." (statement) → 3.8% CTR
-- "300+ coaches use..." (social proof) → 3.5% CTR
+- "Most business owners waste £X..." (statement) → 3.8% CTR
+- "300+ business owners use..." (social proof) → 3.5% CTR
 
 **High-CTR Headlines:**
-- "Predictable Client Flow for Coaches" → 5.1% CTR
+- "Predictable Client Flow for Business Owners" → 5.1% CTR
 - "Cut Admin Time by 90%" → 4.7% CTR
 
 **Proven CTAs:**

@@ -1,11 +1,11 @@
 ---
 name: meta-ad-copy
-description: Generate performance-optimized Meta ad copy using data from 29 competitors (561 ads). Proven patterns - 60% Statement, 16% Metric/Result, 14% Question hooks. Creates variations optimized for coaches/consultants in Ben's voice with data-backed conversion strategies.
+description: Generate performance-optimized Meta ad copy using data from 29 competitors (561 ads). Proven patterns - 60% Statement, 16% Metric/Result, 14% Question hooks. Creates variations optimized for business owners and service providers in Ben's voice with data-backed conversion strategies.
 ---
 
 # Meta Ad Copy Generator
 
-Generate high-converting Meta ad copy optimized for The Coach Consultant's target audience of coaches and consultants.
+Generate high-converting Meta ad copy optimized for The Coach Consultant's target audience of business owners and service providers.
 
 ## ✅ POWERED BY COMPETITOR INTELLIGENCE
 **29 Top Performers Analyzed | 561 Active Ads | March 2026**
@@ -65,7 +65,7 @@ When this skill is invoked:
    **Question 4 (Optional): Additional Elements**
    - Header: "Include"
    - Multi-select options:
-     - "Social Proof" (300+ coaches using frameworks)
+     - "Social Proof" (300+ business owners using frameworks)
      - "Urgency" (Limited spots, event date, bonus deadline)
      - "Specific Metrics" (10x output, 90% less time, £50K→£200K transformations)
      - "Authority Signals" (Industry recognition, case studies)
@@ -93,25 +93,25 @@ When this skill is invoked:
    ```
    [Direct Value Proposition] + [Simple Process] + [Clear Outcome]
    ```
-   Example: "Right so here's what I see constantly working for coaches hitting £10K months..."
+   Example: "Right so here's what I see constantly working for business owners hitting £10K months..."
 
    **Formula 2: Metric/Result Hook (16.2%, high conversion)**
    ```
    [Specific Number] + [Target Audience] + [Achieving Result]
    ```
-   Example: "147 coaches used this system to add £5K-£15K/month in 90 days"
+   Example: "147 business owners used this system to add £5K-£15K/month in 90 days"
 
    **Formula 3: Question Hook (13.7%, high engagement)**
    ```
    [Relatable Situation] + [Question that triggers self-reflection]
    ```
-   Example: "Why do some coaches hit £10K months while others stay stuck at £2K?"
+   Example: "Why do some business owners hit £10K months while others stay stuck at £2K?"
 
    **Formula 4: Bold Statement Hook (3.4%, pattern interrupt)**
    ```
    [Controversial/Unexpected Statement] + [Why it matters]
    ```
-   Example: "Most 'business coaches' have never built a real business. Here's the difference..."
+   Example: "Most 'business consultants' have never built a real business. Here's the difference..."
 
    **Formula 5: Pain Point Hook (2.5%, problem-aware)**
    ```
@@ -133,7 +133,7 @@ When this skill is invoked:
 
 This skill generates Meta ad copy variations that:
 - Align with The Coach Consultant brand voice
-- Target coaches/consultants pain points and goals
+- Target business owners and service providers pain points and goals
 - Follow Meta best practices (character limits, hooks, CTAs)
 - Include A/B test variations for optimization
 - Reference brand context from CLAUDE.md
@@ -182,7 +182,7 @@ or
 
 If user says:
 ```
-Generate meta ad copy for a free strategy call targeting coaches
+Generate meta ad copy for a free strategy call targeting business owners
 stuck in manual overwhelm. Include social proof and metrics.
 ```
 
@@ -264,9 +264,9 @@ Test against Variation [X] to compare [hook type] vs [alternative]
 
 ### Hook Types
 - **Question**: "Tired of feast-or-famine client flow?"
-- **Statement**: "Most coaches make this fatal mistake..."
-- **Statistic**: "73% of coaches struggle with consistent revenue."
-- **Social Proof**: "1,200+ coaches transformed their business with..."
+- **Statement**: "Most business owners make this fatal mistake..."
+- **Statistic**: "73% of business owners struggle with consistent revenue."
+- **Social Proof**: "1,200+ business owners transformed their business with..."
 
 ## Brand Context Integration
 
@@ -274,7 +274,7 @@ The skill automatically references:
 
 ### From CLAUDE.md:
 - Brand voice (Professional, Direct, Supportive, Action-oriented)
-- Target audience (Coaches, consultants, and service providers - £50K-£150K revenue, 28-35 years old)
+- Target audience (Business owners and service providers - £50K-£150K revenue, 28-35 years old)
 - Pain points (Inconsistent client flow, marketing doesn't convert, etc.)
 - Goals (Predictable acquisition, higher conversion, automated systems)
 - Differentiation (Tech-forward AI automation, implementation support)
@@ -304,7 +304,7 @@ The skill automatically references:
 
 **Tone & Style:**
 - British English always (£, organisation, optimise, behaviour)
-- Always say "coaches, consultants and service providers" (not just "coaches")
+- Always say "business owners and service providers" (NEVER say "coaches")
 - Direct, straight-talking, Yorkshire influence
 - Short punchy sentences
 - No dashes or excessive punctuation (sounds robotic)
@@ -315,7 +315,7 @@ The skill automatically references:
 ### Language Preferences:
 - UK English (£, programme, optimise)
 - Direct, value-the-reader's-time approach
-- "You" focused (speak directly to coaches)
+- "You" focused (speak directly to business owners)
 - Specific numbers and metrics when available
 - Real examples over theory
 
@@ -340,17 +340,17 @@ Each variation includes:
 
 Generated: 2026-03-09
 Campaign: Free Masterclass Registration
-Audience: Solo coaches, £50K-£200K revenue, struggling with consistent client flow
+Audience: Solo business owners, £50K-£200K revenue, struggling with consistent client flow
 
 ---
 
 ## Variation 1: Pain Point Question
 
 **Primary Text**
-Sound familiar? Feast or famine client flow. Most coaches waste £1000s on ads that don't work. The 3-step system 1,200+ use.
+Sound familiar? Feast or famine client flow. Most business owners waste £1000s on ads that don't work. The 3-step system 1,200+ use.
 
 **Headline**
-Predictable Client Flow for Coaches
+Predictable Client Flow for Business Owners
 
 **Description**
 Free masterclass - March 15
@@ -364,7 +364,7 @@ Register Now
 - Hook type: Question (pain point)
 - Pain point: Inconsistent revenue, ad waste
 - Urgency: Event date (March 15)
-- Social proof: 1,200+ coaches
+- Social proof: 1,200+ business owners
 - Differentiation: 3-step system (specific)
 
 **A/B Test Recommendation:**
@@ -413,7 +413,7 @@ Based on industry best practices:
 
 1. **Test Multiple Hooks**: Question vs. Statement vs. Statistic
 2. **Vary CTAs**: "Book a Call" vs. "Download Guide" vs. "Watch Masterclass"
-3. **Social Proof Elements**: "1,200+ coaches" vs. "Featured in..." vs. Testimonial quote
+3. **Social Proof Elements**: "1,200+ business owners" vs. "Featured in..." vs. Testimonial quote
 4. **Urgency Types**: Event date vs. Limited spots vs. Bonus deadline
 5. **Benefit Framing**: Problem-solution vs. Transformation vs. System/framework
 
@@ -495,7 +495,7 @@ Apply Ben's voice rules:
 - Replace forbidden phrases → Ben's natural phrases
 - British English (£, organisation, optimise)
 - Short punchy sentences (no dashes)
-- "Coaches, consultants and service providers" (not just "coaches")
+- "Business owners and service providers" (NEVER say "coaches")
 - Direct, Yorkshire straight-talking tone
 
 **Step 4: Output formatted copy**

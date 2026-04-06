@@ -230,7 +230,7 @@ The script automatically classifies hooks into 6 types:
 1. **Pain Point** - "Struggling with X?"
 2. **Metric/Result** - "I added £50K in 90 days"
 3. **Question** - "Want to know how?"
-4. **Bold Statement** - "Most coaches are doing this wrong"
+4. **Bold Statement** - "Most business owners are doing this wrong"
 5. **Story** - "When I first started..."
 6. **Statement** - General statements
 

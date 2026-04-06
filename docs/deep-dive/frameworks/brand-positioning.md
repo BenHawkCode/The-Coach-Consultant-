@@ -13,7 +13,7 @@ The Coach Consultant owns the space between two extremes:
 - **Hustle culture** ←→ **Wellness without strategy**
 
 **Our Position:**
-AI-amplified business ecosystems that help coaches/consultants achieve 10x output in 90% less time through 50/50 philosophy (human expertise + AI systems).
+AI-amplified business ecosystems that help business owners and service providers achieve 10x output in 90% less time through 50/50 philosophy (human expertise + AI systems).
 
 ---
 
@@ -49,7 +49,7 @@ AI-amplified business ecosystems that help coaches/consultants achieve 10x outpu
 - **Sustainable:** Not through hustle - through intelligent systematic automation
 
 ### Target Audience
-Coaches, consultants, and service providers (NOT just "coaches")
+Business owners and service providers
 
 **Specific Profile:**
 - £50K-£150K current revenue
@@ -105,7 +105,7 @@ AI-powered systems amplify your unique expertise - they don't replace your authe
 **Credibility Markers:**
 - 2018 meal prep collapse (£60K/month crash)
 - Multi-7 figure rebuild journey
-- 300+ coaches using frameworks
+- 300+ business owners using frameworks
 - £50K→£200K transformations proven
 
 ---
@@ -160,12 +160,12 @@ When one outweighs the other, something always breaks.
 ### For Website/Marketing
 
 **Tagline Options:**
-- "AI-Powered SmartScaling for Coaches & Consultants"
+- "AI-Powered SmartScaling for Business Owners & Service Providers"
 - "Transform Manual Chaos into Systematic Empire"
 - "50/50: Human Expertise + AI Systems"
 
 **Core Message:**
-"We help brilliant coaches and consultants transform from invisible manual workers into AI-amplified authorities - achieving 10x output in 90% less time without losing their authentic voice."
+"We help brilliant business owners and service providers transform from invisible manual workers into AI-amplified authorities - achieving 10x output in 90% less time without losing their authentic voice."
 
 **Authority Statement:**
 "Manual processes aren't authentic, they're inefficient. We prove AI amplifies expertise instead of replacing it."
@@ -195,15 +195,15 @@ When one outweighs the other, something always breaks.
 ## Target Market Definition
 
 ### Primary Audience
-**Coaches, consultants, and service providers**
+**Business owners and service providers**
 
 **NEVER say:**
-- "Coaches" alone (too narrow)
+- "Coaches" (NEVER say this - too narrow)
 - "Fitness professionals" (unless specifically requested)
-- "Online coaches" (limiting)
+- "Online coaches" (NEVER say this - limiting)
 
 **ALWAYS say:**
-- "Coaches, consultants, and service providers"
+- "Business owners and service providers"
 - "Business owners" (when being general)
 - "Service-based businesses"
 
@@ -236,7 +236,7 @@ Ben works across open businesses in multiple categories, not just coaching niche
 Everyone's either pure AI (robotic) or pure human (doesn't scale). We systematically integrate both.
 
 ### 2. Dual Expertise Support
-Most focus on business strategy OR personal development. We understand hybrid coaches/consultants need both.
+Most focus on business strategy OR personal development. We understand hybrid business owners need both.
 
 ### 3. Implementation Reality
 Others provide tools or strategy. We deliver complete systematic implementation support.

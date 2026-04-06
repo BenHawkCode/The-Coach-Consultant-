@@ -36,7 +36,7 @@ Agent generated 3 emails in ~47 seconds. Quality analysis below.
 - ✅ Email 2: Pain point + solution preview
 - ✅ Email 3: Reminder + preparation
 - ✅ Contrarian positioning ("what you've been told is nonsense")
-- ✅ Coaches/consultants/service providers (target audience)
+- ✅ Business owners and service providers (target audience)
 
 ---
 

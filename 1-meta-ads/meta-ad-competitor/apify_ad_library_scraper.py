@@ -35,7 +35,7 @@ COMPETITORS_FULL = [
     # Tier 2: Marketing & Agency Operators (7)
     {'name': 'Billy Gene', 'search_term': 'Billy Gene', 'tier': 2, 'why_study': 'Known for creative that stops the scroll'},
     {'name': 'Molly Pittman', 'search_term': 'Molly Pittman', 'tier': 2, 'why_study': 'Ex-DigitalMarketer. Teaches Meta ads and runs excellent creative'},
-    {'name': 'Cat Howell', 'search_term': 'Cat Howell', 'tier': 2, 'why_study': 'Agency owner focused on Meta ads for coaches'},
+    {'name': 'Cat Howell', 'search_term': 'Cat Howell', 'tier': 2, 'why_study': 'Agency owner focused on Meta ads for business owners'},
     {'name': 'Nick Shackelford', 'search_term': 'Nick Shackelford', 'tier': 2, 'why_study': 'DTC and performance creative specialist'},
     {'name': 'Khalid Hamadeh', 'search_term': 'Khalid Hamadeh', 'tier': 2, 'why_study': 'Structured Media. Runs massive ad spend'},
     {'name': 'Andrew Hubbard', 'search_term': 'Andrew Hubbard', 'tier': 2, 'why_study': 'Webinar and course ads specialist'},

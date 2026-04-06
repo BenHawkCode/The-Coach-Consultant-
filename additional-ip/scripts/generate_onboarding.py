@@ -534,7 +534,7 @@ def create_prompting_guide():
     add_para(doc, '"Write me an Instagram caption"')
     doc.add_paragraph("")
     add_para(doc, "Good prompt:", bold=True)
-    add_para(doc, '"Write me an Instagram caption about how most coaches undercharge because they are scared of rejection. Target audience is coaches making 50-80K who know they should charge more but keep discounting. End with a soft CTA to DM me the word PRICING."')
+    add_para(doc, '"Write me an Instagram caption about how most business owners undercharge because they are scared of rejection. Target audience is business owners making 50-80K who know they should charge more but keep discounting. End with a soft CTA to DM me the word PRICING."')
     doc.add_paragraph("")
     add_para(doc, "The more context you give, the less back-and-forth you need. Think about how you would brief a copywriter. You would not just say 'write me something'. You would tell them the topic, the audience, the angle, and the goal.")
     doc.add_paragraph("")
@@ -854,8 +854,8 @@ def create_brand_clarity():
 
     fields = [
         ("[YOUR BRAND NAME]", "Your business or personal brand name", "e.g. 'Sarah's Coaching Co' or 'The Fit Business' or just 'Sarah Mitchell'"),
-        ("[YOUR NICHE]", "The specific group of people you help", "e.g. 'fitness coaches', 'life coaches for women over 40', 'business consultants in the property space'"),
-        ("[YOUR AUDIENCE]", "Describe your ideal client in one sentence", "e.g. 'coaches making 50-100K who want to scale without burning out', 'new personal trainers building their first online offer'"),
+        ("[YOUR NICHE]", "The specific group of people you help", "e.g. 'fitness business owners', 'wellness practitioners for women over 40', 'business consultants in the property space'"),
+        ("[YOUR AUDIENCE]", "Describe your ideal client in one sentence", "e.g. 'business owners making 50-100K who want to scale without burning out', 'new personal trainers building their first online offer'"),
         ("[YOUR TONE]", "How you naturally communicate", "e.g. 'warm and conversational', 'direct and no-nonsense', 'energetic and motivating', 'calm and professional'"),
         ("[YOUR CTA]", "What you want people to do after reading your content", "e.g. 'Book a free discovery call at www.yoursite.com/call', 'DM me the word START', 'Download my free guide at www.yoursite.com/guide'"),
         ("[YOUR WEBSITE]", "Your main website URL", "e.g. 'www.yoursite.com'"),

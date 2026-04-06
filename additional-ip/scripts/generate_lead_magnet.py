@@ -191,7 +191,7 @@ def main():
 
     add_para(
         doc,
-        "How Coaches, Consultants and Service Providers Are Using Claude AI Projects "
+        "How Business Owners and Service Providers Are Using Claude AI Projects "
         "to Run 34 Specialist Roles From a Single App",
         size=13, color=MUTED_GREY,
         align=WD_ALIGN_PARAGRAPH.CENTER,
@@ -262,7 +262,7 @@ def main():
     add_spacer(doc)
     add_para(doc, "I see this constantly.")
     add_spacer(doc)
-    add_para(doc, "Coaches, consultants and service providers earning \u00a350K to \u00a3150K who should comfortably be at \u00a3200K plus. The results are there. The expertise is there. The market demand is there. But the systems aren't.")
+    add_para(doc, "Business owners and service providers earning \u00a350K to \u00a3150K who should comfortably be at \u00a3200K plus. The results are there. The expertise is there. The market demand is there. But the systems aren't.")
     add_spacer(doc)
     add_para(doc, "That's what this document is about.")
     add_spacer(doc)
@@ -544,18 +544,18 @@ def main():
     )
 
     # ═══════════════════════════════════════════
-    # WHAT COACHES ACTUALLY SPEND
+    # WHAT BUSINESS OWNERS ACTUALLY SPEND
     # ═══════════════════════════════════════════
 
     doc.add_page_break()
 
-    add_heading(doc, "What Most Coaches Actually Spend Right Now")
+    add_heading(doc, "What Most Business Owners Actually Spend Right Now")
 
     add_para(doc, "Nobody hires 34 specialists. Obviously. That's the whole point.")
     add_spacer(doc)
     add_para(doc, "What actually happens is you hire one or two people, outsource a couple of things to freelancers, and do everything else yourself. Which means most of your business isn't covered properly and you're working until eleven at night trying to fill the gaps.")
     add_spacer(doc)
-    add_para(doc, "I see this all the time with coaches at the \u00a350K to \u00a3150K level. The typical monthly spend looks something like this:")
+    add_para(doc, "I see this all the time with business owners at the \u00a350K to \u00a3150K level. The typical monthly spend looks something like this:")
     add_spacer(doc)
 
     add_table(doc,
@@ -729,7 +729,7 @@ def main():
 
     add_heading(doc, "Who This Is Built For")
 
-    add_para(doc, "This system was specifically built for coaches, consultants and service providers who:")
+    add_para(doc, "This system was specifically built for business owners and service providers who:")
     add_spacer(doc)
 
     add_bullet(doc, "Are earning \u00a350K to \u00a3150K and know they should be at \u00a3200K plus based on the quality of work they deliver")
@@ -764,7 +764,7 @@ def main():
     add_spacer(doc)
     add_para(doc, "The question is whether you want to spend the next six months trying to figure it out yourself, watching competitors pull further ahead whilst you debate which tool to use.")
     add_spacer(doc)
-    add_para(doc, "Or whether you want someone who's already built this, tested this, and deployed this for hundreds of coaches to set it up for your business properly.")
+    add_para(doc, "Or whether you want someone who's already built this, tested this, and deployed this for hundreds of business owners to set it up for your business properly.")
     add_spacer(doc)
     add_spacer(doc)
 

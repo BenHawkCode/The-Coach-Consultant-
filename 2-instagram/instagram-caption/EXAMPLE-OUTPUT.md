@@ -27,7 +27,7 @@ Reasoning: Length factor: 1.15x | CTA factor: 1.08x
 Right so client onboarding in 2026
 
 I see this all the time
-Coaches manually sending welcome emails
+Business owners manually sending welcome emails
 Booking calls one by one
 Chasing contract signatures
 Sound familiar
@@ -64,7 +64,7 @@ www.thecoachconsultant.uk
 Try variant with "I see this constantly" hook:
 
 I see this constantly
-Coaches spending hours onboarding clients
+Business owners spending hours onboarding clients
 Manually sending docs
 Chasing signatures
 Booking intro calls one by one

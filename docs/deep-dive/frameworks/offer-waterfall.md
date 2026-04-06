@@ -7,13 +7,13 @@
 
 ## Overview
 
-Three-tier offer structure targeting coaches/consultants hitting scalability walls, with primary segmentation between relationship-focused transformation (coaches) vs expertise-driven problem solving (consultants).
+Three-tier offer structure targeting business owners and service providers hitting scalability walls, with primary segmentation between relationship-focused transformation vs expertise-driven problem solving.
 
 ---
 
 ## Primary Segmentation
 
-### Coaches = Relationship-Focused Transformation
+### Business Owners = Relationship-Focused Transformation
 - Deep 1-1 relationships
 - Personal development + business strategy
 - Emotional intelligence + technical expertise
@@ -100,7 +100,7 @@ Complete done-for-you implementation, white-glove service, guaranteed outcomes.
 **Duration:** 6-12 months
 
 **Ideal For:**
-- £100K+ revenue coaches/consultants
+- £100K+ revenue business owners and service providers
 - Ready for complete transformation
 - Want systematic empire building
 - Investment mindset (not hope-based)
@@ -153,7 +153,7 @@ Complete done-for-you implementation, white-glove service, guaranteed outcomes.
 **4. Authority from Experience (Not Guru Theory)**
 - 2018 crash lesson: systems before scale
 - Multi-7 figure journey documented
-- 300+ coaches using frameworks successfully
+- 300+ business owners using frameworks successfully
 
 ---
 
