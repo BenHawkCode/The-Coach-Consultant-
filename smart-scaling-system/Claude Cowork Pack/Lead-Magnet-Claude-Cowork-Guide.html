@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Coach Consultant — The Complete Guide to Claude Cowork</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --teal: #7BA7A7;
+    --teal-dark: #5E8E8E;
+    --teal-light: #A3C5C5;
+    --teal-bg: #EDF4F4;
+    --black: #1a1a1a;
+    --dark: #0d0d0d;
+    --white: #ffffff;
+    --off-white: #f8fafa;
+    --gray: #6c757d;
+    --gray-light: #e8ecec;
+    --gold: #D4A843;
+    --yellow: #FFD700;
+    --yellow-bright: #FFEA00;
+  }
+
+  .highlight-yellow {
+    color: #FFD700;
+    font-weight: 900;
+  }
+
+  .highlight-yellow-dark {
+    background: linear-gradient(135deg, #FFD700, #FFC000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  @media print {
+    body {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+
+    .no-break {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .cover, .bg-dark, .bg-teal, .bg-teal-light, .bg-off-white,
+    .section-full, .cta-section, .sop-banner, .smart-scaling,
+    .compare-card, .saving-bar, .category-icon, .cap-num,
+    .explainer-card, .how-card, .for-card, .win-card,
+    .area, .comment-box, .tag-roi, .tag-setup,
+    .feature-card, .timeline-card {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    .cover {
+      height: 100vh;
+      min-height: auto;
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .section, .section-full {
+      page-break-inside: auto;
+    }
+
+    .cap-list {
+      page-break-inside: auto;
+    }
+
+    .cap-item {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .cat-header {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    .cat-header + .cap-list {
+      page-break-before: avoid;
+      break-before: avoid;
+    }
+
+    .explainer-grid, .compare-grid, .for-grid, .how-visual,
+    .category-grid, .roadmap, .steps {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .cover-logo-img { display: none !important; }
+    .cover-logo-print { display: flex !important; }
+
+    .cta-section {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .for-grid {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .checklist {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .timeline {
+      page-break-inside: auto;
+    }
+
+    .timeline-card {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    .footer {
+      page-break-before: avoid;
+      break-before: avoid;
+    }
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--black);
+    line-height: 1.6;
+    background: #fff;
+    font-size: 15px;
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    min-height: 100vh;
+    background: var(--dark);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(123,167,167,0.12) 0%, transparent 60%);
+  }
+
+  .cover-logo {
+    width: 280px;
+    margin-bottom: 0;
+    position: relative;
+    display: block;
+    z-index: 1;
+  }
+
+  .cover-badge {
+    background: rgba(123,167,167,0.2);
+    border: 1px solid rgba(123,167,167,0.4);
+    color: var(--teal-light);
+    padding: 8px 28px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover h1 {
+    font-size: 46px;
+    font-weight: 900;
+    line-height: 1.1;
+    max-width: 820px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover h1 span { color: var(--teal-light); }
+
+  .cover-sub {
+    font-size: 18px;
+    font-weight: 300;
+    max-width: 640px;
+    line-height: 1.7;
+    opacity: 0.85;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-stats {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cover-stat .number {
+    font-size: 44px;
+    font-weight: 900;
+    color: var(--teal-light);
+  }
+
+  .cover-stat .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+
+  .cover-footer {
+    position: absolute;
+    bottom: 30px;
+    font-size: 12px;
+    opacity: 0.4;
+    z-index: 1;
+    letter-spacing: 1px;
+  }
+
+  /* ─── LAYOUT ─── */
+  .section {
+    padding: 30px 60px;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  .section-full {
+    padding: 30px 60px;
+  }
+
+  .section-full .inner {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  .bg-dark { background: var(--dark); color: white; }
+  .bg-teal { background: var(--teal); color: white; }
+  .bg-teal-light { background: var(--teal-bg); }
+  .bg-off-white { background: var(--off-white); }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--teal);
+    margin-bottom: 14px;
+  }
+
+  .bg-dark .section-label { color: var(--teal-light); }
+
+  h2 {
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+
+  h2 span { color: var(--teal); }
+  .bg-dark h2 span { color: var(--teal-light); }
+
+  .lead {
+    font-size: 17px;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .bg-dark .lead { color: rgba(255,255,255,0.65); }
+
+  /* ─── EXPLAINER BOXES ─── */
+  .explainer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .explainer-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px 20px;
+    border: 1px solid var(--gray-light);
+    text-align: center;
+  }
+
+  .explainer-card .e-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--teal-bg);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 18px;
+    color: var(--teal-dark);
+  }
+
+  .explainer-card h4 {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .explainer-card p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  .explainer-card .tag {
+    display: inline-block;
+    background: var(--teal-bg);
+    color: var(--teal-dark);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 14px;
+  }
+
+  /* ─── VISUAL HOW-TO ─── */
+  .how-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .how-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 24px 22px;
+    position: relative;
+  }
+
+  .how-card .step-badge {
+    position: absolute;
+    top: -12px;
+    left: 24px;
+    background: var(--teal);
+    color: white;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .how-card h4 {
+    font-size: 17px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    margin-top: 8px;
+  }
+
+  .how-card p {
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 1.6;
+  }
+
+  .how-card .mock-ui {
+    margin-top: 18px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    padding: 16px;
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--teal-light);
+    line-height: 1.8;
+    border: 1px solid rgba(123,167,167,0.2);
+  }
+
+  .how-card .mock-ui .label {
+    color: rgba(255,255,255,0.4);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  /* ─── SOP CALLOUT ─── */
+  .sop-banner {
+    background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+    border-radius: 20px;
+    padding: 36px 36px;
+    color: white;
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .sop-banner h3 {
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 16px;
+  }
+
+  .sop-banner p {
+    font-size: 16px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  .sop-steps {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+  }
+
+  .sop-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sop-step .num {
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 15px;
+  }
+
+  .sop-step span {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .sop-arrow {
+    color: rgba(255,255,255,0.3);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ─── CATEGORY SECTION ─── */
+  .cat-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 3px solid var(--teal);
+  }
+
+  .cat-header .cat-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--teal);
+    color: white;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+
+  .cat-header h3 {
+    font-size: 22px;
+    font-weight: 900;
+  }
+
+  .cat-header .cat-meta {
+    font-size: 13px;
+    color: var(--gray);
+    margin-top: 0;
+  }
+
+  .cat-header .cat-cost {
+    text-align: center;
+  }
+
+  .cat-header .cat-cost .amount {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--teal-dark);
+  }
+
+  .cat-header .cat-cost .cost-label {
+    font-size: 11px;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .cap-list {
+    display: grid;
+    gap: 0;
+    margin-bottom: 20px;
+  }
+
+  .cap-item {
+    display: grid;
+    grid-template-columns: 40px 1fr auto;
+    gap: 14px;
+    align-items: start;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .cap-item:last-child { border-bottom: none; }
+
+  .cap-num {
+    width: 40px;
+    height: 40px;
+    background: var(--teal-bg);
+    color: var(--teal-dark);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .cap-info h5 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .cap-info p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .cap-info .result {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--teal-dark);
+    margin-top: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .cap-info .result .r-icon {
+    color: var(--teal);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .cap-tags {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .tag-roi, .tag-setup {
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .tag-roi { background: #d1fae5; color: #065f46; }
+  .tag-roi.medium { background: #fef3c7; color: #92400e; }
+  .tag-roi.low { background: #f3f4f6; color: #6b7280; }
+  .tag-setup { background: var(--teal-bg); color: var(--teal-dark); }
+  .tag-setup.medium { background: #e0e7ff; color: #3730a3; }
+  .tag-setup.advanced { background: #fce7f3; color: #9d174d; }
+
+  /* ─── COMPARISON ─── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .compare-card {
+    border-radius: 16px;
+    padding: 30px 24px;
+    text-align: center;
+  }
+
+  .compare-card.old { background: #1a1a1a; border: 2px solid #FFD700; }
+  .compare-card.new { background: #d1fae5; border: 2px solid #6ee7b7; }
+
+  .compare-card .card-label {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+
+  .compare-card.old .card-label { color: #FFD700; }
+  .compare-card.new .card-label { color: #059669; }
+
+  .compare-card .amount {
+    font-size: 48px;
+    font-weight: 900;
+    margin-bottom: 6px;
+  }
+
+  .compare-card.old .amount { color: #FFD700; font-size: 56px; }
+  .compare-card.new .amount { color: #059669; }
+
+  .compare-card .detail { font-size: 14px; color: var(--gray); }
+  .compare-card.old .detail { color: rgba(255,255,255,0.6); }
+
+  .saving-bar {
+    background: var(--teal);
+    color: white;
+    padding: 22px;
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 24px;
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  /* ─── CHECKLIST ─── */
+  .checklist {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .checklist li .chk {
+    color: var(--teal);
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-weight: 900;
+  }
+
+  /* ─── FOR / NOT FOR ─── */
+  .for-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .for-card {
+    padding: 28px;
+    border-radius: 14px;
+  }
+
+  .for-card.yes { background: #d1fae5; border: 1px solid #6ee7b7; }
+  .for-card.no { background: #fef2f2; border: 1px solid #fecaca; }
+
+  .for-card h4 { font-size: 16px; font-weight: 800; margin-bottom: 14px; }
+  .for-card.yes h4 { color: #059669; }
+  .for-card.no h4 { color: #dc2626; }
+
+  .for-card ul { list-style: none; padding: 0; }
+  .for-card ul li { padding: 5px 0; font-size: 14px; color: #333; }
+
+  /* ─── CTA ─── */
+  .cta-section {
+    background: var(--dark);
+    color: white;
+    padding: 80px 60px;
+    text-align: center;
+  }
+
+  .cta-section .inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-box {
+    background: white;
+    border-radius: 20px;
+    padding: 36px 36px;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .cta-box h3 {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--black);
+    margin-bottom: 14px;
+  }
+
+  .cta-box p {
+    font-size: 15px;
+    color: var(--gray);
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    padding: 18px 48px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 800;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.2s;
+  }
+
+  .cta-button:hover { background: var(--teal-dark); }
+
+  .cta-sub {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  /* ─── SMART SCALING TEASE ─── */
+  .smart-scaling {
+    background: linear-gradient(135deg, var(--dark) 0%, #1a2a2a 100%);
+    border: 1px solid rgba(123,167,167,0.2);
+    border-radius: 20px;
+    padding: 32px 30px;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .smart-scaling .ss-badge {
+    display: inline-block;
+    background: rgba(123,167,167,0.15);
+    border: 1px solid rgba(123,167,167,0.3);
+    color: var(--teal-light);
+    padding: 6px 20px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .smart-scaling h3 {
+    font-size: 24px;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .smart-scaling p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ─── FEATURE CARDS ─── */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .feature-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 22px 20px;
+  }
+
+  .feature-card .f-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .feature-card h4 {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+
+  .feature-card p {
+    font-size: 13px;
+    opacity: 0.75;
+    line-height: 1.6;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    display: grid;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .timeline-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 20px;
+    border-left: 4px solid var(--teal);
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .timeline-card .time {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--teal-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .timeline-card h4 {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .timeline-card p {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 12px;
+    color: var(--gray);
+    border-top: 1px solid #eee;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .cover h1 { font-size: 32px; }
+    .section, .section-full { padding: 50px 24px; }
+    .explainer-grid, .compare-grid, .for-grid, .how-visual, .feature-grid { grid-template-columns: 1fr; }
+    .cover-stats { flex-direction: column; gap: 20px; }
+    .cat-header { flex-direction: column; }
+    .cat-header .cat-cost { margin-left: 0; text-align: left; }
+    .cap-item { grid-template-columns: 40px 1fr; }
+    .cap-tags { display: none; }
+    h2 { font-size: 26px; }
+    .sop-steps { flex-direction: column; align-items: center; }
+    .sop-arrow { display: none; }
+    .timeline-card { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- COVER -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="cover">
+  <div style="position:relative;z-index:1;text-align:center;margin-bottom:6px;">
+    <div style="font-family:'Inter',sans-serif;font-weight:900;font-size:42px;letter-spacing:2px;line-height:1;color:white;">THE COACH</div>
+    <div style="position:relative;display:inline-block;margin-top:-4px;">
+      <div style="position:absolute;top:4px;left:-20px;right:-20px;bottom:-2px;background:var(--teal);border-radius:4px;transform:rotate(-0.5deg);"></div>
+      <div style="position:relative;font-family:'Inter',sans-serif;font-weight:900;font-size:42px;letter-spacing:2px;line-height:1.2;color:white;">CONSULTANT</div>
+    </div>
+  </div>
+
+  <div class="cover-badge">From The Smart Scaling System</div>
+  <h1>The Complete Guide to <span>Claude Cowork</span></h1>
+  <p style="font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--teal-light); margin-bottom: 20px; position: relative; z-index: 1;">Your Autonomous AI Employee That Actually Does the Work</p>
+  <p class="cover-sub">The feature-by-feature breakdown of the AI tool that replaces <span class="highlight-yellow" style="font-size: 22px;">&#163;34,800/month in specialist wages</span>. It reads your files. It builds your documents. It runs your tasks while you sleep. And it costs less than a takeaway.</p>
+
+  <div class="cover-stats">
+    <div class="cover-stat">
+      <div class="number">28</div>
+      <div class="label">Core Capabilities</div>
+    </div>
+    <div class="cover-stat">
+      <div class="number">7</div>
+      <div class="label">Business Areas</div>
+    </div>
+    <div class="cover-stat">
+      <div class="number">&#163;15</div>
+      <div class="label">/Month Total Cost</div>
+    </div>
+  </div>
+
+  <div class="cover-footer">thecoachconsultant.uk</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- WHAT IS CLAUDE COWORK — VISUAL EXPLAINER -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-full bg-off-white page-break">
+  <div class="inner">
+    <div class="section-label">Understanding Claude AI</div>
+    <h2>What Is <span>Claude Cowork</span>?</h2>
+    <p class="lead">Claude has three ways to work. Most people use Chat. Some use Projects. But there is a third mode that changes everything. Claude Cowork is an autonomous AI agent that does not just write for you. It works for you.</p>
+
+    <div class="explainer-grid">
+      <div class="explainer-card no-break">
+        <div class="e-icon">&#128172;</div>
+        <h4>Chat</h4>
+        <p>A single conversation. You ask a question, it gives you text. It starts fresh every time. No memory, no files, no deliverables. Just words on a screen.</p>
+        <div class="tag">Text Only</div>
+      </div>
+
+      <div class="explainer-card no-break">
+        <div class="e-icon">&#9733;</div>
+        <h4>Projects</h4>
+        <p>A permanent workspace with custom instructions and knowledge files. Claude remembers your brand and produces on-brand output. Powerful, but you still do the work.</p>
+        <div class="tag">You Drive It</div>
+      </div>
+
+      <div class="explainer-card no-break" style="border: 2px solid var(--teal); box-shadow: 0 4px 20px rgba(123,167,167,0.15);">
+        <div class="e-icon" style="background: var(--teal); color: white;">&#9889;</div>
+        <h4>Cowork</h4>
+        <p><strong>This is the game-changer.</strong> An autonomous agent that reads your files, builds documents, creates spreadsheets, controls your computer, and executes multi-step tasks while you step away. It does not just write. It works.</p>
+        <div class="tag" style="background: var(--teal); color: white;">This Changes Everything</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- THE KEY DIFFERENCE — WHY COWORK IS DIFFERENT -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-full bg-dark">
+  <div class="inner">
+    <div class="section-label">The Fundamental Shift</div>
+    <h2>Chat Writes Words. Cowork <span>Does Work.</span></h2>
+    <p class="lead">This is the single most important distinction. With Chat or Projects, you are still the one doing the work. You ask, you copy, you paste, you format, you organise. With Cowork, Claude becomes an autonomous agent. You describe the outcome. It handles the execution.</p>
+
+    <div class="feature-grid">
+      <div class="feature-card no-break">
+        <div class="f-icon">&#128196;</div>
+        <h4>Creates Real Deliverables</h4>
+        <p>Not just text. Claude builds fully formatted Excel spreadsheets with working formulas, PowerPoint presentations, structured reports, expense summaries, and polished documents you can send directly to a client.</p>
+      </div>
+
+      <div class="feature-card no-break">
+        <div class="f-icon">&#128193;</div>
+        <h4>Reads &amp; Writes Your Files</h4>
+        <p>No more uploading and downloading. Claude reads directly from your local folders, processes the content, and saves finished work back to your computer. You choose exactly which folders it can access.</p>
+      </div>
+
+      <div class="feature-card no-break">
+        <div class="f-icon">&#9881;</div>
+        <h4>Runs Multi-Step Tasks</h4>
+        <p>You describe an outcome, review the plan, and walk away. Claude breaks it into sub-tasks, runs them in parallel, and completes the full job without you having to babysit each step.</p>
+      </div>
+
+      <div class="feature-card no-break">
+        <div class="f-icon">&#128337;</div>
+        <h4>Works Without Timeouts</h4>
+        <p>No more conversation limits. No more losing context halfway through a task. Cowork runs for as long as the job takes, even extended periods, without the session dying on you.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- HOW IT WORKS — PAGE 1: STEPS 1 & 2 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-full bg-dark page-break">
+  <div class="inner">
+    <div class="section-label">How It Works</div>
+    <h2>Give It a Task. <span>Get Back a Result.</span></h2>
+    <p class="lead">Cowork is built around one simple idea: describe the outcome you want, review Claude's plan, approve it, and come back to finished work. Here is the process.</p>
+
+    <div class="how-visual">
+      <div class="how-card no-break">
+        <div class="step-badge">Step 1</div>
+        <h4>Describe Your Outcome</h4>
+        <p>Tell Claude what you need. Not a prompt. Not a question. A task. "Build me a client report from this month's data." "Create a presentation for Friday's meeting." "Organise my project files by client."</p>
+        <div class="mock-ui">
+          <span class="label">Your Task</span>
+          "Take the sales data in my<br>
+          Documents folder and create a<br>
+          quarterly report with charts,<br>
+          summary, and recommendations<br>
+          for Q2 planning."
+        </div>
+      </div>
+
+      <div class="how-card no-break">
+        <div class="step-badge">Step 2</div>
+        <h4>Review the Plan</h4>
+        <p>Claude breaks your task into clear steps and shows you exactly what it intends to do before doing it. You review, adjust if needed, and approve.</p>
+        <div class="mock-ui">
+          <span class="label">Claude's Plan</span>
+          <span style="color:#7BA7A7;">1.</span> Read sales-data-q1.xlsx<br>
+          <span style="color:#7BA7A7;">2.</span> Analyse revenue by category<br>
+          <span style="color:#7BA7A7;">3.</span> Create summary with charts<br>
+          <span style="color:#7BA7A7;">4.</span> Draft Q2 recommendations<br>
+          <span style="color:#7BA7A7;">5.</span> Save as quarterly-report.pptx<br>
+          <span style="opacity:0.3;">&#10003; Approve to start</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- HOW IT WORKS — PAGE 2: STEPS 3 & 4 -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-full bg-dark page-break">
+  <div class="inner">
+    <div class="section-label">How It Works (continued)</div>
+    <h2>Walk Away. <span>Come Back to Finished Work.</span></h2>
+    <p class="lead">Once you approve the plan, Claude runs the task autonomously. It can even coordinate multiple sub-tasks in parallel. Then you review the finished result.</p>
+
+    <div class="how-visual">
+      <div class="how-card no-break">
+        <div class="step-badge">Step 3</div>
+        <h4>Claude Executes the Task</h4>
+        <p>Claude works through each step autonomously. It reads your files, processes the data, builds the deliverable, and saves the finished result. You do not need to be there.</p>
+        <div class="mock-ui">
+          <span class="label">Task Progress</span>
+          <span style="color:#7BA7A7;">&#10003;</span> Reading sales data...<br>
+          <span style="color:#7BA7A7;">&#10003;</span> Analysing 847 transactions...<br>
+          <span style="color:#7BA7A7;">&#10003;</span> Generating revenue charts...<br>
+          <span style="color:#7BA7A7;">&#9654;</span> Building presentation...<br>
+          <span style="opacity:0.3;">Running autonomously</span>
+        </div>
+      </div>
+
+      <div class="how-card no-break">
+        <div class="step-badge">Step 4</div>
+        <h4>Review Your Finished Work</h4>
+        <p>Come back to a completed deliverable. A fully formatted spreadsheet, a polished presentation, a structured report. Ready to review, tweak if needed, and send.</p>
+        <div class="mock-ui">
+          <span class="label">Completed</span>
+          &#128196; quarterly-report.pptx<br>
+          &nbsp;&nbsp;&#10003; 12 slides with charts<br>
+          &nbsp;&nbsp;&#10003; Executive summary<br>
+          &nbsp;&nbsp;&#10003; Q2 recommendations<br>
+          <span style="color:#7BA7A7;">Saved to /Documents/Reports/</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- THE MIND-SHIFT BANNER -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section">
+  <div class="sop-banner">
+    <h3>Stop Thinking of AI as a Chatbot. Start Thinking of It as an Employee.</h3>
+    <p>Cowork is not about asking better questions. It is about giving tasks to an agent that executes them. The skill is not prompting. The skill is delegating.</p>
+    <div class="sop-steps">
+      <div class="sop-step"><div class="num">1</div><span>Describe</span></div>
+      <div class="sop-arrow">&#10132;</div>
+      <div class="sop-step"><div class="num">2</div><span>Review</span></div>
+      <div class="sop-arrow">&#10132;</div>
+      <div class="sop-step"><div class="num">3</div><span>Approve</span></div>
+      <div class="sop-arrow">&#10132;</div>
+      <div class="sop-step"><div class="num">4</div><span>Walk Away</span></div>
+      <div class="sop-arrow">&#10132;</div>
+      <div class="sop-step"><div class="num">5</div><span>Receive</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SMART SCALING SYSTEM TEASE -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section">
+  <div class="smart-scaling">
+    <div class="ss-badge">One Piece of The Puzzle</div>
+    <h3>Cowork Is Just One Layer of The Smart Scaling System</h3>
+    <p>Claude Cowork is the execution engine. But it sits alongside Claude Projects, automations, and integrations inside a much bigger system designed to help you scale your entire coaching or consulting business with AI.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- THE COST COMPARISON -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-full bg-teal-light">
+  <div class="inner">
+    <div class="section-label">The Numbers</div>
+    <h2>What Cowork <span>Actually Replaces</span></h2>
+    <p class="lead">Every capability replaces a specialist role you would otherwise need to hire. Here is what you would pay a team versus what Claude Cowork actually costs.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card old no-break">
+        <div class="card-label">Hiring Staff</div>
+        <div class="amount">&#163;34,800</div>
+        <div class="detail">Per month in specialist wages<br>&#163;417,600/year before hidden costs</div>
+      </div>
+      <div class="compare-card new no-break">
+        <div class="card-label">Claude Cowork</div>
+        <div class="amount">&#163;15</div>
+        <div class="detail">Per month total<br>Claude Pro subscription</div>
+      </div>
+    </div>
+
+    <div class="saving-bar" style="background: linear-gradient(135deg, #FFD700, #FFC000); color: #1a1a1a;">
+      99.96% cost reduction. Real deliverables. Available 24/7.
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ALL 28 CAPABILITIES — DOCUMENT & DELIVERABLE CREATION -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section page-break">
+  <div class="section-label">All 28 Capabilities</div>
+  <h2>Every Feature. Every Function. <span>All Explained.</span></h2>
+  <p class="lead">Here is every single thing Claude Cowork can do for your business, what it replaces, and the result you can expect. Organised by business area so you can see exactly where the value sits.</p>
+
+  <!-- DOCUMENT & DELIVERABLE CREATION -->
+  <div class="cat-header no-break" style="margin-top: 56px;">
+    <div class="cat-icon">&#128196;</div>
+    <h3>Document &amp; Deliverable Creation</h3>
+    <div class="cat-meta">5 Capabilities &mdash; Create polished, professional business documents</div>
+    <div class="cat-cost">
+      <div class="amount">&#163;7,200</div>
+      <div class="cost-label">/month replaced</div>
+    </div>
+  </div>
+
+  <div class="cap-list">
+    <div class="cap-item no-break">
+      <div class="cap-num">01</div>
+      <div class="cap-info">
+        <h5>Excel Spreadsheets with Working Formulas</h5>
+        <p>Claude creates fully formatted spreadsheets complete with formulas, conditional formatting, and data analysis. Not a CSV export. A real, functional Excel file.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> A complete financial model or data analysis spreadsheet built in minutes instead of hours of manual formula work</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">02</div>
+      <div class="cap-info">
+        <h5>PowerPoint Presentations</h5>
+        <p>Full slide decks with structure, content, speaker notes, and proper formatting. Claude builds the presentation from your data and saves it as a real .pptx file.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> A client-ready presentation built from scratch in 10 minutes instead of an entire afternoon</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">03</div>
+      <div class="cap-info">
+        <h5>Formatted Reports &amp; Documents</h5>
+        <p>Structured business reports, client deliverables, research summaries, and analysis documents with proper headings, sections, and formatting.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Professional reports that look like a team produced them, finished before your second coffee</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">04</div>
+      <div class="cap-info">
+        <h5>Expense Reports from Receipts</h5>
+        <p>Hand Claude a folder of receipts and it creates a structured expense report with categories, totals, and formatted output ready for accounting.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Monthly expense reports done in 2 minutes instead of an hour of spreadsheet data entry</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi medium">Medium ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">05</div>
+      <div class="cap-info">
+        <h5>Cross-Application Workflows</h5>
+        <p>Claude chains tasks across applications. Run analysis in Excel, then automatically generate a PowerPoint from the results. One task, multiple deliverables.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> End-to-end deliverables that would normally take three separate tools and half a day, done in one task</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup medium">Medium</span>
+      </div>
+    </div>
+  </div>
+
+<!-- FILE & DATA MANAGEMENT -->
+</div>
+<div class="section">
+  <div class="cat-header no-break">
+    <div class="cat-icon">&#128193;</div>
+    <h3>File &amp; Data Management</h3>
+    <div class="cat-meta">4 Capabilities &mdash; Read, organise, and manage your local files</div>
+    <div class="cat-cost">
+      <div class="amount">&#163;3,400</div>
+      <div class="cost-label">/month replaced</div>
+    </div>
+  </div>
+
+  <div class="cap-list">
+    <div class="cap-item no-break">
+      <div class="cap-num">06</div>
+      <div class="cap-info">
+        <h5>Direct Local File Access</h5>
+        <p>Claude reads from and writes to your local folders directly. No uploading. No downloading. No copy-pasting. You choose which folders Claude can access, and it works within those boundaries.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Eliminate the upload-download cycle entirely. Claude works with your files as if it was sitting at your desk</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">07</div>
+      <div class="cap-info">
+        <h5>File Organisation &amp; Sorting</h5>
+        <p>Claude can organise files by type, date, client, or any criteria you define. Batch rename files, sort into folders, and clean up messy directories.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> A clean, structured file system in minutes instead of a weekend of sorting through folders</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi medium">Medium ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">08</div>
+      <div class="cap-info">
+        <h5>Data Extraction &amp; Synthesis</h5>
+        <p>Pull key information from multiple documents, combine data from different sources, and synthesise findings into a single structured output.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Research that would take a VA an entire day, synthesised into a structured brief in minutes</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup medium">Medium</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">09</div>
+      <div class="cap-info">
+        <h5>Statistical Analysis &amp; Visualisation</h5>
+        <p>Claude analyses your data, identifies trends, creates charts, and produces visual reports. Real data analysis, not just summaries.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Data-driven insights with charts and visuals that would normally require a data analyst</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi medium">Medium ROI</span>
+        <span class="tag-setup medium">Medium</span>
+      </div>
+    </div>
+  </div>
+
+<!-- AUTONOMOUS TASK EXECUTION -->
+</div>
+<div class="section">
+  <div class="cat-header no-break">
+    <div class="cat-icon">&#9881;</div>
+    <h3>Autonomous Task Execution</h3>
+    <div class="cat-meta">4 Capabilities &mdash; Multi-step tasks that run without you</div>
+    <div class="cat-cost">
+      <div class="amount">&#163;5,600</div>
+      <div class="cost-label">/month replaced</div>
+    </div>
+  </div>
+
+  <div class="cap-list">
+    <div class="cap-item no-break">
+      <div class="cap-num">10</div>
+      <div class="cap-info">
+        <h5>Multi-Step Task Breakdown</h5>
+        <p>Describe a complex outcome and Claude automatically breaks it into logical sub-tasks, shows you the plan, and executes each step in sequence or in parallel.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Complex projects that would take a team a full day, planned and executed in a single task</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">11</div>
+      <div class="cap-info">
+        <h5>Parallel Sub-Agent Workstreams</h5>
+        <p>For large tasks, Claude spins up multiple parallel workstreams that execute simultaneously. Like having a team of assistants all working on different parts of the same project at once.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Tasks that would take one person all day completed in a fraction of the time through parallel execution</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup medium">Medium</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">12</div>
+      <div class="cap-info">
+        <h5>Extended Runtime Without Timeouts</h5>
+        <p>No more losing your work when a session expires. Cowork tasks run for as long as they need to. No context limits. No conversation timeouts. It finishes the job.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Long, complex tasks that actually get completed instead of dying halfway through</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi medium">Medium ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">13</div>
+      <div class="cap-info">
+        <h5>Plan Review &amp; Approval</h5>
+        <p>Before executing anything, Claude shows you exactly what it plans to do. You review, adjust, and approve. Full transparency and control before any action is taken.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Complete confidence in what Claude will do before it does it. No surprises, no rogue actions</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi low">Low ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+  </div>
+
+<!-- COMPUTER USE & SCREEN CONTROL -->
+</div>
+<div class="section">
+  <div class="cat-header no-break">
+    <div class="cat-icon">&#128421;</div>
+    <h3>Computer Use &amp; Screen Control</h3>
+    <div class="cat-meta">4 Capabilities &mdash; Claude controls your mouse, keyboard, and browser</div>
+    <div class="cat-cost">
+      <div class="amount">&#163;6,400</div>
+      <div class="cost-label">/month replaced</div>
+    </div>
+  </div>
+
+  <div class="cap-list">
+    <div class="cap-item no-break">
+      <div class="cap-num">14</div>
+      <div class="cap-info">
+        <h5>Mouse &amp; Keyboard Control</h5>
+        <p>Claude directly controls your mouse and keyboard to complete tasks in any application on your computer. It clicks, types, navigates, and operates your apps exactly as you would.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Any repetitive screen-based task you do daily can now be delegated to Claude</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup medium">Medium</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">15</div>
+      <div class="cap-info">
+        <h5>Browser Navigation &amp; Web Tasks</h5>
+        <p>Claude opens your browser, navigates websites, fills in forms, extracts information, and completes web-based tasks. Research, data gathering, and form completion handled automatically.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Web research and data entry that used to eat hours of your day, done while you focus on clients</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup medium">Medium</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">16</div>
+      <div class="cap-info">
+        <h5>Application Navigation</h5>
+        <p>Claude opens apps, switches between them, and operates any software on your desktop. It uses precise integrations first and falls back to screen control when needed.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Cross-application workflows handled automatically, even for tools that have no API</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi medium">Medium ROI</span>
+        <span class="tag-setup medium">Medium</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">17</div>
+      <div class="cap-info">
+        <h5>Permission-Based Access Control</h5>
+        <p>Claude always asks before accessing a new application. You grant permission for each app individually. It cannot touch anything you have not explicitly approved.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Full control over what Claude can and cannot access. Security built in, not bolted on</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi low">Low ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+  </div>
+
+<!-- SCHEDULING & AUTOMATION -->
+</div>
+<div class="section">
+  <div class="cat-header no-break">
+    <div class="cat-icon">&#128337;</div>
+    <h3>Scheduling &amp; Automation</h3>
+    <div class="cat-meta">4 Capabilities &mdash; Recurring tasks that run on autopilot</div>
+    <div class="cat-cost">
+      <div class="amount">&#163;4,200</div>
+      <div class="cost-label">/month replaced</div>
+    </div>
+  </div>
+
+  <div class="cap-list">
+    <div class="cap-item no-break">
+      <div class="cap-num">18</div>
+      <div class="cap-info">
+        <h5>Scheduled Recurring Tasks</h5>
+        <p>Create tasks that run automatically on a cadence. Hourly, daily, weekly, or weekdays only. Set it once with the /schedule command and Claude handles it from there.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Repetitive weekly tasks like report generation, data pulls, and summaries run without you ever thinking about them</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup medium">Medium</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">19</div>
+      <div class="cap-info">
+        <h5>Morning Briefings &amp; News Digests</h5>
+        <p>Schedule a daily task that pulls together your morning briefing. Market updates, industry news, client activity, or whatever you need to start your day informed.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> A personalised morning brief waiting for you every day, created overnight while you slept</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi medium">Medium ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">20</div>
+      <div class="cap-info">
+        <h5>Weekly Report Generation</h5>
+        <p>Set up a weekly task that automatically compiles your data, generates reports, and saves them to the right folder. Every Friday. Without you lifting a finger.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> End-of-week reports that used to take Friday afternoon now appear automatically</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup medium">Medium</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">21</div>
+      <div class="cap-info">
+        <h5>Dispatch: Mobile Task Assignment</h5>
+        <p>A persistent conversation accessible from your phone. Assign tasks to Claude from your mobile while it executes them on your desktop. Delegate during your commute.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Tasks assigned from your phone on the train, finished on your desktop before you reach the office</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+  </div>
+
+<!-- INTEGRATIONS & CONNECTORS -->
+</div>
+<div class="section">
+  <div class="cat-header no-break">
+    <div class="cat-icon">&#128279;</div>
+    <h3>Integrations &amp; Connectors</h3>
+    <div class="cat-meta">4 Capabilities &mdash; Connect Claude to your existing business tools</div>
+    <div class="cat-cost">
+      <div class="amount">&#163;4,800</div>
+      <div class="cost-label">/month replaced</div>
+    </div>
+  </div>
+
+  <div class="cap-list">
+    <div class="cap-item no-break">
+      <div class="cap-num">22</div>
+      <div class="cap-info">
+        <h5>Google Workspace Integration</h5>
+        <p>Connect Claude directly to Google Calendar, Google Drive, and Gmail. It reads your emails, checks your calendar, accesses your drive files, and takes action across all three.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Your entire Google ecosystem connected to an AI agent that can read, respond, and organise across all of it</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup medium">Medium</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">23</div>
+      <div class="cap-info">
+        <h5>CRM &amp; Sales Tool Connectors</h5>
+        <p>Integrations with Apollo, Clay, Outreach, and more. Claude can pull lead data, update CRM records, and execute outreach sequences directly through your sales tools.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Sales admin and CRM hygiene handled automatically instead of eating into your selling time</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup advanced">Advanced</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">24</div>
+      <div class="cap-info">
+        <h5>Slack &amp; Communication Plugins</h5>
+        <p>Claude connects to Slack and other communication platforms. Summarise channels, draft responses, track conversations, and stay on top of team communication.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Slack channel summaries, drafted replies, and communication tracking without the constant context-switching</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi medium">Medium ROI</span>
+        <span class="tag-setup medium">Medium</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">25</div>
+      <div class="cap-info">
+        <h5>Legal &amp; Document Signing (DocuSign)</h5>
+        <p>Connect to DocuSign and legal platforms. Claude can prepare documents for signing, track signature status, and manage your document workflow.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Contract and document management streamlined end-to-end without chasing signatures manually</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi medium">Medium ROI</span>
+        <span class="tag-setup advanced">Advanced</span>
+      </div>
+    </div>
+  </div>
+
+<!-- MEMORY, PROJECTS & PERSONALISATION -->
+</div>
+<div class="section">
+  <div class="cat-header no-break">
+    <div class="cat-icon">&#129504;</div>
+    <h3>Memory, Projects &amp; Personalisation</h3>
+    <div class="cat-meta">3 Capabilities &mdash; Claude learns, remembers, and adapts to you</div>
+    <div class="cat-cost">
+      <div class="amount">&#163;3,200</div>
+      <div class="cost-label">/month replaced</div>
+    </div>
+  </div>
+
+  <div class="cap-list">
+    <div class="cap-item no-break">
+      <div class="cap-num">26</div>
+      <div class="cap-info">
+        <h5>Persistent Project Workspaces</h5>
+        <p>Organise your tasks into persistent projects with their own files, links, instructions, and context. Each project becomes a self-contained workspace that Claude remembers between sessions.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> No more re-explaining context every time. Claude picks up exactly where you left off</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">27</div>
+      <div class="cap-info">
+        <h5>Memory &amp; Learning</h5>
+        <p>Within each project, Claude remembers your preferences, your style, your decisions, and your feedback from previous tasks. It gets better the more you use it.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> An AI assistant that improves over time instead of starting from scratch every conversation</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi">High ROI</span>
+        <span class="tag-setup">Easy</span>
+      </div>
+    </div>
+
+    <div class="cap-item no-break">
+      <div class="cap-num">28</div>
+      <div class="cap-info">
+        <h5>Global &amp; Folder-Level Instructions</h5>
+        <p>Set persistent preferences that apply to all tasks globally, or add specific instructions tied to individual folders. Your brand voice, formatting preferences, and working style baked in everywhere.</p>
+        <div class="result"><span class="r-icon">&#10132;</span> Every output matches your standards automatically without having to remind Claude each time</div>
+      </div>
+      <div class="cap-tags">
+        <span class="tag-roi medium">Medium ROI</span>
+        <span class="tag-setup medium">Medium</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- YOUR FIRST WEEK WITH COWORK — TIMELINE -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-full bg-off-white page-break">
+  <div class="inner">
+    <div class="section-label">Your First Week</div>
+    <h2>What Your Business Looks Like <span>After 7 Days</span></h2>
+    <p class="lead">You do not need to learn Cowork all at once. Here is exactly what to do in your first week to see real results immediately.</p>
+
+    <div class="timeline">
+      <div class="timeline-card no-break">
+        <div class="time">Day 1</div>
+        <div>
+          <h4>Download &amp; Set Your Folders</h4>
+          <p>Install the Claude Desktop app, open Cowork, and grant access to your key business folders. Set your global instructions with your brand name, voice, and preferences. Time: 15 minutes.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card no-break">
+        <div class="time">Day 2</div>
+        <div>
+          <h4>Your First Real Task</h4>
+          <p>Give Claude a real task from your to-do list. "Organise this folder." "Create a report from this data." "Build a presentation for this meeting." Watch it plan, execute, and deliver.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card no-break">
+        <div class="time">Day 3</div>
+        <div>
+          <h4>Build Your First Deliverable</h4>
+          <p>Ask Claude to create something you would normally spend hours on. A client report, a financial summary, a proposal document. Review the output and see the quality for yourself.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card no-break">
+        <div class="time">Day 4</div>
+        <div>
+          <h4>Connect Your First Integration</h4>
+          <p>Link Google Calendar, Gmail, or Slack. Let Claude start working across your existing tools instead of in isolation. This is where the real power begins.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card no-break">
+        <div class="time">Day 5</div>
+        <div>
+          <h4>Schedule Your First Recurring Task</h4>
+          <p>Use /schedule to set up a weekly report, a daily briefing, or a Monday morning planning summary. From this day forward, that task happens without you.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card no-break">
+        <div class="time">Day 6</div>
+        <div>
+          <h4>Try Computer Use</h4>
+          <p>Let Claude handle a screen-based task. Fill in a form, navigate a tool, or complete a workflow across multiple apps. Experience the difference between a chatbot and an agent.</p>
+        </div>
+      </div>
+
+      <div class="timeline-card no-break">
+        <div class="time">Day 7</div>
+        <div>
+          <h4>Review &amp; Scale</h4>
+          <p>Look at what Claude handled this week. Calculate the hours saved. Plan which tasks to delegate next week. By now, you are not asking "does this work?" You are asking "what else can it do?"</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- WHO IS THIS FOR -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-full bg-off-white page-break">
+  <div class="inner">
+    <div class="section-label">Is This For You?</div>
+    <h2>Built for People Who <span>Actually Need to Get Work Done</span></h2>
+
+    <div class="for-grid">
+      <div class="for-card yes no-break">
+        <h4>&#10003; Cowork is for you if:</h4>
+        <ul>
+          <li>&#10003; You are a coach, consultant, or service provider running your own business</li>
+          <li>&#10003; You spend hours on reports, presentations, and admin every week</li>
+          <li>&#10003; You want an AI that does the work, not just writes text</li>
+          <li>&#10003; You are tired of copy-pasting AI output into documents manually</li>
+          <li>&#10003; You want to delegate tasks, not have a conversation</li>
+          <li>&#10003; You value your time and want to focus on clients, not spreadsheets</li>
+          <li>&#10003; You are ready to see what AI as an employee actually looks like</li>
+        </ul>
+      </div>
+      <div class="for-card no no-break">
+        <h4>&#10007; Cowork is not for you if:</h4>
+        <ul>
+          <li>&#10007; You only need AI for quick text generation</li>
+          <li>&#10007; You are not willing to try the Claude Desktop app</li>
+          <li>&#10007; You expect perfection without any review or refinement</li>
+          <li>&#10007; You do not have a Mac or Windows PC (mobile only is not enough)</li>
+          <li>&#10007; You are looking for a chatbot, not an autonomous agent</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- WHAT YOU GET FROM UNDERSTANDING THIS -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="section-full bg-dark page-break">
+  <div class="inner">
+    <div class="section-label">What You Now Know</div>
+    <h2>You Now Understand Something 99% of Business Owners Do Not.</h2>
+
+    <ul class="checklist">
+      <li><span class="chk">&#10003;</span> <span><strong>What Claude Cowork actually is</strong> and why it is fundamentally different from Chat, Projects, or any other AI tool on the market</span></li>
+      <li><span class="chk">&#10003;</span> <span><strong>All 28 core capabilities</strong> across document creation, file management, autonomous execution, computer use, scheduling, integrations, and personalisation</span></li>
+      <li><span class="chk">&#10003;</span> <span><strong>How Cowork replaces &#163;34,800/month</strong> in specialist wages with a &#163;15/month subscription</span></li>
+      <li><span class="chk">&#10003;</span> <span><strong>The step-by-step process</strong> for giving Claude a task and receiving a finished deliverable</span></li>
+      <li><span class="chk">&#10003;</span> <span><strong>How Computer Use works</strong> and how Claude can control your mouse, keyboard, and browser to complete tasks in any application</span></li>
+      <li><span class="chk">&#10003;</span> <span><strong>How Scheduling and Dispatch work</strong> so you can automate recurring tasks and assign work from your phone</span></li>
+      <li><span class="chk">&#10003;</span> <span><strong>Which integrations are available</strong> and how to connect Claude to Google Workspace, Slack, CRMs, and more</span></li>
+      <li><span class="chk">&#10003;</span> <span><strong>How Memory and Projects work</strong> so Claude learns your preferences and improves over time</span></li>
+      <li><span class="chk">&#10003;</span> <span><strong>A 7-day implementation plan</strong> to go from zero to a fully working AI employee in one week</span></li>
+      <li><span class="chk">&#10003;</span> <span><strong>The ROI and difficulty level</strong> of every single capability so you know exactly where to start for maximum impact</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- CTA — DISCOVERY CALL -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="cta-section page-break">
+  <div class="inner">
+    <div class="section-label" style="color: var(--teal-light);">Your Next Step</div>
+    <h2>Get the Complete Copy-and-Paste System for <span style="color: var(--teal-light);">Projects &amp; Cowork</span></h2>
+    <p style="color: rgba(255,255,255,0.6); font-size: 17px; max-width: 640px; margin: 0 auto 10px; line-height: 1.7;">Inside all of our programmes, we give you the full step-by-step copy-and-paste SOP to set up Claude Projects and Claude Cowork across your entire business. No tech skills needed. No prompt engineering. No guesswork. Just follow the steps, personalise, and go.</p>
+
+    <div class="cta-box">
+      <h3>Book a Call to Find Out More</h3>
+      <p>No pressure. No pitch. Just a real conversation about your business, how Claude Projects and Cowork fit into your workflow, and how our programmes give you the done-for-you SOPs to set it all up yourself. If you can copy, paste, and type your name, you can run this entire system.</p>
+      <a href="https://go.thecoachconsultant.uk/Discovery-Call" class="cta-button">Book Your Discovery Call</a>
+      <div class="cta-sub">Free. 60 minutes. Zero obligation. Just clarity on what is possible for your business.</div>
+    </div>
+
+    <p style="margin-top: 40px; color: rgba(255,255,255,0.35); font-size: 13px;">This Cowork Guide is just one part of The Smart Scaling System.<br>On the call, we will show you how Projects and Cowork work together to run your entire business.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ═══════════════════════════════════════════════ -->
+<div class="footer">
+  <p><strong>The Coach Consultant</strong> &nbsp;|&nbsp; thecoachconsultant.uk</p>
+  <p style="margin-top: 8px;">All salary data based on 2025-2026 UK specialist/freelancer market rates. Sources: Robert Half UK, Glassdoor UK, Reed.co.uk, YunoJuno.</p>
+  <p style="margin-top: 4px;">Claude and Cowork are products of Anthropic. This resource is independently created and is not affiliated with or endorsed by Anthropic.</p>
+</div>
+
+</body>
+</html>
