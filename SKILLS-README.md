@@ -22,6 +22,7 @@ Organic Instagram content (captions, stories, reels).
 
 - **[Instagram Page Spy](2-instagram/instagram-page-spy/)** ✅ **READY** - Spy on any Instagram profile: content breakdown, engagement rates, top posts, hook/CTA patterns, posting schedule, caption analysis, hashtag strategy.
 - **[Instagram Caption](2-instagram/instagram-caption/)** ✅ **DATA LOADED** - Generate Instagram captions matching Ben's exact voice. 41 posts analyzed, top hooks identified (808 engagement!), proven patterns documented. Carousel posts perform best (161 avg). Use 800+ character captions for max engagement.
+- **[IG Competitor Analysis](2-instagram/ig-competitor-analysis/)** ✅ **DATA LOADED** - 31 verified profiles, 847 posts analysed. Story hooks get 70K avg engagement, Carousel posts dominate (37K avg), 78% posts have no CTA. Cross-competitor hook patterns, format performance, CTA strategies, top 30 hooks swipe file.
 
 ---
 
@@ -38,6 +39,7 @@ Long-form video scripts and supporting content.
 Email campaigns, newsletters, and automation sequences.
 
 - **[Email Campaign Generation](4-emails/email-campaign-skill/)** ✅ **DATA LOADED** - Generate email campaigns with 9.6/10 voice accuracy. 471 emails analyzed (353 unique subjects). Proven patterns: #theGAPyoumiss (16 sends), BadBizAdvice (23 sends). Systematic voice verification enforced. Auto-triggers for all email generation tasks.
+- **[Email Competitor Spy](4-emails/email-competitor-spy/)** ✅ **READY** - Analyse competitor email newsletters (10 senders tracked via Antonio's pipeline). Extract hook patterns, subject line formulas, CTA strategies, tone profiles, and offer positioning. Feeds directly into email campaign generation.
 
 ---
 
@@ -54,6 +56,14 @@ Professional networking content and thought leadership.
 Website copy, landing pages, and SEO-optimised content.
 
 - Coming soon...
+
+---
+
+## Optimisation Skills
+
+Tools for optimising the AI content generation system itself.
+
+- **[Token Optimisation](optimisation-skills/token-optimisation/)** ✅ **READY** - Audit CLAUDE.md and workspace for token waste. Identifies duplicated content, verbose patterns, oversized files. Interactive 3-5 question discovery, then generates optimised versions. Current CLAUDE.md: ~3,467 tokens per conversation.
 
 ---
 
@@ -90,9 +100,9 @@ All skills automatically reference:
 | Channel | Skills Available | Status |
 |---------|------------------|--------|
 | 1. Meta Ads | 2 | ✅ Live |
-| 2. Instagram | 1 | ✅ Live |
+| 2. Instagram | 2 | ✅ Live |
 | 3. YouTube | 0 | 🚧 Planning |
-| 4. Emails | 1 | ✅ Live |
+| 4. Emails | 2 | ✅ Live |
 | 5. LinkedIn | 0 | 🚧 Planning |
 | 6. Website/SEO | 0 | 🚧 Planning |
 
@@ -116,5 +126,5 @@ All skills automatically reference:
 
 ---
 
-**Last Updated:** 2026-03-24
+**Last Updated:** 2026-04-07
 **Maintained By:** Claude Code + Jay (developer utilities)

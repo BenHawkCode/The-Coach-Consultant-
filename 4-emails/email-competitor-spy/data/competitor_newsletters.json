@@ -1,0 +1,268 @@
+[
+  {
+    "sender": "Alex Hormozi",
+    "email": "value@acquisition.com",
+    "domain": "acquisition.com",
+    "platform": "HubSpot",
+    "frequency": "2-3x/week",
+    "newsletters": [
+      {
+        "subject": "Mozi Minute: How to Un-AI Slop",
+        "date": "2026-04-02",
+        "hook": "In this world of AI slop, here's the biggest content hack I can give you: Cut anything that doesn't change behavior.",
+        "body_excerpt": "This is the lens. Let me show you. Example: 'Unlocking your true potential starts with embracing a growth mindset...' → this is AI slop btw. Now, read it and ask yourself: What is this telling me to do? Answer: Do more than you currently are, everyday. And if that's what you want people to do, then just say it and delete the rest. This is how you can increase your value per word. Because in a world of infinite content, winning means using the fewest words to say the most.",
+        "cta": "PS: My week so far... [link to photo/video]",
+        "offer": "None — pure value newsletter",
+        "tone": "Direct, no-BS, conversational, punchy short paragraphs",
+        "format": "Mozi Minute (value in under a minute)",
+        "key_pattern": "One sharp insight → example → reframe → sign-off. Always under 200 words."
+      },
+      {
+        "subject": "Mozi Minute: You can only be CEO alone",
+        "date": "2026-03-31",
+        "hook": "You can only be CEO alone. What do I mean by that? I mean that you can not be CEO of more than one thing.",
+        "body_excerpt": "This is where probably 20% of entrepreneurs that I speak to are struggling. They want to pursue many opportunities and delude themselves into thinking that they are somehow additive. The reality is that Zuckerberg didn't have a side-hustle. He wasn't flipping Airbnbs while trying to build his software platform. Jeff Bezos wasn't drop shipping on the side while he was getting his startup to work. If you believe in the thing, then go all in on the thing and force it to work.",
+        "cta": "No explicit CTA — ends with insight",
+        "offer": "None — pure value",
+        "tone": "Authoritative, provocative, uses specific stats (20% of entrepreneurs)",
+        "format": "Mozi Minute — longer form (~2.5 min read)",
+        "key_pattern": "Contrarian statement → real examples (Zuckerberg, Bezos) → litmus test framework → direct challenge to reader"
+      },
+      {
+        "subject": "Mozi Minute: My tiniest life hack",
+        "date": "2026-03-26",
+        "hook": "I'm taking a break from heavy business tactic emails for the day... So, I thought I would give you one very small thing that could dramatically improve your life. Let me tell you what it is: ear plugs",
+        "body_excerpt": "Ear plugs paired with a caffeinated beverage is chef's kiss for work. Ear plugs paired with a dark cold room is chef's kiss for sleep. Ear plugs paired with maids cleaning your house is chef's kiss for sanity. I've used them for 10 years. When I put them in, I instantly feel happier because the world gets quiet and my thoughts get louder.",
+        "cta": "PS: How I feel with earplugs [funny image/gif]",
+        "offer": "None — lifestyle tip with product rec (non-affiliate)",
+        "tone": "Casual, fun, self-deprecating humor, relatable",
+        "format": "Mozi Minute — lighthearted edition",
+        "key_pattern": "Pattern interrupt (not business) → simple tip → bullet point pro tips → personal anecdote"
+      }
+    ]
+  },
+  {
+    "sender": "Dan Martell",
+    "email": "dm@danmartell.com",
+    "domain": "danmartell.com",
+    "platform": "GoHighLevel (msgsndr)",
+    "frequency": "Daily (M-F)",
+    "newsletters": [
+      {
+        "subject": "you're closer than you think",
+        "date": "2026-04-03",
+        "hook": "Some days you close your laptop and feel like you did nothing. The list is still long. The inbox is still full. The big thing still isn't done. And you wonder if you're even cut out for this…",
+        "body_excerpt": "You are. Progress stays invisible for a long time. Every problem you solved, decision you didn't rush, or 'opportunity' you said no to because you knew it wasn't right… That's all progress hidden in the background. You don't need a better routine. Or a new hack. You just need to trust the work. It's adding up. Keep going.",
+        "cta": "No CTA — motivational only",
+        "offer": "None — pure motivation",
+        "tone": "Empathetic, personal, short sentences, emotionally resonant",
+        "format": "Motivational letter — plain text feel",
+        "key_pattern": "Paint the pain → flip it → reassure → one-liner close"
+      },
+      {
+        "subject": "how to survive 2026",
+        "date": "2026-04-01",
+        "hook": "Here's my prediction for 2026: Half the entrepreneurs you know will be out of business. Why? Because they're still operating like it's 2020.",
+        "body_excerpt": "I just ran the AI CEO Challenge. Showed 35,000 people how to use AI to buy back 10+ hours per week. The ones who implemented it? Already operating differently. The ones who didn't? Still grinding 60-hour weeks wondering why they can't scale. The gap is getting exponential. AI-powered CEOs are moving at a speed that makes everyone else look frozen.",
+        "cta": "Reply with 'COACH.' I'll reach out to see if you're a fit.",
+        "offer": "Elite coaching program — limited spots",
+        "tone": "Urgent, fear-based hook, then offer as solution",
+        "format": "Fear → proof → urgency → reply CTA",
+        "key_pattern": "Bold prediction → social proof (35K challenge) → urgency → simple reply CTA (one word)"
+      },
+      {
+        "subject": "it was a lie, but it worked",
+        "date": "2026-03-30",
+        "hook": "Real relationships are built. Not found. The most valuable artwork on my wall at Martell Media... is fake.",
+        "body_excerpt": "When I moved to Kelowna from Moncton, my buddy Martin did something I'll never forget...",
+        "cta": "Story-based — leads to lesson about relationships in business",
+        "offer": "None — storytelling",
+        "tone": "Vulnerable, storytelling, personal history",
+        "format": "Personal story → business lesson",
+        "key_pattern": "Curiosity gap in subject → personal story → business principle extraction"
+      }
+    ]
+  },
+  {
+    "sender": "Andrew and Pete",
+    "email": "whistle@andrewandpete.com",
+    "domain": "andrewandpete.com",
+    "platform": "ActiveCampaign",
+    "frequency": "Daily (mix of newsletter + funnel sequences)",
+    "newsletters": [
+      {
+        "subject": "our most embarrassing moments",
+        "date": "2026-04-03",
+        "hook": "Do you want to see the most cringeworthy videos of us, Antonio? 'Your first 100 videos will suck', as they say...",
+        "body_excerpt": "...so you may as well get through them fast. What if you're a complete noob to video? What if you don't know how to do slick editing? What if you don't like seeing yourself on camera? What if you don't have time? It's tough. Well unfortunately, video is everything these days, so we're gunna have to fight through these blocks.",
+        "cta": "Click here to watch [YouTube link] + PS: Viral Video April - click here for more info!",
+        "offer": "Viral Video April challenge/course",
+        "tone": "Casual, fun, self-deprecating, encouraging, British",
+        "format": "Relatable pain → encouragement → YouTube CTA → product PS",
+        "key_pattern": "Vulnerability hook → address objections as questions → YouTube content → soft sell in PS"
+      },
+      {
+        "subject": "[Atomic] 600K followers, 600 paying members",
+        "date": "2026-03-30",
+        "hook": "Picture this: a student sitting on her sofa, overwhelmed and lonely, opens Instagram to document her journey into marketing. A week later, she's hit her first 1,000 followers.",
+        "body_excerpt": "Sophie Miller built a 600,000-strong community as a student during the pandemic. Sophie reveals: How she hit 1,000 followers in one week and 30,000 in 6 months without any strategy whatsoever. Why 75-80% of her revenue comes from brand partnerships, not her membership. The content strategy that got Kim Kardashian to engage with her post.",
+        "cta": "WATCH ON YOUTUBE / LISTEN ON SPOTIFY / LISTEN ON APPLE",
+        "offer": "ATOMICON 2026 tickets (soft sell at bottom)",
+        "tone": "Podcast promo format, bullet-point teasers, energetic",
+        "format": "Guest story → bullet reveals → multi-platform CTA → event plug",
+        "key_pattern": "Case study intro → bullet-point curiosity gaps → cross-platform distribution links → sponsor mention → event CTA"
+      }
+    ]
+  },
+  {
+    "sender": "Ezra Firestone / Smart Marketer",
+    "email": "ezra@smartmarketer.com",
+    "domain": "smartmarketer.com",
+    "platform": "Klaviyo",
+    "frequency": "Daily",
+    "newsletters": [
+      {
+        "subject": "700% more email revenue (same list, better system)",
+        "date": "2026-04-01",
+        "hook": "How one brand grew email-attributed revenue almost 700% year over year.",
+        "body_excerpt": "When our email team started working with Jamie Anne, email wasn't really a priority. They had the basics running, but there was no real strategy behind it. Our team rebuilt the whole thing. New flows, better campaigns, smarter segmentation, and we redesigned their pop-up and doubled their submit rate from 2.86% to 5.82% with a single design test. Email-attributed revenue is up almost 700% year over year. Email now drives over 54% of total revenue. None of that required them to spend a dollar more on ads.",
+        "cta": "Apply for a Spot [agency application]",
+        "offer": "Smart Marketer Agency — email marketing + ad creative services",
+        "tone": "Professional, data-driven, case-study format, metric-heavy",
+        "format": "Case study → specific results → agency CTA",
+        "key_pattern": "Result in subject → client before/after story → specific metrics (700%, 54%, 2.86→5.82%) → agency pitch"
+      },
+      {
+        "subject": "We tested it on real brands",
+        "date": "2026-03-31",
+        "hook": "Every day you're not testing new creative, you're relying on whatever already exists. Your ads age out. Your audience fatigues. Your CPAs creep up.",
+        "body_excerpt": "That's the creative bottleneck. And it's one of the most expensive problems in digital marketing. It's also exactly what we built Thumbstop to solve. Zach used it for organic social. His Thumbstop content pulled 661% higher views than his usual posts, with 97.6% of that reach coming from non-followers.",
+        "cta": "Read More Success Stories [blog link]",
+        "offer": "Thumbstop — AI creative testing tool",
+        "tone": "Problem-agitate-solve, with specific proof metrics",
+        "format": "Problem statement → product as solution → case study proof → CTA",
+        "key_pattern": "Three-line pain (age out / fatigue / CPA creep) → product intro → specific metric proof (661%, 97.6%)"
+      }
+    ]
+  },
+  {
+    "sender": "Molly Pittman",
+    "email": "ezra@smartmarketer.com",
+    "domain": "smartmarketer.com",
+    "platform": "Klaviyo",
+    "frequency": "1-2x/week (shares Smart Marketer list with Ezra)",
+    "newsletters": [
+      {
+        "subject": "Free product: Future-proof your brand in 2026 (& beyond)",
+        "date": "2026-03-29",
+        "hook": "As we promised in our last email, to say thank you for joining our community we're sending you a free product: Your 2026 Growth Playbook.",
+        "body_excerpt": "This training is built to help you head into 2026 with a clearer plan across the channels that drive the most leverage: email, paid media, and creative testing. This panel was one of our most popular sessions at our last live event. It was so good that we had to put it behind a paywall, but we're giving it to you for free.",
+        "cta": "Get Free Product [Shopify checkout — free]",
+        "offer": "2026 Growth Playbook — free product (normally paid)",
+        "tone": "Generous, welcoming, value-forward",
+        "format": "Welcome sequence → free gift → bullet benefits → checkout CTA",
+        "key_pattern": "Reciprocity (free product) → exclusivity (was behind paywall) → specific skills (email, paid media, creative testing)"
+      }
+    ]
+  },
+  {
+    "sender": "James Sinclair",
+    "email": "info@jamessinclair.net",
+    "domain": "jamessinclair.net",
+    "platform": "Squarespace",
+    "frequency": "Weekly (Monday morning)",
+    "newsletters": [
+      {
+        "subject": "Alone with my thoughts.",
+        "date": "2026-03-30",
+        "hook": "This weekend, I stepped aboard my camper van and criss-crossed the country on a quest for knowledge and deals, learning from other folk's 10,000 hours of mastery.",
+        "body_excerpt": "Essex to Exeter, Preston to Penrith, Worthing to Wales. I certainly felt the effects of the journey on my credit card. Getting out and about, seeking new ideas, viewing businesses for sale and spending time under the bonnet is what truly drives my businesses forward. I believe this weekend, over time, will create millions of pounds' worth of opportunities in ideas, R&D and future deals. Most folk rely on desktop research that gets forgotten as quickly as it's found. I prefer to look. Properly look. It's the cheapest consultancy you can get.",
+        "cta": "No CTA — ends with dad joke PS",
+        "offer": "None — pure storytelling/insight newsletter",
+        "tone": "British, warm, storytelling, entrepreneurial, food analogies, humorous PS",
+        "format": "The James Sinclair Letter (numbered #099) — personal essay",
+        "key_pattern": "Adventure narrative → business lesson extraction → actionable principle (investing days) → dad joke PS. Very British, long-form, no hard sell."
+      }
+    ]
+  },
+  {
+    "sender": "Chris Williamson",
+    "email": "chris@chriswillx.com",
+    "domain": "chriswillx.com",
+    "platform": "ConvertKit",
+    "frequency": "Weekly (Monday)",
+    "newsletters": [
+      {
+        "subject": "3MM: Clarity, Degrees & Penises",
+        "date": "2026-03-30",
+        "hook": "I'm in Bali. Tour has been wild and absolutely non-stop, got a week here to chill out. Final show tomorrow.",
+        "body_excerpt": "Post-Content Clarity. This is the best way to work out whether the content you consume is making your life better or worse. While you watch anything, you are distracted by the content itself. Which means you can't judge how the content impacts you. The solution is to ask yourself: How does watching different creators make you feel? Your content diet should be spirulina for the soul, not fast food for your amygdala.",
+        "cta": "Listen on Spotify / Apple Podcasts + Share with friends + Try Neutonic [product]",
+        "offer": "Neutonic (productivity drink) + Modern Wisdom podcast",
+        "tone": "Intellectual, philosophical, provocative subject lines, curated format",
+        "format": "3 Minute Monday: Life update → Big essay → Podcast previews → 3 Things I've Learned → Life Hack → Sign-off",
+        "key_pattern": "Named concept (Post-Content Clarity) → philosophical argument → practical framework → curated content (quotes, stats, jokes) → product plug"
+      }
+    ]
+  },
+  {
+    "sender": "Frank Kern",
+    "email": "frank@abc.kernclass.com",
+    "domain": "abc.kernclass.com",
+    "platform": "Custom (HighLevel integration)",
+    "frequency": "2-3x/week",
+    "newsletters": [
+      {
+        "subject": "You get automation stuff you asked for?",
+        "date": "2026-03-26",
+        "hook": "You asked me to send you the cool automation stuff earlier. I'm not sure if you got it. If you didn't, here it is...",
+        "body_excerpt": "It comes in what's called a 'snapshot' and you can access it here. Basically, a 'snapshot' is a bunch of cool pre-built stuff that you can import into your HighLevel account. Please know that's an affiliate link and I'll get DOZENS of dollars if you end up becoming a paying user. Maybe even more! (I recommend the cheapest plan, by the way.)",
+        "cta": "Click link to import HighLevel snapshot",
+        "offer": "HighLevel affiliate — free GHL snapshot (automation templates)",
+        "tone": "Ultra-casual, self-deprecating humor about affiliate commission, short",
+        "format": "Follow-up nudge → value delivery → transparent affiliate disclosure → humor",
+        "key_pattern": "Assumed familiarity ('you asked for') → simple delivery → transparent about affiliate → self-deprecating humor about small commissions"
+      }
+    ]
+  },
+  {
+    "sender": "Tony Robbins | The Edge",
+    "email": "replies@tonyrobbins.com",
+    "domain": "tonyrobbins.com",
+    "platform": "HubSpot",
+    "frequency": "Weekly (Sunday)",
+    "newsletters": [
+      {
+        "subject": "The $0 habit that can make you a millionaire",
+        "date": "2026-03-29",
+        "hook": "It's not about how much you earn. It's what you do consistently.",
+        "body_excerpt": "There was a man named Theodore Johnson. He worked for UPS and never earned a high income. But a friend challenged him with a simple idea: Treat saving like a tax. Pay yourself first. He began setting aside 10% of every paycheck. By the time he retired, Theodore Johnson had accumulated over $70M. Not because of what he earned, but because of what he did consistently. Compounding doesn't just apply to money. It applies to your mindset. Your relationships. Your standards. Your identity.",
+        "cta": "Try Tony Robbins AI prompt + Read 'Money: Master the Game' + Watch Iced Coffee Hour clip + Business Mastery event",
+        "offer": "Tony Robbins AI + Money book + Business Mastery event",
+        "tone": "Inspirational, structured, story-driven, multiple CTAs, professionally produced",
+        "format": "The Edge newsletter: Quote → Deep Dive story → AI prompt → Recommendations → Event plug",
+        "key_pattern": "Shareable quote → Theodore Johnson story (specific: UPS, 10%, $70M) → principle extraction (compounding) → multi-product CTA funnel (AI tool, book, event)"
+      }
+    ]
+  },
+  {
+    "sender": "Leila Hormozi",
+    "email": "leila-hormozi@mail.beehiiv.com",
+    "domain": "mail.beehiiv.com (beehiiv platform)",
+    "platform": "beehiiv",
+    "frequency": "Weekly",
+    "newsletters": [
+      {
+        "subject": "It's a Systems Issue",
+        "date": "2026-03-30",
+        "hook": "As leaders, our default instinct when something gets missed is often to look at the person closest to the miss. That's normal. But at scale, that instinct becomes expensive and often incorrect.",
+        "body_excerpt": "More often than not, what looks like a people issue is actually a systems issue. Strong organizations are not built on heroic effort or perfect memory. They are built on systems that make the right behavior obvious, repeatable, and hard to miss. The standard we are aiming for when building systems is PRECISION. We don't ask \"What systems should exist in theory?\" We ask \"What actually broke?\"",
+        "cta": "No CTA — pure operational content",
+        "offer": "None — thought leadership",
+        "tone": "Corporate memo style, authoritative, systems-thinking, structured with headers and bold text",
+        "format": "[INTERNAL MEMO] — written as if a CEO sending a company-wide memo. Header + body + questions framework + sign-off (\"Carry on!\")",
+        "key_pattern": "Framed as internal leadership memo. Diagnose-before-blame framework. Three non-obvious diagnostic questions. Ends with \"The goal is not zero mistakes. The goal is never paying for the same mistake twice.\""
+      }
+    ]
+  }
+]

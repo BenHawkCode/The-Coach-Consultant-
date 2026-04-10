@@ -32,6 +32,7 @@ The Coach Consultant/
 ├── 4-emails/            # Email skills
 ├── 5-linkedin/          # LinkedIn skills
 ├── 6-website-seo/       # Website/SEO skills
+├── optimisation-skills/ # Token optimisation, system tools
 ├── docs/                # Brand documentation
 ├── prompts/             # Prompt vault
 └── SKILLS-README.md     # Full skills documentation
@@ -114,6 +115,16 @@ Quick summary per channel:
 - Outputs to `2-instagram/instagram-page-spy/outputs/`
 - See `2-instagram/instagram-page-spy/skill.md` for full workflow
 
+### IG Competitor Analysis
+- **SKILL AVAILABLE:** `ig-competitor-analysis` - Multi-profile competitive intelligence
+- **Scraper:** `2-instagram/ig-competitor-analysis/ig_competitor_scraper.py` (Apify instagram-scraper)
+- **DATA LOADED:** 31 verified profiles, 847 posts analysed (April 2026)
+- **Key findings:** Story hooks = 70K avg engagement, Carousel = best format (37K avg), 78% posts have no CTA, Long captions (800+) = 2x engagement
+- **Top performers:** Iman Gadzhi (181K avg), Steven Bartlett (156K avg), Chris Williamson (53K avg)
+- Top 30 hooks swipe file, actionable takeaways for Ben
+- Outputs to `2-instagram/ig-competitor-analysis/outputs/`
+- See `2-instagram/ig-competitor-analysis/skill.md` for full workflow
+
 ### Instagram Captions
 - **Performance data loaded** - 41 posts analyzed from @benhawksworth_ via Apify Instagram scraper
 - **Data sources:** `2-instagram/data/` (JSON exports, processed analytics)
@@ -148,6 +159,10 @@ Quick summary per channel:
 - Sign off: `Ben` + `www.thecoachconsultant.uk`
 - See `docs/Ben-Claude-Projects-Instructions.txt` lines 291-461
 - **Full analysis:** `4-emails/ghl-data/COMPLETE_EMAIL_STATISTICS.md` + `PERFORMANCE_INSIGHTS.md`
+- **SKILL AVAILABLE:** `email-competitor-spy` - Analyse 10 competitor newsletters (Antonio's pipeline data)
+- **Competitors tracked:** Alex Hormozi, Dan Martell, Andrew & Pete, Ezra Firestone, Molly Pittman, James Sinclair, Chris Williamson, Frank Kern, Tony Robbins, Leila Hormozi
+- **Data source:** `4-emails/email-competitor-spy/data/competitor_newsletters.json` (auto-updated weekly)
+- **Script:** `4-emails/email-competitor-spy/analyze_competitors.py`
 
 ### Podcast Scripts
 - 4,200-4,500 words
