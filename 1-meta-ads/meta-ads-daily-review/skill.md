@@ -151,6 +151,17 @@ When this skill is invoked:
    - Save to `outputs/DAILY-REVIEW-[campaign-name]-[YYYY-MM-DD].md`
    - Use the structure from the Claude reference output (ad set level, creative analysis, verdicts, anomalies, priorities)
 
+## Data Caveat — Always Prepend
+
+Every generated report must open with a "DATA CAVEAT" block before the ad set table. Rationale: Meta's action-type mapping to "booked calls" has not been validated against ground truth (Calendly / GHL pipeline stage / manual). Skill now de-duplicates the `lead` / `offsite_conversion.fb_pixel_lead` family (2x inflation bug fixed), but the underlying question — "is a Meta `lead` event a form submit or a booked call?" — is still open.
+
+Keep the caveat in every report until Ben confirms:
+1. Ground truth source for bookings
+2. Which Meta action type represents a real booked call in his pixel
+3. Attribution window
+
+Also flag that Antonio's dashboard pipeline (`collect_own_meta.py:91`) still has the 2x bug and may show inflated numbers until patched.
+
 ## Output Format
 
 ```markdown
@@ -160,6 +171,12 @@ When this skill is invoked:
 **Week:** Week 2
 **Date Range:** Last 7 days
 **Analyst:** Ben Mahmoud (via meta-ads-daily-review skill)
+
+---
+
+## ⚠️ DATA CAVEAT — READ FIRST
+
+[2-4 sentences: what's fixed, what's pending ground-truth validation, directional vs exact]
 
 ---
 
