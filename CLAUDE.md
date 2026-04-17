@@ -26,16 +26,23 @@ Content generation skills are organised by channel (matching Ben's Google Drive 
 
 ```
 The Coach Consultant/
-├── 1-meta-ads/          # Meta Ads skills
-├── 2-instagram/         # Instagram skills
-├── 3-youtube/           # YouTube skills
-├── 4-emails/            # Email skills
-├── 5-linkedin/          # LinkedIn skills
-├── 6-website-seo/       # Website/SEO skills
-├── optimisation-skills/ # Token optimisation, system tools
-├── docs/                # Brand documentation
-├── prompts/             # Prompt vault
-└── SKILLS-README.md     # Full skills documentation
+├── 1-meta-ads/                    # Meta Ads skills
+│   ├── meta-ad-copy/              # Ad copy generator (competitor-backed)
+│   ├── meta-ad-competitor/        # Competitor ad scraper
+│   ├── meta-ads-daily-review/     # Daily campaign review for Ben Mahmoud (NEW)
+│   ├── meta-ads-weekly-intelligence/  # Weekly strategic report for Ben (NEW)
+│   ├── meta-page-spy/            # Facebook page spy
+│   └── bottom-of-funnel/         # BOF ad assets
+├── 2-instagram/                   # Instagram skills
+├── 3-youtube/                     # YouTube skills
+├── 4-emails/                      # Email skills
+├── 5-linkedin/                    # LinkedIn skills
+├── 6-website-seo/                 # Website/SEO skills
+├── optimisation-skills/           # Token optimisation, system tools
+├── docs/                          # Brand documentation
+├── prompts/                       # Prompt vault
+├── .env                           # API tokens (Meta, GitHub, Apify, TCC dashboard)
+└── SKILLS-README.md               # Full skills documentation
 ```
 
 **See [SKILLS-README.md](SKILLS-README.md) for complete list of available skills.**
@@ -189,6 +196,30 @@ Quick summary per channel:
 - Headlines: 5-7 words, benefit-focused
 - See `1-meta-ads/meta-ad-copy/skill.md` for full prompt library
 
+### Meta Ads Daily Review
+- **SKILL AVAILABLE:** `meta-ads-daily-review` - Daily campaign review for Ben Mahmoud (Ads Manager)
+- **Purpose:** Replaces manual screenshot-to-Claude workflow for BOF campaign analysis
+- **Data:** Pulls live data from Meta Ads API (reads root `.env` for `META_ACCESS_TOKEN` + `META_ACCOUNT_ID` — no skill-local `.env`)
+- **Output:** Ad set health check, creative × audience matrix, kill/scale/watch verdicts, Meta quality flags, anomaly detection, top priorities
+- **Thresholds:** 0.8% CTR kill, 1.5% target, £50 cost/call, 8% booking rate, 50/30/20 budget split
+- **Week phase logic:** Week 1 = watch only, Week 2+ = kill/scale decisions, Weeks 3-5 = copy testing
+- **Files:** `1-meta-ads/meta-ads-daily-review/` (skill.md, fetch_daily_review.py, config.yaml, setup.sh)
+- Outputs to `1-meta-ads/meta-ads-daily-review/outputs/`
+
+### Meta Ads Weekly Intelligence
+- **SKILL AVAILABLE:** `meta-ads-weekly-intelligence` - Strategic weekly report for Ben (founder)
+- **Purpose:** Birds-eye funnel view answering Ben's 6 requirements: funnel gaps, BOF booking growth, creative needs, spend scaling, weekly feedback, dashboard-connected
+- **Data:** Reads from Antonio's `tcc-dashboard` GitHub repo (`SudhakaPr/tcc-dashboard` fork)
+  - `public/data/intelligence.json` → Opus strategic analysis (verdicts, anomalies, priorities, TOF/MOF/BOF recommendations)
+  - `public/data/meta_ads_campaigns.json` → ad set × creative breakdown (7d + 28d metrics, creative audience matrix)
+  - Schema: `public/data/SCHEMA.md`
+- **GitHub access:** PAT in `.env` as `TCC_GITHUB_TOKEN`, repo as `TCC_GITHUB_REPO`
+- **Weekly cron:** Antonio's pipeline runs Monday 06:00 UTC, commits fresh data to GitHub
+- **Output sections:** Executive summary, funnel health check, BOF booking growth levers, creative kill/scale/isolate lists + new creative briefs, spend scaling guidance with budget bars, anomalies + quality flags, weekly priorities, cross-platform context
+- **Dashboard mode:** After generating markdown report, offers to convert to HTML dashboard (Tailwind CSS, colour-coded verdicts, heatmap, collapsible sections)
+- **Files:** `1-meta-ads/meta-ads-weekly-intelligence/` (skill.md)
+- Outputs to `1-meta-ads/meta-ads-weekly-intelligence/outputs/`
+
 ### Meta Page Spy
 - **SKILL AVAILABLE:** `meta-page-spy` - Spy on any Facebook page (organic + paid)
 - **Scraper:** `1-meta-ads/meta-page-spy/page_spy.py` (Apify facebook-posts-scraper + Ad Library scraper)
@@ -332,6 +363,20 @@ Before finalising ANY output, verify:
 - **Instagram:** 41 posts from @benhawksworth_ (scraped via Apify, stored in `2-instagram/data/`)
 - **Email:** 471 emails + 65 campaigns from GoHighLevel (stored in `4-emails/ghl-data/`)
 - **Meta Ads:** Competitor analysis scraper ready (`1-meta-ads/meta-ad-competitor/apify_facebook_scraper.py`)
+- **Meta Ads (Own):** Live campaign data via Antonio's weekly pipeline → `tcc-dashboard` GitHub repo
+  - `intelligence.json` — Opus strategic analysis (6 channels + cross-platform)
+  - `meta_ads_campaigns.json` — ad set × creative breakdown with 7d/28d metrics
+  - `meta_ads_raw.json` — raw Meta API dump for debugging
+  - Schema: `public/data/SCHEMA.md`
+  - Pipeline runs Monday 06:00 UTC via GitHub Action
+
+**TCC Dashboard (Antonio's repo):**
+- **Upstream:** `antonio-gasso/tcc-dashboard` (private)
+- **Fork:** `SudhakaPr/tcc-dashboard` (our access)
+- **Dashboard URL:** https://tcc-dashboard.netlify.app (password-gated)
+- **Stack:** React 19 + TypeScript + Tailwind v4 + Recharts + Vite
+- **Pipeline scripts:** `.claude/skills/creative-engine/scripts/` (collect_own_meta.py, collect_ga4.py, collect_ghl_data.py, generate_intelligence.py, etc.)
+- **Access tokens in `.env`:** `TCC_GITHUB_TOKEN`, `TCC_GITHUB_REPO`, `TCC_META_ACCESS_TOKEN`
 
 **Data Processing Scripts:**
 - `2-instagram/scrapers/apify_scraper.py` - Main Instagram scraper
@@ -339,6 +384,8 @@ Before finalising ANY output, verify:
 - `2-instagram/scrapers/instagram_scraper.py` - Alternative scraper
 - `2-instagram/scrapers/process_data.py` - Data processing pipeline
 - `1-meta-ads/meta-ad-competitor/apify_facebook_scraper.py` - Facebook ads scraper
+- `1-meta-ads/meta-ads-daily-review/fetch_daily_review.py` - Live Meta API fetcher for daily review
+- `1-meta-ads/meta-ads-daily-review/setup.sh` - Venv + dependency installer
 
 ---
 
