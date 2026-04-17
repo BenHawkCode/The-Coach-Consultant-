@@ -143,23 +143,30 @@ def fetch_ads_for_adset(adset_id, since, until):
 
 
 def extract_calls_booked(insights):
-    """Pull booked calls / leads from the 'actions' array."""
-    actions = insights.get("actions", [])
-    relevant_types = {
-        "lead",
-        "onsite_conversion.lead_grouped",
-        "offsite_conversion.fb_pixel_lead",
-        "schedule_total",
-        "offsite_conversion.custom",
-    }
-    total = 0
-    for a in actions:
-        if a.get("action_type") in relevant_types:
-            try:
-                total += int(a.get("value", 0))
-            except (TypeError, ValueError):
-                pass
-    return total
+    """Pull unique lead / booking events from the 'actions' array.
+
+    Meta returns the same lead event under multiple action_type labels
+    (e.g. `lead` AND `offsite_conversion.fb_pixel_lead` for the same form
+    submit). Naively summing inflates the number. We take the max across
+    the pixel-lead family, then add genuinely distinct events (scheduled
+    conversations) on top.
+    """
+    by_type = {}
+    for a in insights.get("actions", []) or []:
+        try:
+            by_type[a.get("action_type")] = int(a.get("value", 0))
+        except (TypeError, ValueError):
+            continue
+
+    pixel_lead_family = max(
+        by_type.get("lead", 0),
+        by_type.get("offsite_conversion.fb_pixel_lead", 0),
+        by_type.get("onsite_conversion.lead_grouped", 0),
+    )
+    distinct_scheduled = by_type.get("schedule_total", 0) + by_type.get(
+        "omni_scheduled_conversation", 0
+    )
+    return pixel_lead_family + distinct_scheduled
 
 
 def build_adset_health(adsets):
