@@ -39,10 +39,12 @@ All verdicts use these thresholds (configurable via `config.yaml`):
 | CTR kill threshold | < 0.8% | Flag for kill after sufficient impressions |
 | CTR target | ≥ 1.5% | Healthy baseline |
 | CTR scale signal | ≥ 2.5% consistent across ad sets | Priority scale candidate |
-| Cost per call target | £50 | Flag if higher |
-| Landing page booking rate | 8% | Flag if lower |
+| Cost per form submit target | £50 | Flag if higher |
+| Landing page form submit rate | 8% | Flag if lower |
 | Budget split (Warm/Lookalike/Interest) | 50/30/20 | Flag if off |
 | Min impressions for verdict | 1000 per ad set | Below = "insufficient data" |
+
+**Naming note:** The skill reports `form_submits`, not `calls_booked`. A Meta pixel `lead` event is a form submission, not a booked call — historical ratio is ~4.5 form submits per booked call. The JSON output also includes an `estimated_bookings` field (form_submits / 4.5) flagged as directional until Mahmoud's sheet/STS lands. This aligns with Antonio's dashboard schema (2026-04-17 rename).
 
 ### Learning Phase Awareness
 

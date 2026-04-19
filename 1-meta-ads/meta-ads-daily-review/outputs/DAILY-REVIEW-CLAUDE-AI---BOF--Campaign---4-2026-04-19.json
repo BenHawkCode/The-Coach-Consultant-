@@ -1,0 +1,1322 @@
+{
+  "meta": {
+    "campaign_id": "120239672138210377",
+    "campaign_name": "CLAUDE.AI - BOF, Campaign - 4",
+    "week": 2,
+    "week_label": "First decisions",
+    "date_range": {
+      "since": "2026-04-12",
+      "until": "2026-04-19"
+    },
+    "generated_at": "2026-04-19T14:37:04.250919+00:00"
+  },
+  "adset_health": [
+    {
+      "adset_id": "120240076384760377",
+      "adset_name": "Warm - Retargeting 30%",
+      "audience_type": "warm",
+      "audience_label": "Warm \u2014 Retargeting",
+      "impressions": 15431,
+      "clicks": 261,
+      "ctr": 0.016914,
+      "cpc": 0.90682,
+      "spend": 236.68,
+      "form_submits": 10,
+      "cost_per_form_submit": 23.668,
+      "form_submit_rate": 0.038314176245210725,
+      "estimated_bookings": 2.2,
+      "meta_pixel_calls": 0,
+      "status": "ACTIVE"
+    },
+    {
+      "adset_id": "120240075828180377",
+      "adset_name": "Cold - Lookalike 30%",
+      "audience_type": "lookalike",
+      "audience_label": "Cold \u2014 Lookalike",
+      "impressions": 7612,
+      "clicks": 138,
+      "ctr": 0.01812927,
+      "cpc": 1.263551,
+      "spend": 174.37,
+      "form_submits": 3,
+      "cost_per_form_submit": 58.123333333333335,
+      "form_submit_rate": 0.021739130434782608,
+      "estimated_bookings": 0.7,
+      "meta_pixel_calls": 0,
+      "status": "PAUSED"
+    },
+    {
+      "adset_id": "120239672138220377",
+      "adset_name": "Cold - Interest Based 40%",
+      "audience_type": "interest",
+      "audience_label": "Cold \u2014 Interest",
+      "impressions": 9107,
+      "clicks": 201,
+      "ctr": 0.02207093,
+      "cpc": 1.016716,
+      "spend": 204.36,
+      "form_submits": 2,
+      "cost_per_form_submit": 102.18,
+      "form_submit_rate": 0.009950248756218905,
+      "estimated_bookings": 0.4,
+      "meta_pixel_calls": 0,
+      "status": "PAUSED"
+    }
+  ],
+  "creative_matrix": [
+    {
+      "creative_name": "Reel 5- 9pm doing admin",
+      "audiences": {
+        "warm": {
+          "ctr": 0.0234139,
+          "cpc": 0.75,
+          "spend": 23.25,
+          "impressions": 1324,
+          "clicks": 31,
+          "adset_name": "Warm - Retargeting 30%"
+        },
+        "lookalike": {
+          "ctr": 0.02631579,
+          "cpc": 0.906875,
+          "spend": 14.51,
+          "impressions": 608,
+          "clicks": 16,
+          "adset_name": "Cold - Lookalike 30%"
+        },
+        "interest": {
+          "ctr": 0.04265403,
+          "cpc": 0.748889,
+          "spend": 6.74,
+          "impressions": 211,
+          "clicks": 9,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [
+        {
+          "audience": "lookalike",
+          "adset_name": "Cold - Lookalike 30%",
+          "field": "quality_ranking",
+          "value": "BELOW_AVERAGE_35"
+        }
+      ],
+      "signal": "\u2b50 Consistent across all 3",
+      "directional": true
+    },
+    {
+      "creative_name": "Graphic 6 - old vs ai",
+      "audiences": {
+        "warm": {
+          "ctr": 0.0124792,
+          "cpc": 1.157556,
+          "spend": 52.09,
+          "impressions": 3606,
+          "clicks": 45,
+          "adset_name": "Warm - Retargeting 30%"
+        },
+        "lookalike": {
+          "ctr": 0.01670644,
+          "cpc": 0.984286,
+          "spend": 13.78,
+          "impressions": 838,
+          "clicks": 14,
+          "adset_name": "Cold - Lookalike 30%"
+        },
+        "interest": {
+          "ctr": 0.01837524,
+          "cpc": 0.984737,
+          "spend": 18.71,
+          "impressions": 1034,
+          "clicks": 19,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [
+        {
+          "audience": "warm",
+          "adset_name": "Warm - Retargeting 30%",
+          "field": "quality_ranking",
+          "value": "BELOW_AVERAGE_35"
+        },
+        {
+          "audience": "interest",
+          "adset_name": "Cold - Interest Based 40%",
+          "field": "quality_ranking",
+          "value": "BELOW_AVERAGE_35"
+        }
+      ],
+      "signal": "Mixed",
+      "directional": true
+    },
+    {
+      "creative_name": "Reel 6- Results & re-invest",
+      "audiences": {
+        "warm": {
+          "ctr": 0.02051282,
+          "cpc": 1.015313,
+          "spend": 32.49,
+          "impressions": 1560,
+          "clicks": 32,
+          "adset_name": "Warm - Retargeting 30%"
+        },
+        "lookalike": {
+          "ctr": 0.0238806,
+          "cpc": 1.211875,
+          "spend": 38.78,
+          "impressions": 1340,
+          "clicks": 32,
+          "adset_name": "Cold - Lookalike 30%"
+        },
+        "interest": {
+          "ctr": 0.03658537,
+          "cpc": 0.648333,
+          "spend": 7.78,
+          "impressions": 328,
+          "clicks": 12,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [
+        {
+          "audience": "warm",
+          "adset_name": "Warm - Retargeting 30%",
+          "field": "quality_ranking",
+          "value": "BELOW_AVERAGE_35"
+        },
+        {
+          "audience": "lookalike",
+          "adset_name": "Cold - Lookalike 30%",
+          "field": "quality_ranking",
+          "value": "BELOW_AVERAGE_35"
+        }
+      ],
+      "signal": "\u2b50 Strongest overall",
+      "directional": true
+    },
+    {
+      "creative_name": "Reel 3- Generic is worthless",
+      "audiences": {
+        "warm": {
+          "ctr": 0.032064129999999996,
+          "cpc": 0.72125,
+          "spend": 11.54,
+          "impressions": 499,
+          "clicks": 16,
+          "adset_name": "Warm - Retargeting 30%"
+        },
+        "lookalike": {
+          "ctr": 0.06896552,
+          "cpc": 0.26,
+          "spend": 0.52,
+          "impressions": 29,
+          "clicks": 2,
+          "adset_name": "Cold - Lookalike 30%"
+        },
+        "interest": {
+          "ctr": 0.0,
+          "cpc": 0.0,
+          "spend": 0.18,
+          "impressions": 9,
+          "clicks": 0,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "Reel 4- Client best kept secret",
+      "audiences": {
+        "warm": {
+          "ctr": 0.05,
+          "cpc": 0.25,
+          "spend": 0.25,
+          "impressions": 20,
+          "clicks": 1,
+          "adset_name": "Warm - Retargeting 30%"
+        },
+        "lookalike": {
+          "ctr": 0.025,
+          "cpc": 0.57,
+          "spend": 0.57,
+          "impressions": 40,
+          "clicks": 1,
+          "adset_name": "Cold - Lookalike 30%"
+        },
+        "interest": {
+          "ctr": 0.0,
+          "cpc": 0.0,
+          "spend": 0.34,
+          "impressions": 22,
+          "clicks": 0,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "Reel 1- 66% Biz owners",
+      "audiences": {
+        "warm": {
+          "ctr": 0.01886792,
+          "cpc": 1.16,
+          "spend": 2.32,
+          "impressions": 106,
+          "clicks": 2,
+          "adset_name": "Warm - Retargeting 30%"
+        },
+        "lookalike": {
+          "ctr": 0.05263158,
+          "cpc": 0.805,
+          "spend": 1.61,
+          "impressions": 38,
+          "clicks": 2,
+          "adset_name": "Cold - Lookalike 30%"
+        },
+        "interest": {
+          "ctr": 0.16666667000000002,
+          "cpc": 0.3,
+          "spend": 0.3,
+          "impressions": 6,
+          "clicks": 1,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "Reel 2- Stop Trying To Learn Everything",
+      "audiences": {
+        "warm": {
+          "ctr": 0.01612219,
+          "cpc": 1.192368,
+          "spend": 45.31,
+          "impressions": 2357,
+          "clicks": 38,
+          "adset_name": "Warm - Retargeting 30%"
+        },
+        "lookalike": {
+          "ctr": 0.03271028,
+          "cpc": 0.760714,
+          "spend": 10.65,
+          "impressions": 428,
+          "clicks": 14,
+          "adset_name": "Cold - Lookalike 30%"
+        },
+        "interest": {
+          "ctr": 0.013333330000000001,
+          "cpc": 3.35,
+          "spend": 3.35,
+          "impressions": 75,
+          "clicks": 1,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "\u2b50 Strongest overall",
+      "directional": true
+    },
+    {
+      "creative_name": "Graphic 5 - the numbers",
+      "audiences": {
+        "warm": {
+          "ctr": 0.02380952,
+          "cpc": 0.51,
+          "spend": 3.06,
+          "impressions": 252,
+          "clicks": 6,
+          "adset_name": "Warm - Retargeting 30%"
+        },
+        "lookalike": {
+          "ctr": 0.01012507,
+          "cpc": 1.561176,
+          "spend": 26.54,
+          "impressions": 1679,
+          "clicks": 17,
+          "adset_name": "Cold - Lookalike 30%"
+        },
+        "interest": {
+          "ctr": 0.010447759999999999,
+          "cpc": 2.29,
+          "spend": 16.03,
+          "impressions": 670,
+          "clicks": 7,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Mixed",
+      "directional": true
+    },
+    {
+      "creative_name": "Graphic 1 - ai systems stack",
+      "audiences": {
+        "warm": {
+          "ctr": 0.0075921899999999995,
+          "cpc": 1.625714,
+          "spend": 11.38,
+          "impressions": 922,
+          "clicks": 7,
+          "adset_name": "Warm - Retargeting 30%"
+        },
+        "lookalike": {
+          "ctr": 0.01577287,
+          "cpc": 1.877333,
+          "spend": 28.16,
+          "impressions": 951,
+          "clicks": 15,
+          "adset_name": "Cold - Lookalike 30%"
+        },
+        "interest": {
+          "ctr": 0.0,
+          "cpc": 0.0,
+          "spend": 9.73,
+          "impressions": 483,
+          "clicks": 0,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [
+        {
+          "audience": "warm",
+          "adset_name": "Warm - Retargeting 30%",
+          "field": "quality_ranking",
+          "value": "BELOW_AVERAGE_35"
+        }
+      ],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "Graphic 2 - claude specialist",
+      "audiences": {
+        "warm": {
+          "ctr": 0.018741980000000002,
+          "cpc": 0.620685,
+          "spend": 45.31,
+          "impressions": 3895,
+          "clicks": 73,
+          "adset_name": "Warm - Retargeting 30%"
+        },
+        "lookalike": {
+          "ctr": 0.01451028,
+          "cpc": 1.52,
+          "spend": 18.24,
+          "impressions": 827,
+          "clicks": 12,
+          "adset_name": "Cold - Lookalike 30%"
+        },
+        "interest": {
+          "ctr": 0.02801401,
+          "cpc": 0.7625,
+          "spend": 85.4,
+          "impressions": 3998,
+          "clicks": 112,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [
+        {
+          "audience": "warm",
+          "adset_name": "Warm - Retargeting 30%",
+          "field": "quality_ranking",
+          "value": "BELOW_AVERAGE_35"
+        }
+      ],
+      "signal": "\u2b50 Strongest overall",
+      "directional": true
+    },
+    {
+      "creative_name": "Graphic 4 - visibility gap",
+      "audiences": {
+        "warm": {
+          "ctr": 0.0,
+          "cpc": 0.0,
+          "spend": 0.36,
+          "impressions": 9,
+          "clicks": 0,
+          "adset_name": "Warm - Retargeting 30%"
+        },
+        "lookalike": {
+          "ctr": 0.0212766,
+          "cpc": 1.29,
+          "spend": 2.58,
+          "impressions": 94,
+          "clicks": 2,
+          "adset_name": "Cold - Lookalike 30%"
+        },
+        "interest": {
+          "ctr": 0.0,
+          "cpc": 0.0,
+          "spend": 0.53,
+          "impressions": 35,
+          "clicks": 0,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "Graphic 3 - Brand moat",
+      "audiences": {
+        "warm": {
+          "ctr": 0.01135074,
+          "cpc": 0.932,
+          "spend": 9.32,
+          "impressions": 881,
+          "clicks": 10,
+          "adset_name": "Warm - Retargeting 30%"
+        },
+        "lookalike": {
+          "ctr": 0.01486486,
+          "cpc": 1.675455,
+          "spend": 18.43,
+          "impressions": 740,
+          "clicks": 11,
+          "adset_name": "Cold - Lookalike 30%"
+        },
+        "interest": {
+          "ctr": 0.02321725,
+          "cpc": 1.027857,
+          "spend": 14.39,
+          "impressions": 603,
+          "clicks": 14,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [
+        {
+          "audience": "warm",
+          "adset_name": "Warm - Retargeting 30%",
+          "field": "quality_ranking",
+          "value": "BELOW_AVERAGE_35"
+        }
+      ],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "B - Graphic 5 - the numbers",
+      "audiences": {
+        "interest": {
+          "ctr": 0.015473889999999999,
+          "cpc": 1.31125,
+          "spend": 10.49,
+          "impressions": 517,
+          "clicks": 8,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "B - Reel 5- 9pm doing admin",
+      "audiences": {
+        "interest": {
+          "ctr": 0.022471909999999998,
+          "cpc": 1.0,
+          "spend": 2.0,
+          "impressions": 89,
+          "clicks": 2,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "B - Graphic 6 - old vs ai",
+      "audiences": {
+        "interest": {
+          "ctr": 0.01181102,
+          "cpc": 3.156667,
+          "spend": 9.47,
+          "impressions": 254,
+          "clicks": 3,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "B - Reel 6- Results & re-invest",
+      "audiences": {
+        "interest": {
+          "ctr": 0.01179941,
+          "cpc": 1.94,
+          "spend": 7.76,
+          "impressions": 339,
+          "clicks": 4,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "B - Reel 2- Stop Trying To Learn Everything",
+      "audiences": {
+        "interest": {
+          "ctr": 0.0,
+          "cpc": 0.0,
+          "spend": 1.79,
+          "impressions": 44,
+          "clicks": 0,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "B - Reel 3- Generic is worthless",
+      "audiences": {
+        "interest": {
+          "ctr": 0.07692307999999999,
+          "cpc": 0.435,
+          "spend": 0.87,
+          "impressions": 26,
+          "clicks": 2,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "B-  Graphic 2 - claude specialist",
+      "audiences": {
+        "interest": {
+          "ctr": 0.01351351,
+          "cpc": 1.5,
+          "spend": 1.5,
+          "impressions": 74,
+          "clicks": 1,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "B - Reel 4- Client best kept secret",
+      "audiences": {
+        "interest": {
+          "ctr": 0.0,
+          "cpc": 0.0,
+          "spend": 0.0,
+          "impressions": 0,
+          "clicks": 0,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "B - Graphic 3 - Brand moat",
+      "audiences": {
+        "interest": {
+          "ctr": 0.020689660000000002,
+          "cpc": 1.166667,
+          "spend": 7.0,
+          "impressions": 290,
+          "clicks": 6,
+          "adset_name": "Cold - Interest Based 40%"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    }
+  ],
+  "verdicts": {
+    "scale": [
+      {
+        "creative_name": "Reel 5- 9pm doing admin",
+        "audiences": {
+          "warm": {
+            "ctr": 0.0234139,
+            "cpc": 0.75,
+            "spend": 23.25,
+            "impressions": 1324,
+            "clicks": 31,
+            "adset_name": "Warm - Retargeting 30%"
+          },
+          "lookalike": {
+            "ctr": 0.02631579,
+            "cpc": 0.906875,
+            "spend": 14.51,
+            "impressions": 608,
+            "clicks": 16,
+            "adset_name": "Cold - Lookalike 30%"
+          },
+          "interest": {
+            "ctr": 0.04265403,
+            "cpc": 0.748889,
+            "spend": 6.74,
+            "impressions": 211,
+            "clicks": 9,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [
+          {
+            "audience": "lookalike",
+            "adset_name": "Cold - Lookalike 30%",
+            "field": "quality_ranking",
+            "value": "BELOW_AVERAGE_35"
+          }
+        ],
+        "signal": "\u2b50 Consistent across all 3",
+        "directional": true
+      },
+      {
+        "creative_name": "Reel 6- Results & re-invest",
+        "audiences": {
+          "warm": {
+            "ctr": 0.02051282,
+            "cpc": 1.015313,
+            "spend": 32.49,
+            "impressions": 1560,
+            "clicks": 32,
+            "adset_name": "Warm - Retargeting 30%"
+          },
+          "lookalike": {
+            "ctr": 0.0238806,
+            "cpc": 1.211875,
+            "spend": 38.78,
+            "impressions": 1340,
+            "clicks": 32,
+            "adset_name": "Cold - Lookalike 30%"
+          },
+          "interest": {
+            "ctr": 0.03658537,
+            "cpc": 0.648333,
+            "spend": 7.78,
+            "impressions": 328,
+            "clicks": 12,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [
+          {
+            "audience": "warm",
+            "adset_name": "Warm - Retargeting 30%",
+            "field": "quality_ranking",
+            "value": "BELOW_AVERAGE_35"
+          },
+          {
+            "audience": "lookalike",
+            "adset_name": "Cold - Lookalike 30%",
+            "field": "quality_ranking",
+            "value": "BELOW_AVERAGE_35"
+          }
+        ],
+        "signal": "\u2b50 Strongest overall",
+        "directional": true
+      },
+      {
+        "creative_name": "Reel 2- Stop Trying To Learn Everything",
+        "audiences": {
+          "warm": {
+            "ctr": 0.01612219,
+            "cpc": 1.192368,
+            "spend": 45.31,
+            "impressions": 2357,
+            "clicks": 38,
+            "adset_name": "Warm - Retargeting 30%"
+          },
+          "lookalike": {
+            "ctr": 0.03271028,
+            "cpc": 0.760714,
+            "spend": 10.65,
+            "impressions": 428,
+            "clicks": 14,
+            "adset_name": "Cold - Lookalike 30%"
+          },
+          "interest": {
+            "ctr": 0.013333330000000001,
+            "cpc": 3.35,
+            "spend": 3.35,
+            "impressions": 75,
+            "clicks": 1,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "\u2b50 Strongest overall",
+        "directional": true
+      },
+      {
+        "creative_name": "Graphic 2 - claude specialist",
+        "audiences": {
+          "warm": {
+            "ctr": 0.018741980000000002,
+            "cpc": 0.620685,
+            "spend": 45.31,
+            "impressions": 3895,
+            "clicks": 73,
+            "adset_name": "Warm - Retargeting 30%"
+          },
+          "lookalike": {
+            "ctr": 0.01451028,
+            "cpc": 1.52,
+            "spend": 18.24,
+            "impressions": 827,
+            "clicks": 12,
+            "adset_name": "Cold - Lookalike 30%"
+          },
+          "interest": {
+            "ctr": 0.02801401,
+            "cpc": 0.7625,
+            "spend": 85.4,
+            "impressions": 3998,
+            "clicks": 112,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [
+          {
+            "audience": "warm",
+            "adset_name": "Warm - Retargeting 30%",
+            "field": "quality_ranking",
+            "value": "BELOW_AVERAGE_35"
+          }
+        ],
+        "signal": "\u2b50 Strongest overall",
+        "directional": true
+      }
+    ],
+    "watch": [
+      {
+        "creative_name": "Graphic 6 - old vs ai",
+        "audiences": {
+          "warm": {
+            "ctr": 0.0124792,
+            "cpc": 1.157556,
+            "spend": 52.09,
+            "impressions": 3606,
+            "clicks": 45,
+            "adset_name": "Warm - Retargeting 30%"
+          },
+          "lookalike": {
+            "ctr": 0.01670644,
+            "cpc": 0.984286,
+            "spend": 13.78,
+            "impressions": 838,
+            "clicks": 14,
+            "adset_name": "Cold - Lookalike 30%"
+          },
+          "interest": {
+            "ctr": 0.01837524,
+            "cpc": 0.984737,
+            "spend": 18.71,
+            "impressions": 1034,
+            "clicks": 19,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [
+          {
+            "audience": "warm",
+            "adset_name": "Warm - Retargeting 30%",
+            "field": "quality_ranking",
+            "value": "BELOW_AVERAGE_35"
+          },
+          {
+            "audience": "interest",
+            "adset_name": "Cold - Interest Based 40%",
+            "field": "quality_ranking",
+            "value": "BELOW_AVERAGE_35"
+          }
+        ],
+        "signal": "Mixed",
+        "directional": true
+      },
+      {
+        "creative_name": "Reel 3- Generic is worthless",
+        "audiences": {
+          "warm": {
+            "ctr": 0.032064129999999996,
+            "cpc": 0.72125,
+            "spend": 11.54,
+            "impressions": 499,
+            "clicks": 16,
+            "adset_name": "Warm - Retargeting 30%"
+          },
+          "lookalike": {
+            "ctr": 0.06896552,
+            "cpc": 0.26,
+            "spend": 0.52,
+            "impressions": 29,
+            "clicks": 2,
+            "adset_name": "Cold - Lookalike 30%"
+          },
+          "interest": {
+            "ctr": 0.0,
+            "cpc": 0.0,
+            "spend": 0.18,
+            "impressions": 9,
+            "clicks": 0,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "Reel 4- Client best kept secret",
+        "audiences": {
+          "warm": {
+            "ctr": 0.05,
+            "cpc": 0.25,
+            "spend": 0.25,
+            "impressions": 20,
+            "clicks": 1,
+            "adset_name": "Warm - Retargeting 30%"
+          },
+          "lookalike": {
+            "ctr": 0.025,
+            "cpc": 0.57,
+            "spend": 0.57,
+            "impressions": 40,
+            "clicks": 1,
+            "adset_name": "Cold - Lookalike 30%"
+          },
+          "interest": {
+            "ctr": 0.0,
+            "cpc": 0.0,
+            "spend": 0.34,
+            "impressions": 22,
+            "clicks": 0,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "Reel 1- 66% Biz owners",
+        "audiences": {
+          "warm": {
+            "ctr": 0.01886792,
+            "cpc": 1.16,
+            "spend": 2.32,
+            "impressions": 106,
+            "clicks": 2,
+            "adset_name": "Warm - Retargeting 30%"
+          },
+          "lookalike": {
+            "ctr": 0.05263158,
+            "cpc": 0.805,
+            "spend": 1.61,
+            "impressions": 38,
+            "clicks": 2,
+            "adset_name": "Cold - Lookalike 30%"
+          },
+          "interest": {
+            "ctr": 0.16666667000000002,
+            "cpc": 0.3,
+            "spend": 0.3,
+            "impressions": 6,
+            "clicks": 1,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "Graphic 5 - the numbers",
+        "audiences": {
+          "warm": {
+            "ctr": 0.02380952,
+            "cpc": 0.51,
+            "spend": 3.06,
+            "impressions": 252,
+            "clicks": 6,
+            "adset_name": "Warm - Retargeting 30%"
+          },
+          "lookalike": {
+            "ctr": 0.01012507,
+            "cpc": 1.561176,
+            "spend": 26.54,
+            "impressions": 1679,
+            "clicks": 17,
+            "adset_name": "Cold - Lookalike 30%"
+          },
+          "interest": {
+            "ctr": 0.010447759999999999,
+            "cpc": 2.29,
+            "spend": 16.03,
+            "impressions": 670,
+            "clicks": 7,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Mixed",
+        "directional": true
+      },
+      {
+        "creative_name": "Graphic 1 - ai systems stack",
+        "audiences": {
+          "warm": {
+            "ctr": 0.0075921899999999995,
+            "cpc": 1.625714,
+            "spend": 11.38,
+            "impressions": 922,
+            "clicks": 7,
+            "adset_name": "Warm - Retargeting 30%"
+          },
+          "lookalike": {
+            "ctr": 0.01577287,
+            "cpc": 1.877333,
+            "spend": 28.16,
+            "impressions": 951,
+            "clicks": 15,
+            "adset_name": "Cold - Lookalike 30%"
+          },
+          "interest": {
+            "ctr": 0.0,
+            "cpc": 0.0,
+            "spend": 9.73,
+            "impressions": 483,
+            "clicks": 0,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [
+          {
+            "audience": "warm",
+            "adset_name": "Warm - Retargeting 30%",
+            "field": "quality_ranking",
+            "value": "BELOW_AVERAGE_35"
+          }
+        ],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "Graphic 4 - visibility gap",
+        "audiences": {
+          "warm": {
+            "ctr": 0.0,
+            "cpc": 0.0,
+            "spend": 0.36,
+            "impressions": 9,
+            "clicks": 0,
+            "adset_name": "Warm - Retargeting 30%"
+          },
+          "lookalike": {
+            "ctr": 0.0212766,
+            "cpc": 1.29,
+            "spend": 2.58,
+            "impressions": 94,
+            "clicks": 2,
+            "adset_name": "Cold - Lookalike 30%"
+          },
+          "interest": {
+            "ctr": 0.0,
+            "cpc": 0.0,
+            "spend": 0.53,
+            "impressions": 35,
+            "clicks": 0,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "Graphic 3 - Brand moat",
+        "audiences": {
+          "warm": {
+            "ctr": 0.01135074,
+            "cpc": 0.932,
+            "spend": 9.32,
+            "impressions": 881,
+            "clicks": 10,
+            "adset_name": "Warm - Retargeting 30%"
+          },
+          "lookalike": {
+            "ctr": 0.01486486,
+            "cpc": 1.675455,
+            "spend": 18.43,
+            "impressions": 740,
+            "clicks": 11,
+            "adset_name": "Cold - Lookalike 30%"
+          },
+          "interest": {
+            "ctr": 0.02321725,
+            "cpc": 1.027857,
+            "spend": 14.39,
+            "impressions": 603,
+            "clicks": 14,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [
+          {
+            "audience": "warm",
+            "adset_name": "Warm - Retargeting 30%",
+            "field": "quality_ranking",
+            "value": "BELOW_AVERAGE_35"
+          }
+        ],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "B - Graphic 5 - the numbers",
+        "audiences": {
+          "interest": {
+            "ctr": 0.015473889999999999,
+            "cpc": 1.31125,
+            "spend": 10.49,
+            "impressions": 517,
+            "clicks": 8,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "B - Reel 5- 9pm doing admin",
+        "audiences": {
+          "interest": {
+            "ctr": 0.022471909999999998,
+            "cpc": 1.0,
+            "spend": 2.0,
+            "impressions": 89,
+            "clicks": 2,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "B - Graphic 6 - old vs ai",
+        "audiences": {
+          "interest": {
+            "ctr": 0.01181102,
+            "cpc": 3.156667,
+            "spend": 9.47,
+            "impressions": 254,
+            "clicks": 3,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "B - Reel 6- Results & re-invest",
+        "audiences": {
+          "interest": {
+            "ctr": 0.01179941,
+            "cpc": 1.94,
+            "spend": 7.76,
+            "impressions": 339,
+            "clicks": 4,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "B - Reel 2- Stop Trying To Learn Everything",
+        "audiences": {
+          "interest": {
+            "ctr": 0.0,
+            "cpc": 0.0,
+            "spend": 1.79,
+            "impressions": 44,
+            "clicks": 0,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "B - Reel 3- Generic is worthless",
+        "audiences": {
+          "interest": {
+            "ctr": 0.07692307999999999,
+            "cpc": 0.435,
+            "spend": 0.87,
+            "impressions": 26,
+            "clicks": 2,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "B-  Graphic 2 - claude specialist",
+        "audiences": {
+          "interest": {
+            "ctr": 0.01351351,
+            "cpc": 1.5,
+            "spend": 1.5,
+            "impressions": 74,
+            "clicks": 1,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "B - Reel 4- Client best kept secret",
+        "audiences": {
+          "interest": {
+            "ctr": 0.0,
+            "cpc": 0.0,
+            "spend": 0.0,
+            "impressions": 0,
+            "clicks": 0,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "B - Graphic 3 - Brand moat",
+        "audiences": {
+          "interest": {
+            "ctr": 0.020689660000000002,
+            "cpc": 1.166667,
+            "spend": 7.0,
+            "impressions": 290,
+            "clicks": 6,
+            "adset_name": "Cold - Interest Based 40%"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      }
+    ],
+    "concern": [],
+    "learning_guardrail_active": false
+  },
+  "anomalies": [
+    {
+      "type": "ctr_quality_mismatch",
+      "creative": "Reel 5- 9pm doing admin",
+      "detail": "High CTR (4.27%) but Meta flagged below-average quality on 1 ad set(s). Clickbait risk."
+    },
+    {
+      "type": "ctr_quality_mismatch",
+      "creative": "Reel 6- Results & re-invest",
+      "detail": "High CTR (3.66%) but Meta flagged below-average quality on 2 ad set(s). Clickbait risk."
+    },
+    {
+      "type": "ctr_quality_mismatch",
+      "creative": "Graphic 2 - claude specialist",
+      "detail": "High CTR (2.80%) but Meta flagged below-average quality on 1 ad set(s). Clickbait risk."
+    },
+    {
+      "type": "cost_per_form_submit_high",
+      "adset": "Cold - Lookalike 30%",
+      "detail": "\u00a358.12/form submit in Cold \u2014 Lookalike exceeds the \u00a350 target. Spend \u00a3174.37 / 3 submits."
+    },
+    {
+      "type": "cost_per_form_submit_high",
+      "adset": "Cold - Interest Based 40%",
+      "detail": "\u00a3102.18/form submit in Cold \u2014 Interest exceeds the \u00a350 target. Spend \u00a3204.36 / 2 submits."
+    },
+    {
+      "type": "form_submit_rate_low",
+      "adset": "Warm - Retargeting 30%",
+      "detail": "Form submit rate 3.83% in Warm \u2014 Retargeting below 8% target. 10 submits / 261 clicks. Landing page or offer signal."
+    },
+    {
+      "type": "form_submit_rate_low",
+      "adset": "Cold - Lookalike 30%",
+      "detail": "Form submit rate 2.17% in Cold \u2014 Lookalike below 8% target. 3 submits / 138 clicks. Landing page or offer signal."
+    },
+    {
+      "type": "form_submit_rate_low",
+      "adset": "Cold - Interest Based 40%",
+      "detail": "Form submit rate 1.00% in Cold \u2014 Interest below 8% target. 2 submits / 201 clicks. Landing page or offer signal."
+    },
+    {
+      "type": "budget_split_off",
+      "audience": "warm",
+      "detail": "Warm \u2014 Retargeting at 100.0% of spend, over target 50% by 50.0 pts."
+    },
+    {
+      "type": "budget_split_off",
+      "audience": "lookalike",
+      "detail": "Cold \u2014 Lookalike at 0.0% of spend, under target 30% by 30.0 pts."
+    },
+    {
+      "type": "budget_split_off",
+      "audience": "interest",
+      "detail": "Cold \u2014 Interest at 0.0% of spend, under target 20% by 20.0 pts."
+    },
+    {
+      "type": "spend_concentration",
+      "creative": "Graphic 2 - claude specialist",
+      "adset": "Cold - Interest Based 40%",
+      "detail": "Graphic 2 - claude specialist consumes 41.8% of Cold - Interest Based 40% spend (\u00a385.40 of \u00a3204.36). Diversify creative load."
+    }
+  ],
+  "priorities": [
+    "Flag Reel 5- 9pm doing admin, Reel 6- Results & re-invest, Reel 2- Stop Trying To Learn Everything as likely week 3 winners to scale.",
+    "Review 'below average' quality ranking creatives \u2014 Reel 5- 9pm doing admin, Reel 6- Results & re-invest, Graphic 2 - claude specialist. Check if the hook could be perceived as clickbait by Meta's system."
+  ],
+  "config_thresholds": {
+    "ctr_kill": 0.008,
+    "ctr_target": 0.015,
+    "ctr_scale_signal": 0.025,
+    "cost_per_form_submit_target_gbp": 50,
+    "landing_page_form_submit_rate": 0.08,
+    "budget_split": {
+      "warm_retargeting": 0.5,
+      "cold_lookalike": 0.3,
+      "cold_interest": 0.2
+    },
+    "budget_split_tolerance": 0.05,
+    "min_impressions_per_adset": 1000,
+    "spend_concentration_warn": 0.4
+  }
+}

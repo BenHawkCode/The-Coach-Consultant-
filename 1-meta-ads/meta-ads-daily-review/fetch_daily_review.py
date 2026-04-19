@@ -142,14 +142,22 @@ def fetch_ads_for_adset(adset_id, since, until):
     return ads
 
 
-def extract_calls_booked(insights):
-    """Pull unique lead / booking events from the 'actions' array.
+# Rough historical ratio used to translate form submits into estimated
+# booked calls until Mahmoud's STS / ground-truth sheet replaces it.
+FORM_TO_BOOK_RATIO = 4.5
 
-    Meta returns the same lead event under multiple action_type labels
-    (e.g. `lead` AND `offsite_conversion.fb_pixel_lead` for the same form
-    submit). Naively summing inflates the number. We take the max across
-    the pixel-lead family, then add genuinely distinct events (scheduled
-    conversations) on top.
+
+def extract_form_submits(insights):
+    """Pull unique Meta pixel lead events from the 'actions' array.
+
+    Meta returns the same lead under multiple labels (`lead`,
+    `offsite_conversion.fb_pixel_lead`, `onsite_conversion.lead_grouped`).
+    Summing them triple-counts — that was the 2026-04-17 incident (36 vs
+    real 18). Take the max across the pixel-lead family; scheduled-call
+    events are counted separately via extract_meta_pixel_calls().
+
+    These are FORM SUBMISSIONS, not booked calls. Ground truth for
+    bookings is tracked manually by Mahmoud.
     """
     by_type = {}
     for a in insights.get("actions", []) or []:
@@ -157,16 +165,24 @@ def extract_calls_booked(insights):
             by_type[a.get("action_type")] = int(a.get("value", 0))
         except (TypeError, ValueError):
             continue
-
-    pixel_lead_family = max(
+    return max(
         by_type.get("lead", 0),
         by_type.get("offsite_conversion.fb_pixel_lead", 0),
         by_type.get("onsite_conversion.lead_grouped", 0),
     )
-    distinct_scheduled = by_type.get("schedule_total", 0) + by_type.get(
+
+
+def extract_meta_pixel_calls(insights):
+    """Narrow Meta-side schedule/booking events, separate from form submits."""
+    by_type = {}
+    for a in insights.get("actions", []) or []:
+        try:
+            by_type[a.get("action_type")] = int(a.get("value", 0))
+        except (TypeError, ValueError):
+            continue
+    return by_type.get("schedule_total", 0) + by_type.get(
         "omni_scheduled_conversation", 0
     )
-    return pixel_lead_family + distinct_scheduled
 
 
 def build_adset_health(adsets):
@@ -175,7 +191,8 @@ def build_adset_health(adsets):
         ins = a.get("insights", {})
         spend = float(ins.get("spend", 0) or 0)
         clicks = int(ins.get("clicks", 0) or 0)
-        calls = extract_calls_booked(ins)
+        form_submits = extract_form_submits(ins)
+        meta_pixel_calls = extract_meta_pixel_calls(ins)
         rows.append(
             {
                 "adset_id": a["id"],
@@ -187,9 +204,11 @@ def build_adset_health(adsets):
                 "ctr": float(ins.get("ctr", 0) or 0) / 100,  # Meta returns percent
                 "cpc": float(ins.get("cpc", 0) or 0),
                 "spend": spend,
-                "calls_booked": calls,
-                "cost_per_call": (spend / calls) if calls > 0 else None,
-                "booking_rate": (calls / clicks) if clicks > 0 else None,
+                "form_submits": form_submits,
+                "cost_per_form_submit": (spend / form_submits) if form_submits > 0 else None,
+                "form_submit_rate": (form_submits / clicks) if clicks > 0 else None,
+                "estimated_bookings": round(form_submits / FORM_TO_BOOK_RATIO, 1) if form_submits > 0 else 0,
+                "meta_pixel_calls": meta_pixel_calls,
                 "status": a.get("effective_status", "UNKNOWN"),
             }
         )
@@ -280,8 +299,8 @@ def bucket_verdicts(creatives, config, week, adset_health=None):
     if adset_health:
         active_rows = [r for r in adset_health if r["status"] in ("ACTIVE", "LEARNING", "LEARNING_LIMITED")]
         any_learning = any("LEARNING" in r["status"] for r in active_rows)
-        total_calls = sum(r.get("calls_booked", 0) for r in active_rows)
-        if any_learning and total_calls < min_conversions:
+        total_submits = sum(r.get("form_submits", 0) for r in active_rows)
+        if any_learning and total_submits < min_conversions:
             learning_guardrail_active = True
 
     scale_bucket = []
@@ -356,46 +375,46 @@ def detect_anomalies(adset_health, creatives, config):
                 )
 
     for row in adset_health:
-        if row["clicks"] >= 200 and row["calls_booked"] == 0:
+        if row["clicks"] >= 200 and row["form_submits"] == 0:
             anomalies.append(
                 {
-                    "type": "click_but_no_booking",
+                    "type": "click_but_no_form_submit",
                     "adset": row["adset_name"],
                     "detail": (
-                        f"{row['clicks']} clicks, 0 bookings in {row['audience_label']}. "
+                        f"{row['clicks']} clicks, 0 form submits in {row['audience_label']}. "
                         "Landing page signal, not ad signal."
                     ),
                 }
             )
 
-    # Cost-per-call threshold check (£50)
-    cost_target = t["cost_per_call_target_gbp"]
+    # Cost-per-form-submit threshold check (£50)
+    cost_target = t["cost_per_form_submit_target_gbp"]
     for row in adset_health:
-        cpc_call = row.get("cost_per_call")
-        if cpc_call is not None and cpc_call > cost_target:
+        cpfs = row.get("cost_per_form_submit")
+        if cpfs is not None and cpfs > cost_target:
             anomalies.append(
                 {
-                    "type": "cost_per_call_high",
+                    "type": "cost_per_form_submit_high",
                     "adset": row["adset_name"],
                     "detail": (
-                        f"£{cpc_call:.2f}/call in {row['audience_label']} exceeds the £{cost_target} target. "
-                        f"Spend £{row['spend']:.2f} / {row['calls_booked']} calls."
+                        f"£{cpfs:.2f}/form submit in {row['audience_label']} exceeds the £{cost_target} target. "
+                        f"Spend £{row['spend']:.2f} / {row['form_submits']} submits."
                     ),
                 }
             )
 
-    # Landing page booking rate check (8%)
-    booking_target = t["landing_page_booking_rate"]
+    # Landing page form-submit rate check (8%)
+    submit_rate_target = t["landing_page_form_submit_rate"]
     for row in adset_health:
-        br = row.get("booking_rate")
-        if br is not None and row["clicks"] >= 100 and br < booking_target:
+        fsr = row.get("form_submit_rate")
+        if fsr is not None and row["clicks"] >= 100 and fsr < submit_rate_target:
             anomalies.append(
                 {
-                    "type": "booking_rate_low",
+                    "type": "form_submit_rate_low",
                     "adset": row["adset_name"],
                     "detail": (
-                        f"Booking rate {br*100:.2f}% in {row['audience_label']} below {booking_target*100:.0f}% target. "
-                        f"{row['calls_booked']} bookings / {row['clicks']} clicks. Landing page or offer signal."
+                        f"Form submit rate {fsr*100:.2f}% in {row['audience_label']} below {submit_rate_target*100:.0f}% target. "
+                        f"{row['form_submits']} submits / {row['clicks']} clicks. Landing page or offer signal."
                     ),
                 }
             )
@@ -467,9 +486,9 @@ def detect_anomalies(adset_health, creatives, config):
 def build_priorities(adset_health, buckets, anomalies, config, week):
     priorities = []
     for a in anomalies:
-        if a["type"] == "click_but_no_booking":
+        if a["type"] == "click_but_no_form_submit":
             priorities.append(
-                f"Check the landing page — {a['adset']} is clicking but not booking. "
+                f"Check the landing page — {a['adset']} is clicking but not submitting. "
                 "Post-click problem. Review load speed, above-the-fold CTA, and mobile autoplay/captions."
             )
 
