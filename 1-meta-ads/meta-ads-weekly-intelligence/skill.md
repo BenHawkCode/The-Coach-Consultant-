@@ -25,10 +25,13 @@ All data comes from Antonio's `tcc-dashboard` GitHub repo (forked at `SudhakaPr/
 |---|---|---|
 | `intelligence.json → meta_ads` | Opus's strategic analysis: weekly priorities, ad set verdicts, creative verdicts, anomalies, quality flags, TOF/MOF/BOF recommendations | Core intelligence layer |
 | `intelligence.json → cross_platform` | Cross-channel strategy, market trends, hooks to repurpose | Context + creative inspiration |
-| `meta_ads_campaigns.json` | Structured ad set × creative breakdown with 7d + 28d metrics, creative audience matrix, account summary | Operational numbers |
-| `SCHEMA.md` | Field-by-field schema documentation | Reference only |
+| `meta_ads_campaigns.json` | Structured ad set × creative breakdown with 7d + 28d metrics, creative audience matrix, account summary. Includes `stage` (TOF/MOF/BOF), `stage_spend_7d`, `data_caveats` | Operational numbers |
+| `ghl_dms.json` | IG DM funnel (inbound/outbound threads, 7d) — BOF downstream signal | Diagnosing ad vs landing vs DM bottleneck |
+| `SCHEMA.md` | Field-by-field schema documentation (breaking change 2026-04-17) | Reference only |
 
 **Important:** Do NOT call Meta API directly. The weekly cron handles data collection. This skill only reads the committed JSON files.
+
+**Field naming (2026-04-17 breaking change):** Antonio's pipeline renamed `calls_booked*` → `form_submits*` after the double-count incident. A form submit is NOT a booked call — historical ratio is roughly 4.5 form submits per booked call. Ground truth for bookings is Mahmoud's manual sheet until STS rollout. Never label `form_submits` as "calls booked" in the output.
 
 ## Instructions for Claude
 
@@ -55,9 +58,13 @@ Ensure the latest Monday data is pulled.
 
 ### Step 2 — Read the data files
 
-Read these two files:
+Read these files:
 - `<path>/public/data/intelligence.json`
 - `<path>/public/data/meta_ads_campaigns.json`
+- `<path>/public/data/ghl_dms.json` (for BOF DM funnel diagnosis)
+- `<path>/public/data/SCHEMA.md` (only when a field is ambiguous — it's the source of truth)
+
+Before interpreting numbers, surface anything in `meta_ads_campaigns.summary.data_caveats` — those are Antonio's active caveats (e.g. "form submits are not booked calls", GHL gaps, paused ad sets). They must show up at the top of the report.
 
 ### Step 3 — Generate the weekly report
 
@@ -65,37 +72,48 @@ Present the output in this exact order:
 
 ---
 
-**a) Executive Summary**
+**a) Data Caveats (always first)**
+
+Render every entry from `meta_ads_campaigns.summary.data_caveats` as a bullet list before any analysis. No report should open with numbers when there is an active caveat — the reader needs to know what's directional vs exact first.
+
+**b) Executive Summary**
 
 One paragraph. Pull from `intelligence.meta_ads.channel_tldr` + `meta_ads_campaigns.summary`. Include:
-- Total weekly spend + trend vs previous week (if available from 28d data)
-- Total calls booked + cost per call
-- Best performing ad set + worst performing ad set
+- Total weekly spend + trend vs previous week (from 28d data)
+- Total form submits (`total_form_submits_7d`) and cost per form submit (`overall_cost_per_form_submit_7d`) — label both clearly as form submits, not calls
+- Estimated booked calls using the 4.5:1 rule of thumb, with "pending Mahmoud's sheet" caveat
+- Best performing ad set + worst performing ad set (by stage)
 - One sentence on the single biggest opportunity this week
 
-**b) Funnel Health Check**
+**c) Funnel Health Check**
 
-Table from `meta_ads_campaigns.ad_sets` joined with `intelligence.meta_ads.ad_set_verdicts`:
+Table from `meta_ads_campaigns.ad_sets` joined with `intelligence.meta_ads.ad_set_verdicts`. Group rows by `stage` (BOF → MOF → TOF) so the funnel reads top-down.
 
-| Ad Set | Status | Learning | Spend 7d | CTR link | CPC link | Calls | Cost/Call | Verdict |
+| Stage | Ad Set | Status | Learning | Spend 7d | Key metric | Form submits | Cost/form submit | Verdict |
 |---|---|---|---|---|---|---|---|---|
 
-Below the table: 2-3 sentence interpretation. Where is the funnel leaking? Which stage (TOF/MOF/BOF) needs attention?
+"Key metric" depends on stage:
+- **BOF** → CTR link, cost per form submit
+- **MOF** → cost per opt-in, DM conversations (`ghl_dms.totals.threads_7d` when relevant)
+- **TOF** → ThruPlay rate, CPM, frequency (NEVER surface cost per form submit for TOF — that's a category error per SCHEMA)
 
-**c) BOF Call Booking Growth**
+Below the table: 2-3 sentence interpretation using `stage_spend_7d`. Where is the funnel leaking? Which stage needs attention?
 
-This is Ben's primary concern. Answer: "How do we get more BOF call bookings?"
+**d) BOF Call Booking Growth**
+
+This is Ben's primary concern. Answer: "How do we get more booked calls?" (not form submits)
 
 Pull from:
 - `intelligence.meta_ads.bof_recommendations` (Opus's specific recommendations)
-- `meta_ads_campaigns.creative_audience_matrix` (which creatives drive calls in which audiences)
-- Ad set verdicts (which audiences convert best)
+- `meta_ads_campaigns.creative_audience_matrix` (which creatives drive form submits in which audiences — filter to `stage = BOF`)
+- Ad set verdicts (which BOF audiences convert best)
+- `ghl_dms.json` (is the DM funnel catching the submits? Look at `threads_7d`, inbound/outbound ratio)
 
 Structure:
-1. Current state: X calls/week at £Y/call from Z ad sets
-2. Biggest lever: [specific action with numbers]
+1. Current state: X form submits/week at £Y/submit → ~Z estimated bookings (4.5:1 ratio, directional)
+2. Biggest lever: [specific action with numbers — name the ad set / creative]
 3. Second lever: [specific action]
-4. Third lever: [specific action]
+4. Third lever: [specific action — e.g. DM response gap if outbound/inbound ratio is off]
 
 Each lever must reference specific creatives and ad sets by name with actual numbers.
 
@@ -119,23 +137,24 @@ Structure:
    - Why (grounded in data or cross-channel insight)
    - Inspired by (competitor or own top performer reference)
 
-**e) Spend Scaling Guidance**
+**e → f) Spend Scaling Guidance** (renumbered after Data Caveats became section a)
 
 Answer: "What do we do with increasing spend on creatives?"
 
 Pull from:
-- `meta_ads_campaigns.ad_sets` (current budget splits)
+- `meta_ads_campaigns.summary.stage_spend_7d` (actual BOF/MOF/TOF split in £)
+- `meta_ads_campaigns.ad_sets` (per-ad-set budget, grouped by `stage`)
 - `intelligence.meta_ads.ad_set_verdicts` (scale/watch/kill by ad set)
-- `intelligence.meta_ads.anomalies` (delivery gaps, frequency fatigue)
+- `intelligence.meta_ads.anomalies` (delivery gaps, frequency fatigue, stage_mismatch)
 
 Structure:
-1. Current budget split vs target (50 BOF / 30 MOF / 20 TOF)
-2. Recommended reallocation (specific £ amounts per ad set)
+1. Current split (from `stage_spend_7d`) vs target **50 BOF / 30 MOF / 20 TOF**
+2. Recommended reallocation — specific £ amounts per ad set, respecting stage
 3. Scale readiness per ad set:
-   - Learning phase status
-   - Frequency risk
-   - Creative diversity (enough ads to scale without fatigue?)
-4. "If we add £X/day, put it here because [reason]"
+   - Learning phase status (`learning_stage` field)
+   - Frequency risk (TOF fatigue threshold > 3.5)
+   - Creative diversity (enough ads in the stage to scale without fatigue?)
+4. "If we add £X/day, put it here because [reason grounded in stage + verdict]"
 
 **f) Anomalies & Quality Flags**
 
@@ -278,18 +297,28 @@ If no: skill ends after the markdown report.
 
 ---
 
-## Thresholds
+## Thresholds (per stage — aligned with SCHEMA 2026-04-17)
 
-Same as `meta-ads-daily-review` (shared framework):
+Never apply a BOF threshold to a TOF/MOF campaign. Each stage is judged on its own metric.
 
-| Metric | Threshold |
-|---|---|
-| CTR link kill | < 0.8% |
-| CTR link target | ≥ 1.5% |
-| Cost per call healthy | ≤ £50 |
-| Cost per call problem | > £75 |
-| Landing page booking rate | ≥ 8% |
-| Budget split target | 50% BOF / 30% MOF / 20% TOF |
+**TOF** — awareness / video views / reach
+- ThruPlay rate (higher is better)
+- CPM > £25 = concern
+- Frequency > 3.5 = fatigue
+- **Never kill a TOF ad set for zero form submits** — category error
+
+**MOF** — engagement / opt-ins / DM
+- Cost per opt-in (not cost per call)
+- DM conversations started (from `ghl_dms.totals.threads_7d`)
+- Inbound-to-outbound ratio (DM funnel health)
+
+**BOF** — application / call booking
+- CTR link < 0.8% = kill candidate
+- CTR link ≥ 1.5% = target
+- Cost per form submit ≤ £50 = healthy, > £75 = problem
+- Landing page form rate ≥ 8%
+
+**Budget split target:** 50% BOF / 30% MOF / 20% TOF (`summary.stage_spend_7d` reports actual).
 
 ## Ben's Voice Rules
 
@@ -328,8 +357,14 @@ Or pull from antonio-gasso/tcc-dashboard if you have access to the upstream.
 
 ## Version
 
-**v1.0 (initial)** — built 2026-04-15
+**v1.1 (2026-04-19)** — aligned with SCHEMA breaking change
 
+- `calls_booked*` → `form_submits*` across all reads
+- Added `ghl_dms.json` for BOF DM funnel diagnosis
+- Per-stage thresholds (TOF/MOF/BOF judged separately)
+- `data_caveats` block is now section (a) of every report
+- Booked-call estimate uses 4.5:1 form-to-book ratio (directional) until Mahmoud's sheet/STS lands
+
+**v1.0 (2026-04-15)** — initial
 - Reads from `tcc-dashboard` GitHub repo (SudhakaPr fork)
 - intelligence.json (Opus analysis) + meta_ads_campaigns.json (operational data)
-- Full schema documented in `public/data/SCHEMA.md`
