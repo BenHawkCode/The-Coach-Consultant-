@@ -35,6 +35,12 @@ CONFIG_PATH = SKILL_DIR / "config.yaml"
 OUTPUTS_DIR = SKILL_DIR / "outputs"
 OUTPUTS_DIR.mkdir(exist_ok=True)
 
+# IG follower snapshot file. Each run appends {date, followers_count}. The
+# delta between the current API value and the most recent prior snapshot is
+# "followers acquired" for the Profile Visits campaign KPI.
+IG_BUSINESS_ACCOUNT_ID = os.getenv("IG_BUSINESS_ACCOUNT_ID", "17841400157052776")
+IG_SNAPSHOT_PATH = SKILL_DIR / "ig_followers_baseline.json"
+
 AUDIENCE_LABELS = {
     "warm": "Warm — Retargeting",
     "lookalike": "Cold — Lookalike",
@@ -185,33 +191,142 @@ def extract_meta_pixel_calls(insights):
     )
 
 
-def build_adset_health(adsets):
+# ---------------------------------------------------------------------------
+# IG follower tracking (for TOF Profile Visits campaigns)
+#
+# Meta Ads API doesn't expose "Instagram follows" per campaign — it's a custom
+# column Mahmoud added to the Ads Manager KPI set. Workaround (per Antonio,
+# 2026-04-20): hit the IG Business Account endpoint directly, store a daily
+# snapshot, and derive `followers_acquired` as the delta between today's
+# follower count and the most recent prior snapshot. Cost per follower is
+# then `spend / followers_acquired`.
+#
+# First run creates the baseline (0 acquired). Subsequent runs produce real
+# deltas. Snapshot file is committed so the baseline persists across
+# machines.
+# ---------------------------------------------------------------------------
+def fetch_ig_followers_count():
+    data = api_get(IG_BUSINESS_ACCOUNT_ID, {"fields": "followers_count,username"})
+    return {
+        "followers_count": int(data.get("followers_count", 0)),
+        "username": data.get("username"),
+    }
+
+
+def load_ig_snapshots():
+    if not IG_SNAPSHOT_PATH.exists():
+        return []
+    try:
+        return json.loads(IG_SNAPSHOT_PATH.read_text())
+    except json.JSONDecodeError:
+        return []
+
+
+def save_ig_snapshots(snapshots):
+    IG_SNAPSHOT_PATH.write_text(json.dumps(snapshots, indent=2))
+
+
+def record_ig_follower_snapshot(today_iso):
+    current = fetch_ig_followers_count()
+    snapshots = load_ig_snapshots()
+    prior = [s for s in snapshots if s["date"] < today_iso]
+    baseline = prior[-1] if prior else None
+
+    # Replace today's snapshot if it already exists (idempotent re-runs)
+    snapshots = [s for s in snapshots if s["date"] != today_iso]
+    snapshots.append(
+        {
+            "date": today_iso,
+            "followers_count": current["followers_count"],
+            "username": current["username"],
+        }
+    )
+    snapshots.sort(key=lambda s: s["date"])
+    save_ig_snapshots(snapshots)
+
+    if baseline is None:
+        return {
+            "current": current["followers_count"],
+            "baseline": None,
+            "baseline_date": None,
+            "followers_acquired": 0,
+            "first_run": True,
+        }
+    return {
+        "current": current["followers_count"],
+        "baseline": baseline["followers_count"],
+        "baseline_date": baseline["date"],
+        "followers_acquired": current["followers_count"] - baseline["followers_count"],
+        "first_run": False,
+    }
+
+
+# Map Meta's campaign objective to our funnel stage. Profile Visits sits at
+# TOF (objective OUTCOME_TRAFFIC) and must be judged on cost per follower,
+# not CTR / form submits.
+OBJECTIVE_STAGE = {
+    "OUTCOME_AWARENESS": "TOF",
+    "OUTCOME_TRAFFIC": "TOF",
+    "OUTCOME_VIDEO_VIEWS": "TOF",
+    "OUTCOME_ENGAGEMENT": "MOF",
+    "OUTCOME_LEADS": "BOF",
+    "OUTCOME_SALES": "BOF",
+}
+
+
+def fetch_campaign_meta(campaign_id):
+    data = api_get(campaign_id, {"fields": "id,name,objective,effective_status"})
+    objective = data.get("objective", "UNKNOWN")
+    return {
+        "id": data.get("id"),
+        "name": data.get("name"),
+        "objective": objective,
+        "stage": OBJECTIVE_STAGE.get(objective, "UNKNOWN"),
+        "effective_status": data.get("effective_status"),
+    }
+
+
+def build_adset_health(adsets, stage="BOF", followers_acquired=None, total_campaign_spend=None):
     rows = []
+    tof = stage == "TOF"
     for a in adsets:
         ins = a.get("insights", {})
         spend = float(ins.get("spend", 0) or 0)
         clicks = int(ins.get("clicks", 0) or 0)
         form_submits = extract_form_submits(ins)
         meta_pixel_calls = extract_meta_pixel_calls(ins)
-        rows.append(
-            {
-                "adset_id": a["id"],
-                "adset_name": a["name"],
-                "audience_type": a["audience_type"],
-                "audience_label": AUDIENCE_LABELS.get(a["audience_type"], a["name"]),
-                "impressions": int(ins.get("impressions", 0) or 0),
-                "clicks": clicks,
-                "ctr": float(ins.get("ctr", 0) or 0) / 100,  # Meta returns percent
-                "cpc": float(ins.get("cpc", 0) or 0),
-                "spend": spend,
-                "form_submits": form_submits,
-                "cost_per_form_submit": (spend / form_submits) if form_submits > 0 else None,
-                "form_submit_rate": (form_submits / clicks) if clicks > 0 else None,
-                "estimated_bookings": round(form_submits / FORM_TO_BOOK_RATIO, 1) if form_submits > 0 else 0,
-                "meta_pixel_calls": meta_pixel_calls,
-                "status": a.get("effective_status", "UNKNOWN"),
-            }
-        )
+
+        row = {
+            "adset_id": a["id"],
+            "adset_name": a["name"],
+            "audience_type": a["audience_type"],
+            "audience_label": AUDIENCE_LABELS.get(a["audience_type"], a["name"]),
+            "stage": stage,
+            "impressions": int(ins.get("impressions", 0) or 0),
+            "clicks": clicks,
+            "ctr": float(ins.get("ctr", 0) or 0) / 100,
+            "cpc": float(ins.get("cpc", 0) or 0),
+            "spend": spend,
+            "form_submits": form_submits,
+            "cost_per_form_submit": (spend / form_submits) if form_submits > 0 else None,
+            "form_submit_rate": (form_submits / clicks) if clicks > 0 else None,
+            "estimated_bookings": round(form_submits / FORM_TO_BOOK_RATIO, 1) if form_submits > 0 else 0,
+            "meta_pixel_calls": meta_pixel_calls,
+            "status": a.get("effective_status", "UNKNOWN"),
+        }
+
+        # TOF Profile Visits: cost per IG follower is the scale KPI.
+        # Followers acquired is campaign-level (account-level IG snapshot
+        # delta), so we pro-rate to the ad set by its spend share.
+        if tof and followers_acquired and followers_acquired > 0 and total_campaign_spend:
+            share = spend / total_campaign_spend if total_campaign_spend > 0 else 0
+            adset_followers = followers_acquired * share
+            row["ig_followers_acquired_share"] = round(adset_followers, 2)
+            row["cost_per_ig_follower"] = (
+                (spend / adset_followers) if adset_followers > 0 else None
+            )
+
+        rows.append(row)
     return rows
 
 
@@ -374,7 +489,12 @@ def detect_anomalies(adset_health, creatives, config):
                     }
                 )
 
+    # Form-submit / booking anomalies only apply at BOF. At TOF (Profile
+    # Visits / Awareness) there's no booking CTA by design, so flagging
+    # "clicks with no submits" is a category error per Mahmoud 2026-04-20.
     for row in adset_health:
+        if row.get("stage") != "BOF":
+            continue
         if row["clicks"] >= 200 and row["form_submits"] == 0:
             anomalies.append(
                 {
@@ -387,9 +507,11 @@ def detect_anomalies(adset_health, creatives, config):
                 }
             )
 
-    # Cost-per-form-submit threshold check (£50)
+    # Cost-per-form-submit threshold check (£50) — BOF only
     cost_target = t["cost_per_form_submit_target_gbp"]
     for row in adset_health:
+        if row.get("stage") != "BOF":
+            continue
         cpfs = row.get("cost_per_form_submit")
         if cpfs is not None and cpfs > cost_target:
             anomalies.append(
@@ -403,9 +525,11 @@ def detect_anomalies(adset_health, creatives, config):
                 }
             )
 
-    # Landing page form-submit rate check (8%)
+    # Landing page form-submit rate check (8%) — BOF only
     submit_rate_target = t["landing_page_form_submit_rate"]
     for row in adset_health:
+        if row.get("stage") != "BOF":
+            continue
         fsr = row.get("form_submit_rate")
         if fsr is not None and row["clicks"] >= 100 and fsr < submit_rate_target:
             anomalies.append(
@@ -419,13 +543,16 @@ def detect_anomalies(adset_health, creatives, config):
                 }
             )
 
-    # Budget split check (50/30/20)
+    # Budget split check (50/30/20 Warm/LAL/Interest) — BOF only.
+    # Other stages have different audience structures, split check doesn't
+    # apply (TOF is cold-only, MOF is its own thing).
     split_target = t["budget_split"]
     tolerance = t["budget_split_tolerance"]
-    total_active_spend = sum(r["spend"] for r in adset_health if r["status"] in ("ACTIVE", "LEARNING", "LEARNING_LIMITED"))
+    bof_rows = [r for r in adset_health if r.get("stage") == "BOF"]
+    total_active_spend = sum(r["spend"] for r in bof_rows if r["status"] in ("ACTIVE", "LEARNING", "LEARNING_LIMITED"))
     if total_active_spend > 0:
         spend_by_audience = {}
-        for r in adset_health:
+        for r in bof_rows:
             if r["status"] in ("ACTIVE", "LEARNING", "LEARNING_LIMITED"):
                 aud = r["audience_type"]
                 spend_by_audience[aud] = spend_by_audience.get(aud, 0) + r["spend"]
@@ -530,12 +657,29 @@ def build_priorities(adset_health, buckets, anomalies, config, week):
 
 def build_report_payload(campaign_id, campaign_name, week, since, until):
     config = load_config()
+    campaign_meta = fetch_campaign_meta(campaign_id)
+    stage = campaign_meta["stage"]
+
+    # IG follower delta is only relevant for TOF Profile Visits. Snapshot
+    # always runs so the baseline builds up over time regardless of which
+    # campaign we're reviewing.
+    today_iso = datetime.now().strftime("%Y-%m-%d")
+    ig_snapshot = record_ig_follower_snapshot(today_iso)
 
     adsets = fetch_adsets(campaign_id, since, until)
     for adset in adsets:
         adset["ads"] = fetch_ads_for_adset(adset["id"], since, until)
 
-    adset_health = build_adset_health(adsets)
+    followers_acquired = ig_snapshot["followers_acquired"] if stage == "TOF" else None
+    total_campaign_spend = sum(
+        float(a.get("insights", {}).get("spend", 0) or 0) for a in adsets
+    )
+    adset_health = build_adset_health(
+        adsets,
+        stage=stage,
+        followers_acquired=followers_acquired,
+        total_campaign_spend=total_campaign_spend,
+    )
     creatives = build_creative_matrix(adsets)
 
     for c in creatives:
@@ -544,6 +688,53 @@ def build_report_payload(campaign_id, campaign_name, week, since, until):
     buckets = bucket_verdicts(creatives, config, week, adset_health=adset_health)
     anomalies = detect_anomalies(adset_health, creatives, config)
     priorities = build_priorities(adset_health, buckets, anomalies, config, week)
+
+    # TOF: override the BOF-flavoured CTR/CPC scale priority with the correct
+    # cost-per-follower framing per Mahmoud 2026-04-20.
+    if stage == "TOF":
+        if ig_snapshot["first_run"]:
+            priorities.insert(
+                0,
+                "IG follower snapshot created today (baseline). Re-run tomorrow "
+                "for the first real cost-per-follower reading.",
+            )
+        elif followers_acquired and followers_acquired > 0 and total_campaign_spend > 0:
+            cpf = total_campaign_spend / followers_acquired
+            priorities.insert(
+                0,
+                f"Profile Visits — £{cpf:.2f} per IG follower "
+                f"({followers_acquired} followers acquired since "
+                f"{ig_snapshot['baseline_date']}, spend £{total_campaign_spend:.2f}). "
+                "This is the scale KPI for TOF, not CTR/CPC.",
+            )
+        else:
+            priorities.insert(
+                0,
+                "Profile Visits — no follower growth measured since last snapshot. "
+                "Cost per follower unavailable.",
+            )
+
+    campaign_summary = {
+        "stage": stage,
+        "objective": campaign_meta["objective"],
+        "total_spend": total_campaign_spend,
+    }
+    if stage == "TOF":
+        campaign_summary["ig_followers"] = {
+            "account_id": IG_BUSINESS_ACCOUNT_ID,
+            "username": ig_snapshot.get("baseline") and None,
+            "current_total": ig_snapshot["current"],
+            "baseline_date": ig_snapshot["baseline_date"],
+            "baseline_total": ig_snapshot["baseline"],
+            "followers_acquired": ig_snapshot["followers_acquired"],
+            "first_run": ig_snapshot["first_run"],
+            "cost_per_follower_campaign": (
+                round(total_campaign_spend / ig_snapshot["followers_acquired"], 2)
+                if ig_snapshot["followers_acquired"] and ig_snapshot["followers_acquired"] > 0
+                else None
+            ),
+            "source": "IG Business Account API + daily snapshot delta",
+        }
 
     return {
         "meta": {
@@ -554,6 +745,7 @@ def build_report_payload(campaign_id, campaign_name, week, since, until):
             "date_range": {"since": since, "until": until},
             "generated_at": datetime.now(timezone.utc).isoformat(),
         },
+        "campaign_summary": campaign_summary,
         "adset_health": adset_health,
         "creative_matrix": creatives,
         "verdicts": buckets,

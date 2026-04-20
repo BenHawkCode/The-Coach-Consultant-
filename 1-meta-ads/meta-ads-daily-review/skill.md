@@ -39,10 +39,28 @@ All verdicts use these thresholds (configurable via `config.yaml`):
 | CTR kill threshold | < 0.8% | Flag for kill after sufficient impressions |
 | CTR target | ≥ 1.5% | Healthy baseline |
 | CTR scale signal | ≥ 2.5% consistent across ad sets | Priority scale candidate |
-| Cost per form submit target | £50 | Flag if higher |
-| Landing page form submit rate | 8% | Flag if lower |
-| Budget split (Warm/Lookalike/Interest) | 50/30/20 | Flag if off |
+| Cost per form submit target | £50 | Flag if higher (**BOF only**) |
+| Landing page form submit rate | 8% | Flag if lower (**BOF only**) |
+| Budget split (Warm/Lookalike/Interest) | 50/30/20 | Flag if off (**BOF only**) |
 | Min impressions for verdict | 1000 per ad set | Below = "insufficient data" |
+
+**Stage-aware checks:** The skill detects the campaign's funnel stage from its Meta objective (`OUTCOME_AWARENESS` / `OUTCOME_TRAFFIC` / `OUTCOME_VIDEO_VIEWS` = TOF, `OUTCOME_ENGAGEMENT` = MOF, `OUTCOME_LEADS` / `OUTCOME_SALES` = BOF). Form-submit / cost-per-submit / 50-30-20 split checks are suppressed for TOF and MOF — judging a Profile Visits campaign on form submits is a category error (per Mahmoud 2026-04-20).
+
+### TOF — Cost per IG Follower (Profile Visits)
+
+For TOF campaigns (Profile Visits in particular), the scale KPI is **cost per IG follower**, not CTR/CPC. Because Meta Ads API doesn't return a campaign-level follower count, the skill:
+
+1. Calls the IG Business Account endpoint on every run: `GET /{IG_BUSINESS_ACCOUNT_ID}?fields=followers_count,username` (using the existing `META_ACCESS_TOKEN`).
+2. Appends the reading to `ig_followers_baseline.json` with today's date.
+3. Computes `followers_acquired = current_total - most_recent_prior_snapshot`.
+4. Surfaces `cost_per_follower = campaign_spend / followers_acquired` in the report.
+5. Pro-rates followers_acquired to each ad set by its spend share so per-ad-set CPF is visible.
+
+First run of the day creates the baseline only (0 acquired). Re-running the next day gives the first real delta. Snapshot file is committed so the baseline persists across machines.
+
+Override: set `IG_BUSINESS_ACCOUNT_ID` in root `.env` to point at a different IG account (default: Ben Hawksworth's business account, `17841400157052776`).
+
+**Naming note:** The skill reports `form_submits`, not `calls_booked`. A Meta pixel `lead` event is a form submission, not a booked call — historical ratio is ~4.5 form submits per booked call. The JSON output also includes an `estimated_bookings` field (form_submits / 4.5) flagged as directional until Mahmoud's sheet/STS lands. This aligns with Antonio's dashboard schema (2026-04-17 rename).
 
 **Naming note:** The skill reports `form_submits`, not `calls_booked`. A Meta pixel `lead` event is a form submission, not a booked call — historical ratio is ~4.5 form submits per booked call. The JSON output also includes an `estimated_bookings` field (form_submits / 4.5) flagged as directional until Mahmoud's sheet/STS lands. This aligns with Antonio's dashboard schema (2026-04-17 rename).
 

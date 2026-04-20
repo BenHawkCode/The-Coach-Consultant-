@@ -1,0 +1,180 @@
+{
+  "meta": {
+    "campaign_id": "120240730375880377",
+    "campaign_name": "TOF - Profile Visits, Campaign 2",
+    "week": 1,
+    "week_label": "Data collection",
+    "date_range": {
+      "since": "2026-04-13",
+      "until": "2026-04-20"
+    },
+    "generated_at": "2026-04-20T10:11:26.899118+00:00"
+  },
+  "campaign_summary": {
+    "stage": "TOF",
+    "objective": "OUTCOME_TRAFFIC",
+    "total_spend": 76.09,
+    "ig_followers": {
+      "account_id": "17841400157052776",
+      "username": null,
+      "current_total": 21023,
+      "baseline_date": null,
+      "baseline_total": null,
+      "followers_acquired": 0,
+      "first_run": true,
+      "cost_per_follower_campaign": null,
+      "source": "IG Business Account API + daily snapshot delta"
+    }
+  },
+  "adset_health": [
+    {
+      "adset_id": "120240730375890377",
+      "adset_name": "COLD PV - biz+ AI",
+      "audience_type": "interest",
+      "audience_label": "Cold \u2014 Interest",
+      "stage": "TOF",
+      "impressions": 19881,
+      "clicks": 715,
+      "ctr": 0.03596399,
+      "cpc": 0.10642,
+      "spend": 76.09,
+      "form_submits": 0,
+      "cost_per_form_submit": null,
+      "form_submit_rate": 0.0,
+      "estimated_bookings": 0,
+      "meta_pixel_calls": 0,
+      "status": "ACTIVE"
+    }
+  ],
+  "creative_matrix": [
+    {
+      "creative_name": "Reel 2 -Your content looks fine",
+      "audiences": {
+        "interest": {
+          "ctr": 0.04173107,
+          "cpc": 0.150926,
+          "spend": 8.15,
+          "impressions": 1294,
+          "clicks": 54,
+          "adset_name": "COLD PV - biz+ AI"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Solid, watch",
+      "directional": true
+    },
+    {
+      "creative_name": "Casousel - Saunders",
+      "audiences": {
+        "interest": {
+          "ctr": 0.01013171,
+          "cpc": 0.349,
+          "spend": 3.49,
+          "impressions": 987,
+          "clicks": 10,
+          "adset_name": "COLD PV - biz+ AI"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Too little data",
+      "directional": true
+    },
+    {
+      "creative_name": "Reel 1 - Stop blaming others",
+      "audiences": {
+        "interest": {
+          "ctr": 0.036988639999999996,
+          "cpc": 0.099002,
+          "spend": 64.45,
+          "impressions": 17600,
+          "clicks": 651,
+          "adset_name": "COLD PV - biz+ AI"
+        }
+      },
+      "quality_flags": [],
+      "signal": "Solid, watch",
+      "directional": true
+    }
+  ],
+  "verdicts": {
+    "scale": [],
+    "watch": [
+      {
+        "creative_name": "Reel 2 -Your content looks fine",
+        "audiences": {
+          "interest": {
+            "ctr": 0.04173107,
+            "cpc": 0.150926,
+            "spend": 8.15,
+            "impressions": 1294,
+            "clicks": 54,
+            "adset_name": "COLD PV - biz+ AI"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Solid, watch",
+        "directional": true
+      },
+      {
+        "creative_name": "Casousel - Saunders",
+        "audiences": {
+          "interest": {
+            "ctr": 0.01013171,
+            "cpc": 0.349,
+            "spend": 3.49,
+            "impressions": 987,
+            "clicks": 10,
+            "adset_name": "COLD PV - biz+ AI"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Too little data",
+        "directional": true
+      },
+      {
+        "creative_name": "Reel 1 - Stop blaming others",
+        "audiences": {
+          "interest": {
+            "ctr": 0.036988639999999996,
+            "cpc": 0.099002,
+            "spend": 64.45,
+            "impressions": 17600,
+            "clicks": 651,
+            "adset_name": "COLD PV - biz+ AI"
+          }
+        },
+        "quality_flags": [],
+        "signal": "Solid, watch",
+        "directional": true
+      }
+    ],
+    "concern": [],
+    "learning_guardrail_active": false
+  },
+  "anomalies": [
+    {
+      "type": "spend_concentration",
+      "creative": "Reel 1 - Stop blaming others",
+      "adset": "COLD PV - biz+ AI",
+      "detail": "Reel 1 - Stop blaming others consumes 84.7% of COLD PV - biz+ AI spend (\u00a364.45 of \u00a376.09). Diversify creative load."
+    }
+  ],
+  "priorities": [
+    "IG follower snapshot created today (baseline). Re-run tomorrow for the first real cost-per-follower reading."
+  ],
+  "config_thresholds": {
+    "ctr_kill": 0.008,
+    "ctr_target": 0.015,
+    "ctr_scale_signal": 0.025,
+    "cost_per_form_submit_target_gbp": 50,
+    "landing_page_form_submit_rate": 0.08,
+    "budget_split": {
+      "warm_retargeting": 0.5,
+      "cold_lookalike": 0.3,
+      "cold_interest": 0.2
+    },
+    "budget_split_tolerance": 0.05,
+    "min_impressions_per_adset": 1000,
+    "spend_concentration_warn": 0.4
+  }
+}
