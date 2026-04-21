@@ -277,7 +277,9 @@ Save to `outputs/WEEKLY-INTELLIGENCE-[YYYY-MM-DD].md`
 | Paid pipeline (28d) | [roas_snapshot.paid_pipeline_28d] |
 | Paid spend (7d) | £[roas_snapshot.spend_7d] |
 | Revenue closed | £[roas_snapshot.revenue_closed] |
-| ROAS | [revenue / spend or "pending closes"] |
+| ROAS | [see rendering rule below] |
+
+**ROAS display rule (per Antonio 2026-04-20):** When `paid_calls_booked_7d > 0` and `paid_revenue_7d == 0`, display **"Pending"**, not "0.00x". Rationale: the pipeline-pending state (paid calls booked, sales not closed yet) is a normal sales-cycle lag, not a failure signal. Only show the numeric ROAS when `paid_revenue_7d > 0`.
 
 *Source: `intelligence.meta_ads.roas_snapshot` — Calendly bookings tagged `-pa` joined against Meta spend + Master Client Tracker revenue.*
 
@@ -314,6 +316,7 @@ After saving the markdown report:
    - Anomaly cards with severity colour coding (red = high, amber = medium)
    - Spend allocation bar chart (current vs target, CSS-only)
    - Creative matrix heatmap (CTR values colour-coded: green ≥ 1.5%, amber 0.8-1.5%, red < 0.8%)
+   - ROAS tile: render "**Pending**" in neutral grey when paid calls > 0 and paid revenue = 0 (Antonio UX rule). Render the numeric ROAS in green (≥ 2x) / amber (1–2x) / red (< 1x) only when revenue > 0.
    - Collapsible sections for each report area
    - Print-friendly layout
 4. Save to `outputs/WEEKLY-DASHBOARD-[YYYY-MM-DD].html`

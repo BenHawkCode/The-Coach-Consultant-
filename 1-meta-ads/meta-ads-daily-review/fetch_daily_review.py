@@ -41,6 +41,12 @@ OUTPUTS_DIR.mkdir(exist_ok=True)
 IG_BUSINESS_ACCOUNT_ID = os.getenv("IG_BUSINESS_ACCOUNT_ID", "17841400157052776")
 IG_SNAPSHOT_PATH = SKILL_DIR / "ig_followers_baseline.json"
 
+# Antonio's dashboard clone — source of truth for real Calendly bookings
+# (calendly_bookings.json) and stage-tagged paid ROAS (roas_snapshot). The
+# weekly cron commits fresh data here every Monday 06:00 UTC.
+TCC_DASHBOARD_PATH = Path(os.getenv("TCC_DASHBOARD_PATH", "/tmp/tcc-dashboard"))
+CALENDLY_BOOKINGS_PATH = TCC_DASHBOARD_PATH / "public" / "data" / "calendly_bookings.json"
+
 AUDIENCE_LABELS = {
     "warm": "Warm — Retargeting",
     "lookalike": "Cold — Lookalike",
@@ -148,9 +154,32 @@ def fetch_ads_for_adset(adset_id, since, until):
     return ads
 
 
-# Rough historical ratio used to translate form submits into estimated
-# booked calls until Mahmoud's STS / ground-truth sheet replaces it.
+# Fallback form-to-book ratio. Only used when Antonio's calendly_bookings.json
+# isn't reachable. When it is, we use the real paid_ads counts instead.
 FORM_TO_BOOK_RATIO = 4.5
+
+
+def load_calendly_bookings():
+    """Pull real Calendly paid-ads bookings from Antonio's pipeline.
+
+    Returns None if the dashboard clone isn't available — callers must
+    fall back to the 4.5:1 directional estimate in that case.
+    """
+    if not CALENDLY_BOOKINGS_PATH.exists():
+        return None
+    try:
+        data = json.loads(CALENDLY_BOOKINGS_PATH.read_text())
+    except (json.JSONDecodeError, OSError):
+        return None
+    summary = data.get("summary", {})
+    return {
+        "source": "calendly_bookings.json (Antonio pipeline)",
+        "fetched_at": data.get("fetched_at"),
+        "paid_ads_7d": summary.get("paid_ads_7d"),
+        "paid_ads_28d": summary.get("paid_ads_28d"),
+        "total_7d": summary.get("total_7d"),
+        "total_28d": summary.get("total_28d"),
+    }
 
 
 def extract_form_submits(insights):
@@ -714,10 +743,64 @@ def build_report_payload(campaign_id, campaign_name, week, since, until):
                 "Cost per follower unavailable.",
             )
 
+    # Real booked calls from Antonio's Calendly pipeline. Falls back to the
+    # 4.5:1 directional estimate only when the dashboard clone isn't present.
+    calendly = load_calendly_bookings()
+    total_form_submits = sum(r.get("form_submits", 0) for r in adset_health)
+
+    if stage == "BOF" and calendly is not None:
+        paid_7d = calendly["paid_ads_7d"] or 0
+        if paid_7d > 0 and total_campaign_spend > 0:
+            priorities.insert(
+                0,
+                f"Real Calendly bookings (paid-ads, 7d): {paid_7d} at "
+                f"£{total_campaign_spend/paid_7d:.2f}/call "
+                f"(spend £{total_campaign_spend:.2f}). "
+                f"28d pipeline: {calendly['paid_ads_28d']} bookings. "
+                "Ground truth — use this over form_submits-based estimates.",
+            )
+        elif paid_7d == 0:
+            priorities.insert(
+                0,
+                "Real Calendly bookings (paid-ads, 7d): 0. "
+                "Paid ads driving clicks but no booked calls yet — "
+                "landing page / offer / follow-up check.",
+            )
+    elif stage == "BOF" and calendly is None:
+        priorities.insert(
+            0,
+            "Calendly bookings file not found (is tcc-dashboard cloned at "
+            f"{TCC_DASHBOARD_PATH}?). Falling back to 4.5:1 directional "
+            "estimate from form submits. Pull the dashboard repo for real numbers.",
+        )
+
+    bookings_block = {
+        "source": None,
+        "paid_ads_7d": None,
+        "paid_ads_28d": None,
+        "cost_per_paid_call_7d": None,
+        "roas_display": None,  # "Pending" when 0 revenue + >0 calls, else numeric
+        "estimated_bookings_fallback": round(total_form_submits / FORM_TO_BOOK_RATIO, 1),
+    }
+    if calendly is not None and stage == "BOF":
+        paid_7d = calendly["paid_ads_7d"] or 0
+        bookings_block["source"] = calendly["source"]
+        bookings_block["paid_ads_7d"] = paid_7d
+        bookings_block["paid_ads_28d"] = calendly["paid_ads_28d"]
+        bookings_block["fetched_at"] = calendly["fetched_at"]
+        if paid_7d > 0 and total_campaign_spend > 0:
+            bookings_block["cost_per_paid_call_7d"] = round(total_campaign_spend / paid_7d, 2)
+            # ROAS needs revenue which daily-review doesn't have; weekly does.
+            # Per Antonio 2026-04-20: when paid calls > 0 and revenue = 0,
+            # show "Pending" rather than "0.00x" so Ben doesn't misread the
+            # pipeline-pending state as "ads don't work".
+            bookings_block["roas_display"] = "Pending"
+
     campaign_summary = {
         "stage": stage,
         "objective": campaign_meta["objective"],
         "total_spend": total_campaign_spend,
+        "bookings": bookings_block,
     }
     if stage == "TOF":
         campaign_summary["ig_followers"] = {
