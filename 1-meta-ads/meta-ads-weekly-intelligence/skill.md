@@ -165,7 +165,20 @@ Numbered list, ordered by severity (high → medium → low). Each entry:
 - Why it matters
 - What to do about it
 
-**g) This Week's Priority Actions**
+**g) Paid ROAS Snapshot**
+
+Pull from `intelligence.meta_ads.roas_snapshot` (added 2026-04-20 by Antonio). This is the deterministic paid ROAS view — real Calendly bookings tagged with the `-pa` slug joined against Meta spend and `sheet_revenue.json` from Rob's Master Client Tracker.
+
+Render as:
+- **7-day paid calls booked** (`roas_snapshot.paid_calls_7d`)
+- **28-day paid pipeline** (`roas_snapshot.paid_pipeline_28d`)
+- **7-day paid spend** (`roas_snapshot.spend_7d`)
+- **Closed revenue** (`roas_snapshot.revenue_closed`) with a "£0 closed yet" note if zero
+- **ROAS** = revenue / spend when revenue > 0, else "pending closes"
+
+This section replaces the form-submit-based booking estimate from `meta-ads-daily-review`. When available, always prefer the `roas_snapshot` numbers over the 4.5:1 directional fallback — they come from real Calendly bookings, not pixel leads.
+
+**h) This Week's Priority Actions**
 
 Pull from `intelligence.meta_ads.weekly_priorities`. Present as numbered list (max 5).
 
@@ -174,7 +187,7 @@ Each priority:
 - **Why** — grounded in numbers
 - **Impact** — what happens if we do/don't do this
 
-**h) Cross-Platform Context (Optional)**
+**i) Cross-Platform Context (Optional)**
 
 If `intelligence.cross_platform` has relevant insights for Meta Ads (hooks to repurpose, market trends affecting ad performance), include a brief section:
 - 2-3 bullet points from cross-channel insights relevant to ad creative or positioning
@@ -253,6 +266,20 @@ Save to `outputs/WEEKLY-INTELLIGENCE-[YYYY-MM-DD].md`
 
 1. **[HIGH]** [Description] → [Action]
 2. **[MEDIUM]** [Description] → [Action]
+
+---
+
+## Paid ROAS Snapshot
+
+| Metric | Value |
+|---|---|
+| Paid calls booked (7d) | [roas_snapshot.paid_calls_7d] |
+| Paid pipeline (28d) | [roas_snapshot.paid_pipeline_28d] |
+| Paid spend (7d) | £[roas_snapshot.spend_7d] |
+| Revenue closed | £[roas_snapshot.revenue_closed] |
+| ROAS | [revenue / spend or "pending closes"] |
+
+*Source: `intelligence.meta_ads.roas_snapshot` — Calendly bookings tagged `-pa` joined against Meta spend + Master Client Tracker revenue.*
 
 ---
 
@@ -355,6 +382,11 @@ Or pull from antonio-gasso/tcc-dashboard if you have access to the upstream.
 **Daily complement:** `meta-ads-daily-review` skill handles Ben Mahmoud's operational daily campaign reviews using the same data source.
 
 ## Version
+
+**v1.2 (2026-04-21)** — ROAS snapshot + auto HTML dashboard
+- Added section (g) for `intelligence.meta_ads.roas_snapshot` — real paid calls booked (Calendly `-pa` slug), 28-day paid pipeline, spend, revenue, ROAS
+- HTML dashboard now generated every run (no opt-in prompt) alongside markdown
+- Section letters shifted: Priorities → h, Cross-Platform → i
 
 **v1.1 (2026-04-19)** — aligned with SCHEMA breaking change
 

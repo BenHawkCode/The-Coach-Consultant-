@@ -173,14 +173,13 @@ When this skill is invoked:
 
 ## Data Caveat — Always Prepend
 
-Every generated report must open with a "DATA CAVEAT" block before the ad set table. Rationale: Meta's action-type mapping to "booked calls" has not been validated against ground truth (Calendly / GHL pipeline stage / manual). Skill now de-duplicates the `lead` / `offsite_conversion.fb_pixel_lead` family (2x inflation bug fixed), but the underlying question — "is a Meta `lead` event a form submit or a booked call?" — is still open.
+Every generated report must open with a short "DATA CAVEAT" block before the ad set table. Current caveat as of 2026-04-21:
 
-Keep the caveat in every report until Ben confirms:
-1. Ground truth source for bookings
-2. Which Meta action type represents a real booked call in his pixel
-3. Attribution window
+- `form_submits` are Meta pixel `lead` events (form fills), not booked calls. Ground truth for booked calls lives in `calendly_bookings.json` (Antonio's pipeline, 2026-04-20). Paid-ads bookings are tagged via the `-pa` slug.
+- `estimated_bookings = form_submits / 4.5` is a directional fallback only. Prefer the real Calendly number when available.
+- Antonio's pipeline accuracy was confirmed 2026-04-20 post-`5a672c2`: numbers match Ads Manager 1:1. The old double-count bug (`collect_own_meta.py:91`) is fixed and no longer a concern.
 
-Also flag that Antonio's dashboard pipeline (`collect_own_meta.py:91`) still has the 2x bug and may show inflated numbers until patched.
+Drop the caveat entirely once `estimated_bookings` is replaced by the live Calendly count in the report body.
 
 ## Output Format
 
