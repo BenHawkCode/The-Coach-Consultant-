@@ -281,6 +281,8 @@ Save to `outputs/WEEKLY-INTELLIGENCE-[YYYY-MM-DD].md`
 
 **ROAS display rule (per Antonio 2026-04-20):** When `paid_calls_booked_7d > 0` and `paid_revenue_7d == 0`, display **"Pending"**, not "0.00x". Rationale: the pipeline-pending state (paid calls booked, sales not closed yet) is a normal sales-cycle lag, not a failure signal. Only show the numeric ROAS when `paid_revenue_7d > 0`.
 
+**Pipeline chase scope (per Antonio 2026-04-21):** When recommending pipeline chase actions, scope them to `paid_pipeline_breakdown_28d.active_not_yet_called` + `paid_pipeline_breakdown_28d.taken_no_outcome` only. Never recommend chasing `canceled`, `no_show`, or `closed` leads — they're either already disqualified or already won. Breakdown buckets: `active_not_yet_called`, `taken_no_outcome`, `canceled`, `no_show`, `closed`. Chase only the first two.
+
 *Source: `intelligence.meta_ads.roas_snapshot` — Calendly bookings tagged `-pa` joined against Meta spend + Master Client Tracker revenue.*
 
 ---

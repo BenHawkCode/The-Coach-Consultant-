@@ -159,12 +159,115 @@ def fetch_ads_for_adset(adset_id, since, until):
 FORM_TO_BOOK_RATIO = 4.5
 
 
-def load_calendly_bookings():
-    """Pull real Calendly paid-ads bookings from Antonio's pipeline.
+# Calendly direct-fetch constants. Antonio's collector takes ~10s per run;
+# we replicate the minimum needed for paid-ads counts (7d + 28d) so the
+# daily report never shows stale booking data. Per Antonio 2026-04-21
+# "Option 2" — hit the fast high-value collectors on-demand, leave the
+# heavier weekly stuff (Meta raw, GA4, IG scraping) to the cron.
+CALENDLY_API_KEY = os.getenv("CALENDLY_API_KEY")
+CALENDLY_BASE = "https://api.calendly.com"
+CALENDLY_USER_URI = os.getenv(
+    "CALENDLY_USER_URI",
+    "https://api.calendly.com/users/e8ba9799-31a6-4afe-ad39-dfac2e5db7a0",
+)
+PAID_ADS_SLUG_SUFFIX = "pa"  # discovery-call-pa
 
-    Returns None if the dashboard clone isn't available — callers must
-    fall back to the 4.5:1 directional estimate in that case.
+
+def _calendly_get(path, params=None):
+    headers = {"Authorization": f"Bearer {CALENDLY_API_KEY}"}
+    url = path if path.startswith("http") else f"{CALENDLY_BASE}{path}"
+    resp = requests.get(url, headers=headers, params=params, timeout=20)
+    resp.raise_for_status()
+    return resp.json()
+
+
+def _build_event_type_slug_map():
+    """One call to fetch all event types for the user, build UUID → slug map.
+
+    Avoids hitting the event_type endpoint for every booking (Antonio's
+    collector does this once too)."""
+    try:
+        data = _calendly_get("/event_types", params={"user": CALENDLY_USER_URI, "count": "100"})
+    except requests.RequestException:
+        return {}
+    mapping = {}
+    for et in data.get("collection", []):
+        uri = et.get("uri", "")
+        uuid = uri.split("/")[-1]
+        mapping[uuid] = (et.get("slug") or "").lower()
+    return mapping
+
+
+def fetch_calendly_live(days=28):
+    """On-demand fetch of Calendly bookings for the past `days` window.
+
+    Returns a dict in the same shape as `calendly_bookings.json`'s summary.
+    Returns None on any failure — caller falls back to the committed
+    dashboard snapshot.
     """
+    if not CALENDLY_API_KEY:
+        return None
+    slug_map = _build_event_type_slug_map()
+    if not slug_map:
+        return None
+
+    now = datetime.now(timezone.utc)
+    min_t = (now - timedelta(days=days)).strftime("%Y-%m-%dT%H:%M:%S.000000Z")
+    max_t = now.strftime("%Y-%m-%dT%H:%M:%S.000000Z")
+    url = f"{CALENDLY_BASE}/scheduled_events"
+    params = {
+        "user": CALENDLY_USER_URI,
+        "min_start_time": min_t,
+        "max_start_time": max_t,
+        "count": "100",
+    }
+    events, cutoff_7d = [], now - timedelta(days=7)
+    try:
+        while url:
+            data = _calendly_get(url, params=params)
+            events.extend(data.get("collection", []))
+            pagination = data.get("pagination") or {}
+            url = pagination.get("next_page")
+            params = None
+    except requests.RequestException:
+        return None
+
+    paid_7d = paid_28d = 0
+    for e in events:
+        uuid = e.get("event_type", "").split("/")[-1]
+        slug = slug_map.get(uuid, "")
+        if not slug.startswith("discovery-call-"):
+            continue
+        suffix = slug.split("-")[-1]
+        if suffix != PAID_ADS_SLUG_SUFFIX:
+            continue
+        paid_28d += 1
+        ct_raw = e.get("start_time") or e.get("created_at")
+        if ct_raw:
+            try:
+                ct = datetime.fromisoformat(ct_raw.replace("Z", "+00:00"))
+                if ct >= cutoff_7d:
+                    paid_7d += 1
+            except ValueError:
+                pass
+
+    return {
+        "source": "calendly_api_live (on-demand, Option 2)",
+        "fetched_at": now.isoformat(),
+        "paid_ads_7d": paid_7d,
+        "paid_ads_28d": paid_28d,
+        "total_7d": None,
+        "total_28d": None,
+    }
+
+
+def load_calendly_bookings():
+    """Prefer the on-demand live fetch (fresh). Fall back to the committed
+    dashboard snapshot if the API call fails. Last resort: None (caller
+    uses the 4.5:1 directional estimate)."""
+    live = fetch_calendly_live(days=28)
+    if live is not None:
+        return live
     if not CALENDLY_BOOKINGS_PATH.exists():
         return None
     try:
@@ -173,7 +276,7 @@ def load_calendly_bookings():
         return None
     summary = data.get("summary", {})
     return {
-        "source": "calendly_bookings.json (Antonio pipeline)",
+        "source": "calendly_bookings.json (dashboard snapshot, cron)",
         "fetched_at": data.get("fetched_at"),
         "paid_ads_7d": summary.get("paid_ads_7d"),
         "paid_ads_28d": summary.get("paid_ads_28d"),
