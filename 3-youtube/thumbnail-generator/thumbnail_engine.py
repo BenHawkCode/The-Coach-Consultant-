@@ -221,3 +221,32 @@ def _extract_image_bytes(response) -> bytes:
         "Gemini response contained no image data. "
         "This usually means the prompt was blocked by safety filters."
     )
+
+
+def load_recent_generations(limit: int = 10) -> list[dict]:
+    """Return metadata for the N most recent generations.
+
+    Each entry is the parsed metadata JSON plus a resolved `output_paths`
+    list of absolute `Path` objects.
+    """
+    if not OUTPUTS_DIR.exists():
+        return []
+
+    json_files: list[Path] = []
+    for date_dir in sorted(OUTPUTS_DIR.iterdir(), reverse=True):
+        if not date_dir.is_dir():
+            continue
+        json_files.extend(sorted(date_dir.glob("*.json"), reverse=True))
+        if len(json_files) >= limit:
+            break
+
+    entries: list[dict] = []
+    for path in json_files[:limit]:
+        try:
+            data = json.loads(path.read_text())
+        except (json.JSONDecodeError, OSError):
+            continue
+        data["output_paths"] = [path.parent / name for name in data.get("outputs", [])]
+        data["metadata_path"] = path
+        entries.append(data)
+    return entries
