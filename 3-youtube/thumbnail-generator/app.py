@@ -200,6 +200,77 @@ def render_preset_tab(face_path: Path) -> None:
     _run_generation(req)
 
 
+def render_hybrid_tab(face_path: Path) -> None:
+    st.subheader("Hybrid / Custom")
+    st.caption(
+        "Full control. Reference image is optional; use the overrides to steer "
+        "composition."
+    )
+
+    ref_file = st.file_uploader(
+        "Reference image (optional)",
+        type=["jpg", "jpeg", "png", "webp"],
+        key="hybrid_ref_uploader",
+    )
+    title = st.text_input("Title text", key="hybrid_title")
+
+    col1, col2 = st.columns(2)
+    with col1:
+        bg_color = st.color_picker("Background colour", value="#000000", key="hybrid_bg")
+        text_position = st.selectbox(
+            "Text position",
+            options=["left", "right", "top", "bottom", "centre"],
+            key="hybrid_text_pos",
+        )
+    with col2:
+        face_expression = st.selectbox(
+            "Face expression",
+            options=["serious", "shocked", "smiling", "confident"],
+            key="hybrid_expression",
+        )
+        variant_count = st.slider(
+            "Variants", min_value=1, max_value=4, value=3, key="hybrid_variants"
+        )
+
+    extra = st.text_area(
+        "Extra instructions",
+        key="hybrid_extra",
+        placeholder="Free-form directives appended to the prompt.",
+    )
+
+    if not st.button(
+        "Generate",
+        key="hybrid_generate",
+        type="primary",
+        disabled=title.strip() == "",
+    ):
+        return
+
+    ref_path: Path | None = None
+    if ref_file is not None:
+        ref_path = ROOT_DIR / "outputs" / "_uploads" / ref_file.name
+        ref_path.parent.mkdir(parents=True, exist_ok=True)
+        ref_path.write_bytes(ref_file.getbuffer())
+
+    overrides = {
+        "background_color": bg_color,
+        "text_position": text_position,
+        "face_expression": face_expression,
+    }
+    if extra.strip():
+        overrides["extra_instructions"] = extra.strip()
+
+    req = GenerationRequest(
+        mode="hybrid",
+        face_image_path=face_path,
+        title_text=title.strip(),
+        reference_image_path=ref_path,
+        overrides=overrides,
+        variant_count=variant_count,
+    )
+    _run_generation(req)
+
+
 def main() -> None:
     st.title("YouTube Thumbnail Generator")
     st.caption("Gemini 3.1 Flash Image Preview — for Ben Hawksworth")
@@ -229,7 +300,7 @@ def main() -> None:
         render_preset_tab(selected_face)
 
     with tab_hybrid:
-        st.caption("Wired up in the final task.")
+        render_hybrid_tab(selected_face)
 
 
 if __name__ == "__main__":
