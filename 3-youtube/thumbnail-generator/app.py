@@ -134,6 +134,11 @@ def render_clone_tab(face_path: Path) -> None:
         key="clone_ref_uploader",
     )
     title = st.text_input("Title text", key="clone_title")
+    extra = st.text_area(
+        "Extra instructions (optional)",
+        key="clone_extra",
+        placeholder="e.g. change background to red, make expression more serious",
+    )
     variant_count = st.slider(
         "Variants", min_value=1, max_value=4, value=3, key="clone_variants"
     )
@@ -156,6 +161,7 @@ def render_clone_tab(face_path: Path) -> None:
         face_image_path=face_path,
         title_text=title.strip(),
         reference_image_path=ref_path,
+        overrides={"extra_instructions": extra.strip()} if extra.strip() else {},
         variant_count=variant_count,
     )
     _run_generation(req)

@@ -83,15 +83,18 @@ def build_prompt(req: GenerationRequest) -> str:
         return f"{base} {NEGATIVE_INSTRUCTIONS}"
 
     if req.mode == "clone":
-        return (
+        extra = req.overrides.get("extra_instructions", "") if req.overrides else ""
+        base = (
             "Create a 1280x720 YouTube thumbnail. "
             "Analyse the layout, typography, colour palette, and composition of "
             "the reference image provided. Recreate that visual style with the "
             "person from the face image provided and the title text: "
             f"\"{req.title_text}\". Match the reference's visual style closely "
-            "without copying it verbatim. The person's face must remain recognisable. "
-            f"{NEGATIVE_INSTRUCTIONS}"
+            "without copying it verbatim. The person's face must remain recognisable."
         )
+        if extra:
+            base = f"{base} Additional direction: {extra}"
+        return f"{base} {NEGATIVE_INSTRUCTIONS}"
 
     if req.mode == "hybrid":
         parts = [
