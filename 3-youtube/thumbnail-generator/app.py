@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from PIL import Image
 
 from thumbnail_engine import GenerationRequest, generate, load_recent_generations
+from prompts.style_presets import PRESET_LABELS
 
 ROOT_DIR = Path(__file__).parent
 FACE_LIBRARY_DIR = ROOT_DIR / "assets" / "ben-faces"
@@ -160,6 +161,45 @@ def render_clone_tab(face_path: Path) -> None:
     _run_generation(req)
 
 
+def render_preset_tab(face_path: Path) -> None:
+    st.subheader("Use a style preset")
+    st.caption("Pick a preset — no reference image needed.")
+
+    preset_key = st.selectbox(
+        "Preset",
+        options=list(PRESET_LABELS.keys()),
+        format_func=lambda k: PRESET_LABELS[k],
+        key="preset_key",
+    )
+    title = st.text_input("Title text", key="preset_title")
+    extra = st.text_area(
+        "Extra instructions (optional)",
+        key="preset_extra",
+        placeholder="e.g. red background, point at camera",
+    )
+    variant_count = st.slider(
+        "Variants", min_value=1, max_value=4, value=3, key="preset_variants"
+    )
+
+    if not st.button(
+        "Generate",
+        key="preset_generate",
+        type="primary",
+        disabled=title.strip() == "",
+    ):
+        return
+
+    req = GenerationRequest(
+        mode="preset",
+        face_image_path=face_path,
+        title_text=title.strip(),
+        preset_key=preset_key,
+        overrides={"extra_instructions": extra.strip()} if extra.strip() else {},
+        variant_count=variant_count,
+    )
+    _run_generation(req)
+
+
 def main() -> None:
     st.title("YouTube Thumbnail Generator")
     st.caption("Gemini 3.1 Flash Image Preview — for Ben Hawksworth")
@@ -186,7 +226,7 @@ def main() -> None:
         render_clone_tab(selected_face)
 
     with tab_preset:
-        st.caption("Wired up in the next task.")
+        render_preset_tab(selected_face)
 
     with tab_hybrid:
         st.caption("Wired up in the final task.")
