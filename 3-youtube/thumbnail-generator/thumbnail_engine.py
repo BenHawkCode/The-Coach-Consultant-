@@ -27,6 +27,14 @@ Mode = Literal["clone", "preset", "hybrid"]
 ROOT_DIR = Path(__file__).parent
 OUTPUTS_DIR = ROOT_DIR / "outputs"
 
+NEGATIVE_INSTRUCTIONS = (
+    "Do NOT include any of the following under any circumstances: "
+    "timestamps, video duration overlays (e.g. '36:20'), time counters, "
+    "progress bars, play buttons, YouTube UI elements, subscribe buttons, "
+    "channel logos, watermarks, or any text other than the title specified above. "
+    "The output must be a clean standalone thumbnail image."
+)
+
 from io import BytesIO
 
 from dotenv import load_dotenv
@@ -71,7 +79,8 @@ def build_prompt(req: GenerationRequest) -> str:
         if req.preset_key not in PRESET_LABELS:
             raise ValueError(f"Unknown preset: {req.preset_key}")
         extra = req.overrides.get("extra_instructions", "") if req.overrides else ""
-        return render_preset(req.preset_key, req.title_text, extra)
+        base = render_preset(req.preset_key, req.title_text, extra)
+        return f"{base} {NEGATIVE_INSTRUCTIONS}"
 
     if req.mode == "clone":
         return (
@@ -80,7 +89,8 @@ def build_prompt(req: GenerationRequest) -> str:
             "the reference image provided. Recreate that visual style with the "
             "person from the face image provided and the title text: "
             f"\"{req.title_text}\". Match the reference's visual style closely "
-            "without copying it verbatim. The person's face must remain recognisable."
+            "without copying it verbatim. The person's face must remain recognisable. "
+            f"{NEGATIVE_INSTRUCTIONS}"
         )
 
     if req.mode == "hybrid":
@@ -107,6 +117,7 @@ def build_prompt(req: GenerationRequest) -> str:
             extra = req.overrides.get("extra_instructions")
             if extra:
                 parts.append(extra)
+        parts.append(NEGATIVE_INSTRUCTIONS)
         return " ".join(parts)
 
     raise ValueError(f"Unknown mode: {req.mode}")
