@@ -27,6 +27,25 @@ Mode = Literal["clone", "preset", "hybrid"]
 ROOT_DIR = Path(__file__).parent
 OUTPUTS_DIR = ROOT_DIR / "outputs"
 
+from io import BytesIO
+
+from dotenv import load_dotenv
+from google import genai
+from google.genai import types
+
+load_dotenv(ROOT_DIR / ".env")
+
+_GEMINI_MODEL = "gemini-3.1-flash-image-preview"
+
+
+def _gemini_client() -> genai.Client:
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        raise RuntimeError(
+            "GEMINI_API_KEY not set. Copy .env.example to .env and add your key."
+        )
+    return genai.Client(api_key=api_key)
+
 
 @dataclass
 class GeneratedImage:
@@ -140,17 +159,65 @@ def _validate_image(path: Path) -> None:
 
 
 def generate(req: GenerationRequest) -> list[GeneratedImage]:
-    """Generate thumbnails for the given request.
-
-    v1: raises NotImplementedError — Gemini call is wired up in Task 5.
-    """
+    """Generate thumbnails for the given request."""
     _validate_image(req.face_image_path)
     if req.reference_image_path is not None:
         _validate_image(req.reference_image_path)
 
     prompt = build_prompt(req)
-    # Gemini call lands in Task 5.
-    raise NotImplementedError(
-        "Gemini integration not yet implemented. "
-        f"Prompt would be: {prompt}"
+    client = _gemini_client()
+
+    contents: list = [prompt]
+    with Image.open(req.face_image_path) as face_img:
+        face_img.load()
+        contents.append(face_img.copy())
+    if req.reference_image_path is not None:
+        with Image.open(req.reference_image_path) as ref_img:
+            ref_img.load()
+            contents.append(ref_img.copy())
+
+    results: list[GeneratedImage] = []
+    output_image_paths: list[Path] = []
+    metadata_path_for_batch: Path | None = None
+
+    for variant_index in range(1, req.variant_count + 1):
+        image_path, metadata_path = _output_paths(req, variant_index)
+        if metadata_path_for_batch is None:
+            metadata_path_for_batch = metadata_path
+
+        response = client.models.generate_content(
+            model=_GEMINI_MODEL,
+            contents=contents,
+            config=types.GenerateContentConfig(
+                response_modalities=["IMAGE"],
+            ),
+        )
+
+        image_bytes = _extract_image_bytes(response)
+        image_path.write_bytes(image_bytes)
+        output_image_paths.append(image_path)
+        results.append(
+            GeneratedImage(
+                image_bytes=image_bytes,
+                output_path=image_path,
+                metadata_path=metadata_path_for_batch,
+            )
+        )
+
+    if metadata_path_for_batch is not None:
+        _write_metadata(metadata_path_for_batch, req, prompt, output_image_paths)
+
+    return results
+
+
+def _extract_image_bytes(response) -> bytes:
+    """Pull the first inline image out of a Gemini response."""
+    for candidate in response.candidates or []:
+        for part in candidate.content.parts or []:
+            inline = getattr(part, "inline_data", None)
+            if inline is not None and inline.data:
+                return inline.data
+    raise RuntimeError(
+        "Gemini response contained no image data. "
+        "This usually means the prompt was blocked by safety filters."
     )
