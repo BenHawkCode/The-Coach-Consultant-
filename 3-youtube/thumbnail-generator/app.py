@@ -8,7 +8,7 @@ import streamlit as st
 from dotenv import load_dotenv
 from PIL import Image
 
-from thumbnail_engine import load_recent_generations
+from thumbnail_engine import GenerationRequest, generate, load_recent_generations
 
 ROOT_DIR = Path(__file__).parent
 FACE_LIBRARY_DIR = ROOT_DIR / "assets" / "ben-faces"
@@ -91,6 +91,75 @@ def render_history_sidebar() -> None:
                     st.image(str(out_path), width=200)
 
 
+def _run_generation(req: GenerationRequest) -> None:
+    """Run generation with UI feedback and render results."""
+    try:
+        with st.spinner("Generating with Gemini..."):
+            results = generate(req)
+    except RuntimeError as e:
+        st.error(str(e))
+        return
+    except ValueError as e:
+        st.error(f"Invalid input: {e}")
+        return
+    except Exception as e:  # pragma: no cover - surface unknown API errors to the user
+        st.error(f"Generation failed: {e}")
+        return
+
+    st.success(f"Generated {len(results)} thumbnail(s).")
+    cols = st.columns(len(results))
+    for col, result in zip(cols, results):
+        with col:
+            st.image(result.image_bytes, use_container_width=True)
+            st.download_button(
+                label="Download PNG",
+                data=result.image_bytes,
+                file_name=result.output_path.name,
+                mime="image/png",
+                key=f"dl-{result.output_path.name}",
+            )
+
+
+def render_clone_tab(face_path: Path) -> None:
+    st.subheader("Clone a reference thumbnail")
+    st.caption(
+        "Upload a thumbnail you like. Gemini will copy its style using the "
+        "selected face and your title."
+    )
+
+    ref_file = st.file_uploader(
+        "Reference thumbnail",
+        type=["jpg", "jpeg", "png", "webp"],
+        key="clone_ref_uploader",
+    )
+    title = st.text_input("Title text", key="clone_title")
+    variant_count = st.slider(
+        "Variants", min_value=1, max_value=4, value=3, key="clone_variants"
+    )
+
+    can_generate = ref_file is not None and title.strip() != ""
+    if not st.button(
+        "Generate",
+        key="clone_generate",
+        type="primary",
+        disabled=not can_generate,
+    ):
+        return
+
+    ref_path = ROOT_DIR / "outputs" / "_uploads" / ref_file.name
+    ref_path.parent.mkdir(parents=True, exist_ok=True)
+    ref_path.write_bytes(ref_file.getbuffer())
+
+    req = GenerationRequest(
+        mode="clone",
+        face_image_path=face_path,
+        title_text=title.strip(),
+        reference_image_path=ref_path,
+        variant_count=variant_count,
+    )
+    _run_generation(req)
+
+
 def main() -> None:
     st.title("YouTube Thumbnail Generator")
     st.caption("Gemini 3.1 Flash Image Preview — for Ben Hawksworth")
@@ -109,8 +178,18 @@ def main() -> None:
         return
 
     st.write(f"**Selected face:** `{selected_face.name}`")
-    st.image(str(selected_face), width=200)
-    st.caption("Tabs and generation are wired up in the next task.")
+    tab_clone, tab_preset, tab_hybrid = st.tabs(
+        ["Clone Reference", "Preset Style", "Hybrid"]
+    )
+
+    with tab_clone:
+        render_clone_tab(selected_face)
+
+    with tab_preset:
+        st.caption("Wired up in the next task.")
+
+    with tab_hybrid:
+        st.caption("Wired up in the final task.")
 
 
 if __name__ == "__main__":
