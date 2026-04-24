@@ -30,7 +30,7 @@ Organic Instagram content (captions, stories, reels).
 
 Long-form video scripts and supporting content.
 
-- Coming soon...
+- **[Thumbnail Generator](3-youtube/thumbnail-generator/)** ✅ **READY** — Local Streamlit app that generates YouTube thumbnails via Gemini 3.1 Flash Image Preview. Three modes: Clone Reference (copy a thumbnail's style), Preset Style (Hormozi / MrBeast / Podcast / Minimal / Alex Hormozi Black), Hybrid (custom overrides). Seeded face library, generation history, metadata sidecars. Run: `cd 3-youtube/thumbnail-generator && streamlit run app.py`.
 
 ---
 
