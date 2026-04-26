@@ -103,12 +103,82 @@ The sidebar "Recent generations" section shows the last 10.
 
 ## Invocation Workflow
 
-When a user triggers this skill:
+When the user triggers this skill (e.g. "open the thumbnail generator", "make a thumbnail", "/thumbnail"), follow this sequence — do NOT skip steps.
 
-1. Check if `.venv` exists at `3-youtube/thumbnail-generator/.venv`. If not, guide them through first-time setup (above).
-2. Check if `.env` has `GEMINI_API_KEY`. If not, ask them to add it before launching.
-3. Launch the app with the commands in "How To Run It" above.
-4. Tell the user which URL the app is running on (usually http://localhost:8501).
-5. Briefly describe the three tabs so they know where to click.
+### Step 1 — Pre-flight checks (run all in parallel)
+
+Run these Bash commands to check readiness:
+
+```bash
+# Check virtualenv exists
+test -d "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator/.venv" && echo "VENV_OK" || echo "VENV_MISSING"
+
+# Check .env file exists and has a non-placeholder key
+if [ -f "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator/.env" ]; then
+  grep -q "GEMINI_API_KEY=AIza" "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator/.env" && echo "ENV_OK" || echo "ENV_NO_KEY"
+else
+  echo "ENV_MISSING"
+fi
+
+# Check requirements installed (streamlit binary present in venv)
+test -f "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator/.venv/bin/streamlit" && echo "DEPS_OK" || echo "DEPS_MISSING"
+
+# Check if app is already running on common ports
+lsof -i :8501 -i :8520 2>/dev/null | grep LISTEN | head -3
+```
+
+### Step 2 — Fix anything that's missing
+
+**If `VENV_MISSING`:**
+```bash
+cd "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator"
+python3 -m venv .venv
+```
+
+**If `DEPS_MISSING` (or after creating venv):**
+```bash
+cd "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator"
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+**If `ENV_MISSING`:** Ask the user for their Gemini API key (point them to https://aistudio.google.com/apikey if they don't have one). Then write `.env`:
+```bash
+cat > "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator/.env" <<EOF
+GEMINI_API_KEY=<paste_key_here>
+EOF
+```
+
+**If `ENV_NO_KEY`:** Open the file for the user with `open "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator/.env"` and tell them to replace the placeholder.
+
+**If app already running on 8501/8520:** Skip to Step 4 — tell the user the URL it's already on. Don't start a duplicate.
+
+### Step 3 — Launch the app
+
+Run in background (do NOT block the terminal):
+
+```bash
+cd "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator"
+source .venv/bin/activate
+streamlit run app.py --server.port 8520 > /tmp/streamlit-thumb.log 2>&1
+```
+
+Use `run_in_background: true` on the Bash tool. Wait ~4 seconds, then verify with:
+```bash
+curl -s -o /dev/null -w "HTTP %{http_code}" http://localhost:8520
+```
+
+If response is `HTTP 200`, app is up. If not, read `/tmp/streamlit-thumb.log` and report the error.
+
+### Step 4 — Hand off to the user
+
+Tell the user:
+- **URL:** http://localhost:8520 (open it in a browser)
+- **Sidebar:** select one of the seeded faces (ben-headshot.jpg or ben-face-crop.png), or upload a new one
+- **Three tabs to choose from:**
+  - **Clone Reference** → upload a thumbnail you like + title + optional extra instructions, app copies the style
+  - **Preset Style** → pick a preset (Hormozi Bold / MrBeast Reaction / Podcast Split / Minimal Text / Alex Hormozi Black) + title
+  - **Hybrid** → full control: ref optional, background colour, text position, face expression, free-text instructions
+- **Output:** click "Download PNG" under any generated thumbnail to save it. Everything is also auto-saved to `outputs/YYYY-MM-DD/`.
 
 Do NOT try to generate thumbnails directly from Claude Code — the app is the interface. Claude Code's job is to launch it and explain how to use it.
