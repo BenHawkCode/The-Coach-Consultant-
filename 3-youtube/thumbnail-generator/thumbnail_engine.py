@@ -41,7 +41,9 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
-load_dotenv(ROOT_DIR / ".env")
+_PROJECT_ROOT = ROOT_DIR.parent.parent
+load_dotenv(_PROJECT_ROOT / ".env")
+load_dotenv(ROOT_DIR / ".env", override=True)
 
 _GEMINI_MODEL = "gemini-3.1-flash-image-preview"
 

@@ -113,9 +113,9 @@ Run these Bash commands to check readiness:
 # Check virtualenv exists
 test -d "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator/.venv" && echo "VENV_OK" || echo "VENV_MISSING"
 
-# Check .env file exists and has a non-placeholder key
-if [ -f "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator/.env" ]; then
-  grep -q "GEMINI_API_KEY=AIza" "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator/.env" && echo "ENV_OK" || echo "ENV_NO_KEY"
+# Check root .env has a Gemini key (project-level shared .env)
+if [ -f "/Users/learnai/Desktop/The Coach Consultant/.env" ]; then
+  grep -q "^GEMINI_API_KEY=AIza" "/Users/learnai/Desktop/The Coach Consultant/.env" && echo "ENV_OK" || echo "ENV_NO_KEY"
 else
   echo "ENV_MISSING"
 fi
@@ -142,14 +142,11 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-**If `ENV_MISSING`:** Ask the user for their Gemini API key (point them to https://aistudio.google.com/apikey if they don't have one). Then write `.env`:
+**If `ENV_MISSING` or `ENV_NO_KEY`:** Ask the user for their Gemini API key (point them to https://aistudio.google.com/apikey if they don't have one). Then append it to the project-root `.env`:
 ```bash
-cat > "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator/.env" <<EOF
-GEMINI_API_KEY=<paste_key_here>
-EOF
+echo "GEMINI_API_KEY=<paste_key_here>" >> "/Users/learnai/Desktop/The Coach Consultant/.env"
 ```
-
-**If `ENV_NO_KEY`:** Open the file for the user with `open "/Users/learnai/Desktop/The Coach Consultant/3-youtube/thumbnail-generator/.env"` and tell them to replace the placeholder.
+The Gemini key lives in the shared project `.env` alongside Meta, GitHub, Apify, and Calendly tokens — not in a skill-local file.
 
 **If app already running on 8501/8520:** Skip to Step 4 — tell the user the URL it's already on. Don't start a duplicate.
 

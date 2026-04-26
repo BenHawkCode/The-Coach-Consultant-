@@ -11,11 +11,11 @@ Local Streamlit app for generating YouTube thumbnails using Gemini 3.1 Flash Ima
    pip install -r requirements.txt
    ```
 
-2. Copy `.env.example` to `.env` and add your Gemini API key:
+2. Add your Gemini API key to the project-root `.env` (one level up from `3-youtube/`). Get a key at https://aistudio.google.com/apikey, then:
    ```bash
-   cp .env.example .env
-   # edit .env
+   echo "GEMINI_API_KEY=your_key_here" >> "../../.env"
    ```
+   The Gemini key lives alongside the other shared tokens (Meta, GitHub, Apify, Calendly) — not in this skill folder.
 
 3. Run the app:
    ```bash

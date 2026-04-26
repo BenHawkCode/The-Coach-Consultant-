@@ -14,7 +14,9 @@ from prompts.style_presets import PRESET_LABELS
 ROOT_DIR = Path(__file__).parent
 FACE_LIBRARY_DIR = ROOT_DIR / "assets" / "ben-faces"
 
-load_dotenv(ROOT_DIR / ".env")
+_PROJECT_ROOT = ROOT_DIR.parent.parent
+load_dotenv(_PROJECT_ROOT / ".env")
+load_dotenv(ROOT_DIR / ".env", override=True)
 
 st.set_page_config(
     page_title="TCC Thumbnail Generator",
