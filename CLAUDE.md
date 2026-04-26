@@ -150,6 +150,17 @@ Quick summary per channel:
 - CTA: www.thecoachconsultant.uk
 - See `docs/Ben-Claude-Projects-Instructions.txt` lines 77-287
 
+### YouTube Thumbnail Generator
+- **SKILL AVAILABLE:** `youtube-thumbnail-generator` — local Streamlit app powered by Gemini 3.1 Flash Image Preview
+- **Skill location:** `3-youtube/thumbnail-generator/` (skill.md, app.py, thumbnail_engine.py, prompts/style_presets.py)
+- **API key:** reads `GEMINI_API_KEY` from project-root `.env` (alongside Meta, GitHub, Apify, Calendly tokens)
+- **Three modes:** Clone Reference (upload competitor thumbnail, copy style), Preset Style (Hormozi Bold / MrBeast Reaction / Podcast Split / Minimal Text / Alex Hormozi Black), Hybrid (full overrides — bg colour, text position, expression)
+- **Face library:** seeded with 2 Ben photos at `assets/ben-faces/` — extras can be uploaded via sidebar
+- **Outputs:** `outputs/YYYY-MM-DD/HHMMSS-<hash>-vN.png` + sibling `metadata.json`
+- **Negative prompts enforced:** Gemini blocked from copying timestamps, duration overlays, YouTube UI, watermarks
+- **Invocation:** when user says "thumbnail", "/thumbnail", "open thumbnail generator" → run pre-flight checks (venv/deps/.env), launch on port 8520 in background, hand off URL
+- See `3-youtube/thumbnail-generator/skill.md` for the full pre-flight + launch workflow
+
 ### Email Campaigns
 - **SKILL AVAILABLE:** `email-campaign-ben-hawksworth` - Auto-triggers for email generation
 - **Skill location:** `4-emails/email-campaign-skill/` (complete skill with agent.md, prompt.md, examples)
