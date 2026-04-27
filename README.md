@@ -164,14 +164,14 @@ The Coach Consultant brand work — content automations, lead magnets, products,
 | Repo | Purpose |
 |---|---|
 | [The-Coach-Consultant-](https://github.com/BenHawkCode/The-Coach-Consultant-) | This repo — content engine and skill catalogue (hub) |
-| [presentation-creator](https://github.com/BenHawkCode/presentation-creator) | Design system, icon library, carousel rendering |
-| [meta-ads-daily-brief](https://github.com/BenHawkCode/meta-ads-daily-brief) | Daily Meta Ads brief automation, GitHub Actions cron 06:00 UTC |
-| [Cowork-System](https://github.com/BenHawkCode/Cowork-System) | Cowork product — assessment, functionality list, SOPs |
-| [Claude-Projects-Client-Pack](https://github.com/BenHawkCode/Claude-Projects-Client-Pack) | Sellable resource pack for clients |
-| [Claude-Projects-Guide](https://github.com/BenHawkCode/Claude-Projects-Guide) | Smart Scaling System SOP |
-| [accelerator-roi-assessment](https://github.com/BenHawkCode/accelerator-roi-assessment) | ROI assessment lead magnet |
-| [recipe-image-generator](https://github.com/BenHawkCode/recipe-image-generator) | Image generation utility |
-| [claude-code-projects](https://github.com/BenHawkCode/claude-code-projects) | Archived — early backup of Brand Assets / Content / Client Work |
+| [tcc-presentation-creator](https://github.com/BenHawkCode/tcc-presentation-creator) | Design system, icon library, carousel rendering |
+| [tcc-meta-ads-daily-brief](https://github.com/BenHawkCode/tcc-meta-ads-daily-brief) | Daily Meta Ads brief automation, GitHub Actions cron 06:00 UTC |
+| [tcc-cowork-system](https://github.com/BenHawkCode/tcc-cowork-system) | Cowork product — assessment, functionality list, SOPs |
+| [tcc-client-pack](https://github.com/BenHawkCode/tcc-client-pack) | Sellable resource pack for clients |
+| [tcc-projects-guide](https://github.com/BenHawkCode/tcc-projects-guide) | Smart Scaling System SOP |
+| [tcc-accelerator-roi](https://github.com/BenHawkCode/tcc-accelerator-roi) | ROI assessment lead magnet |
+| [tcc-recipe-image-generator](https://github.com/BenHawkCode/tcc-recipe-image-generator) | Image generation utility |
+| [claude-code-projects](https://github.com/BenHawkCode/claude-code-projects) | Stale backup — early Brand Assets / Content / Client Work folders, kept inactive |
 
 ### Titan Clients — `topic:titan-clients`
 Per-client deliverables for Titan coaching clients. Index lives at [titan-clients](https://github.com/BenHawkCode/titan-clients).
