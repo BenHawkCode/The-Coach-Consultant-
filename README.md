@@ -151,3 +151,30 @@ This system is actively maintained and updated based on:
 - Market trends
 
 For questions or support, contact your AI automation team.
+
+---
+
+## Related Repositories
+
+The BenHawkCode account is organised into three sections via GitHub topics. Filter the account by topic to see each section.
+
+### TCC — `topic:tcc`
+The Coach Consultant brand work — content automations, lead magnets, products, internal tooling.
+
+| Repo | Purpose |
+|---|---|
+| [The-Coach-Consultant-](https://github.com/BenHawkCode/The-Coach-Consultant-) | This repo — content engine and skill catalogue (hub) |
+| [presentation-creator](https://github.com/BenHawkCode/presentation-creator) | Design system, icon library, carousel rendering |
+| [meta-ads-daily-brief](https://github.com/BenHawkCode/meta-ads-daily-brief) | Daily Meta Ads brief automation, GitHub Actions cron 06:00 UTC |
+| [Cowork-System](https://github.com/BenHawkCode/Cowork-System) | Cowork product — assessment, functionality list, SOPs |
+| [Claude-Projects-Client-Pack](https://github.com/BenHawkCode/Claude-Projects-Client-Pack) | Sellable resource pack for clients |
+| [Claude-Projects-Guide](https://github.com/BenHawkCode/Claude-Projects-Guide) | Smart Scaling System SOP |
+| [accelerator-roi-assessment](https://github.com/BenHawkCode/accelerator-roi-assessment) | ROI assessment lead magnet |
+| [recipe-image-generator](https://github.com/BenHawkCode/recipe-image-generator) | Image generation utility |
+| [claude-code-projects](https://github.com/BenHawkCode/claude-code-projects) | Archived — early backup of Brand Assets / Content / Client Work |
+
+### Titan Clients — `topic:titan-clients`
+Per-client deliverables for Titan coaching clients. Index lives at [titan-clients](https://github.com/BenHawkCode/titan-clients).
+
+### Live Links — `topic:live-link`
+Hostable HTML pages — landing pages, decks, scorecards, interactive tools. Index lives at [live-links](https://github.com/BenHawkCode/live-links).
