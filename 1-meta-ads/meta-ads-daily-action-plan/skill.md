@@ -49,14 +49,48 @@ If `/tmp/tcc-dashboard` isn't cloned or is stale, run `git -C /tmp/tcc-dashboard
 
 ## Reasoning Framework
 
-The skill is the brain. Decide what to investigate based on what the data shows.
+The skill is the brain. Decide what to investigate based on what the data shows. Frameworks below are non-negotiable — see `1-meta-ads/CLAUDE.md` §5 for the full spec.
 
-**Trigger sub-agent when:**
-- A single ad set CTR drops more than 25% vs yesterday on >1000 impressions.
-- Cost per real Calendly call jumps more than 50% week-over-week.
-- An ad set in `LEARNING_LIMITED` for >7 days.
-- Frequency >3.5 (TOF) or >4.5 (BOF) suggests fatigue.
-- A creative consumes >40% of an ad set's spend.
+### Step 1 — Classify every campaign first
+
+Read `stage` field already computed in `meta_ads_campaigns.json` per ad set. Do not re-derive. If missing, map from objective:
+- `OUTCOME_AWARENESS`, `OUTCOME_VIDEO_VIEWS` → TOF
+- `OUTCOME_TRAFFIC` → MOF (TOF if optimised for profile visits)
+- `OUTCOME_ENGAGEMENT` → MOF (TOF if Profile Visits / ThruPlay)
+- `OUTCOME_LEADS`, `OUTCOME_SALES` → BOF
+
+### Step 2 — Judge each stage by its own metric
+
+| Stage | Primary | Never judge by |
+|---|---|---|
+| TOF | Cost per IG follower | CTR, form submits, cost per call |
+| MOF | Cost per opt-in / DM conversation | Cost per booked call |
+| BOF | Cost per real Calendly call (spend / `paid_ads_7d`) | Pixel `lead` events as calls |
+
+### Step 3 — Apply BOF kill/scale/watch thresholds (BOF ONLY)
+
+- CTR link < 0.8% → kill candidate
+- CTR link ≥ 1.5% → healthy, ≥ 2.5% across ad sets → scale candidate
+- Cost per form submit ≤ £50 healthy, > £75 problem
+- Landing page form submit rate ≥ 8% target (NEVER recommend "simplify the form")
+- Min 1,000 impressions per ad set for a verdict, else "insufficient signal"
+- Never kill during `LEARNING` / `LEARNING_LIMITED`. Min 50 conversion events.
+- Budget split target: 50% BOF / 30% MOF / 20% TOF (use `summary.stage_spend_7d`)
+
+### Step 4 — Ground truth for ROAS
+
+- **Numerator:** `sheet_revenue.json` signups in the last N days whose email matches a `calendly_bookings.paid_ads_28d` entry (email join, 28d window for sales-cycle lag).
+- **Denominator:** BOF ad-set spend only from `meta_ads_campaigns.json`.
+- Never compute ROAS from pixel events.
+- If denominator > 0 and numerator = 0 → display "Pending", not "0.0x".
+
+### Trigger sub-agent when
+
+- Single ad set CTR drops > 25% vs yesterday on > 1000 impressions.
+- Cost per real Calendly call jumps > 50% week-over-week.
+- Ad set in `LEARNING_LIMITED` for > 7 days.
+- Frequency > 3.5 (TOF) or > 4.5 (BOF) suggests fatigue.
+- One creative consumes > 40% of an ad set's spend.
 
 **Don't pad. If a section has nothing material, write one line: "No anomalies today."**
 
@@ -68,27 +102,32 @@ ONE Google Doc per day. Filename format: `Meta Ads Daily Action Plan — {YYYY-M
 # Meta Ads Daily Action Plan
 {Day, DD Month YYYY} · Generated {HH:MM UK time}
 
+Data refreshed: {intelligence.json._metadata.generated_at} · Calendly: {fetched_at} · Live Meta API run today
+
+> Pipeline form-submit numbers de-dupe `lead` / `fb_pixel_lead` / `lead_grouped`. They are application submissions, not booked calls. Booked-call counts come from Calendly only.
+
 ## Today's 3 Actions
 
-1. [Action] — [Concrete Ads Manager change]
-2. [Action] — [Concrete Ads Manager change]
-3. [Action] — [Concrete Ads Manager change]
+1. [Action] · [Concrete Ads Manager change]
+2. [Action] · [Concrete Ads Manager change]
+3. [Action] · [Concrete Ads Manager change]
 
 ## Pipeline State
 
-Real bookings (paid-ads, Calendly): {X} this week, {Y} in 28d pipeline
+Real bookings (paid ads, Calendly): {X} this week, {Y} in 28d pipeline
 Awaiting close: {Z}
-Signed this week: {N}
+Signed this week (sheet revenue, email-matched): {N}
+Spend (BOF only, 7d): £{S}
 ROAS: {value or "Pending"}
 Cost per real call: £{X}
 
 ## Ad Set Verdicts
 
-| Stage | Ad Set | Spend 7d | CTR | Cost / Real Call | Verdict | Reasoning |
+| Stage | Ad Set | Status | Spend 7d | Stage-relevant metric | Verdict | Reasoning |
 |---|---|---|---|---|---|---|
-| BOF | Warm Retargeting | £203 | 1.85% | £18.45 | SCALE | Carrying the funnel, doubling budget at 8% increments |
+| BOF | Warm Retargeting | ACTIVE | £203 | £18.45 / real call | SCALE | Healthy by BOF rule (£50 ceiling), scaling at 8% increments |
 
-(Filter out PAUSED ad sets. Group by stage: BOF first, MOF, TOF.)
+(Filter out PAUSED ad sets. Group by stage: BOF first, MOF, TOF. Stage-relevant metric column changes by stage: cost per real call for BOF, cost per opt-in for MOF, cost per IG follower for TOF.)
 
 ## Anomalies
 
@@ -96,23 +135,40 @@ Cost per real call: £{X}
 
 ## Today's Ads Manager Changes
 
-[Concrete bullets Mahmoud executes:]
-- Kill Reel 5 in Cold Lookalike (CTR 0.6%, no submits in 7 days)
+[Concrete bullets Mahmoud executes. Filter out paused ad sets:]
+- Kill Reel 5 in Cold Lookalike (BOF, CTR 0.6%, 0 calls in 7d)
 - Increase Warm Retargeting daily budget from £50 to £55 (8% bump, scale rule respected)
 - Duplicate "OG Hook" creative into Cold Interest with new 9-second variant
-- Pause Profile Visits creative #3 (cost per follower £4.20, target £1.50)
+- Pause Profile Visits creative #3 (TOF, cost per follower £4.20, target £1.50)
+
+## Yesterday's Flags — Acted On?
+
+[One bullet per yesterday's action with status: actioned / not actioned / superseded. If yesterday's plan didn't exist, omit this section.]
 ```
 
-## Tone Rules
+## Tone & Output Rules (binding, see `1-meta-ads/CLAUDE.md` §6)
 
-- **Direct verdicts.** No "consider", "you might", "it could be worth".
-- **No team names** in the prose. ("Ben suggested" → just state the action.)
-- **No snake_case** in visible text. (`form_submits` → "form submits" or "leads".)
-- **No em-dashes.** Use commas, full stops, or restructure.
-- **No headers without content** beneath them.
-- **Eight-figure consultant voice.** State what to do and why. Don't hedge.
+**Hard nevers:**
+- Kill verdicts on ad sets with `status=PAUSED`. Filter by active status before issuing kill.
+- "Simplify the form", "reduce landing page friction", "remove qualification". The application form IS the qualification filter by design.
+- Treat Meta pixel `lead` events as booked calls. Always cross-reference Calendly.
+- Team-member names (Mahmoud, Ben, Rob, Jay, Antonio) in free-text recommendations.
+- Internal snake_case field names (`paid_calls_booked`, `taken_no_outcome`) in prose.
+- Assert "the call happened" as fact. Write "scheduled calls" or "bookings".
+- Speculate about sales-call quality, pitch clarity, onboarding friction.
+- Directive "kill immediately". Reframe as "watch closely" or "concern" with reasoning.
+- Em-dashes (—), en-dashes (–) anywhere.
+- Pad numbers to look precise when the data is directional.
 
-British English. £ for money. "Optimise", "behaviour", "organisation".
+**Hard alwayses:**
+- Data freshness stamp at the top (read `intelligence.json._metadata.generated_at` + collector `fetched_at`).
+- Data caveat block where any Meta pixel number appears (form submits ≠ calls).
+- Stage-aware verdicts. Never issue a verdict without declaring the stage.
+- Per-stage reasoning. Explain which stage rule applies.
+- Pipeline state when revenue-related. If pending paid bookings exist, say so explicitly.
+- British English. £ for money. "Optimise", "behaviour", "organisation".
+
+**Voice:** Eight-figure consultant. State what to do and why. Don't hedge.
 
 ## Google Doc Writing
 
@@ -144,6 +200,21 @@ Mirror the brief to `outputs/{YYYY-MM-DD}.md` so:
 - Eventually: scheduled via Claude Routines (every weekday morning, 07:00 UK).
 - First few automated runs need Antonio's sanity check, then 2-3 days validation by Mahmoud before acting on recommendations for ad spend changes.
 
+## Pre-ship checklist (binding, see `1-meta-ads/CLAUDE.md` §8)
+
+Before writing any Doc to Drive, every run must verify:
+
+- Bookings come from Calendly, revenue from `sheet_revenue.json` email-matched, Meta pixel only for ad-set health.
+- Every verdict declares its stage. No verdict without stage.
+- Per-stage metrics applied. No BOF thresholds on TOF / MOF.
+- Kill verdicts exclude `PAUSED` ad sets.
+- No team names, no snake_case in prose, no "simplify the form", no "kill immediately", no em-dashes.
+- Freshness stamp present. Data caveat present where pixel numbers appear.
+- ROAS shows "Pending" (not "0.0x") when bookings exist but revenue not yet matched.
+- If Meta and Calendly disagree, the gap is explained in-text, not silently picked.
+
+If any check fails, stop and fix before shipping.
+
 ## Version
 
-**v1.0 (2026-04-28)** — initial action-first brief, inherits from daily-review + weekly-intelligence, writes one Google Doc per day to the TCC Automations → Meta Ads Daily Briefs folder.
+**v1.0 (2026-04-28)** — initial action-first brief, inherits from daily-review + weekly-intelligence, writes one Google Doc per day to the TCC Automations → Meta Ads Daily Briefs folder. Anchored to `1-meta-ads/CLAUDE.md` framework rules (stage classification, per-stage metrics, hard nevers, build checklist).
