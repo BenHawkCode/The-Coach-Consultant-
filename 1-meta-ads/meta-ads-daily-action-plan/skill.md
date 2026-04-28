@@ -1,0 +1,149 @@
+---
+name: meta-ads-daily-action-plan
+description: Daily action-first Meta Ads brief for Ben Mahmoud. Reads the meta-ads-daily-review JSON and the dashboard intelligence + Calendly bookings, reasons about what changed vs yesterday / 7d / 28d, and writes ONE Google Doc per day with three prioritised actions, pipeline state, per-ad-set verdicts (KILL/SCALE/WATCH), anomalies, and the exact Ads Manager changes Mahmoud should execute today. Tone is eight-figure consultant, not descriptive report.
+---
+
+# Meta Ads Daily Action Plan
+
+Action-first daily brief for Ben Mahmoud. Inherits from `meta-ads-daily-review` and `meta-ads-weekly-intelligence` — reads their data, layers reasoning on top, ships one Google Doc per day.
+
+## Purpose
+
+The other two skills give analysis. This one gives **decisions**.
+
+Ben Hawksworth's literal brief (2026-04-27):
+
+> "MUST be focused on actions to improve & scale."
+
+Ben Mahmoud's literal brief:
+
+> "this is literally what just do straight away."
+
+Output is what Mahmoud opens in the morning, copy-pastes into Ads Manager, and works through. Nothing else.
+
+## What This Skill Does
+
+When invoked:
+
+1. **Pulls upstream skill data** — runs `meta-ads-daily-review` if today's JSON isn't already in its `outputs/` folder, otherwise reads the existing file.
+2. **Pulls dashboard intelligence** — reads `intelligence.json` + `meta_ads_campaigns.json` + `calendly_bookings.json` from the cloned tcc-dashboard repo (`/tmp/tcc-dashboard/public/data/`).
+3. **Reads yesterday's action plan** — to check what flags carried over and whether previous decisions were acted on.
+4. **Reasons about deltas** — today vs yesterday vs 7d vs 28d. Looks for: CTR shifts, cost-per-real-call moves, audience saturation, learning-phase exits, fatigue, quality drops, spend redistribution.
+5. **Spawns sub-agents only when needed** — if a single ad set's CTR drops by more than 25% day-over-day, dig into creative-level. If audience saturation suspected, pull historical comparison. If everything stable, don't pad.
+6. **Drafts the brief** — exact structure below.
+7. **Writes a timestamped Google Doc** to the Daily Action Plans folder.
+
+## Inputs (read in this order)
+
+| File | Purpose |
+|---|---|
+| `1-meta-ads/meta-ads-daily-review/outputs/DAILY-REVIEW-*-{today}.json` | Today's per-ad-set + creative metrics (live Meta API) |
+| `/tmp/tcc-dashboard/public/data/intelligence.json` | Opus's strategic verdicts, anomalies, weekly priorities |
+| `/tmp/tcc-dashboard/public/data/meta_ads_campaigns.json` | 7d + 28d campaign and ad-set breakdown, stage classification |
+| `/tmp/tcc-dashboard/public/data/calendly_bookings.json` | Real paid bookings (ground truth) |
+| `1-meta-ads/meta-ads-daily-action-plan/outputs/{yesterday}.md` | Yesterday's brief — for "did we act on it?" tracking |
+
+If the daily-review JSON for today is missing, run `bash 1-meta-ads/meta-ads-daily-review/setup.sh --campaign-id <ID> --week <N> --days 7` first.
+
+If `/tmp/tcc-dashboard` isn't cloned or is stale, run `git -C /tmp/tcc-dashboard pull` (or clone it: `git clone https://${TCC_GITHUB_TOKEN}@github.com/SudhakaPr/tcc-dashboard.git /tmp/tcc-dashboard`).
+
+## Reasoning Framework
+
+The skill is the brain. Decide what to investigate based on what the data shows.
+
+**Trigger sub-agent when:**
+- A single ad set CTR drops more than 25% vs yesterday on >1000 impressions.
+- Cost per real Calendly call jumps more than 50% week-over-week.
+- An ad set in `LEARNING_LIMITED` for >7 days.
+- Frequency >3.5 (TOF) or >4.5 (BOF) suggests fatigue.
+- A creative consumes >40% of an ad set's spend.
+
+**Don't pad. If a section has nothing material, write one line: "No anomalies today."**
+
+## Output Structure
+
+ONE Google Doc per day. Filename format: `Meta Ads Daily Action Plan — {YYYY-MM-DD}`.
+
+```
+# Meta Ads Daily Action Plan
+{Day, DD Month YYYY} · Generated {HH:MM UK time}
+
+## Today's 3 Actions
+
+1. [Action] — [Concrete Ads Manager change]
+2. [Action] — [Concrete Ads Manager change]
+3. [Action] — [Concrete Ads Manager change]
+
+## Pipeline State
+
+Real bookings (paid-ads, Calendly): {X} this week, {Y} in 28d pipeline
+Awaiting close: {Z}
+Signed this week: {N}
+ROAS: {value or "Pending"}
+Cost per real call: £{X}
+
+## Ad Set Verdicts
+
+| Stage | Ad Set | Spend 7d | CTR | Cost / Real Call | Verdict | Reasoning |
+|---|---|---|---|---|---|---|
+| BOF | Warm Retargeting | £203 | 1.85% | £18.45 | SCALE | Carrying the funnel, doubling budget at 8% increments |
+
+(Filter out PAUSED ad sets. Group by stage: BOF first, MOF, TOF.)
+
+## Anomalies
+
+[Numbered list, one line each. If nothing material, write "No anomalies today."]
+
+## Today's Ads Manager Changes
+
+[Concrete bullets Mahmoud executes:]
+- Kill Reel 5 in Cold Lookalike (CTR 0.6%, no submits in 7 days)
+- Increase Warm Retargeting daily budget from £50 to £55 (8% bump, scale rule respected)
+- Duplicate "OG Hook" creative into Cold Interest with new 9-second variant
+- Pause Profile Visits creative #3 (cost per follower £4.20, target £1.50)
+```
+
+## Tone Rules
+
+- **Direct verdicts.** No "consider", "you might", "it could be worth".
+- **No team names** in the prose. ("Ben suggested" → just state the action.)
+- **No snake_case** in visible text. (`form_submits` → "form submits" or "leads".)
+- **No em-dashes.** Use commas, full stops, or restructure.
+- **No headers without content** beneath them.
+- **Eight-figure consultant voice.** State what to do and why. Don't hedge.
+
+British English. £ for money. "Optimise", "behaviour", "organisation".
+
+## Google Doc Writing
+
+Use `gws-cli` (already installed in `jay-skills/`). Workflow:
+
+```bash
+# 1. Find or create the "Meta Ads Daily Action Plans" folder in Drive
+gws drive files list --params '{"q":"name='\''Meta Ads Daily Action Plans'\'' and mimeType='\''application/vnd.google-apps.folder'\''","pageSize":1}' --format json
+
+# 2. Create today's doc (use Drive API to create with parents = folder ID)
+gws drive files create --params '{"name":"Meta Ads Daily Action Plan — 2026-04-28","mimeType":"application/vnd.google-apps.document","parents":["FOLDER_ID"]}' --format json
+
+# 3. Append the brief content
+gws docs documents batchUpdate --params '{"documentId":"NEW_DOC_ID","requests":[{"insertText":{"location":{"index":1},"text":"<full brief text>"}}]}' --format json
+```
+
+If the Drive folder doesn't exist yet, create it once and store the folder ID in `outputs/folder_id.txt` for reuse.
+
+## Local Output (always)
+
+Mirror the brief to `outputs/{YYYY-MM-DD}.md` so:
+- Yesterday's plan is readable for tomorrow's "did we act on it?" check.
+- Git diffs show how the brief evolves week to week.
+- If Drive write fails, the brief still exists locally.
+
+## When to Invoke
+
+- Manually: every morning by Mahmoud.
+- Eventually: scheduled via Claude Routines (every weekday morning, 07:00 UK).
+- First few automated runs need Antonio's sanity check, then 2-3 days validation by Mahmoud before acting on recommendations for ad spend changes.
+
+## Version
+
+**v1.0 (2026-04-28)** — initial action-first brief, inherits from daily-review + weekly-intelligence, writes one Google Doc per day to the TCC Automations → Meta Ads Daily Briefs folder.
