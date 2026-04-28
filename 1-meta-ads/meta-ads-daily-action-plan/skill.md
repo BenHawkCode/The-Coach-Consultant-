@@ -172,20 +172,34 @@ Cost per real call: £{X}
 
 ## Google Doc Writing
 
-Use `gws-cli` (already installed in `jay-skills/`). Workflow:
+Markdown rendered as a styled Google Doc via the `md-to-gdocs` skill. Direct `documents.batchUpdate` writes raw text, no headings, no tables. Don't go that route.
+
+Workflow:
 
 ```bash
-# 1. Find or create the "Meta Ads Daily Action Plans" folder in Drive
-gws drive files list --params '{"q":"name='\''Meta Ads Daily Action Plans'\'' and mimeType='\''application/vnd.google-apps.folder'\''","pageSize":1}' --format json
+# 1. Convert today's MD into a .docx with proper styles
+python3 jay-skills/md-to-gdocs/convert.py \
+    1-meta-ads/meta-ads-daily-action-plan/outputs/{YYYY-MM-DD}.md \
+    "Meta Ads Daily Action Plan — {YYYY-MM-DD}"
 
-# 2. Create today's doc (use Drive API to create with parents = folder ID)
-gws drive files create --params '{"name":"Meta Ads Daily Action Plan — 2026-04-28","mimeType":"application/vnd.google-apps.document","parents":["FOLDER_ID"]}' --format json
+# 2. Upload + convert to Google Doc in one step (mimeType triggers conversion)
+gws drive files create \
+    --upload "Meta Ads Daily Action Plan — {YYYY-MM-DD}.docx" \
+    --params '{...}' \
+    --format json
 
-# 3. Append the brief content
-gws docs documents batchUpdate --params '{"documentId":"NEW_DOC_ID","requests":[{"insertText":{"location":{"index":1},"text":"<full brief text>"}}]}' --format json
+# 3. The upload arrives as .docx in Drive. Issue a copy with target mimeType
+#    `application/vnd.google-apps.document` to convert. The original .docx
+#    can then be deleted.
+gws drive files copy \
+    --params '{"fileId":"<DOCX_ID>"}' \
+    --json '{"name":"Meta Ads Daily Action Plan — {YYYY-MM-DD}","mimeType":"application/vnd.google-apps.document","parents":["<FOLDER_ID>"]}' \
+    --format json
 ```
 
-If the Drive folder doesn't exist yet, create it once and store the folder ID in `outputs/folder_id.txt` for reuse.
+Folder ID is stored in `outputs/folder_id.txt` after first run. If Ben hasn't shared the TCC Drive folder yet, the Doc lands in the runner's My Drive root and gets relocated manually.
+
+Clean up the intermediate `.docx` (local file + uploaded copy in Drive) once the converted Google Doc is confirmed.
 
 ## Local Output (always)
 
