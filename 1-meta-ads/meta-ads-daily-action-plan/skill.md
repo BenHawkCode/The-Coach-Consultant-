@@ -37,15 +37,34 @@ When invoked:
 
 | File | Purpose |
 |---|---|
-| `1-meta-ads/meta-ads-daily-review/outputs/DAILY-REVIEW-*-{today}.json` | Today's per-ad-set + creative metrics (live Meta API) |
-| `/tmp/tcc-dashboard/public/data/intelligence.json` | Opus's strategic verdicts, anomalies, weekly priorities |
-| `/tmp/tcc-dashboard/public/data/meta_ads_campaigns.json` | 7d + 28d campaign and ad-set breakdown, stage classification |
+| `1-meta-ads/meta-ads-daily-review/outputs/DAILY-REVIEW-*-{today}.json` | Live Meta API + Calendly per BOF campaign run today |
+| `/tmp/tcc-dashboard/public/data/intelligence.json` | Opus strategic verdicts, anomalies, weekly priorities |
+| `/tmp/tcc-dashboard/public/data/meta_ads_campaigns.json` | 7d + 28d ad-set breakdown for ALL campaigns, stage classification, `summary.stage_spend_7d` |
 | `/tmp/tcc-dashboard/public/data/calendly_bookings.json` | Real paid bookings (ground truth) |
-| `1-meta-ads/meta-ads-daily-action-plan/outputs/{yesterday}.md` | Yesterday's brief — for "did we act on it?" tracking |
+| `/tmp/tcc-dashboard/public/data/sheet_revenue.json` | Signups + revenue (literal `name` field is binding, see §Names) |
+| `1-meta-ads/meta-ads-daily-action-plan/outputs/{yesterday}.md` | Yesterday's brief, for "did we act on it?" tracking |
 
-If the daily-review JSON for today is missing, run `bash 1-meta-ads/meta-ads-daily-review/setup.sh --campaign-id <ID> --week <N> --days 7` first.
+### Coverage rule (multi-campaign)
 
-If `/tmp/tcc-dashboard` isn't cloned or is stale, run `git -C /tmp/tcc-dashboard pull` (or clone it: `git clone https://${TCC_GITHUB_TOKEN}@github.com/SudhakaPr/tcc-dashboard.git /tmp/tcc-dashboard`).
+The brief must cover spend across all stages, not just BOF. Single-campaign briefs hide whichever stage is currently consuming the most spend.
+
+- **BOF campaigns:** run `meta-ads-daily-review` per active BOF campaign-id and read every `DAILY-REVIEW-*-{today}.json` written today. Live Meta + Calendly numbers come from these.
+- **TOF + MOF + UNKNOWN campaigns:** read directly from `meta_ads_campaigns.json.ad_sets[]`, filtered by `stage` field. No live Meta call needed for these stages, the cron-fresh JSON is sufficient.
+- **Sanity check first:** read `meta_ads_campaigns.json.summary.stage_spend_7d` at the start. If the largest stage by spend has no presence in the brief, stop and surface the gap.
+
+### Clone source
+
+`/tmp/tcc-dashboard` is cloned from `antonio-gasso/tcc-dashboard` directly using `TCC_GITHUB_TOKEN`. Same PAT works for both upstream and forks. Avoid `SudhakaPr/tcc-dashboard` (the fork) because it goes stale unless manually synced post-cron.
+
+```bash
+# First-time clone
+git clone https://${TCC_GITHUB_TOKEN}@github.com/antonio-gasso/tcc-dashboard.git /tmp/tcc-dashboard
+
+# Each run
+git -C /tmp/tcc-dashboard pull
+```
+
+If today's daily-review JSON for a BOF campaign is missing, run `bash 1-meta-ads/meta-ads-daily-review/setup.sh --campaign-id <ID> --week <N> --days 7` per active BOF campaign first.
 
 ## Reasoning Framework
 
@@ -93,6 +112,18 @@ Read `stage` field already computed in `meta_ads_campaigns.json` per ad set. Do 
 - One creative consumes > 40% of an ad set's spend.
 
 **Don't pad. If a section has nothing material, write one line: "No anomalies today."**
+
+### Today's 3 Actions — sourcing rules
+
+The Top-3 must rotate as the data rotates. Don't paraphrase yesterday's actions back in.
+
+Source priority (highest first):
+
+1. **Carry-forward gaps from yesterday's brief.** If yesterday's Action 1 was "reactivate the BOF campaign" and the campaign is still paused today, that becomes today's Action 1 again with a "still not actioned" framing. Open loops always come first.
+2. **Today's anomalies that breach a framework threshold.** Cost per real call jumps over £75, CTR drops below 0.8%, frequency past fatigue, single-creative dominance, learning-phase stuck. Daily-fresh.
+3. **`intelligence.meta_ads.weekly_priorities`** (Opus strategic anchor, refreshes Monday). Use only after carry-forward and daily anomalies are exhausted, and only when the priority is still current (the underlying state hasn't changed since the cron).
+
+If three days run with the same Top-3 because state hasn't moved, write that explicitly in the brief (e.g. "Action 1 carried forward 3 days, BOF still paused — escalating") instead of repeating the action with new wording.
 
 ## Output Structure
 
@@ -159,6 +190,8 @@ Cost per real call: £{X}
 - Directive "kill immediately". Reframe as "watch closely" or "concern" with reasoning.
 - Em-dashes (—), en-dashes (–) anywhere.
 - Pad numbers to look precise when the data is directional.
+- **Paraphrase or interpret signup names from email handles.** A user with email `danny@thedadcompass.com` is not "Danny Compass". Read the literal `name` field from `sheet_revenue.signups_7d[]` and use it verbatim. If `name` is missing, write "name not in sheet" rather than guess.
+- **Word "baseline" for the 8% form submit rate** or any other framework threshold. The 8% is a target, not a baseline. TCC isn't historically at 8%. Always write "8% target" or "8% threshold". Same applies to other framework thresholds (£50 cost per submit ceiling, 1.5% CTR target, etc.).
 
 **Hard alwayses:**
 - Data freshness stamp at the top (read `intelligence.json._metadata.generated_at` + collector `fetched_at`).
