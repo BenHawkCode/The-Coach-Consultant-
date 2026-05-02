@@ -84,17 +84,30 @@ Read `stage` field already computed in `meta_ads_campaigns.json` per ad set. Do 
 |---|---|---|
 | TOF | Cost per IG follower | CTR, form submits, cost per call |
 | MOF | Cost per opt-in / DM conversation | Cost per booked call |
-| BOF | Cost per real Calendly call (spend / `paid_ads_7d`) | Pixel `lead` events as calls |
+| BOF | Two layers below | Pixel `lead` events as calls, cost_per_form_submit as the kill anchor |
 
-### Step 3 — Apply BOF kill/scale/watch thresholds (BOF ONLY)
+**BOF primary metric splits into two layers (Antonio 2026-05-02):**
 
-- CTR link < 0.8% → kill candidate
-- CTR link ≥ 1.5% → healthy, ≥ 2.5% across ad sets → scale candidate
-- Cost per form submit ≤ £50 healthy, > £75 problem
-- Landing page form submit rate ≥ 8% target (NEVER recommend "simplify the form")
+- **Headline ROAS (account level):** Calendly `paid_ads_7d` is still ground truth. Calendly aggregates by event-type slug, so it doesn't split per ad set, only per campaign / channel.
+- **Per-ad-set health:** `metrics_7d.cost_per_booking_pixel` is the operational anchor. Pixel matches at the ad-set level so this is what surfaces which ad set is working and which isn't.
+- **`cost_per_form_submit` is now a volume signal only**, not the kill anchor. Historical applications-to-bookings ratio is roughly 4.5:1, so a £10 cost per application can sit on top of a £45 cost per booking. The kill / scale call has to come from `cost_per_booking_pixel`.
+
+### Step 3 — Apply BOF kill/scale/watch thresholds (BOF ONLY, anchored on `cost_per_booking_pixel_7d`)
+
+Calibrated against Mahmoud's £185 baseline (Antonio 2026-05-02).
+
+- **`cost_per_booking_pixel_7d` ≤ £150 with `bookings_pixel_7d` ≥ 2** → scale candidate
+- **`cost_per_booking_pixel_7d` ≤ £200** → healthy
+- **£200 < `cost_per_booking_pixel_7d` ≤ £300** → watch
+- **`cost_per_booking_pixel_7d` > £300 sustained over 7d** → kill candidate
+- **`cost_per_form_submit`** is reported but is NOT the kill anchor. Use it for application-volume diagnostics only. £3 cost per application can mask £349 cost per booking.
+- CTR link < 0.8% → kill candidate (creative-level signal)
+- CTR link ≥ 1.5% → healthy, ≥ 2.5% across ad sets → reinforce scale signal
 - Min 1,000 impressions per ad set for a verdict, else "insufficient signal"
 - Never kill during `LEARNING` / `LEARNING_LIMITED`. Min 50 conversion events.
 - Budget split target: 50% BOF / 30% MOF / 20% TOF (use `summary.stage_spend_7d`)
+
+**Pixel match edge case:** if `bookings_pixel_7d == 0` AND `applications_7d > 0`, cross-reference Calendly `paid_ads_7d`. If Calendly shows real bookings, this is a pixel match-rate problem (ad blockers / cookie loss), surface as a "low pixel match rate" quality flag and DO NOT issue a kill verdict. The campaign is converting, the pixel just isn't seeing it.
 
 ### Step 4 — Ground truth for ROAS
 
@@ -154,11 +167,16 @@ Cost per real call: £{X}
 
 ## Ad Set Verdicts
 
-| Stage | Ad Set | Status | Spend 7d | Stage-relevant metric | Verdict | Reasoning |
-|---|---|---|---|---|---|---|
-| BOF | Warm Retargeting | ACTIVE | £203 | £18.45 / real call | SCALE | Healthy by BOF rule (£50 ceiling), scaling at 8% increments |
+| Stage | Ad Set | Status | Spend 7d | Stage-relevant metric | Cost per booking pixel | Verdict | Reasoning |
+|---|---|---|---|---|---|---|---|
+| BOF | Warm Retargeting | ACTIVE | £203 | £18.45 / real call (Calendly headline) | £185 (5 bookings) | SCALE | Healthy by BOF rule (≤ £200), scaling at 8% increments |
 
-(Filter out PAUSED ad sets. Group by stage: BOF first, MOF, TOF. Stage-relevant metric column changes by stage: cost per real call for BOF, cost per opt-in for MOF, cost per IG follower for TOF.)
+Rules:
+- Filter out PAUSED ad sets.
+- Group by stage: BOF first, MOF, TOF.
+- "Stage-relevant metric" column changes by stage: cost per real Calendly call for BOF (account headline), cost per opt-in for MOF, cost per IG follower for TOF.
+- "Cost per booking pixel" column reads `metrics_7d.cost_per_booking_pixel` and `metrics_7d.bookings_pixel`. BOF rows only — leave blank for MOF / TOF. This is the per-ad-set kill/scale anchor.
+- If `bookings_pixel_7d == 0` AND `applications_7d > 0`, write "pixel match rate low" with a footnote pointing to the Calendly cross-reference, not "£None".
 
 ## Anomalies
 
@@ -200,6 +218,7 @@ Cost per real call: £{X}
 - Per-stage reasoning. Explain which stage rule applies.
 - Pipeline state when revenue-related. If pending paid bookings exist, say so explicitly.
 - British English. £ for money. "Optimise", "behaviour", "organisation".
+- **Read `intelligence._metadata.meta_ads_staleness_warning` before drafting.** If the field is non-empty, prepend it to the data caveat block verbatim. If it starts with `CRITICAL`, abort the run and surface the warning instead of shipping a Doc on stale data. The pipeline already exits non-zero in that case, but the skill must not silently produce a brief on data older than 14 days.
 
 **Voice:** Eight-figure consultant. State what to do and why. Don't hedge.
 
@@ -263,5 +282,14 @@ Before writing any Doc to Drive, every run must verify:
 If any check fails, stop and fix before shipping.
 
 ## Version
+
+**v1.1 (2026-05-02)** — anchor BOF kill/scale on `cost_per_booking_pixel` per Antonio's pipeline update.
+
+- §3 BOF thresholds rewritten around `cost_per_booking_pixel_7d`. £150 / £200 / £300 bands calibrated against Mahmoud's £185 baseline.
+- `cost_per_form_submit` demoted to volume signal. Application-to-booking ratio ~4.5:1 makes it dangerous as a kill anchor (£3 cost per app can sit on top of £349 cost per booking).
+- §2 BOF metric split into headline (Calendly account-level ROAS) and per-ad-set health (pixel bookings).
+- Pixel match-rate edge case spec'd: zero pixel bookings + non-zero applications + non-zero Calendly = ad blocker / cookie loss, NOT a kill verdict.
+- §6 staleness gate: read `intelligence._metadata.meta_ads_staleness_warning`, abort on `CRITICAL`.
+- Verdict table gains a "Cost per booking pixel" column reading `metrics_7d.cost_per_booking_pixel`.
 
 **v1.0 (2026-04-28)** — initial action-first brief, inherits from daily-review + weekly-intelligence, writes one Google Doc per day to the TCC Automations → Meta Ads Daily Briefs folder. Anchored to `1-meta-ads/CLAUDE.md` framework rules (stage classification, per-stage metrics, hard nevers, build checklist).
