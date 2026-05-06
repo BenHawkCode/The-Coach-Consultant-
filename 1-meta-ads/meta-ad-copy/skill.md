@@ -50,13 +50,15 @@ When this skill is invoked:
      - "Free Resource Download" (Lead magnet - guide, template, toolkit)
      - "Course/Product Launch" (Paid offering promotion)
 
-   **Question 2: Target Audience Pain Point**
+   **Question 2: Target Audience Pain Point** (from new IP — May 2026)
    - Header: "Main Pain"
-   - Options:
-     - "Manual Overwhelm" (60-70% time on admin, not transformation work)
-     - "Invisibility" (Brilliant results, zero visibility outside client base)
-     - "AI Paralysis" (Knows AI is solution, overwhelmed by tool options)
-     - "Revenue Plateau" (£50K-£150K stuck, should be £200K+ based on results)
+   - Options (ordered by hero → secondary → niche, per `docs/new-ip/06-pain-isolation.md`):
+     - "Guesswork Tax" (HERO — every content/acquisition/sales decision is a guess, no AI intelligence)
+     - "Bottleneck Identity" (everything runs through them, cannot step back without dropping balls)
+     - "AI Era Anxiety" (knows AI is the answer, cannot tell tools from intelligence, frozen)
+     - "Trust Trauma" (burnt by mentors before, frameworks just the same, debt to show for it)
+     - "Plate Anxiety" (cannot add more stress to the plate, even when it would lighten it)
+     - "Revenue Plateau" (£100K-£500K stuck in £8.5K-£30K monthly, should be scaling without hiring)
 
    **Question 3: Main Offer/Value Proposition**
    - Header: "Core Offer"
@@ -272,35 +274,40 @@ Test against Variation [X] to compare [hook type] vs [alternative]
 
 The skill automatically references:
 
-### From CLAUDE.md:
-- Brand voice (Professional, Direct, Supportive, Action-oriented)
-- Target audience (Business owners and service providers - £50K-£150K revenue, 28-35 years old)
-- Pain points (Inconsistent client flow, marketing doesn't convert, etc.)
-- Goals (Predictable acquisition, higher conversion, automated systems)
-- Differentiation (Tech-forward AI automation, implementation support)
+### From CLAUDE.md + new IP (`docs/new-ip/`):
+- Brand voice (Yorkshire-direct, mate-to-mate, with warmth)
+- Target audience: Sam — open business owners and service providers, men + women equally, 35-50 years old, £100K-£500K (high-heat zone £8.5K-£30K monthly)
+- Hero pain: Guesswork Tax (every growth decision is a guess)
+- Secondary pain: Bottleneck Identity (everything runs through them)
+- Goals: Predictability (the new growth metric), AI intelligence behind every decision, personal brand defence in AI era
+- Differentiation: AI intelligence (NOT AI tools), done-with-you delivery, 4-step programme (Audit → Setup → Roadmap → 90-Day Growth Map)
 
-### Ben's Voice Rules (CRITICAL):
+### Ben's Voice Rules (CRITICAL — see CLAUDE.md for full list):
 
 **Forbidden AI Phrases (NEVER USE):**
-- "Here's the thing" / "Here's the reality" / "Here's how"
-- "Let's dive in"
-- "In this comprehensive guide"
-- "It's important to note"
-- "At the end of the day"
-- "In conclusion" / "To summarise"
-- "First and foremost"
-- "Game changer" / "Unlock" / "Leverage" / "Journey"
+- "Here's the thing" / "Let's dive in" / "Dive in"
+- "Transformation journey" / "Journey" / "Unlock" / "Level up"
+- "Game changer" / "Game-changing" / "Ground-breaking"
+- "In this comprehensive guide" / "In conclusion"
+- Em-dashes / en-dashes
+- Gendered defaults ("the bloke", "the guy", "him")
 
 **Ben's Natural Phrases (USE THESE):**
-- "Right so" (to start explanations)
-- "Sound familiar"
-- "The shift is simple"
-- "The problem is"
-- "What actually works"
-- "That's how you"
-- "I see this constantly" / "I see this all the time"
-- "Remember"
-- "The thing is"
+- "Right, so..." (to start explanations)
+- "Look, here's the thing..." / "Mate, the truth is..."
+- "Doing my head in..."
+- "Proper" (as adverb)
+
+**New IP signature phrases (USE OFTEN — these are the spine):**
+- "You are the bottleneck of your business"
+- "Stop guessing growth"
+- "AI intelligence, not AI tools"
+- "Personal brand plus AI adoption"
+- "Done-with-you, not done-by-yourself, not done-to-you"
+- "Built for you, used by you, owned by you"
+- "Frameworks just the same"
+- "Replace £100K+/month in staff wages with copy-paste SOPs"
+- "Predictability is the new growth metric"
 
 **Tone & Style:**
 - British English always (£, organisation, optimise, behaviour)

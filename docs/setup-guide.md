@@ -222,19 +222,25 @@ The Coach Consultant/
 
 ### Brand Voice System
 
-The system uses a **two-layer approach** for speed + depth:
+The system uses a **layered approach** for speed + depth (May 2026 refresh):
 
-**Layer 1: Quick References** (always loaded, ~5KB)
-- Voice characteristics summary
-- Target audience (Alex Morgan persona - 28-35, £50K-£150K)
-- Core beliefs and philosophy
-- Brand positioning (Tech-forward AI automation)
+**Layer 1: Master IP** (`docs/new-ip/`, 11 docs, always loaded for content tasks)
+- Sam persona (open business owners, 35-50, £100K-£500K)
+- Pain hierarchy (Guesswork Tax → Bottleneck Identity → AI Era Anxiety)
+- Brand identity (voice rules, signature phrases, four pillars)
+- Offer waterfall (4-step programme: Audit → Setup → Roadmap → 90-Day Growth Map)
+- Content categories (5 strategic categories with weekly rotation)
 
-**Layer 2: Deep Samples** (loaded when needed, ~200-500 lines each)
+**Layer 2: Channel Format Rules** (`docs/Ben-Claude-Projects-Instructions.txt`)
+- YouTube script structure, email layout, podcast formatting, carousel slides
+
+**Layer 3: Deep Samples** (`docs/deep-dive/`, loaded when needed)
 - Full YouTube scripts (300 lines)
 - Sales call transcripts (400 lines)
 - Ben's book intro (500 lines)
 - Human knowledge philosophy (507 lines)
+
+**Archived:** `docs/deep-dive/_archive_old-icp/` (Alex Morgan persona, superseded by Sam) and `docs/deep-dive/_archive_old-frameworks/` (old offer waterfall etc., superseded by new IP).
 
 **Why two layers?**
 - Keeps Claude fast (no token overload)
