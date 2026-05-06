@@ -1,15 +1,15 @@
 ---
 name: meta-ads-daily-review
-description: Daily Meta Ads campaign review for Ben Mahmoud. Pulls live API data for BOF campaigns, runs ad set health check, creative × audience matrix, kill/scale/watch verdicts, Meta quality flags, anomaly detection, and top priorities. Replaces manual screenshot-to-Claude workflow. Uses threshold-based logic (0.8% kill, 1.5% target, £50 cost/call, 8% booking rate, 50/30/20 split). Supports weekly phase logic (weeks 1-6+).
+description: Daily Meta Ads campaign review for the media buyer. Pulls live API data for BOF campaigns, runs ad set health check, creative × audience matrix, kill/scale/watch verdicts, Meta quality flags, anomaly detection, and top priorities. Replaces manual screenshot-to-Claude workflow. Uses threshold-based logic (0.8% kill, 1.5% target, £50 cost/call, 8% booking rate, 50/30/20 split). Supports weekly phase logic (weeks 1-6+).
 ---
 
 # Meta Ads Daily Review
 
-Automated daily campaign review skill for Ben Mahmoud. Replaces the manual process of screenshotting Meta Ads Manager results and pasting them into Claude. Pulls live API data and produces the same analysis format in one run.
+Automated daily campaign review skill for the media buyer. Replaces the manual process of screenshotting Meta Ads Manager results and pasting them into Claude. Pulls live API data and produces the same analysis format in one run.
 
 ## Purpose
 
-Ben Mahmoud currently reviews BOF Meta Ads campaigns daily by:
+The current daily review of BOF Meta Ads campaigns runs by hand:
 1. Opening Meta Ads Manager
 2. Screenshotting ad set + creative performance
 3. Pasting screenshots into Claude
@@ -44,9 +44,9 @@ All verdicts use these thresholds (configurable via `config.yaml`):
 | Budget split (Warm/Lookalike/Interest) | 50/30/20 | Flag if off (**BOF only**) |
 | Min impressions for verdict | 1000 per ad set | Below = "insufficient data" |
 
-**Stage-aware checks:** The skill detects the campaign's funnel stage from its Meta objective (`OUTCOME_AWARENESS` / `OUTCOME_TRAFFIC` / `OUTCOME_VIDEO_VIEWS` = TOF, `OUTCOME_ENGAGEMENT` = MOF, `OUTCOME_LEADS` / `OUTCOME_SALES` = BOF). Form-submit / cost-per-submit / 50-30-20 split checks are suppressed for TOF and MOF — judging a Profile Visits campaign on form submits is a category error (per Mahmoud 2026-04-20).
+**Stage-aware checks:** The skill detects the campaign's funnel stage from its Meta objective (`OUTCOME_AWARENESS` / `OUTCOME_TRAFFIC` / `OUTCOME_VIDEO_VIEWS` = TOF, `OUTCOME_ENGAGEMENT` = MOF, `OUTCOME_LEADS` / `OUTCOME_SALES` = BOF). Form-submit, cost-per-submit, and 50-30-20 split checks are suppressed for TOF and MOF. Judging a Profile Visits campaign on form submits is a category error.
 
-### TOF — Cost per IG Follower (Profile Visits)
+### TOF: Cost per IG Follower (Profile Visits)
 
 For TOF campaigns (Profile Visits in particular), the scale KPI is **cost per IG follower**, not CTR/CPC. Because Meta Ads API doesn't return a campaign-level follower count, the skill:
 
@@ -60,9 +60,7 @@ First run of the day creates the baseline only (0 acquired). Re-running the next
 
 Override: set `IG_BUSINESS_ACCOUNT_ID` in root `.env` to point at a different IG account (default: Ben Hawksworth's business account, `17841400157052776`).
 
-**Naming note:** The skill reports `form_submits`, not `calls_booked`. A Meta pixel `lead` event is a form submission, not a booked call — historical ratio is ~4.5 form submits per booked call. The JSON output also includes an `estimated_bookings` field (form_submits / 4.5) flagged as directional until Mahmoud's sheet/STS lands. This aligns with Antonio's dashboard schema (2026-04-17 rename).
-
-**Naming note:** The skill reports `form_submits`, not `calls_booked`. A Meta pixel `lead` event is a form submission, not a booked call — historical ratio is ~4.5 form submits per booked call. The JSON output also includes an `estimated_bookings` field (form_submits / 4.5) flagged as directional until Mahmoud's sheet/STS lands. This aligns with Antonio's dashboard schema (2026-04-17 rename).
+**Naming note:** The skill reports `form_submits`, not `calls_booked`. A Meta pixel `lead` event is a form submission, not a booked call. Historical ratio is roughly 4.5 form submits per booked call. The JSON output also includes an `estimated_bookings` field (form_submits / 4.5) flagged as directional until the client tracker sheet ground truth lands. This aligns with the dashboard schema (2026-04-17 rename).
 
 ### Learning Phase Awareness
 
@@ -112,11 +110,11 @@ When this skill is invoked:
 
 3. **Run the analysis framework:**
 
-   **Step A — Ad Set Health Check**
+   **Step A. Ad Set Health Check**
    - Build table: Ad set | Impressions | CTR | CPC | Calls booked | Learning status
    - Mark overall health (healthy / concerning / learning)
 
-   **Step B — Creative × Audience Matrix**
+   **Step B. Creative × Audience Matrix**
    - Build table: Creative | Warm retargeting CTR | Cold lookalike CTR | Cold interest CTR | Signal
    - Signal column categories:
      - ⭐ Strongest overall (≥2.5% across all 3)
@@ -127,7 +125,7 @@ When this skill is invoked:
      - Below target across board (< 1.5% in 2+ audiences)
      - Too little data (< 1000 impressions)
 
-   **Step C — Kill / Scale / Watch Verdicts**
+   **Step C. Kill / Scale / Watch Verdicts**
 
    Build three buckets:
 
@@ -136,21 +134,21 @@ When this skill is invoked:
    - Flag as "priority scaling at week [N+1]"
    - Note the strongest audience for each
 
-   **Watch — need more data:**
+   **Watch, need more data:**
    - Creatives with impressions 1000-3000 per ad set
    - Creatives with mixed signals (strong in 1, weak in 2)
 
-   **Concern — underperforming:**
+   **Concern, underperforming:**
    - CTR < 1.5% in 2+ ad sets WITH sufficient impressions
    - Quality ranking "Below Average" flagged
    - Note: do NOT kill during learning phase
 
-   **Step D — Meta Quality Flags**
+   **Step D. Meta Quality Flags**
    - List every ad with `quality_ranking = BELOW_AVERAGE`
    - List every ad with `engagement_rate_ranking = BELOW_AVERAGE`
    - Explain why it matters (Meta deprioritises delivery)
 
-   **Step E — Anomaly Detection**
+   **Step E. Anomaly Detection**
 
    Detect and flag:
    - **CTR + quality mismatch** (high CTR but below average quality → clickbait risk)
@@ -158,7 +156,7 @@ When this skill is invoked:
    - **Click-but-no-booking** (ads working, landing page broken)
    - **Spend concentration** (one creative eating >40% of ad set budget)
 
-   **Step F — Top Priorities This Week**
+   **Step F. Top Priorities This Week**
 
    Generate ordered list of actions:
    1. Landing page issues (always first if present)
@@ -171,53 +169,54 @@ When this skill is invoked:
    - Save to `outputs/DAILY-REVIEW-[campaign-name]-[YYYY-MM-DD].md`
    - Use the structure from the Claude reference output (ad set level, creative analysis, verdicts, anomalies, priorities)
 
-## Data Caveat — Always Prepend
+## Data Caveat: Always Prepend
 
 Every generated report must open with a short "DATA CAVEAT" block before the ad set table. Current caveat as of 2026-04-21:
 
-- `form_submits` are Meta pixel `lead` events (form fills), not booked calls. Ground truth for booked calls lives in `calendly_bookings.json` (Antonio's pipeline, 2026-04-20). Paid-ads bookings are tagged via the `-pa` slug.
+- `form_submits` are Meta pixel `lead` events (form fills), not booked calls. Ground truth for booked calls lives in `calendly_bookings.json` from the dashboard pipeline (2026-04-20). Paid-ads bookings are tagged via the `-pa` slug.
 - `estimated_bookings = form_submits / 4.5` is a directional fallback only. Prefer the real Calendly number when available.
-- Antonio's pipeline accuracy was confirmed 2026-04-20 post-`5a672c2`: numbers match Ads Manager 1:1. The old double-count bug (`collect_own_meta.py:91`) is fixed and no longer a concern.
+- Pipeline accuracy was confirmed 2026-04-20: Calendly numbers match Ads Manager 1:1 after the double-count fix landed in the dashboard repo.
 
 Drop the caveat entirely once `estimated_bookings` is replaced by the live Calendly count in the report body.
 
 ## Output Format
 
 ```markdown
-# Daily Review — [Campaign Name]
+# Daily Review: [Campaign Name]
 
 **Date:** 2026-04-15
 **Week:** Week 2
 **Date Range:** Last 7 days
-**Analyst:** Ben Mahmoud (via meta-ads-daily-review skill)
+**Generated by:** meta-ads-daily-review skill
+**Data freshness:** [data_fetched_at timestamp]
 
 ---
 
-## ⚠️ DATA CAVEAT — READ FIRST
+## ⚠️ DATA CAVEAT: READ FIRST
 
 [2-4 sentences: what's fixed, what's pending ground-truth validation, directional vs exact]
 
 ---
 
-## AD SET LEVEL — HEALTH CHECK
+## AD SET LEVEL: HEALTH CHECK
 
 [Context paragraph: learning phase status, overall health]
 
 | Ad set | Impressions | CTR (all) | CPC (all) | Calls booked | Status |
 |---|---|---|---|---|---|
-| Warm — Retargeting | 13,640 | 2.26% | £0.70 | 0 | Learning |
-| Cold — Lookalike | 11,126 | 2.26% | £0.87 | 1 | Learning |
-| Cold — Interest | 13,586 | 2.27% | £0.86 | 3 | Learning |
+| Warm / Retargeting | 13,640 | 2.26% | £0.70 | 0 | Learning |
+| Cold / Lookalike | 11,126 | 2.26% | £0.87 | 1 | Learning |
+| Cold / Interest | 13,586 | 2.27% | £0.86 | 3 | Learning |
 
 [Summary paragraph]
 
 ---
 
-## CREATIVE ANALYSIS — ACROSS ALL 3 AD SETS
+## CREATIVE ANALYSIS: ACROSS ALL 3 AD SETS
 
 | Creative | Warm retargeting | Cold lookalike | Cold interest | Signal |
 |---|---|---|---|---|
-| Graphic 2 — Claude specialist | 2.46% | 1.66% | 2.79% | ⭐ Strongest overall |
+| Graphic 2 / Claude specialist | 2.46% | 1.66% | 2.79% | ⭐ Strongest overall |
 | ... | ... | ... | ... | ... |
 
 ---
@@ -227,22 +226,22 @@ Drop the caveat entirely once `estimated_bookings` is replaced by the live Calen
 **Note:** [Impression volume caveat if relevant]
 
 ### Watch closely for scaling
-- **[Creative]** — [reason] → [action next week]
+- **[Creative]**: [reason]. Action next week: [action]
 
-### Watch — need more data
+### Watch, need more data
 - [Creative list]
 
-### Concern — underperforming
-- **[Creative]** — [reason] → [recommended action]
+### Concern, underperforming
+- **[Creative]**: [reason]. Recommended action: [action]
 
 ### Meta quality flags to act on
-- **[Creative]** in [ad set] — [quality issue explanation]
+- **[Creative]** in [ad set]: [quality issue explanation]
 
 ---
 
 ## ANOMALIES WORTH FLAGGING
 
-- **[Creative/issue]** — [explanation + why it matters]
+- **[Creative/issue]**: [explanation + why it matters]
 
 ---
 
@@ -270,11 +269,11 @@ Reuses the same token as `meta-ad-copy` skill. Antonio will provide the new toke
 
 ## Files
 
-- `skill.md` — this file
-- `fetch_daily_review.py` — Meta API data fetcher + analysis runner
-- `config.yaml` — threshold logic + week phase rules (configurable)
-- `setup.sh` — venv + dependency installer, entrypoint
-- `outputs/` — generated daily reports
+- `skill.md`: this file
+- `fetch_daily_review.py`: Meta API data fetcher + analysis runner
+- `config.yaml`: threshold logic + week phase rules (configurable)
+- `setup.sh`: venv + dependency installer, entrypoint
+- `outputs/`: generated daily reports
 
 ## Ben's Voice Rules (for the output narrative)
 
@@ -286,22 +285,45 @@ The skill uses plain analytical prose, not Ben's marketing voice. But for any co
 - "Business owners and service providers" (never "coaches")
 - No corporate jargon
 
+## Output Rules: Hard Nevers
+
+These are the framework rules from `1-meta-ads/CLAUDE.md` §6, applied to every report this skill generates. Claude must respect all of them when writing the prose sections (read, summary, anomalies, priorities).
+
+**Never in output:**
+- Kill recommendations on ad sets with `status=PAUSED`. If it's already paused, there's nothing to kill. Filter by active status before issuing kill verdicts.
+- "Simplify the form", "reduce landing page friction", "remove qualification". The application form is the qualification filter by design. A form-submit-to-booking drop is the filter working as intended, not a UX problem.
+- Treat pixel `lead` events as booked calls. Always cross-reference Calendly.
+- Team-member names in free-text recommendations. Write about the system and the data, not the people maintaining it.
+- Internal snake_case field names (`paid_calls_booked`, `taken_no_outcome`, etc.) in prose. Use natural language.
+- Assert "the call happened" as fact. The system sees scheduled events, not attendance. Write "scheduled calls" or "bookings", not "calls taken".
+- Speculate about sales-call quality, pitch clarity, onboarding friction. The data shows scheduling and revenue, not conversation content.
+- Directive "kill immediately". Reframe as "watch closely" or "concern" with the reasoning.
+- Em-dashes (—), en-dashes (–) anywhere. Use colon, comma, parentheses, or split into two sentences.
+- Pad numbers to look precise when the underlying data is directional. If the metric is ±10%, do not write it to the penny.
+
+**Always in output:**
+- Data freshness stamp (when the numbers were last refreshed, from `data_fetched_at`).
+- Data caveat block for any Meta pixel number (use the canonical caveat in `## Data Caveat`).
+- Stage-aware verdicts. Never issue a verdict without declaring the stage.
+- Per-stage reasoning. If recommending kill or scale, explain which stage rule is being applied.
+- Pipeline state when revenue-related. If there are pending paid bookings, say so explicitly rather than implying "0 revenue means ads do not convert".
+
 ## Integration
 
-**Daily workflow for Ben Mahmoud:**
+**Daily workflow:**
 1. Morning: run `/meta-ads-daily-review`
 2. Answer 3 quick questions (campaign, week, date range)
 3. Skill pulls data + generates report in ~30 seconds
 4. Review report, action top priorities
 5. No screenshots, no copy-paste
 
-**Weekly complement:** Output feeds into `meta-ads-weekly-intelligence` skill (reads from Antonio's GitHub repo) for the birds-eye funnel view Ben (founder) sees.
+**Weekly complement:** Output feeds into `meta-ads-weekly-intelligence` skill (reads from the dashboard GitHub repo) for the birds-eye funnel view at the founder level.
 
 ## Version
 
-**v1.0 (initial)** — built 2026-04-15 based on Ben Mahmoud's Claude conversation reference output (2026-04-14) and Ben's Meta-Ads brief.
+**v1.0 (initial):** built 2026-04-15 based on the manual screenshot review workflow it replaces, and Ben's Meta Ads brief.
 
 **Pending:**
-- Antonio to configure new Meta Ads token
-- Raw data push to `antonio-gasso/tcc-dashboard` repo
-- README from Antonio pointing to clean/raw data files
+- New Meta Ads token configuration
+- Raw data push to the dashboard repo
+- README in the dashboard repo pointing to clean/raw data files
