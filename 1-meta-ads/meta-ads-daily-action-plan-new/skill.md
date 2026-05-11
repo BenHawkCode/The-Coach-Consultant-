@@ -148,7 +148,7 @@ When all three are present in two sentences, Mahmoud can defend or challenge the
 
 Mimic Ben's content shape exactly. ONE Google Doc per day. Filename: `Meta Ads Daily Action Plan — {YYYY-MM-DD}`. Local mirror at `outputs/{YYYY-MM-DD}.md`.
 
-The skill writes markdown, then `jay-skills/md-to-gdocs/convert.py` converts to `.docx`, then `gws drive files copy` with `mimeType=application/vnd.google-apps.document` lands the styled Google Doc in the Daily Action Plans folder.
+The skill writes markdown locally (for git diff and tomorrow's carry-forward) AND renders styled HTML that Drive imports as a native Google Doc. See §Google Doc writing for the binding render rules and §Visual treatment for the spec the HTML must satisfy. Markdown is the audit artefact; the Google Doc is the deliverable Mahmoud reads.
 
 ### Markdown template
 
@@ -215,21 +215,14 @@ Status: {Watch / Healthy / Concern} ({one-sentence rationale tying to BOF stage 
 - **Yesterday's Number metrics** → bullet list (`- `).
 - **Status: ...** sits below the bullet list as a normal paragraph (NOT a bullet).
 - **Kill Today / Scale Today items** are numbered (`1. `, `2. `) at top level, followed by Reason / Why / Budget change / Daily saving as bullets (`- `) underneath.
-- **Em-dashes (—) are allowed in this skill output** (Ben uses them in his reference doc). Use them where Ben would: between a creative name and a qualifier (`Reel NEW - 100k staff wages — soften hook`), or as a clause break inside subtitle / Anomaly Alert / Today's Priority paragraphs. Do not use em-dashes inside the bullet-list lines.
+- **Em-dashes (—) and en-dashes (–) NEVER.** Hard rule, no exceptions. Use commas, full stops, parentheses, colons. Override of any earlier v1.0/v1.1 "exception" text.
 - **Total length target: 1-2 pages of styled Google Doc** (roughly 50-90 lines of markdown). Mahmoud is fine with two pages so long as every Kill / Scale Reason / Why passes the three-sub-question depth test.
 
-## Visual treatment (Antonio's GWS CLI guide style)
+## Visual treatment
 
-The Google Doc should *feel* like Antonio's 7 May Internal Setup Guide: confident, calm, slightly editorial. Concrete instructions for the `md-to-gdocs` converter:
+Rendered to a styled Google Doc via the HTML-inline-style flow in §Google Doc writing. The structural / styling spec for the HTML output is binding and lives in §Google Doc writing → "Visual treatment specification". Read that block as the source of truth for kicker / H1 / subtitle / snapshot table / H2 / status box / anomaly box / priority box.
 
-- **Kicker line** sits above the H1 in a smaller weight; the converter renders it as a normal paragraph in slightly smaller / muted styling. If the converter doesn't support that natively, ship it as a normal paragraph in the doc and let the caller restyle once. Document the post-render styling in `outputs/STYLE.md` so future runs match.
-- **H1 (date)** uses the converter's default Heading 1 style. Don't override.
-- **Subtitle** sits on its own paragraph between the H1 and the snapshot table. No styling overrides — the converter's normal paragraph rendering is fine; the *length* (one sentence) is what gives it the editorial feel.
-- **Snapshot table** is a 3-column markdown table. The converter supports tables natively; the styling will look clean enough as a basic 1-row data table.
-- **Section headings** (Yesterday's Number, Kill Today, Scale Today, Anomaly Alert, Today's Priority) use H2. The converter's H2 style is the magazine-style black serif Antonio used.
-- **Generous spacing.** Always leave a blank line between the kicker / H1 / subtitle / table block. Always leave a blank line between bullet groups. Never let two bullets from different items abut.
-
-The aim isn't pixel-perfect Antonio replication on day one — the converter has limits — but to make the Doc *feel* like a respected internal document. Mahmoud should want to open it.
+The Doc should *feel* like Antonio's 7 May Internal Setup Guide: confident, calm, slightly editorial. Mahmoud should want to open it. The reference for "what the right brief looks like" is the live 8 May 2026 brief at https://docs.google.com/document/d/1bNNS9JbdagQE0ZDTDDfcKhSKFHnxxWqbArafmf2Oe20/edit.
 
 ## Tone & output rules (binding, see `1-meta-ads/CLAUDE.md` §6)
 
@@ -239,7 +232,7 @@ The aim isn't pixel-perfect Antonio replication on day one — the converter has
 - Treat Meta pixel `lead` events as booked calls.
 - Team-member names (Mahmoud, Ben, Rob, Jay, Antonio) in free-text.
 - Internal snake_case in prose.
-- En-dashes (–) anywhere. (Em-dash exception below.)
+- Em-dashes (—) AND en-dashes (–) anywhere. NEVER. Use commas, full stops, parentheses, colons.
 - Pad numbers to look precise on directional data.
 - Paraphrase signup names from email handles (use literal `name` field).
 - Word "baseline" for the 8% form-submit threshold.
@@ -247,7 +240,7 @@ The aim isn't pixel-perfect Antonio replication on day one — the converter has
 - Equate `paid_pipeline_breakdown_source == "ghl"` (use `startswith` instead).
 - Flag a `paid_calls_booked_28d` drop as a campaign collapse on the day the post-7-May cron lands. The drop is a counting recalibration, not a performance problem.
 
-**Em-dash exception (this skill only):** Ben's 5 May reference doc uses em-dashes (—) as clause breaks. This skill mirrors Ben's structure exactly, so em-dashes are permitted in subtitle, qualifier-after-creative-name, Anomaly Alert and Today's Priority. Not inside bullet lines.
+**Em-dash rule (revised v1.2):** NEVER use em-dash (—) or en-dash (–) in this skill output. Override of any v1.1 "exception" — the production format Antonio approved on 8 May has zero em-dashes. Substitute commas, full stops, parentheses, or colons.
 
 **Hard alwayses:**
 - British English. £ for money. "Optimise", "behaviour", "organisation".
@@ -260,43 +253,98 @@ The aim isn't pixel-perfect Antonio replication on day one — the converter has
 
 ## Google Doc writing
 
-The flow is `markdown → .docx → upload → copy as Google Doc → cleanup`. Tested 7 May 2026.
+The flow is `build HTML with inline styles → upload via gws → convert to Google Doc via mimeType=google-apps.document`. Reference implementation lives in `style-tests/test3_html_convert.py` (winner of the 8 May 2026 style-test bake-off).
 
-```bash
-DATE=$(date +%Y-%m-%d)
-TITLE="Meta Ads Daily Action Plan (NEW format) — $DATE"
-FOLDER_ID=$(cat 1-meta-ads/meta-ads-daily-action-plan-new/outputs/folder_id.txt)
+**Why HTML, not markdown:** The `md-to-gdocs` converter strips most styling — only basic H1/H2/bullet shapes survive. Antonio's 8 May reference (`The Coach Consultant · Internal Setup Guide`) is magazine-style: teal kicker, serif H1, teal subtitle, 3-cell snapshot table, red-bordered alert boxes, teal highlights. None of that survives md→docx→Doc conversion. HTML with **inline styles** does survive Google Docs' HTML import, so that's the path.
 
-# 1. Markdown → .docx
-python3 jay-skills/md-to-gdocs/convert.py \
-    "1-meta-ads/meta-ads-daily-action-plan-new/outputs/${DATE}.md" \
-    "$TITLE"
-mv "$TITLE" "${TITLE}.docx"
+**What survives Google Docs' HTML import:**
 
-# 2. Upload .docx
-DOCX_ID=$(gws drive files create \
-    --upload "${TITLE}.docx" \
-    --params "{\"name\":\"$TITLE\",\"parents\":[\"$FOLDER_ID\"]}" \
-    --format json \
-    | grep -o '"id": "[^"]*"' | head -1 | cut -d'"' -f4)
+- Inline `style="color:...; background-color:...; font-family:...; font-size:...pt; font-weight:..."`
+- `<h1>` and `<h2>` tags (map to Heading 1/2)
+- `<table>` with inline `border` and `padding` on `<td>`
+- `<ul>` / `<li>` bullet lists
+- `<strong>`, `<em>`, `<u>`, `<code>` inline tags
 
-# 3. Copy with mimeType conversion → native Google Doc
-GDOC_ID=$(gws drive files copy \
-    --params "{\"fileId\":\"$DOCX_ID\"}" \
-    --json "{\"name\":\"$TITLE\",\"mimeType\":\"application/vnd.google-apps.document\",\"parents\":[\"$FOLDER_ID\"]}" \
-    --format json \
-    | grep -o '"id": "[^"]*"' | head -1 | cut -d'"' -f4)
+**What does NOT survive:**
 
-echo "Google Doc: https://docs.google.com/document/d/${GDOC_ID}/edit"
+- External `<style>` blocks (use inline only)
+- `<div>` containers — converter unwraps them, so use `<p>` with full inline styling on the paragraph itself
+- CSS classes (use inline `style="..."` per element)
+- `border-radius`, `box-shadow`, complex flexbox layouts
+- Custom fonts outside Google Docs' built-in library — Playfair Display, Georgia, Helvetica Neue, Inter, Roboto all work; obscure fonts do not
 
-# 4. Cleanup
-gws drive files delete --params "{\"fileId\":\"$DOCX_ID\"}"
-rm -f "${TITLE}.docx" download.html
+### Implementation
+
+The skill produces local markdown at `outputs/{YYYY-MM-DD}.md` (for git diffs and tomorrow's carry-forward). The Google Doc gets built by a separate render step that consumes the same data and emits styled HTML. Reference: `style-tests/test3_html_convert.py`.
+
+Pseudocode for the render step:
+
+```python
+DATE = "2026-05-08"
+TITLE = f"Meta Ads Daily Action Plan — {DATE}"
+FOLDER_ID = open("outputs/folder_id.txt").read().strip()
+
+TEAL = "#5C8B7F"
+DARK = "#0a0a0a"
+TEAL_LIGHT_BG = "#e8f0ed"
+RED = "#d63b2f"
+RED_LIGHT_BG = "#fff0ee"
+
+# Build HTML with inline styles per element.
+# Kicker, H1, subtitle, snapshot table, H2 sections, status/priority highlight
+# boxes (teal left border + light teal bg), anomaly red-border box.
+html = build_html_from_brief_data(...)
+
+# Write to a CWD-relative file (gws --upload rejects /tmp or absolute paths)
+with open("daily_action_plan.html", "w") as f:
+    f.write(html)
+
+# Upload with target mimeType — Drive converts HTML to native Google Doc on import
+upload = gws_drive_files_create(
+    upload="daily_action_plan.html",
+    params={
+        "name": TITLE,
+        "mimeType": "application/vnd.google-apps.document",
+        "parents": [FOLDER_ID],
+    },
+)
+
+# If upload kept mimeType=text/html (some Drive versions do), do a copy with conversion
+if upload["mimeType"] != "application/vnd.google-apps.document":
+    converted = gws_drive_files_copy(
+        params={"fileId": upload["id"]},
+        json={
+            "name": TITLE,
+            "mimeType": "application/vnd.google-apps.document",
+            "parents": [FOLDER_ID],
+        },
+    )
+    gws_drive_files_delete(params={"fileId": upload["id"]})
+    doc_id = converted["id"]
+else:
+    doc_id = upload["id"]
+
+os.unlink("daily_action_plan.html")
+print(f"https://docs.google.com/document/d/{doc_id}/edit")
 ```
 
 **Folder ID:** stored in `outputs/folder_id.txt`. For TCC the value is `1pduNpfkMt3HQRs2t0z5e3L3_R5prdwUs` ("Daily Action Plans" — same folder the v1 skill uses).
 
-**Why three steps and not one upload-with-conversion:** `gws drive files create` does NOT honour `mimeType=google-apps.document` on upload. Conversion only happens via `files.copy` with a target mimeType.
+### Visual treatment specification (binding)
+
+Render the HTML to match these conventions exactly. Reference: 8 May 2026 brief at https://docs.google.com/document/d/1bNNS9JbdagQE0ZDTDDfcKhSKFHnxxWqbArafmf2Oe20/edit
+
+- **Kicker** (top of doc): `<p>` inline style `color:#5C8B7F; font-size:10pt; font-weight:700; letter-spacing:0.5px;` — text `THE COACH CONSULTANT · DAILY ACTION PLAN`.
+- **H1 date**: `<h1>` inline `font-family:'Playfair Display',Georgia,serif; font-size:36pt; font-weight:800; color:#0a0a0a;`.
+- **Subtitle**: `<p>` inline `color:#5C8B7F; font-size:14pt;` — one sentence summarising today's account state.
+- **Snapshot table**: 3-cell `<table>` with `border-collapse:collapse; border:1px solid #5C8B7F;`. Each `<td>` has `padding:14px 18px; border:1px solid #5C8B7F;`. Cell content: label (`<p style="font-size:9pt; font-weight:700; letter-spacing:0.5px;">`) then value (`<p style="font-size:13pt;">`).
+- **H2 section headings**: `<h2>` inline `font-family:'Playfair Display',Georgia,serif; font-size:24pt; font-weight:800; color:#0a0a0a;`.
+- **Status block (Yesterday's Number)**: `<p>` inline `padding:12px 16px; background-color:#e8f0ed; border-left:3px solid #5C8B7F;`. Lead in `<strong>Status: Watch.</strong>` then body. Split into 2-3 line paragraphs, each in its own styled `<p>`.
+- **Kill / Scale items**: numbered `<p>` lead with `font-size:13pt; font-weight:700;`. Below, each Reason / Why / Budget change / Daily saving as separate `<p>` with `<strong style="color:#5C8B7F;">Reason.</strong>` lead-in.
+- **Anomaly Alert**: red-bordered box, each anomaly bullet as its own paragraph. Use `<p>` (NOT `<div>`) with inline `padding:16px 20px; background-color:#fff0ee; border:2px solid #d63b2f;`. Lead-in `<strong style="color:#d63b2f;">Pixel match-rate gap, day 7.</strong>` then body. **Important:** because `<div>` gets unwrapped by Drive's HTML import, the red-border style must sit on the `<p>` itself or on each paragraph individually. If multiple paragraphs need to share the box, repeat the border style per paragraph or accept that the box visually breaks between paragraphs.
+- **Today's Priority**: teal-bordered box like Status, on separate `<p>` paragraphs. Lead-in `<strong>Fix the booking pixel today.</strong>`.
+- **No em-dashes (—) anywhere.** Use commas, full stops, parentheses, colons. Hard global rule for this skill.
+- **Paragraph length:** 2-3 lines max per `<p>`. If longer, split into a new paragraph under the same logical block. If even longer or genuinely list-like, use `<ul>` / `<li>` instead of prose.
 
 ## Local output (always)
 
@@ -335,6 +383,13 @@ If any check fails, fix before shipping.
 `outputs/2026-05-07.md` is the canonical reference (written 7 May 2026). Match that file's structure exactly. Live Google Doc: https://docs.google.com/document/d/1VU5ZQDy-0Vsv6ezBsmPqqe8InIXe-_7sBcfXGTKWoT0/edit
 
 ## Version
+
+**v1.2 (2026-05-08, late)** — HTML-inline-style render path replaces md-to-gdocs.
+
+- Google Doc render switched from `markdown → docx → upload → copy with mimeType` (md-to-gdocs) to `HTML with inline styles → upload via gws --upload → mimeType conversion`. The md path lost too much styling for Antonio's magazine-style brief.
+- Visual treatment spec (kicker / H1 / subtitle / snapshot table / H2 / status box / anomaly red-border box / priority teal-border box) is now binding. Reference implementation: `style-tests/test3_html_convert.py`.
+- "What survives Google Docs' HTML import" rules documented so future variants don't accidentally fall back to broken patterns (external `<style>` blocks, `<div>` wrappers that get unwrapped, custom fonts outside Google's library).
+- Em-dash rule made absolute: NEVER. Replaced the v1.1 "em-dash exception". Use commas, full stops, parentheses, colons.
 
 **v1.1 (2026-05-08)** — incorporates Antonio's 7 May feedback.
 
