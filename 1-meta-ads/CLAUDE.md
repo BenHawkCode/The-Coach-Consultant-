@@ -198,11 +198,21 @@ Read `campaign_objective` and the ad-set-level `optimization_goal` (or the `stag
 
 ### Step 2. Judge each stage by its own metric
 
-| Stage | Primary metric | Secondary | Never judge by |
-|---|---|---|---|
-| **TOF** | Cost per IG follower (spend / followers acquired) | ThruPlay rate, CPM (> £25 concern), frequency (> 3.5 fatigue) | CTR, form submits, cost per call |
-| **MOF** | Cost per opt-in / DM conversation | Engagement rate, content relevance | Cost per booked call |
-| **BOF** | Cost per real Calendly call (spend / `paid_ads_7d` from Calendly) | CTR link, form submit rate | Pixel `lead` events as calls |
+**Updated 2026-05-12 (Ben's Monday meeting):** TOF now also produces direct booked calls and revenue, not just followers. Ben added three new columns to the TCC Master Dashboard sheet (Booked calls, Sales, TOF ROAS). TOF judgement is no longer follower-only.
+
+| Stage | Primary metric | Secondary | Direct-response (when present) | Never judge by |
+|---|---|---|---|---|
+| **TOF** | Cost per IG follower (spend / followers acquired) | ThruPlay rate, CPM (> £25 concern), frequency (> 3.5 fatigue) | Cost per booked call (TOF Calendly slug split), TOF ROAS, TOF sales — read from master sheet new columns | — (no longer "never on cost per call" — see below) |
+| **MOF** | Cost per opt-in / DM conversation | Engagement rate, content relevance | — | Cost per booked call (unless MOF starts producing direct bookings, which it currently doesn't) |
+| **BOF** | Cost per real Calendly call (spend / `paid_ads_7d` from Calendly) | CTR link, form submit rate | — | Pixel `lead` events as calls |
+
+**TOF dual-purpose rule.** TOF ad sets serve two jobs now: long-term audience build (followers feed downstream pixel signal) AND direct response (some TOF traffic books a call straight off the ad). Judge the long-term job with cost per follower; judge the direct-response job with the new Booked calls / Sales / TOF ROAS columns from the master sheet when the data is present.
+
+- If a TOF ad set is hitting cost-per-follower target AND producing direct bookings with positive ROAS, that is a scale candidate.
+- If cost per follower is fine but TOF ROAS is negative, do NOT kill the ad set on ROAS alone. The follower job may still be working; check whether downstream BOF spend is benefiting from the TOF-built audience before pulling.
+- If both metrics are bad, then it's a genuine kill candidate.
+
+The 50/30/20 BOF/MOF/TOF budget split target stays the same. TOF being direct-response-capable doesn't change the funnel shape, it changes how we score TOF performance.
 
 ### Step 3. Apply kill / scale / watch thresholds — BOF ONLY
 

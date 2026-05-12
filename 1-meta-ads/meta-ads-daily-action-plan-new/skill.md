@@ -94,13 +94,20 @@ The Stage Spend Snapshot in any debug output (not the public Doc) should track B
 All v1 analysis rules apply unchanged. Summary of what stays:
 
 - Stage classification first (TOF / MOF / WEBINAR / BOF). Use the `stage` field directly. If absent, map from objective.
-- Per-stage metrics. BOF on cost per real Calendly call (account headline) + `cost_per_booking_pixel_7d` (per ad set).
+- Per-stage metrics:
+  - **BOF** on cost per real Calendly call (account headline) + `cost_per_booking_pixel_7d` (per ad set).
+  - **TOF dual-purpose (updated 2026-05-12, Ben's Monday meeting):** TOF now also produces direct booked calls and revenue, not just followers. Read the three new columns Ben added to the TCC Master Dashboard sheet: Booked calls (TOF), Sales (TOF), TOF ROAS. Judge the long-term audience-build job with cost per follower; judge the direct-response job with the new TOF columns when populated.
+  - **MOF** on cost per opt-in / DM conversation.
 - BOF kill/scale/watch thresholds anchored on `cost_per_booking_pixel_7d`: ≤ £150 with ≥ 2 bookings = scale, ≤ £200 = healthy, £200-£300 = watch, > £300 sustained = kill candidate.
+- **TOF kill/scale rule (dual-purpose):**
+  - Cost per follower hitting target AND TOF ROAS positive (sheet) → scale candidate.
+  - Cost per follower fine but TOF ROAS negative → do NOT kill on ROAS alone; the follower job may still be feeding BOF audience. Cross-check downstream BOF spend before pulling.
+  - Both metrics bad → kill candidate.
 - CTR link < 0.8% kill candidate, ≥ 1.5% healthy, ≥ 2.5% scale signal.
 - Min 1,000 impressions per ad set for a verdict.
 - Never kill in `LEARNING` / `LEARNING_LIMITED`.
 - Pixel match-rate edge case: 0 pixel bookings + non-zero applications + non-zero Calendly = ad blocker / cookie loss, NOT a kill.
-- ROAS: numerator = sheet revenue email-matched to Calendly paid_ads_28d, denominator = BOF spend only. "Pending" if denominator > 0 and numerator = 0.
+- ROAS: numerator = sheet revenue email-matched to Calendly paid_ads_28d, denominator = BOF spend only for account-level ROAS. **TOF ROAS is computed separately from the master sheet's TOF columns** and reported alongside, not blended into the BOF ROAS headline.
 - Read `intelligence._metadata.meta_ads_staleness_warning`. If `CRITICAL`, abort.
 
 ## Strategist layer (this skill's main upgrade)
@@ -115,7 +122,7 @@ Across the active BOF creative pool, count which layers are represented and whic
 
 ### Pass B — Scale-the-winner discipline
 
-When a creative or ad set sits in the scale band (BOF: `cost_per_booking_pixel_7d ≤ £150` with ≥ 2 bookings; or CTR ≥ 2.5% sustained across ≥ 1,000 impressions; or strongest cost per follower in TOF), the skill should:
+When a creative or ad set sits in the scale band — BOF: `cost_per_booking_pixel_7d ≤ £150` with ≥ 2 bookings; or CTR ≥ 2.5% sustained across ≥ 1,000 impressions; TOF: strongest cost per follower AND positive TOF ROAS on the master sheet's new columns (dual-purpose rule) — the skill should:
 
 1. Recommend the budget bump explicitly (+10% / +20% / +£10/day, etc) — not vague language like "scale up".
 2. Surface the headroom — how much more spend can this ad set / creative absorb before it hits efficiency ceiling. Use historic data from `meta_ads_campaigns.json` 28d window to estimate.
@@ -171,7 +178,7 @@ The Coach Consultant · Daily Action Plan
 - ROAS: {value or "Pending (cash maturing, 7-14 day lag)"}
 - Cash sales: {value or "Pending (cash maturing, 7-14 day lag)"}
 
-Status: {Watch / Healthy / Concern} ({one-sentence rationale tying to BOF stage spend, pixel match rate, TOF cost per follower if applicable, and any 7 May 2026 schema-refactor recalibration note}).
+Status: {Watch / Healthy / Concern} ({one-sentence rationale tying to BOF stage spend, pixel match rate, TOF cost per follower AND TOF ROAS from the master sheet's new columns if applicable, and any 7 May 2026 schema-refactor recalibration note}).
 
 ## Kill Today
 
@@ -383,6 +390,15 @@ If any check fails, fix before shipping.
 `outputs/2026-05-07.md` is the canonical reference (written 7 May 2026). Match that file's structure exactly. Live Google Doc: https://docs.google.com/document/d/1VU5ZQDy-0Vsv6ezBsmPqqe8InIXe-_7sBcfXGTKWoT0/edit
 
 ## Version
+
+**v1.3 (2026-05-12)** — TOF dual-purpose rule per Ben's Monday meeting roundup.
+
+- TOF stage now scored on two axes, not one. Long-term audience build via cost per follower (unchanged) PLUS direct-response via three new master sheet columns: Booked calls (TOF), Sales (TOF), TOF ROAS.
+- TOF scale band requires BOTH cost per follower healthy AND TOF ROAS positive. Scale call cannot rely on one axis alone.
+- TOF kill rule explicit: don't kill on negative TOF ROAS alone if the follower job is still feeding downstream BOF audience. Both metrics need to be bad for a kill verdict.
+- TOF ROAS reported separately from BOF ROAS. The two are never blended.
+- Account-level ROAS headline remains BOF spend / paid revenue (unchanged).
+- Framework parent (`1-meta-ads/CLAUDE.md` §5 Step 2) updated to match.
 
 **v1.2 (2026-05-08, late)** — HTML-inline-style render path replaces md-to-gdocs.
 
