@@ -1,0 +1,247 @@
+{
+  "week_of": "2026-05-13",
+  "generated_at": "2026-05-13T12:52:45Z",
+  "channels_tracked": 10,
+  "channels_skipped": [],
+  "videos_analysed": 40,
+  "hook_type_distribution": {
+    "statistic": 1,
+    "statement": 33,
+    "story": 3,
+    "pattern_interrupt": 2,
+    "question": 1
+  },
+  "pain_coverage": {
+    "guesswork_tax": 7,
+    "bottleneck_identity": 3,
+    "ai_era_anxiety": 10,
+    "trust_trauma": 1,
+    "plate_anxiety": 4,
+    "partner_pressure": 0,
+    "no_anchor": 15
+  },
+  "format_mix": {
+    "long_form": 0.6,
+    "short": 0.38,
+    "podcast_clip": 0.03
+  },
+  "framework_counts": {
+    "problem-agitate-reveal": 8,
+    "story": 2,
+    "listicle": 1,
+    "ranked list": 1,
+    "value ladder": 1,
+    "problem_agitate_reveal": 1,
+    "problem-solution": 1,
+    "ai flywheel": 1,
+    "before/after/bridge": 1
+  },
+  "top_hooks": [
+    {
+      "hook": "Every single day, thousands of internet gurus tell you how to make money with AI.",
+      "channel": "@DanMartell",
+      "channel_name": "Dan Martell",
+      "pain": "ai_era_anxiety",
+      "hook_type": "statement",
+      "url": "https://www.youtube.com/watch?v=K8Ros5RhJW4",
+      "view_count": 489352,
+      "like_count": 17317,
+      "upload_date": "20260430"
+    },
+    {
+      "hook": "99% of people have no idea what's about to happen with AI.",
+      "channel": "@DanMartell",
+      "channel_name": "Dan Martell",
+      "pain": "ai_era_anxiety",
+      "hook_type": "statement",
+      "url": "https://www.youtube.com/watch?v=8yt5yzwJQko",
+      "view_count": 283969,
+      "like_count": 11600,
+      "upload_date": "20260416"
+    },
+    {
+      "hook": "This is your last chance to get rich before AI changes everything.",
+      "channel": "@DanMartell",
+      "channel_name": "Dan Martell",
+      "pain": "ai_era_anxiety",
+      "hook_type": "statement",
+      "url": "https://www.youtube.com/watch?v=eYyWFJpVBBI",
+      "view_count": 278383,
+      "like_count": 8258,
+      "upload_date": "20260423"
+    },
+    {
+      "hook": "I'm going to show you how to make time for everything.",
+      "channel": "@DanMartell",
+      "channel_name": "Dan Martell",
+      "pain": "plate_anxiety",
+      "hook_type": "statement",
+      "url": "https://www.youtube.com/watch?v=9w0INwjTYdU",
+      "view_count": 157490,
+      "like_count": 6128,
+      "upload_date": "20260420"
+    },
+    {
+      "hook": "There is an incredible piece of software called Claude Code that I've been using for the last 3 months and it has completely and utterly changed my life.",
+      "channel": "@aliabdaal",
+      "channel_name": "Ali Abdaal",
+      "pain": "ai_era_anxiety",
+      "hook_type": "statement",
+      "url": "https://www.youtube.com/watch?v=qLMYOhaKcZs",
+      "view_count": 197733,
+      "like_count": 5552,
+      "upload_date": "20260418"
+    },
+    {
+      "hook": "Last year my company's did over $250,000 in aggregate revenue.",
+      "channel": "@AlexHormozi",
+      "channel_name": "Alex Hormozi",
+      "pain": "ai_era_anxiety",
+      "hook_type": "statistic",
+      "url": "https://www.youtube.com/watch?v=fr78adfAnuA",
+      "view_count": 174024,
+      "like_count": 5206,
+      "upload_date": "20260421"
+    },
+    {
+      "hook": "If I wanted to start the perfect business, these are the things that I would focus on.",
+      "channel": "@AlexHormozi",
+      "channel_name": "Alex Hormozi",
+      "pain": "guesswork_tax",
+      "hook_type": "statement",
+      "url": "https://www.youtube.com/watch?v=3fsJFUvA6Ts",
+      "view_count": 158538,
+      "like_count": 5089,
+      "upload_date": "20260502"
+    },
+    {
+      "hook": "I think rich rich is relative, right?",
+      "channel": "@AlexHormozi",
+      "channel_name": "Alex Hormozi",
+      "pain": "no_anchor",
+      "hook_type": "statement",
+      "url": "https://www.youtube.com/watch?v=e-fi6z80CoA",
+      "view_count": 204722,
+      "like_count": 4986,
+      "upload_date": "20260510"
+    },
+    {
+      "hook": "Okay, most people think that self-respect is something that you earn.",
+      "channel": "@LeilaHormozi",
+      "channel_name": "Leila Hormozi",
+      "pain": "no_anchor",
+      "hook_type": "statement",
+      "url": "https://www.youtube.com/watch?v=j64UB9hU6BM",
+      "view_count": 111664,
+      "like_count": 4946,
+      "upload_date": "20260417"
+    },
+    {
+      "hook": "If you're not dedicating probably at least two full days a week to content, you are probably not going to like my content grows better than Charles, too.",
+      "channel": "@AlexHormozi",
+      "channel_name": "Alex Hormozi",
+      "pain": "guesswork_tax",
+      "hook_type": "statement",
+      "url": "https://www.youtube.com/watch?v=G-2pLhMxPMU",
+      "view_count": 148531,
+      "like_count": 4782,
+      "upload_date": "20260510"
+    }
+  ],
+  "top_ideas": [
+    {
+      "summary": "This video ranks and details 14 real AI business models, cutting through hype to provide actionable ways to make money in 2026.",
+      "title": "The Only 14 Ways to Make Money with AI in 2026",
+      "channel": "@DanMartell",
+      "channel_name": "Dan Martell",
+      "pain": "ai_era_anxiety",
+      "url": "https://www.youtube.com/watch?v=K8Ros5RhJW4",
+      "view_count": 489352
+    },
+    {
+      "summary": "This video breaks down the three levels of AI, revealing where most people are stuck and what a small percentage are doing to get ahead.",
+      "title": "99% of People Have No Idea What’s About to Happen With AI",
+      "channel": "@DanMartell",
+      "channel_name": "Dan Martell",
+      "pain": "ai_era_anxiety",
+      "url": "https://www.youtube.com/watch?v=8yt5yzwJQko",
+      "view_count": 283969
+    },
+    {
+      "summary": "This video warns about AI's imminent impact on wealth and jobs, then outlines how to adapt, leverage AI, and capitalize on new market opportunities to avoid being replaced.",
+      "title": "This is Your Last Chance to Get Rich (Before AI Replaces You)",
+      "channel": "@DanMartell",
+      "channel_name": "Dan Martell",
+      "pain": "ai_era_anxiety",
+      "url": "https://www.youtube.com/watch?v=eYyWFJpVBBI",
+      "view_count": 278383
+    },
+    {
+      "summary": "This video debunks the work-life balance myth, offering entrepreneurs a system to integrate work, family, health, and hobbies into their schedule.",
+      "title": "How to Make Time For Everything (Seriously, everything)",
+      "channel": "@DanMartell",
+      "channel_name": "Dan Martell",
+      "pain": "plate_anxiety",
+      "url": "https://www.youtube.com/watch?v=9w0INwjTYdU",
+      "view_count": 157490
+    },
+    {
+      "summary": "This video introduces beginners to Claude Code, addressing intimidation and time constraints by presenting an AI flywheel for leveraging AI to save time and make money.",
+      "title": "The Ultimate Beginner's Guide to Claude Code",
+      "channel": "@aliabdaal",
+      "channel_name": "Ali Abdaal",
+      "pain": "ai_era_anxiety",
+      "url": "https://www.youtube.com/watch?v=qLMYOhaKcZs",
+      "view_count": 197733
+    },
+    {
+      "summary": "This video demonstrates how to integrate AI into existing businesses to make them better, cheaper, faster, and less risky, dispelling common misconceptions about becoming an AI company.",
+      "title": "How to Use AI in Your Business in 2026",
+      "channel": "@AlexHormozi",
+      "channel_name": "Alex Hormozi",
+      "pain": "ai_era_anxiety",
+      "url": "https://www.youtube.com/watch?v=fr78adfAnuA",
+      "view_count": 174024
+    },
+    {
+      "summary": "This video outlines five essential characteristics that define a 'perfect business' to help entrepreneurs identify and build more profitable ventures.",
+      "title": "What Makes The Perfect Business (5 Things)",
+      "channel": "@AlexHormozi",
+      "channel_name": "Alex Hormozi",
+      "pain": "guesswork_tax",
+      "url": "https://www.youtube.com/watch?v=3fsJFUvA6Ts",
+      "view_count": 158538
+    },
+    {
+      "summary": "This video defines what it means to be 'rich' by suggesting you are rich if having more money wouldn't change what you do.",
+      "title": "When Are You Rich",
+      "channel": "@AlexHormozi",
+      "channel_name": "Alex Hormozi",
+      "pain": "no_anchor",
+      "url": "https://www.youtube.com/watch?v=e-fi6z80CoA",
+      "view_count": 204722
+    },
+    {
+      "summary": "This video explains that self-respect is a daily practice, not an earned feeling, and how it dictates how others treat you.",
+      "title": "Do This and People Will Instantly Respect You",
+      "channel": "@LeilaHormozi",
+      "channel_name": "Leila Hormozi",
+      "pain": "no_anchor",
+      "url": "https://www.youtube.com/watch?v=j64UB9hU6BM",
+      "view_count": 111664
+    },
+    {
+      "summary": "This video argues that effective content creation requires significant preparation time, not just filming, to ensure higher quality and impact.",
+      "title": "HOLD What It Takes To Make Good Content",
+      "channel": "@AlexHormozi",
+      "channel_name": "Alex Hormozi",
+      "pain": "guesswork_tax",
+      "url": "https://www.youtube.com/watch?v=G-2pLhMxPMU",
+      "view_count": 148531
+    }
+  ],
+  "missing_pains": [
+    "partner_pressure"
+  ],
+  "priority_move": "Competitor pool over-indexed on no anchor this week (15 hits) and missed partner pressure. Ship two TCC pieces against partner pressure this week to own the lane."
+}

@@ -1,0 +1,7 @@
+# Per-channel scrape + analyse output regenerates each run
+data/*-raw-*.json
+data/*-analysed-*.json
+data/idea_bank-*.json
+
+# Local launchd logs
+cron-logs/
