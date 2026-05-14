@@ -205,6 +205,22 @@ Quick summary per channel:
 - **Invocation:** when user says "thumbnail", "/thumbnail", "open thumbnail generator" → run pre-flight checks (venv/deps/.env), launch on port 8520 in background, hand off URL
 - See `3-youtube/thumbnail-generator/skill.md` for the full pre-flight + launch workflow
 
+### YouTube Competitor Analysis
+- **SKILL AVAILABLE:** `youtube-competitor-analysis` — weekly intelligence brief on 10 selected YouTube competitors
+- **Skill location:** `3-youtube/youtube-competitor-analysis/` (skill.md, competitor-list.md, scripts/, data/, outputs/, cron-logs/)
+- **Channels tracked (10):** Alex Hormozi, Dan Martell, Iman Gadzhi, Russell Brunson, Leila Hormozi, Brendon Burchard, Myron Golden, Ali Abdaal, GaryVee, James Sinclair Entrepreneur (subset of master 31-competitor list, highest ICP overlap with Sam)
+- **Pipeline (6 scripts):** `scrape_channels.py` (yt-dlp, last 30 days) → `analyse_top5.py` (Gemini multimodal pass per video — hook verbatim, hook type, framework, CTA, pain anchor, format, summary) → `aggregate.py` → `generate_idea_bank.py` (Ben video idea bank, 5 channels x latest video) → `render_md.py` → `render_gdoc.py` + `render_idea_bank_gdoc.py` (two Drive Docs)
+- **Two Google Docs per week:** (1) Antonio strategic brief — hook patterns, framework patterns, pain coverage gaps, weekly priority move; (2) Ben video idea bank — channel-by-channel breakdown with verbatim hooks + TCC-voice rewrites
+- **Pain anchors:** every hook tagged against one of the six new IP pain layers (Guesswork Tax, Bottleneck Identity, AI Era Anxiety, Trust Trauma, Plate Anxiety, Partner Pressure) + "no anchor"
+- **Ranking:** top 5 per channel by `views * like_rate`, not raw views (avoids big-channel bias)
+- **Visual treatment:** mirrors `meta-ads-daily-action-plan-new` exactly — kicker, serif H1, teal subtitle, 3-cell snapshot table, serif H2 sections, red-bordered insight boxes, no em-dashes
+- **Dependencies:** `GEMINI_API_KEY` in root `.env`, `yt-dlp` (`brew install yt-dlp`), folder ID in `outputs/folder_id.txt`
+- **Outputs:** `outputs/{YYYY-MM-DD}.md` (markdown mirror), `data/{handle}-raw-{date}.json` + `{handle}-analysed-{date}.json` (per channel), `data/youtube_competitors.json` (dashboard widget feed, v1.1)
+- **Orchestrator:** `scripts/run_weekly.sh` (loads `.env`, runs 6 steps in order, logs to `cron-logs/run-{date}.log`)
+- **When to invoke:** "Use the youtube-competitor-analysis skill to generate this week's brief" or weekly cron (Monday 07:00 UK, after IG competitor cron)
+- **Version:** v1.0 (2026-05-13) — first run 2026-05-13, parallel-validate with Ben for first three weeks before flipping to autonomous cron
+- See `3-youtube/youtube-competitor-analysis/skill.md` for full workflow
+
 ### Email Campaigns
 - **SKILL AVAILABLE:** `email-campaign-ben-hawksworth` - Auto-triggers for email generation
 - **Skill location:** `4-emails/email-campaign-skill/` (complete skill with agent.md, prompt.md, examples)

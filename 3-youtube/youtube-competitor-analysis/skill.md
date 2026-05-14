@@ -221,6 +221,10 @@ If any check fails, fix before shipping.
 - **Weekly cron:** Monday morning, 07:00 UK time (after IG competitor cron lands the same morning). Wired via `scripts/run_weekly.sh` and a launchd plist following the meta-ads-daily-action-plan-new pattern.
 - **First three weeks: parallel-validate output with Ben before flipping to cron.** Ship the Doc manually each Monday, get feedback, refine the Gemini prompt, then go autonomous.
 
+## Project context (CLAUDE.md anchor)
+
+Registered in the project-root `CLAUDE.md` under **Channel-Specific Rules → YouTube Competitor Analysis**. The CLAUDE.md block is the short-form index (channels, pipeline order, two-doc output, pain anchors, ranking rule, visual treatment, dependencies, invocation phrase, version). This `skill.md` is the binding spec — anything that diverges between the two: this file wins. Update CLAUDE.md whenever the channel list, pipeline order, or output shape changes here.
+
 ## Version
 
 **v1.0 (2026-05-13)** — initial skill. 10 channels, top 5 per channel through Gemini multimodal, magazine-style Google Doc output mirroring `meta-ads-daily-action-plan-new` visual treatment. Dashboard widget wiring deferred to v1.1 after first two weeks of validation with Ben.
